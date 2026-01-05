@@ -1,0 +1,8 @@
+Base :
+lexical overlap RAG
+chunking basique
+
+mod1 :
+RAG hybride (BM25 + embeddings SentenceTransformer)
+chunking par sections (Rule/Annex)
+récupération en 2 passes (multi‑step)
