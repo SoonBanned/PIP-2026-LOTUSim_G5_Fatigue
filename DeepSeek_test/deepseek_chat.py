@@ -105,7 +105,7 @@ class DeepSeekChatbot:
             "You are a helpful assistant. Provide only the final answer. "
             "Do not include reasoning steps."
         ),
-        max_tokens: int = 512,
+        max_tokens: int = 1024,
         temperature: float = 0.7,
         top_p: float = 0.95,
         stop: str | None = None,
