@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import os
-import json
+import re
 from dataclasses import dataclass
 from typing import Any, Iterable, Literal
 
@@ -10,13 +10,6 @@ try:
 except Exception as e:  # pragma: no cover
     raise RuntimeError(
         "Missing dependency 'requests'. Install with: pip install requests"
-    ) from e
-
-try:
-    from huggingface_hub import InferenceClient
-except Exception as e:  # pragma: no cover
-    raise RuntimeError(
-        "Missing dependency 'huggingface_hub'. Install with: pip install huggingface_hub"
     ) from e
 
 
@@ -30,67 +23,29 @@ class ChatMessage:
 
 
 class DeepSeekChatbot:
-    """Minimal chatbot wrapper for Hugging Face hosted inference.
+    """Minimal chatbot wrapper for local inference via Ollama.
 
-    This uses the Hugging Face Inference API via huggingface_hub.InferenceClient.
-    You must set HF_TOKEN in your environment.
+    Uses an OpenAI-compatible chat-completions endpoint, typically:
+      LOCAL_OPENAI_BASE_URL=http://localhost:11434/v1
 
-    Notes:
-    - If the model supports the chat-completions API, we use client.chat.completions.
-    - Otherwise, we fall back to text-generation.
+    This is intentionally *local-only* (no Hugging Face Router / HF tokens).
     """
 
     def __init__(
         self,
-        model: str = "deepseek-ai/DeepSeek-V3.2",
+        model: str = "deepseek-r1:8b",
         *,
-        token_env: str = "HF_TOKEN",
         timeout: float | None = 120.0,
     ) -> None:
-        token = os.getenv(token_env)
-        if not token:
-            raise RuntimeError(
-                f"{token_env} is not set. Create a Hugging Face access token and set it, e.g.\n"
-                f'  setx {token_env} "hf_..."\n'
-                f"Then restart your terminal/kernel."
-            )
-
         self.model = model
         self.timeout = timeout
-
-        # Preferred backend: Hugging Face Router (OpenAI-compatible)
-        # The legacy Inference API endpoint (api-inference.huggingface.co) is deprecated.
-        self.router_base_url = (
-            os.getenv("HF_ROUTER_BASE_URL") or "https://router.huggingface.co"
+        self.base_url = (
+            os.getenv("LOCAL_OPENAI_BASE_URL") or "http://localhost:11434/v1"
         )
-
-        # Hugging Face deprecated the legacy api-inference endpoint.
-        # In huggingface_hub==0.25.x, the endpoint is hardcoded in
-        # huggingface_hub.inference._client.INFERENCE_ENDPOINT.
-        # Patch it to router.huggingface.co to avoid 410 Gone errors.
-        try:
-            import huggingface_hub.inference._client as _hf_inf_client
-
-            desired = (
-                os.getenv("HF_INFERENCE_ENDPOINT")
-                or os.getenv("HF_INFERENCE_BASE_URL")
-                or "https://router.huggingface.co/hf-inference"
-            )
-            current = getattr(_hf_inf_client, "INFERENCE_ENDPOINT", None)
-            if isinstance(current, str):
-                normalized = current.rstrip("/")
-                desired_norm = desired.rstrip("/")
-                if normalized != desired_norm and (
-                    "api-inference.huggingface.co" in normalized
-                    or normalized == "https://router.huggingface.co"
-                ):
-                    _hf_inf_client.INFERENCE_ENDPOINT = desired
-        except Exception:
-            pass
-
-        self.client = InferenceClient(model=model, token=token, timeout=timeout)
+        self.api_key = (
+            os.getenv("LOCAL_OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY") or ""
+        )
         self.history: list[ChatMessage] = []
-        self._token = token
 
     def reset(self) -> None:
         self.history.clear()
@@ -101,11 +56,55 @@ class DeepSeekChatbot:
     def _messages_payload(self) -> list[dict[str, str]]:
         return [{"role": m.role, "content": m.content} for m in self.history]
 
+    @staticmethod
+    def _final_from_reasoning(reasoning_text: str) -> str:
+        """Best-effort extraction of a final answer from a model's reasoning.
+
+        Ollama's OpenAI-compatible endpoint may place output in `message.reasoning`
+        (sometimes including chain-of-thought). This tries to return only a final
+        answer-like segment.
+        """
+
+        text = reasoning_text.strip()
+        # Common tags used by some models
+        text = re.sub(r"(?is)^\s*<think>\s*|\s*</think>\s*$", "", text).strip()
+        if not text:
+            return ""
+
+        # Prefer explicit markers if present
+        marker_re = re.compile(
+            r"(?im)^(final\s*answer|final|answer|response)\s*[:\-]\s*(.+?)\s*$"
+        )
+        matches = list(marker_re.finditer(text))
+        if matches:
+            return matches[-1].group(2).strip()
+
+        # Otherwise, take the last paragraph block
+        blocks = [b.strip() for b in re.split(r"\n\s*\n+", text) if b.strip()]
+        candidate = blocks[-1] if blocks else text
+
+        # If the "last block" still looks like meta-thinking, fall back to last sentences
+        looks_like_thinking = re.compile(
+            r"(?is)^(okay|alright|let\s+me|i\s+will|first,|now,|to\s+answer|the\s+user\s+wants)\b"
+        )
+        if looks_like_thinking.search(candidate) and len(text) > len(candidate):
+            # Use the very end of the full text instead
+            candidate = text[-1500:].strip()
+
+        # Last-resort: if it's still huge, keep the tail
+        if len(candidate) > 3000:
+            candidate = candidate[-3000:].strip()
+
+        return candidate
+
     def reply(
         self,
         user_text: str,
         *,
-        system_prompt: str | None = "You are a helpful assistant.",
+        system_prompt: str | None = (
+            "You are a helpful assistant. Provide only the final answer. "
+            "Do not include reasoning steps."
+        ),
         max_tokens: int = 512,
         temperature: float = 0.7,
         top_p: float = 0.95,
@@ -116,86 +115,51 @@ class DeepSeekChatbot:
 
         self.add("user", user_text)
 
-        # Prefer Hugging Face Router OpenAI-compatible chat endpoint.
-        text: str | None = None
-        router_url = f"{self.router_base_url.rstrip('/')}/v1/chat/completions"
-        try:
-            payload: dict[str, Any] = {
-                "model": self.model,
-                "messages": self._messages_payload(),
-                "max_tokens": max_tokens,
-                "temperature": temperature,
-                "top_p": top_p,
-            }
-            if stop:
-                payload["stop"] = [stop]
+        url = f"{self.base_url.rstrip('/')}/chat/completions"
+        payload: dict[str, Any] = {
+            "model": self.model,
+            "messages": self._messages_payload(),
+            "max_tokens": max_tokens,
+            "temperature": temperature,
+            "top_p": top_p,
+        }
+        if stop:
+            payload["stop"] = [stop]
 
-            resp = requests.post(
-                router_url,
-                headers={
-                    "Authorization": f"Bearer {self._token}",
-                    "Content-Type": "application/json",
-                },
-                json=payload,
-                timeout=self.timeout or 120.0,
+        headers = {"Content-Type": "application/json"}
+        if self.api_key:
+            headers["Authorization"] = f"Bearer {self.api_key}"
+
+        resp = requests.post(
+            url,
+            headers=headers,
+            json=payload,
+            timeout=self.timeout or 120.0,
+        )
+        if resp.status_code >= 400:
+            raise RuntimeError(
+                f"Local inference error {resp.status_code}: {(resp.text or '')[:300]}"
             )
-            if resp.status_code >= 400:
-                raise RuntimeError(
-                    f"Router error {resp.status_code}: {resp.text[:200]}"
-                )
 
-            data = resp.json()
-            text = ((data.get("choices") or [{}])[0].get("message") or {}).get(
-                "content"
-            )
-            if isinstance(text, str):
-                text = text.strip()
-            else:
-                text = None
-        except Exception:
-            text = None
+        data = resp.json()
+        message = (data.get("choices") or [{}])[0].get("message") or {}
+        content = message.get("content")
+        reasoning = message.get("reasoning")
 
-        if text is None:
-            # Fallback: try huggingface_hub inference client (may not support all models).
-            try:
-                resp2 = self.client.chat.completions.create(
-                    model=self.model,
-                    messages=self._messages_payload(),
-                    max_tokens=max_tokens,
-                    temperature=temperature,
-                    top_p=top_p,
-                    stop=[stop] if stop else None,
-                )
-                text = (resp2.choices[0].message.content or "").strip()
-            except Exception:
-                prompt = self._format_prompt_fallback(self.history)
-                out = self.client.text_generation(
-                    prompt,
-                    model=self.model,
-                    max_new_tokens=max_tokens,
-                    temperature=temperature,
-                    top_p=top_p,
-                    stop_sequences=[stop] if stop else None,
-                    return_full_text=False,
-                )
-                text = (out or "").strip()
+        if isinstance(content, str) and content.strip():
+            text = content.strip()
+        elif isinstance(reasoning, str) and reasoning.strip():
+            # Some Ollama models emit text in a non-standard `reasoning` field.
+            # Extract a final answer-like segment (avoid returning chain-of-thought).
+            text = self._final_from_reasoning(reasoning)
+        elif isinstance(content, str):
+            # content is present but empty
+            text = content.strip()
+        else:
+            raise RuntimeError(f"Unexpected response shape: {data}")
 
         self.add("assistant", text)
         return text
-
-    @staticmethod
-    def _format_prompt_fallback(messages: Iterable[ChatMessage]) -> str:
-        # Simple, model-agnostic chat formatting.
-        chunks: list[str] = []
-        for m in messages:
-            if m.role == "system":
-                chunks.append(f"System: {m.content}")
-            elif m.role == "user":
-                chunks.append(f"User: {m.content}")
-            else:
-                chunks.append(f"Assistant: {m.content}")
-        chunks.append("Assistant:")
-        return "\n".join(chunks)
 
 
 def run_cli() -> None:
