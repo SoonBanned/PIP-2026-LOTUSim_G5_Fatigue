@@ -1,0 +1,81 @@
+id,question,answer
+1,"According to Rule 32, what are the precise definitions of a ""whistle,"" a ""short blast,"" and a ""prolonged blast""?","According to Rule 32, the precise definitions are:
+
+(a) The term'short blast' means a blast of about one second's duration.
+(b) The term 'prolonged blast' means a blast of from four to six seconds' duration."
+2,"What are the minimum visibility ranges for the masthead light, sidelight, and sternlight on vessels of 50 meters or more in length?","According to Rule 22, the minimum visibility ranges for the lights on vessels of 50 meters or more in length are:
+
+* Masthead light: 6 miles
+* Sidelight: 3 miles
+* Sternlight: 3 miles"
+3,"Under Rule 10 regarding Traffic Separation Schemes, when is a vessel allowed to enter a separation zone or cross a separation line?","According to Rule 10 (e) of the provided context, a vessel, other than a crossing vessel, or a vessel joining or leaving a lane shall not normally enter a separation zone or cross a separation line except:
+
+* When en route to or from a port, offshore installation or structure, pilot station or any other place situated within the inshore traffic zone, or
+* To avoid immediate danger."
+4,What precise sound signal must a vessel aground give if she is 100 meters or more in length?,"According to the provided context, a vessel aground that is 100 meters or more in length must give three separate and distinct strokes on the bell immediately before and after the rapid ringing of the bell."
+5,"Summarize the actions a vessel must take to determine if a ""risk of collision"" exists, specifically regarding the use of equipment and observations.","According to the provided context, a vessel must take the following actions to determine if a ""risk of collision"" exists:
+
+1. Use all available means appropriate to the prevailing circumstances and conditions to determine if a risk of collision exists. (Rule 7(a))
+2. Make proper use of radar equipment if fitted and operational, including long-range scanning to obtain early warning of risk of collision and radar plotting or equivalent system. (Rule 7(b))
+3. Consider the following factors when determining if a risk of collision exists:
+	* If the compass bearing of an approaching vessel does not appreciably change. (Rule 7(d)(i))
+	* If an appreciable bearing change is evident, but the risk of collision may still exist, particularly when approaching a very large vessel or a tow, or when approaching a vessel at close range. (Rule 7(d)(ii))
+
+By taking these actions, a vessel can determine if a risk of collision exists and take necessary measures to avoid it."
+6,"Describe the lighting configuration required for a vessel ""not under command"" (NUC) according to Rule 27, including when she is making way.","According to Rule 27, a vessel ""not under command"" (NUC) shall exhibit:
+
+* Two all-round red lights in a vertical line where they can best be seen (Rule 27(a)(i))
+* Two balls or similar shapes in a vertical line where they can best be seen (Rule 27(a)(ii))
+* When making way through the water, in addition to the lights prescribed in this paragraph, sidelights and a sternlight (Rule 27(a)(iii))
+
+So, the lighting configuration required for a vessel ""not under command"" (NUC) is:
+
+* Two all-round red lights in a vertical line
+* Two balls or similar shapes in a vertical line
+* Sidelights and a sternlight when making way through the water"
+7,"Explain the hierarchy of responsibilities between different vessel types (Power-driven, Sailing, Fishing, NUC, RAM, Constrained by draught) as outlined in Rule 18.","According to Rule 18, the hierarchy of responsibilities between different vessel types is as follows:
+
+1. A power-driven vessel underway shall keep out of the way of:
+	* A vessel not under command (NUC)
+	* A vessel restricted in her ability to maneuver (RAM)
+	* A vessel engaged in fishing
+	* A sailing vessel
+2. A sailing vessel underway shall keep out of the way of:
+	* A vessel not under command (NUC)
+	* A vessel restricted in her ability to maneuver (RAM)
+	* A vessel engaged in fishing
+3. A vessel constrained by her draught shall navigate with particular caution and, if the circumstances admit, avoid impeding the safe passage of other vessels.
+
+In general, vessels with more limited maneuverability (NUC, RAM, fishing vessels) have priority over vessels with greater maneuverability (power-driven vessels, sailing vessels). Additionally, vessels constrained by their draught have a special responsibility to navigate with caution and avoid impeding the passage of other vessels.
+
+It's worth noting that this hierarchy is not a strict ranking, but rather a set of guidelines to be followed in specific situations. The rules also emphasize the importance of considering the special circumstances of each case and taking necessary precautions to avoid collisions."
+8,"Based on the ""IMO Recommendation on Navigational Watchkeeping,"" what are the key factors the officer of the watch must consider when deciding if they can act as the sole look-out in daylight?","According to the provided context, the key factors the officer of the watch must consider when deciding if they can act as the sole look-out in daylight are:
+
+* The state of weather
+* Conditions of visibility
+* Traffic density
+* Proximity of navigational hazards
+* Presence and movement of vessels in sight or known to be in the vicinity
+
+These factors must be carefully assessed on each occasion to ensure it is safe to act as the sole look-out in daylight."
+9,"A sailing vessel is overtaking a power-driven vessel. According to the interaction between Rule 13 and Rule 18, which vessel is the ""stand-on"" vessel and why?","According to Rule 13, when a sailing vessel is overtaking another vessel, it shall keep out of the way of the vessel being overtaken. This means that the sailing vessel is the ""give-way"" vessel.
+
+According to Rule 18, a power-driven vessel underway shall keep out of the way of a sailing vessel. This means that the power-driven vessel is the ""stand-on"" vessel.
+
+Therefore, in this situation, the power-driven vessel is the stand-on vessel, and the sailing vessel is the give-way vessel."
+10,"A vessel detects another vessel by radar alone in restricted visibility and determines a close-quarters situation is developing. If the target is forward of the beam (but not being overtaken), what specific manoeuvre must be avoided according to Rule 19?","According to Rule 19 (d) (i), when a close-quarters situation is developing, a vessel shall take avoiding action in ample time, and when such action consists of an alteration of course, the following shall be avoided: (i) an alteration of course to port for a vessel forward of the beam, other than for a vessel being overtaken."
+11,"A vessel is ""restricted in her ability to manoeuvre"" and is engaged in a towing operation that restricts her ability to deviate from course. According to Rule 27(c) and Rule 24(a), precisely what combination of lights must be shown at night?","According to Rule 27(c), a vessel ""restricted in her ability to manoeuvre"" may use red lights as part of the ""Restricted Ability to Manoeuvre"" (RAM) lights, provided the vertical and horizontal distances required by COLREG 1972 are complied with and the electrical system is arranged so that the all-round white light (RAM) may be switched on independently from the two all-round red lights (NUC).
+
+Additionally, according to Rule 24(a), a vessel engaged in towing operations shall exhibit the lights prescribed in Rule 23, which includes two masthead lights in a vertical line, sidelights, and a sternlight.
+
+Therefore, in this case, the vessel must show the following combination of lights at night:
+
+* Two masthead lights in a vertical line (Rule 24(a))
+* All-round red lights (Rule 27(c))
+* Sidelights
+* Sternlight
+
+Note that the all-round white light (RAM) is not required in this case, as the vessel is already showing the all-round red lights (NUC)."
+12,"In a ""crossing situation"" (Rule 15), if the stand-on vessel finds herself so close that collision cannot be avoided by the give-way vessel alone, what action is she required to take, and what specific restriction applies to her course alteration if the other vessel is on her port side?","According to Rule 15, in a crossing situation, if the stand-on vessel finds herself so close that collision cannot be avoided by the give-way vessel alone, she shall take such action as will best aid to avoid collision.
+
+Additionally, if the other vessel is on her port side, the stand-on vessel shall keep out of the way and, if the circumstances of the case admit, avoid crossing ahead of the other vessel."
