@@ -1,0 +1,287 @@
+# %%
+import os
+import re
+import argparse
+from dataclasses import dataclass
+from typing import List, Optional, Dict, Any, Tuple
+import numpy as np
+import faiss
+import torch
+from pypdf import PdfReader
+from sentence_transformers import SentenceTransformer
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+from huggingface_hub import login
+
+
+# %%
+# =========================
+# 1) PDF -> texte
+# =========================
+def pdf_to_text(path: str) -> str:
+    reader = PdfReader(path)
+    parts = []
+
+    for page in reader.pages:
+        txt = page.extract_text() or ""
+
+        # nettoyage / normalisation
+        txt = txt.replace("\u00ad", "")     # soft hyphen
+        txt = txt.replace("\xa0", " ")      # espace insécable
+        txt = txt.replace("\u2009", " ")    # thin space
+        txt = txt.replace("\u202f", " ")    # narrow no-break space
+        txt = re.sub(r"\r\n?", "\n", txt)   # normalise retours ligne
+        txt = re.sub(r"[ \t]+", " ", txt)   # espaces multiples
+
+        parts.append(txt.strip())
+
+    return "\n\n".join([p for p in parts if p])
+
+
+# %%
+# =========================
+# 2) Chunking structurel
+# =========================
+HEADING_RE = re.compile(
+    r"""(?im)^\s*                     # début de ligne + espaces
+        (rule|annex|section)          # mot clé
+        \s+                           # espaces
+        ([0-9]+(?:\.[0-9]+)*|[IVXLCDM]+|[A-Z])  # 12 / 1.2 / I / IV / A
+        \.?\b                         # point optionnel après le numéro
+        [^\n]*                        # reste de la ligne
+    """,
+    re.VERBOSE
+)
+
+@dataclass
+class Chunk:
+    level: str
+    number: str
+    title_line: str
+    parent_type: Optional[str] = None
+    parent_number: Optional[str] = None
+    text: str = ""
+    span: Optional[Tuple[int, int]] = None
+
+
+def chunk_by_keywords(text: str) -> List[Chunk]:
+    text = text.strip()
+    if not text:
+        return []
+
+    matches = list(HEADING_RE.finditer(text))
+    if not matches:
+        return [Chunk(level="root", number="", title_line="", text=text, span=(0, len(text)))]
+
+    chunks: List[Chunk] = []
+    current_parent_type: Optional[str] = None
+    current_parent_number: Optional[str] = None
+
+    for i, m in enumerate(matches):
+        level = m.group(1).lower()
+        num = m.group(2)
+        title_line = m.group(0).strip()
+
+        start = m.start()
+        end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+        block_text = text[m.end():end].strip()
+
+        if level in ("rule", "annex"):
+            current_parent_type = level
+            current_parent_number = num
+            parent_type = None
+            parent_number = None
+        else:
+            parent_type = current_parent_type
+            parent_number = current_parent_number
+
+        chunks.append(
+            Chunk(
+                level=level,
+                number=num,
+                title_line=title_line,
+                parent_type=parent_type,
+                parent_number=parent_number,
+                text=block_text,
+                span=(start, end),
+            )
+        )
+    return chunks
+
+
+def to_docs(chunks: List[Chunk]) -> List[Dict[str, Any]]:
+    docs = []
+    for c in chunks:
+        if c.level == "section" and c.parent_type and c.parent_number:
+            path = f"{c.parent_type.title()} {c.parent_number} > Section {c.number}"
+        else:
+            path = f"{c.level.title()} {c.number}".strip()
+
+        docs.append({
+            "id": f"{c.level}-{c.number}" + (f"-p{c.parent_type}{c.parent_number}" if c.parent_type and c.parent_number else ""),
+            "path": path,
+            "level": c.level,
+            "number": c.number,
+            "parent_type": c.parent_type,
+            "parent_number": c.parent_number,
+            "title": c.title_line,
+            "text": c.text,
+            "span": c.span,
+        })
+    return docs
+
+# %%
+# =========================
+# 3) Embeddings + FAISS
+# =========================
+def build_faiss_index(
+    chunk_texts: List[str],
+    emb_model: str = "sentence-transformers/all-MiniLM-L6-v2",
+    batch_size: int = 16,
+) -> Tuple[SentenceTransformer, faiss.IndexFlatIP, np.ndarray]:
+    embedder = SentenceTransformer(emb_model)
+    emb = embedder.encode(
+        chunk_texts,
+        batch_size=batch_size,
+        show_progress_bar=True,
+        normalize_embeddings=True,
+    )
+    emb = np.array(emb, dtype="float32")
+
+    dim = emb.shape[1]
+    index = faiss.IndexFlatIP(dim)
+    index.add(emb)
+    return embedder, index, emb
+
+
+def retrieve(embedder: SentenceTransformer, index: faiss.IndexFlatIP, chunk_texts: List[str], query: str, k: int = 5):
+    q_emb = embedder.encode([query], normalize_embeddings=True).astype("float32")
+    scores, ids = index.search(q_emb, k)
+
+    results = []
+    for score, idx in zip(scores[0], ids[0]):
+        idx = int(idx)
+        results.append((idx, float(score), chunk_texts[idx]))
+    return results
+
+# %%
+# =========================
+# 4) LLM + RAG prompt
+# =========================
+def load_llm(model_name: str):
+    tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+        torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
+        device_map="auto",
+    )
+    gen = pipeline("text-generation", model=model, tokenizer=tokenizer)
+    return tokenizer, gen
+
+
+def format_prompt(tokenizer, question: str, contexts: List[str]) -> str:
+    context_block = "\n\n---\n\n".join(contexts)
+    system = "You are an assistant who only responds based on the provided CONTEXT."
+
+    if hasattr(tokenizer, "apply_chat_template"):
+        messages = [
+            {"role": "system", "content": system},
+            {"role": "user", "content": f"CONTEXTE:\n{context_block}\n\nQUESTION:\n{question}"},
+        ]
+        return tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+
+    return (
+        f"SYSTEM:\n{system}\n\n"
+        f"CONTEXTE:\n{context_block}\n\n"
+        f"QUESTION:\n{question}\n\n"
+        f"RÉPONSE:\n"
+    )
+
+
+def ask_pdf(
+    tokenizer,
+    gen,
+    embedder: SentenceTransformer,
+    index: faiss.IndexFlatIP,
+    chunk_texts: List[str],
+    question: str,
+    k: int = 5,
+    max_new_tokens: int = 300,
+    temperature: float = 0.2,
+):
+    hits = retrieve(embedder, index, chunk_texts, question, k=k)
+    contexts = [f"[chunk {idx} | score={score:.3f}]\n{text}" for idx, score, text in hits]
+
+    prompt = format_prompt(tokenizer, question, contexts)
+
+    out = gen(
+        prompt,
+        max_new_tokens=max_new_tokens,
+        do_sample=True,
+        temperature=temperature,
+        top_p=0.9,
+        return_full_text=False,
+    )[0]["generated_text"]
+
+    return out, hits
+
+# %%
+# =========================
+# 5) CLI (exécution)
+# =========================
+def main():
+    parser = argparse.ArgumentParser(description="RAG PDF -> FAISS -> LLM Q/A")
+    parser.add_argument("--pdf", required=True, help="Chemin vers le PDF")
+    parser.add_argument("--question", required=True, help="Question à poser")
+    parser.add_argument("--k", type=int, default=8, help="Nombre de chunks à récupérer")
+    parser.add_argument("--emb-model", default="sentence-transformers/all-MiniLM-L6-v2")
+    parser.add_argument("--batch-size", type=int, default=16)
+    parser.add_argument("--llm", default="llama3")
+    parser.add_argument("--max-new-tokens", type=int, default=300)
+    parser.add_argument("--temperature", type=float, default=0.2)
+    args = parser.parse_args()
+
+    if not os.path.exists(args.pdf):
+        raise FileNotFoundError(f"PDF introuvable: {args.pdf}")
+
+    # Login HF si nécessaire (utilise ton token HF dans l'env HF_TOKEN ou demande interactif)
+    hf_token="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"
+    if hf_token:
+        login(token=hf_token)
+    else:
+        # interactif (ouvre une invite dans le terminal)
+        login()
+
+    raw_text = pdf_to_text(args.pdf)
+
+    print("[2/5] Chunking...")
+    chunks = chunk_by_keywords(raw_text)
+    print("Nb chunks:", len(chunks))
+
+    print("[3/5] Embeddings + FAISS...")
+    chunk_texts = [f"{c.title_line}\n{c.text}".strip() for c in chunks if (c.title_line or c.text)]
+    embedder, index, _ = build_faiss_index(
+        chunk_texts,
+        emb_model=args.emb_model,
+        batch_size=args.batch_size,
+    )
+
+    print("[4/5] Chargement LLM...")
+    tokenizer, gen = load_llm(args.llm)
+
+    print("[5/5] Question...")
+    answer, sources = ask_pdf(
+        tokenizer,
+        gen,
+        embedder,
+        index,
+        chunk_texts,
+        args.question,
+        k=args.k,
+        max_new_tokens=args.max_new_tokens,
+        temperature=args.temperature,
+    )
+
+    print("\nRÉPONSE:\n", answer)
+
+if __name__ == "__main__":
+    main()
