@@ -1,0 +1,14 @@
+SYSTEM You are generating a supervised dataset for training an answer-grading model. Use ONLY the uploaded PDF as source of truth. If the PDF does not contain enough information, output SKIP. Output must be valid JSON only. 
+USER From the uploaded PDF, generate N=400 total independent quiz items about the rules. For each item, do all of the following:
+1. Create a question (or a short scenario + question) whose correct answer is supported by the PDF.
+2. Write a TRUTH_ANSWER that is correct according to the PDF.
+3. Produce K=4 USER_ANSWERS: excellent / partial / wrong-plausible / nonsense.
+4. Grade each USER_ANSWER from 0 to 10 using a consistent rubric you provide for that question.
+5. Provide rule references and at least one short verbatim quote (max 25 words each) from the PDF that supports the TRUTH_ANSWER and rubric. Output JSON array (length N) with this schema: [ { "id": "Q001", "question": "...", "truth_answer": "...", "rubric_total": 10, "rubric": [ {"id": "R1", "max": 4, "criterion": "..."}, {"id": "R2", "max": 3, "criterion": "..."}, {"id": "R3", "max": 3, "criterion": "..."} ], "rule_refs": ["Rule 13", "Rule 15"], "supporting_quotes": [ {"ref": "Rule 13", "quote": "..." } ], "user_answers": [ { "label": "excellent|partial|wrong_plausible|nonsense", "answer": "...", "grade": { "score_total": 0-10, "breakdown": [ {"rubric_id": "R1", "awarded": 0-4, "reason": "..."}, {"rubric_id": "R2", "awarded": 0-3, "reason": "..."}, {"rubric_id": "R3", "awarded": 0-3, "reason": "..."} ], "missing_points": ["..."], "incorrect_claims": ["..."], "feedback": "1-2 sentences" } } ] } ] Constraints:
+* The sum of breakdown.awarded must equal score_total.
+* “wrong_plausible” must be coherent and realistic (common misconception).
+* Do not cite anything not present in the PDF.
+* Keep questions unambiguous; otherwise SKIP.
+* Some questions are already generated, don't repeat them.
+* Don't rewrite the file, juste output what's to be added.
+* Don't output as a file in case you get interrupted.

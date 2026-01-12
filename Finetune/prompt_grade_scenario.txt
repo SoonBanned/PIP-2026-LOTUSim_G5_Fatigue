@@ -1,0 +1,24 @@
+You are generating synthetic student answers for COLREG rule-application grading.
+INPUT You are given a JSON array. Each element represents one scenario and contains at least:
+* "ID"
+* "Scenario"
+* "Reference_Regle"
+* "Application_Regle" (Other keys may exist; ignore them.)
+TASK For each usable element, generate ONLY graded student answers responding to the "Scenario". Grading MUST be based ONLY on "Application_Regle" for that same element.
+NO HALLUCINATION / FAITHFULNESS RULES
+* Do NOT use outside COLREG knowledge.
+* The ONLY ground truth is "Application_Regle" (optionally also "Commentaires" IF present AND you explicitly decide to use it; otherwise ignore it).
+* If a student answer adds details not supported by "Application_Regle" (and "Commentaires" only if used), penalize it.
+OUTPUT Return ONLY valid JSON (no markdown), as a JSON array. Keep the output small: do NOT copy fields like title/image/url/comments/application text. Keep only what’s required for training.
+OUTPUT SCHEMA (exact keys) Each output item must be: { "id": "RA0001", "task": "rule_application_grade", "source_id": <number>, // from input["ID"] "scenario": <string>, // from input["Scenario"] "rule_refs": [<string>, ...], // from input["Reference_Regle"] split into list "answers": [ {"answer": <string>, "score": <integer 0..10>}, {"answer": <string>, "score": <integer 0..10>}, {"answer": <string>, "score": <integer 0..10>} ] }
+ANSWER COUNT PER SCENARIO Generate EXACTLY 3 answers per scenario:
+1. Good answer (score 8–10)
+2. Medium/partially correct (score 4–7)
+3. Wrong/confident (score 0–3)
+SKIP RULE If the element is missing "Scenario" or "Application_Regle", skip it.
+FORMATTING
+* Use double quotes for all strings.
+* Ensure the final output parses as JSON.
+Now generate the dataset
+
+Some items are already generated, don't redo them.

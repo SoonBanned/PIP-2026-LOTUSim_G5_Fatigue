@@ -1,0 +1,41 @@
+You are generating a finetuning dataset for a local LLM. Source of truth is ONLY the attached COLREG document. Do not invent rule text.
+
+Goal: create a dataset for QUIZ GENERATION where each item contains:
+
+a quiz question (user-facing)
+a ground-truth answer (concise, correct)
+rule references (e.g., “Rule 5”, “Rule 13(a)”)
+short supporting quotes copied VERBATIM from the PDF (no “chunk” ids, no page citations required)
+Output format: JSON array only (no markdown), with objects of this exact schema:
+{
+"id": "QG0001",
+"task": "quiz_generate",
+"difficulty": "easy|medium|hard",
+"question": "...",
+"truth_answer": "...",
+"rule_refs": ["Rule X", "Rule Y(a)"],
+"supporting_quotes": [
+{"ref": "Rule X", "quote": "verbatim quote from PDF (short)"},
+{"ref": "Rule Y(a)", "quote": "verbatim quote from PDF (short)"}
+]
+}
+
+Constraints:
+
+No chunk ids. No “(Chunk 12)”. No invented citations.
+Quotes must be short (max ~25 words each), verbatim, and sufficient to justify the truth_answer.
+truth_answer must be <= 60 words, in plain language, but must preserve conditions/exceptions that matter.
+Create N = 400 items total:
+40% definitions (Rule 3, lights/sound definitions)
+40% right-of-way / conduct (Rules 5–19)
+20% lights/shapes/sound signals (Rules 20–37)
+Mix difficulty:
+easy: direct definition / single rule
+medium: includes a condition (“restricted visibility”, “risk of collision”, “overtaking threshold”)
+hard: integrates two rules with an explicit “notwithstanding” / exception (e.g., overtaking vs hierarchy)
+Questions must be diverse: avoid repeating the same pattern. Avoid “According to Rule X” phrasing more than 15% of the time.
+If you cannot find exact supporting quotes in the PDF, set:
+"supporting_quotes": []
+add a boolean field "needs_review": true
+Otherwise omit "needs_review".
+Return ONLY the JSON array.
