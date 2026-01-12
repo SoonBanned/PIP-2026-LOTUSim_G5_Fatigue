@@ -1,0 +1,1 @@
+FROM ./Finetune/colregs_rag_finetuned-Q4_K_M_3_task.gguf
