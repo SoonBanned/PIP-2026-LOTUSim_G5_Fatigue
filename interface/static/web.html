@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projet Fatigue COLREG</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f4f9; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .container { width: 90%; max-width: 800px; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #2c3e50; }
+        .question-box { background: #e3f2fd; padding: 20px; border-radius: 8px; font-size: 1.2em; color: #0d47a1; min-height: 60px; display: flex; align-items: center; justify-content: center; text-align: center;}
+        textarea { width: 100%; height: 120px; margin: 20px 0; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em; resize: none; }
+        textarea:focus { border-color: #2196f3; outline: none; }
+        .btn-group { display: flex; gap: 10px; }
+        button { flex: 1; padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1em; transition: 0.3s; }
+        #btn-envoyer { background: #4caf50; color: white; }
+        #btn-envoyer:hover { background: #43a047; }
+        #btn-new { background: #2196f3; color: white; }
+        #btn-new:hover { background: #1e88e5; }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+        
+        #resultats { margin-top: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: #fafafa; display: none; }
+        .badge { display: inline-block; padding: 5px 10px; border-radius: 4px; color: white; font-size: 0.9em; margin-bottom: 10px;}
+        .bg-score { background: #673ab7; }
+        .bg-fatigue { background: #ff5722; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>⚓ Détection Fatigue Marin</h1>
+    
+    <div class="question-box" id="question-text">
+        Cliquez sur "Nouvelle Question" pour commencer.
+    </div>
+
+    <textarea id="reponse-user" placeholder="Votre réponse ici..."></textarea>
+
+    <div class="btn-group">
+        <button id="btn-new" onclick="nouvelleQuestion()">🔄 Nouvelle Question</button>
+        <button id="btn-envoyer" onclick="envoyerReponse()" disabled>📤 Envoyer & Analyser</button>
+    </div>
+
+    <div id="resultats">
+        <div>
+            <span class="badge bg-score">Note Justesse: <span id="note-ia">-</span>/10</span>
+            <span class="badge bg-fatigue">Niveau Fatigue: <span id="etat-fatigue">-</span></span>
+        </div>
+        <p><strong>Feedback IA :</strong> <span id="commentaire-ia"></span></p>
+        <hr>
+        <small style="color: #666;">Métriques biométriques : Variance frappe = <span id="var-frappe">0</span> | Corrections = <span id="backspaces">0</span></small>
+    </div>
+</div>
+
+<script>
+    let keystrokes = [];
+
+    // Capture clavier
+    const zoneTexte = document.getElementById('reponse-user');
+    zoneTexte.addEventListener('keydown', (e) => logKey(e, 'down'));
+    zoneTexte.addEventListener('keyup', (e) => logKey(e, 'up'));
+
+    function logKey(e, type) {
+        keystrokes.push({
+            key: e.key,
+            code: e.code,
+            type: type,
+            timestamp: Date.now()
+        });
+    }
+
+    async function nouvelleQuestion() {
+        // Reset Interface
+        document.getElementById('resultats').style.display = 'none';
+        document.getElementById('reponse-user').value = '';
+        document.getElementById('btn-envoyer').disabled = true;
+        document.getElementById('question-text').innerText = "🧠 L'IA génère une question complexe...";
+        keystrokes = [];
+
+        try {
+            const res = await fetch('/api/nouvelle_question');
+            const data = await res.json();
+            document.getElementById('question-text').innerText = data.question;
+            document.getElementById('btn-envoyer').disabled = false;
+        } catch (e) {
+            document.getElementById('question-text').innerText = "Erreur connexion serveur.";
+        }
+    }
+
+    async function envoyerReponse() {
+        const question = document.getElementById('question-text').innerText;
+        const reponse = document.getElementById('reponse-user').value;
+        const btn = document.getElementById('btn-envoyer');
+        
+        if(!reponse.trim()) return;
+
+        btn.innerText = "Analyse en cours...";
+        btn.disabled = true;
+
+        try {
+            const res = await fetch('/api/analyser', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    question_text: question,
+                    reponse_text: reponse,
+                    keystrokes_history: keystrokes
+                })
+            });
+            const data = await res.json();
+
+            // Affichage résultats
+            document.getElementById('note-ia').innerText = data.correction;
+            document.getElementById('commentaire-ia').innerText = data.commentaire;
+            document.getElementById('etat-fatigue').innerText = data.etat_fatigue;
+            
+            if(data.details_techniques) {
+                document.getElementById('var-frappe').innerText = data.details_techniques.variance;
+                document.getElementById('backspaces').innerText = data.details_techniques.backspaces;
+            }
+            
+            document.getElementById('resultats').style.display = 'block';
+        } catch (e) {
+            alert("Erreur analyse: " + e);
+        } finally {
+            btn.innerText = "📤 Envoyer & Analyser";
+        }
+    }
+</script>
+</body>
+</html>
