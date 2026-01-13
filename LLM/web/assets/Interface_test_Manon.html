@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Test de fatigue</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page {
+      display: none;
+      background: white;
+      padding: 40px 20px;
+      max-width: 700px;
+      margin: 50px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      animation: fadeIn 0.4s ease;
+    }
+
+    .page.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- HEADER LOGOS --- */
+    .header-logos {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .header-logos img { height: 60px; }
+
+    /* --- PAGE IDENTIFICATION --- */
+    #identify h1,
+    #identify p {
+    text-align: center;
+    }
+
+    #identify .identify-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    }
+
+
+    /* --- PAGE ACCUEIL --- */
+    #home { text-align: center; }
+
+    .title { font-size: 36px; margin-bottom: 20px; }
+
+    .center-image {
+      width: 80%;
+      max-width: 400px;
+      margin: 0 auto 30px auto;
+      display: block;
+    }
+
+    .start-button {
+      font-size: 24px;
+      padding: 15px 40px;
+      background-color: #d32f2f;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .start-button:hover { background-color: #b71c1c; }
+
+    /* --- PAGE QUESTIONS --- */
+    #questionText { font-size: 26px; margin-bottom: 15px; }
+
+    #questionImage {
+      display: none;
+      max-width: 100%;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    .progress-container { margin-bottom: 20px; }
+
+    #questionCounter { font-size: 14px; color: #555; }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+
+    #progressFill {
+      height: 100%;
+      width: 0%;
+      background: #1976d2;
+      transition: width 0.4s ease;
+    }
+
+    .answer-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    textarea {
+      flex: 1;
+      height: 70px;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+
+    .arrow-button {
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .arrow-button:hover:not(:disabled) {
+      background-color: #0d47a1;
+      transform: scale(1.1);
+    }
+
+    .arrow-button:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* --- PAGE FIN --- */
+    .finish-button {
+      padding: 15px 40px;
+      font-size: 20px;
+      background-color: #b71c1c;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .finish-button:hover { background-color: #1b5e20; }
+
+    /* --- LOADING OVERLAY --- */
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(245,245,245,0.8);
+      z-index: 9999;
+    }
+
+    .loading-overlay.active { display: flex; }
+
+    .spinner {
+      width: 64px;
+      height: 64px;
+      border: 8px solid #cfd8dc;
+      border-top-color: #1976d2;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* --- SMALL GRADING INDICATOR (bottom-right) --- */
+    .grading-indicator {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 999px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      z-index: 10000;
+      font-size: 12px;
+      color: #333;
+    }
+
+    .grading-indicator.active { display: flex; }
+
+    .spinner-sm {
+      width: 18px;
+      height: 18px;
+      border: 3px solid #cfd8dc;
+      border-top-color: #1976d2;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+
+    /* --- CAMERA SETUP --- */
+    .camera-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .camera-video {
+      width: 100%;
+      max-height: 360px;
+      background: #111;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .camera-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    select {
+      font-size: 14px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      min-width: 280px;
+      max-width: 100%;
+    }
+
+    /* --- QCM --- */
+    .qcm-container {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    }
+
+    .qcm-choice {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    }
+
+    .qcm-choice:hover {
+    background: #e3f2fd;
+    border-color: #1976d2;
+    }
+
+    .qcm-choice.selected {
+    background: #1976d2;
+    border-color: #1976d2;
+    color: white;
+    }
+
+    .choice-letter {
+    width: 32px;
+    height: 32px;
+    background: #1976d2;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-weight: bold;
+    }
+
+    .qcm-choice.selected .choice-letter {
+    background: white;
+    color: #1976d2;
+    }
+
+    /* --- Badge type question --- */
+    .question-type-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    }
+
+    .badge-qcm {
+    background: #e3f2fd;
+    color: #1976d2;
+    }
+
+    .badge-open {
+    background: #fff3e0;
+    color: #e65100;
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+<!-- LOADING OVERLAY -->
+<div id="loading" class="loading-overlay" aria-hidden="true">
+  <div class="spinner" aria-label="Chargement"></div>
+</div>
+
+<!-- SMALL GRADING INDICATOR -->
+<div id="gradingIndicator" class="grading-indicator" aria-hidden="true">
+  <div class="spinner-sm" aria-label="Correction en cours"></div>
+  <div>Correction en cours…</div>
+</div>
+
+<!-- PAGE IDENTIFICATION -->
+<div id="identify" class="page active">
+  <div class="header-logos">
+    <img src="{{ url_for('static', filename='logo-crossing.png') }}">
+    <img src="{{ url_for('static', filename='logo-UT.png') }}">
+  </div>
+
+  <h1 class="title">Identification</h1>
+  <p>Entrez votre nom pour commencer.</p>
+
+  <div class="identify-form">
+    <input id="nameInput" type="text" placeholder="Votre nom"
+           style="font-size:16px; padding:10px; border-radius:8px; border:1px solid #ccc; width: 60%; max-width: 360px;" />
+    <button class="start-button" style="font-size:16px; padding:10px 18px;" onclick="confirmName()">Continuer</button>
+  </div>
+  
+</div>
+
+<!-- PAGE ACCUEIL -->
+<div id="home" class="page">
+  <div class="header-logos">
+    <img src="{{ url_for('static', filename='logo-crossing.png') }}">
+    <img src="{{ url_for('static', filename='logo-UT.png') }}">
+  </div>
+
+  <h1 class="title">Test de fatigue</h1>
+  <img src="{{ url_for('static', filename='logo-leia.png') }}" class="center-image">
+
+  <p>
+    Ce test permet d’évaluer votre état de vigilance.
+    Le temps de réponse et les frappes clavier sont analysés.
+  </p>
+
+  <button class="start-button" onclick="startTest()">Commencer le test</button>
+</div>
+
+<!-- PAGE CAMERA (between login and start) -->
+<div id="cameraSetup" class="page">
+  <div class="header-logos">
+    <img src="{{ url_for('static', filename='logo-crossing.png') }}">
+    <img src="{{ url_for('static', filename='logo-UT.png') }}">
+  </div>
+
+  <h1 class="title" style="font-size: 28px;">Caméra</h1>
+  <p>Choisissez la caméra à utiliser. Un aperçu s’affiche ci-dessous.</p>
+
+  <div class="camera-wrap">
+    <div class="camera-row">
+      <label for="cameraSelect" style="font-size: 14px; color:#333;">Périphérique :</label>
+      <select id="cameraSelect"></select>
+    </div>
+    <video id="cameraPreview" class="camera-video" autoplay playsinline muted></video>
+
+    <div id="cameraHint" style="font-size: 12px; color:#666; text-align:center;"></div>
+
+    <div class="camera-row" style="margin-top: 6px;">
+      <button class="start-button" style="font-size:16px; padding:10px 18px;" onclick="continueAfterCamera()">Continuer</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE QUESTIONS -->
+<div id="questionPage" class="page">
+    <div class="header-logos">
+      <img src="{{ url_for('static', filename='logo-leia.png') }}">
+      <img src="{{ url_for('static', filename='logo-UT.png') }}">
+    </div>
+  
+    <div class="progress-container">
+      <span id="questionCounter"></span>
+      <div class="progress-bar">
+        <div id="progressFill"></div>
+      </div>
+    </div>
+  
+    <!-- Badge type -->
+    <span id="questionTypeBadge" class="question-type-badge"></span>
+  
+    <!-- Image -->
+    <img id="questionImage" src="" alt="">
+  
+    <h2 id="questionText"></h2>
+  
+    <!-- Zone réponse ouverte -->
+    <div id="openAnswerZone" class="answer-row">
+      <textarea id="input" placeholder="Écrivez votre réponse ici..."></textarea>
+      <button id="openArrowButton" class="arrow-button" onclick="nextQuestion()" disabled>➜</button>
+    </div>
+  
+    <!-- Zone QCM -->
+    <div id="qcmZone" class="qcm-container">
+      <div id="qcmChoices"></div>
+      <button id="qcmValidateButton" class="validate-button" onclick="nextQuestion()" disabled>Valider</button>
+    </div>
+  </div>
+  
+
+<!-- PAGE FIN -->
+<div id="end" class="page">
+  <h2>Test terminé</h2>
+  <p>Merci pour votre participation.</p>
+  <button class="finish-button" onclick="restart()">Revenir à l'accueil</button>
+</div>
+
+<!-- PAGE RÉSULTATS / FEEDBACK (avant fin) -->
+<div id="review" class="page">
+  <h2>Résultats et feedback</h2>
+  <p id="reviewStatus">Correction en cours…</p>
+  <div id="reviewContent" style="margin-top: 20px;"></div>
+  <button id="reviewContinue" class="finish-button" onclick="goEnd()" disabled style="margin-top: 20px;">Continuer</button>
+</div>
+
+<script>
+  // Questions are served by the backend.
+  let totalQuestions = 0;
+  let currentQuestionData = null;
+  let testId = null;
+  let userName = "";
+  let gradingPollTimer = null;
+  let backgroundPollingActive = false;
+  let answersSubmittedCount = 0;
+
+  // Prefetch quiz right after login.
+  let prefetchedTestId = null;
+  let prefetchedTotal = 0;
+
+  // Camera
+  let cameraStream = null;
+
+  let currentQuestion = 0;
+  let questionStartTime = 0;
+  let testStartTime = 0;
+  let keystrokes = [];
+  const results = [];
+
+  const questionTypeBadge = document.getElementById("questionTypeBadge");
+  const openAnswerZone = document.getElementById("openAnswerZone");
+  const qcmZone = document.getElementById("qcmZone");
+  const qcmChoices = document.getElementById("qcmChoices");
+  const openArrowButton = document.getElementById("openArrowButton");
+  const qcmValidateButton = document.getElementById("qcmValidateButton");
+  
+  let selectedQcmIndex = -1;
+
+  const input = document.getElementById("input");
+  const questionText = document.getElementById("questionText");
+  const questionImage = document.getElementById("questionImage");
+  const progressFill = document.getElementById("progressFill");
+  const questionCounter = document.getElementById("questionCounter");
+  const loadingOverlay = document.getElementById("loading");
+  const gradingIndicator = document.getElementById("gradingIndicator");
+  const nameInput = document.getElementById("nameInput");
+  const reviewStatus = document.getElementById("reviewStatus");
+  const reviewContent = document.getElementById("reviewContent");
+  const reviewContinue = document.getElementById("reviewContinue");
+  const cameraSelect = document.getElementById("cameraSelect");
+  const cameraPreview = document.getElementById("cameraPreview");
+  const cameraHint = document.getElementById("cameraHint");
+
+  function setLoading(isLoading) {
+    if (isLoading) {
+      loadingOverlay.classList.add("active");
+      loadingOverlay.setAttribute("aria-hidden", "false");
+    } else {
+      loadingOverlay.classList.remove("active");
+      loadingOverlay.setAttribute("aria-hidden", "true");
+    }
+  }
+
+  function setGrading(isGrading) {
+    if (isGrading) {
+      gradingIndicator.classList.add("active");
+      gradingIndicator.setAttribute("aria-hidden", "false");
+    } else {
+      gradingIndicator.classList.remove("active");
+      gradingIndicator.setAttribute("aria-hidden", "true");
+    }
+  }
+
+  function setGradingText(text) {
+    const el = document.getElementById("gradingIndicator");
+    if (!el) return;
+    const label = el.querySelector("div:last-child");
+    if (label) label.textContent = text;
+  }
+
+  function showPage(id) {
+    document.querySelectorAll(".page").forEach(p => {
+      p.classList.remove("active");
+      p.style.display = "none";
+    });
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add("active");
+    el.style.display = "block";
+  }
+
+  // Force initial page state on first load.
+  document.addEventListener("DOMContentLoaded", () => {
+    showPage("identify");
+    if (nameInput) nameInput.focus();
+  });
+
+  async function confirmName() {
+    const nm = (nameInput && nameInput.value ? nameInput.value : "").trim();
+    if (!nm) {
+      alert("Veuillez entrer votre nom");
+      return;
+    }
+
+    try {
+      const resp = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: nm })
+      });
+      const data = await resp.json();
+      if (!data.ok) {
+        alert(data.error || "Erreur d'identification");
+        return;
+      }
+      userName = data.name;
+
+      // Start quiz generation early (non-blocking), then show camera page.
+      prefetchQuiz();
+      showPage("cameraSetup");
+      await initCameraSetup();
+    } catch (e) {
+      console.error(e);
+      alert("Erreur d'identification");
+    }
+  }
+
+  async function prefetchQuiz() {
+    if (!userName) return;
+    try {
+      const r = await fetch("/api/prefetch_test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: userName, n: 4, difficulty: "easy" })
+      });
+      const d = await r.json();
+      if (d && d.ok) {
+        prefetchedTestId = d.test_id;
+      } else {
+        console.warn("prefetch_test failed:", d);
+        prefetchedTestId = null;
+      }
+    } catch (e) {
+      console.warn("prefetch_test error:", e);
+      prefetchedTestId = null;
+    }
+  }
+
+  async function waitForPrefetchReady() {
+    if (!prefetchedTestId) return null;
+    for (;;) {
+      const r = await fetch(`/api/test_status/${prefetchedTestId}`);
+      const d = await r.json();
+      if (!d || !d.ok) {
+        return null;
+      }
+      if (d.status === "ready") {
+        prefetchedTotal = d.total || 0;
+        return d;
+      }
+      if (d.status === "failed") {
+        console.warn("prefetch failed:", d.error);
+        return null;
+      }
+      // creating
+      await new Promise(res => setTimeout(res, 300));
+    }
+  }
+
+  async function initCameraSetup() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      if (cameraHint) cameraHint.textContent = "Webcam non disponible dans ce navigateur.";
+      return;
+    }
+
+    try {
+      // Request permission first so device labels appear.
+      const tmp = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+      // Stop immediately; we will reopen with selected device.
+      tmp.getTracks().forEach(t => t.stop());
+    } catch (e) {
+      if (cameraHint) cameraHint.textContent = "Autorisation caméra refusée (vous pouvez continuer).";
+      return;
+    }
+
+    await refreshCameraDeviceList();
+
+    if (cameraSelect) {
+      cameraSelect.addEventListener("change", async () => {
+        await startCameraPreview(cameraSelect.value);
+      });
+      // Autostart first device if any.
+      if (cameraSelect.options.length > 0) {
+        await startCameraPreview(cameraSelect.value);
+      }
+    }
+  }
+
+  async function refreshCameraDeviceList() {
+    if (!cameraSelect) return;
+    cameraSelect.innerHTML = "";
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const videos = devices.filter(d => d.kind === "videoinput");
+
+    videos.forEach((d, idx) => {
+      const opt = document.createElement("option");
+      opt.value = d.deviceId;
+      opt.textContent = d.label || `Caméra ${idx + 1}`;
+      cameraSelect.appendChild(opt);
+    });
+
+    if (cameraHint) {
+      cameraHint.textContent = videos.length
+        ? "Sélectionnez une caméra si besoin."
+        : "Aucune caméra détectée (vous pouvez continuer).";
+    }
+  }
+
+  async function startCameraPreview(deviceId) {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return;
+
+    // Stop previous stream.
+    if (cameraStream) {
+      cameraStream.getTracks().forEach(t => t.stop());
+      cameraStream = null;
+    }
+
+    const constraints = deviceId
+      ? { video: { deviceId: { exact: deviceId } }, audio: false }
+      : { video: true, audio: false };
+
+    try {
+      cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
+      if (cameraPreview) cameraPreview.srcObject = cameraStream;
+      if (cameraHint) cameraHint.textContent = "Aperçu caméra actif.";
+    } catch (e) {
+      console.warn("startCameraPreview error:", e);
+      if (cameraHint) cameraHint.textContent = "Impossible de démarrer la caméra (vous pouvez continuer).";
+    }
+  }
+
+  function continueAfterCamera() {
+    showPage("home");
+  }
+
+  async function startTest() {
+    currentQuestion = 0;
+    testStartTime = Date.now();
+    results.length = 0;
+    answersSubmittedCount = 0;
+    backgroundPollingActive = false;
+    showPage("questionPage");
+
+    try {
+      setLoading(true);
+
+      // Prefer the prefetched test if available.
+      if (prefetchedTestId) {
+        const st = await waitForPrefetchReady();
+        if (st && st.ok && st.status === "ready") {
+          testId = prefetchedTestId;
+          totalQuestions = prefetchedTotal || st.total || 0;
+          await loadQuestion(0);
+          return;
+        }
+        // Prefetch failed; fall back to blocking start_test.
+        prefetchedTestId = null;
+      }
+
+      const startResp = await fetch("/api/start_test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: userName, n: 4, difficulty: "easy" })
+      });
+      const startData = await startResp.json();
+      if (!startData.ok) {
+        throw new Error(startData.error || "start_test failed");
+      }
+      testId = startData.test_id;
+      totalQuestions = startData.total || 0;
+      await loadQuestion(0);
+    } catch (err) {
+      console.error("Erreur start_test:", err);
+      alert("Erreur lors de la génération du quiz");
+      showPage("home");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function loadQuestion(index) {
+    const qResp = await fetch(`/api/question/${testId}/${index}`);
+    const qData = await qResp.json();
+    if (qData.done) {
+      await submitAndShowReview();
+      return;
+    }
+    currentQuestionData = qData;
+    showQuestionFromData(qData);
+  }
+
+    function showQuestionFromData(qData) {
+        input.value = "";
+        keystrokes = [];
+        selectedQcmIndex = -1;
+
+        const isQcm = qData.type === "qcm";
+
+        questionText.textContent = qData.question || "";
+
+        // Badge type
+        if (isQcm) {
+            questionTypeBadge.textContent = "QCM";
+            questionTypeBadge.className = "question-type-badge badge-qcm";
+        } else {
+            questionTypeBadge.textContent = "Question ouverte";
+            questionTypeBadge.className = "question-type-badge badge-open";
+        }
+
+        // Image
+        if (qData.image) {
+            questionImage.src = qData.image;
+            questionImage.style.display = "block";
+        } else {
+            questionImage.style.display = "none";
+        }
+
+        // Zones réponse
+        if (isQcm) {
+            openAnswerZone.style.display = "none";
+            qcmZone.style.display = "flex";
+            renderQcmChoices(qData.choices || []);
+            qcmValidateButton.disabled = true;
+        } else {
+            openAnswerZone.style.display = "flex";
+            qcmZone.style.display = "none";
+            openArrowButton.disabled = true;
+        }
+
+        questionStartTime = Date.now();
+        const total = qData.total || totalQuestions || 1;
+        const idx = (qData.index ?? currentQuestion) + 1;
+        questionCounter.textContent = `Question ${idx} / ${total}`;
+        progressFill.style.width = `${(idx / total) * 100}%`;
+
+        showPage("questionPage");
+    }
+
+    function renderQcmChoices(choices) {
+  const letters = ['A','B','C','D','E','F'];
+  qcmChoices.innerHTML = "";
+
+  choices.forEach((choice, index) => {
+    const div = document.createElement("div");
+    div.className = "qcm-choice";
+    div.innerHTML = `
+      <span class="choice-letter">${letters[index]}</span>
+      <span>${choice}</span>
+    `;
+    div.onclick = () => selectQcmChoice(index);
+    qcmChoices.appendChild(div);
+  });
+}
+
+function selectQcmChoice(index) {
+  selectedQcmIndex = index;
+
+  keystrokes.push({
+    touche: `choice_${index}`,
+    temps: Date.now() - questionStartTime
+  });
+
+  document.querySelectorAll(".qcm-choice").forEach((el, i) => {
+    el.classList.toggle("selected", i === index);
+  });
+
+  qcmValidateButton.disabled = false;
+}
+
+
+  input.addEventListener("input", () => {
+    openArrowButton.disabled = input.value.trim() === "";
+  });
+
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      if (!openArrowButton.disabled) nextQuestion();
+    }
+
+    keystrokes.push({
+      touche: event.key,
+      temps: Date.now() - questionStartTime
+    });
+  });
+
+  async function submitAnswerIncremental(index, answerObj) {
+    if (!testId) return;
+    const idx = Number.isFinite(index) ? index : 0;
+    try {
+      const resp = await fetch(`/api/answer/${testId}/${idx}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(answerObj)
+      });
+      const data = await resp.json();
+      if (!data.ok) {
+        console.warn("Incremental submit failed:", data.error || data);
+      } else {
+        answersSubmittedCount = Math.max(answersSubmittedCount, idx + 1);
+        // Start background polling on first successful incremental submit.
+        if (!backgroundPollingActive) {
+          backgroundPollingActive = true;
+          startPollingGrading({ mode: "background" });
+        }
+      }
+    } catch (e) {
+      console.warn("Incremental submit error:", e);
+    }
+  }
+
+  async function nextQuestion() {
+    const timeSpent = Date.now() - questionStartTime;
+    const isQcm = currentQuestionData.type === "qcm";
+
+    const answerObj = {
+    question: currentQuestionData.question,
+    type: currentQuestionData.type,
+    answer: isQcm ? currentQuestionData.choices[selectedQcmIndex] : input.value,
+    selected_index: isQcm ? selectedQcmIndex : null,
+    timeSpent: timeSpent,
+    keystrokes: keystrokes
+    };
+
+    results.push(answerObj);
+
+    // Submit each answer immediately for grading (non-blocking).
+    const qIndex = (currentQuestionData && Number.isFinite(currentQuestionData.index))
+      ? currentQuestionData.index
+      : currentQuestion;
+    submitAnswerIncremental(qIndex, answerObj);
+
+    currentQuestion++;
+    try {
+      setLoading(true);
+      await loadQuestion(currentQuestion);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function submitAndShowReview() {
+    const totalTestTime = Date.now() - testStartTime;
+    const payload = { totalTestTime: totalTestTime, results: results, name: userName };
+
+    showPage("review");
+    reviewStatus.textContent = "Envoi des réponses…";
+    reviewContent.innerHTML = "";
+    reviewContinue.disabled = true;
+
+    try {
+      setGrading(true);
+      const submitResp = await fetch(`/api/submit/${testId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const submitData = await submitResp.json();
+      if (!submitData.ok) {
+        throw new Error(submitData.error || "submit failed");
+      }
+      reviewStatus.textContent = "Correction en cours…";
+      startPollingGrading({ mode: "review" });
+    } catch (e) {
+      console.error(e);
+      setGrading(false);
+      reviewStatus.textContent = "Erreur lors de l'envoi/correction.";
+    }
+  }
+
+  function startPollingGrading(opts) {
+    const mode = (opts && opts.mode) ? opts.mode : "review"; // 'review' | 'background'
+    if (gradingPollTimer) {
+      clearInterval(gradingPollTimer);
+      gradingPollTimer = null;
+    }
+
+    gradingPollTimer = setInterval(async () => {
+      try {
+        const st = await fetch(`/api/grading_status/${testId}`);
+        const stData = await st.json();
+        if (!stData.ok) return;
+
+        // Update the corner indicator during the whole test.
+        if (stData.status === "processing" || stData.status === "queued") {
+          setGrading(true);
+          const done = stData.progress || 0;
+          const denom = answersSubmittedCount || stData.total || totalQuestions || 0;
+          setGradingText(`Correction… (${done}/${denom})`);
+        }
+
+        if (stData.status === "processing" || stData.status === "queued") {
+          if (mode === "review") {
+            reviewStatus.textContent = `Correction en cours… (${stData.progress || 0}/${stData.total || totalQuestions})`;
+          }
+          return;
+        }
+
+        if (stData.status === "done") {
+          clearInterval(gradingPollTimer);
+          gradingPollTimer = null;
+          setGrading(false);
+          setGradingText("Correction terminée.");
+          if (mode === "review") {
+            await fetchAndRenderResults();
+          }
+          return;
+        }
+
+        if (stData.status === "failed") {
+          clearInterval(gradingPollTimer);
+          gradingPollTimer = null;
+          setGrading(false);
+          setGradingText("Correction échouée.");
+          if (mode === "review") {
+            reviewStatus.textContent = stData.error ? `Erreur: ${stData.error}` : "Correction échouée.";
+          }
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }, 1000);
+  }
+
+  async function fetchAndRenderResults() {
+    const r = await fetch(`/api/grading_result/${testId}`);
+    const data = await r.json();
+    if (!data.ok) {
+      reviewStatus.textContent = "Impossible de récupérer les résultats.";
+      return;
+    }
+
+    const per = (data.grading && data.grading.per_question) ? data.grading.per_question : [];
+    const answers = data.answers || [];
+    reviewContent.innerHTML = "";
+
+    per.forEach((g, idx) => {
+      const ans = (answers[idx] && answers[idx].answer) ? answers[idx].answer : "";
+      const q = (data.quiz[idx] && data.quiz[idx].question) ? data.quiz[idx].question : (answers[idx] ? answers[idx].question : "");
+      const score = (g.score_total === null || g.score_total === undefined) ? "N/A" : g.score_total;
+      const fb = g.feedback || "";
+      const block = document.createElement("div");
+      block.style.padding = "12px";
+      block.style.border = "1px solid #eee";
+      block.style.borderRadius = "10px";
+      block.style.marginBottom = "12px";
+      block.innerHTML = `
+        <div style="font-weight:700; margin-bottom: 6px;">Question ${idx+1}</div>
+        <div style="margin-bottom: 6px;"><b>Q:</b> ${escapeHtml(q)}</div>
+        <div style="margin-bottom: 6px;"><b>Votre réponse:</b> ${escapeHtml(ans)}</div>
+        <div style="margin-bottom: 6px;"><b>Score:</b> ${score} / 10</div>
+        <div><b>Feedback:</b> ${escapeHtml(fb)}</div>
+      `;
+      reviewContent.appendChild(block);
+    });
+
+    reviewStatus.textContent = "Correction terminée.";
+    reviewContinue.disabled = false;
+  }
+
+  function escapeHtml(s) {
+    return String(s || "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+  }
+
+  function goEnd() {
+    showPage("end");
+  }
+
+  function restart() {
+    testId = null;
+    userName = "";
+    prefetchedTestId = null;
+    prefetchedTotal = 0;
+    if (nameInput) nameInput.value = "";
+
+    if (cameraStream) {
+      cameraStream.getTracks().forEach(t => t.stop());
+      cameraStream = null;
+    }
+    if (cameraPreview) cameraPreview.srcObject = null;
+
+    showPage("identify");
+    if (nameInput) nameInput.focus();
+  }
+
+</script>
+</body>
+</html>
