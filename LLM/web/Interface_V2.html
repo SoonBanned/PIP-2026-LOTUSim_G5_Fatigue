@@ -173,6 +173,34 @@
       to { transform: rotate(360deg); }
     }
 
+    /* --- SMALL GRADING INDICATOR (bottom-right) --- */
+    .grading-indicator {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 999px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      z-index: 10000;
+      font-size: 12px;
+      color: #333;
+    }
+
+    .grading-indicator.active { display: flex; }
+
+    .spinner-sm {
+      width: 18px;
+      height: 18px;
+      border: 3px solid #cfd8dc;
+      border-top-color: #1976d2;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+
   </style>
 </head>
 
@@ -183,8 +211,30 @@
   <div class="spinner" aria-label="Chargement"></div>
 </div>
 
+<!-- SMALL GRADING INDICATOR -->
+<div id="gradingIndicator" class="grading-indicator" aria-hidden="true">
+  <div class="spinner-sm" aria-label="Correction en cours"></div>
+  <div>Correction en cours…</div>
+</div>
+
+<!-- PAGE IDENTIFICATION -->
+<div id="identify" class="page active">
+  <div class="header-logos">
+    <img src="{{ url_for('static', filename='logo-crossing.png') }}">
+    <img src="{{ url_for('static', filename='logo-UT.png') }}">
+  </div>
+
+  <h1 class="title">Identification</h1>
+  <p>Entrez votre nom pour commencer.</p>
+
+  <div style="display:flex; gap: 10px; justify-content:center; align-items:center; margin-top: 20px;">
+    <input id="nameInput" type="text" placeholder="Votre nom" style="font-size:16px; padding:10px; border-radius:8px; border:1px solid #ccc; width: 60%; max-width: 360px;" />
+    <button class="start-button" style="font-size:16px; padding:10px 18px;" onclick="confirmName()">Continuer</button>
+  </div>
+</div>
+
 <!-- PAGE ACCUEIL -->
-<div id="home" class="page active">
+<div id="home" class="page">
   <div class="header-logos">
     <img src="{{ url_for('static', filename='logo-crossing.png') }}">
     <img src="{{ url_for('static', filename='logo-UT.png') }}">
@@ -230,13 +280,26 @@
 <div id="end" class="page">
   <h2>Test terminé</h2>
   <p>Merci pour votre participation.</p>
-  <button class="finish-button" onclick="finishTest()">Finir le test</button>
+  <button class="finish-button" onclick="restart()">Revenir à l'accueil</button>
+</div>
+
+<!-- PAGE RÉSULTATS / FEEDBACK (avant fin) -->
+<div id="review" class="page">
+  <h2>Résultats et feedback</h2>
+  <p id="reviewStatus">Correction en cours…</p>
+  <div id="reviewContent" style="margin-top: 20px;"></div>
+  <button id="reviewContinue" class="finish-button" onclick="goEnd()" disabled style="margin-top: 20px;">Continuer</button>
 </div>
 
 <script>
   // Questions are served by the backend.
   let totalQuestions = 0;
   let currentQuestionData = null;
+  let testId = null;
+  let userName = "";
+  let gradingPollTimer = null;
+  let backgroundPollingActive = false;
+  let answersSubmittedCount = 0;
 
   let currentQuestion = 0;
   let questionStartTime = 0;
@@ -251,6 +314,11 @@
   const questionCounter = document.getElementById("questionCounter");
   const arrowButton = document.querySelector(".arrow-button");
   const loadingOverlay = document.getElementById("loading");
+  const gradingIndicator = document.getElementById("gradingIndicator");
+  const nameInput = document.getElementById("nameInput");
+  const reviewStatus = document.getElementById("reviewStatus");
+  const reviewContent = document.getElementById("reviewContent");
+  const reviewContinue = document.getElementById("reviewContinue");
 
   function setLoading(isLoading) {
     if (isLoading) {
@@ -260,6 +328,23 @@
       loadingOverlay.classList.remove("active");
       loadingOverlay.setAttribute("aria-hidden", "true");
     }
+  }
+
+  function setGrading(isGrading) {
+    if (isGrading) {
+      gradingIndicator.classList.add("active");
+      gradingIndicator.setAttribute("aria-hidden", "false");
+    } else {
+      gradingIndicator.classList.remove("active");
+      gradingIndicator.setAttribute("aria-hidden", "true");
+    }
+  }
+
+  function setGradingText(text) {
+    const el = document.getElementById("gradingIndicator");
+    if (!el) return;
+    const label = el.querySelector("div:last-child");
+    if (label) label.textContent = text;
   }
 
   function showPage(id) {
@@ -275,13 +360,42 @@
 
   // Force initial page state on first load.
   document.addEventListener("DOMContentLoaded", () => {
-    showPage("home");
+    showPage("identify");
+    if (nameInput) nameInput.focus();
   });
+
+  async function confirmName() {
+    const nm = (nameInput && nameInput.value ? nameInput.value : "").trim();
+    if (!nm) {
+      alert("Veuillez entrer votre nom");
+      return;
+    }
+
+    try {
+      const resp = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: nm })
+      });
+      const data = await resp.json();
+      if (!data.ok) {
+        alert(data.error || "Erreur d'identification");
+        return;
+      }
+      userName = data.name;
+      showPage("home");
+    } catch (e) {
+      console.error(e);
+      alert("Erreur d'identification");
+    }
+  }
 
   async function startTest() {
     currentQuestion = 0;
     testStartTime = Date.now();
     results.length = 0;
+    answersSubmittedCount = 0;
+    backgroundPollingActive = false;
     showPage("questionPage");
 
     try {
@@ -289,9 +403,13 @@
       const startResp = await fetch("/api/start_test", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ n: 4, difficulty: "easy" })
+        body: JSON.stringify({ name: userName, n: 4, difficulty: "easy" })
       });
       const startData = await startResp.json();
+      if (!startData.ok) {
+        throw new Error(startData.error || "start_test failed");
+      }
+      testId = startData.test_id;
       totalQuestions = startData.total || 0;
       await loadQuestion(0);
     } catch (err) {
@@ -304,10 +422,10 @@
   }
 
   async function loadQuestion(index) {
-    const qResp = await fetch(`/api/question/${index}`);
+    const qResp = await fetch(`/api/question/${testId}/${index}`);
     const qData = await qResp.json();
     if (qData.done) {
-      showPage("end");
+      await submitAndShowReview();
       return;
     }
     currentQuestionData = qData;
@@ -353,14 +471,46 @@
     });
   });
 
+  async function submitAnswerIncremental(index, answerObj) {
+    if (!testId) return;
+    const idx = Number.isFinite(index) ? index : 0;
+    try {
+      const resp = await fetch(`/api/answer/${testId}/${idx}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(answerObj)
+      });
+      const data = await resp.json();
+      if (!data.ok) {
+        console.warn("Incremental submit failed:", data.error || data);
+      } else {
+        answersSubmittedCount = Math.max(answersSubmittedCount, idx + 1);
+        // Start background polling on first successful incremental submit.
+        if (!backgroundPollingActive) {
+          backgroundPollingActive = true;
+          startPollingGrading({ mode: "background" });
+        }
+      }
+    } catch (e) {
+      console.warn("Incremental submit error:", e);
+    }
+  }
+
   async function nextQuestion() {
     const timeSpent = Date.now() - questionStartTime;
-    results.push({
+    const answerObj = {
       question: (currentQuestionData && currentQuestionData.question) ? currentQuestionData.question : "",
       answer: input.value,
       timeSpent: timeSpent,
       keystrokes: keystrokes
-    });
+    };
+    results.push(answerObj);
+
+    // Submit each answer immediately for grading (non-blocking).
+    const qIndex = (currentQuestionData && Number.isFinite(currentQuestionData.index))
+      ? currentQuestionData.index
+      : currentQuestion;
+    submitAnswerIncremental(qIndex, answerObj);
 
     currentQuestion++;
     try {
@@ -371,24 +521,139 @@
     }
   }
 
-  function finishTest() {
+  async function submitAndShowReview() {
     const totalTestTime = Date.now() - testStartTime;
-    const payload = { totalTestTime: totalTestTime, results: results };
+    const payload = { totalTestTime: totalTestTime, results: results, name: userName };
 
-    fetch("/save_results", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    })
-    .then(response => response.json())
-    .then(data => {
-      alert("Résultats envoyés au serveur avec succès !");
-      console.log("Serveur :", data);
-    })
-    .catch(err => {
-      console.error("Erreur d'envoi :", err);
-      alert("Erreur lors de l'envoi des résultats");
+    showPage("review");
+    reviewStatus.textContent = "Envoi des réponses…";
+    reviewContent.innerHTML = "";
+    reviewContinue.disabled = true;
+
+    try {
+      setGrading(true);
+      const submitResp = await fetch(`/api/submit/${testId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const submitData = await submitResp.json();
+      if (!submitData.ok) {
+        throw new Error(submitData.error || "submit failed");
+      }
+      reviewStatus.textContent = "Correction en cours…";
+      startPollingGrading({ mode: "review" });
+    } catch (e) {
+      console.error(e);
+      setGrading(false);
+      reviewStatus.textContent = "Erreur lors de l'envoi/correction.";
+    }
+  }
+
+  function startPollingGrading(opts) {
+    const mode = (opts && opts.mode) ? opts.mode : "review"; // 'review' | 'background'
+    if (gradingPollTimer) {
+      clearInterval(gradingPollTimer);
+      gradingPollTimer = null;
+    }
+
+    gradingPollTimer = setInterval(async () => {
+      try {
+        const st = await fetch(`/api/grading_status/${testId}`);
+        const stData = await st.json();
+        if (!stData.ok) return;
+
+        // Update the corner indicator during the whole test.
+        if (stData.status === "processing" || stData.status === "queued") {
+          setGrading(true);
+          const done = stData.progress || 0;
+          const denom = answersSubmittedCount || stData.total || totalQuestions || 0;
+          setGradingText(`Correction… (${done}/${denom})`);
+        }
+
+        if (stData.status === "processing" || stData.status === "queued") {
+          if (mode === "review") {
+            reviewStatus.textContent = `Correction en cours… (${stData.progress || 0}/${stData.total || totalQuestions})`;
+          }
+          return;
+        }
+
+        if (stData.status === "done") {
+          clearInterval(gradingPollTimer);
+          gradingPollTimer = null;
+          setGrading(false);
+          setGradingText("Correction terminée.");
+          if (mode === "review") {
+            await fetchAndRenderResults();
+          }
+          return;
+        }
+
+        if (stData.status === "failed") {
+          clearInterval(gradingPollTimer);
+          gradingPollTimer = null;
+          setGrading(false);
+          setGradingText("Correction échouée.");
+          if (mode === "review") {
+            reviewStatus.textContent = stData.error ? `Erreur: ${stData.error}` : "Correction échouée.";
+          }
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }, 1000);
+  }
+
+  async function fetchAndRenderResults() {
+    const r = await fetch(`/api/grading_result/${testId}`);
+    const data = await r.json();
+    if (!data.ok) {
+      reviewStatus.textContent = "Impossible de récupérer les résultats.";
+      return;
+    }
+
+    const per = (data.grading && data.grading.per_question) ? data.grading.per_question : [];
+    const answers = data.answers || [];
+    reviewContent.innerHTML = "";
+
+    per.forEach((g, idx) => {
+      const ans = (answers[idx] && answers[idx].answer) ? answers[idx].answer : "";
+      const q = (data.quiz[idx] && data.quiz[idx].question) ? data.quiz[idx].question : (answers[idx] ? answers[idx].question : "");
+      const score = (g.score_total === null || g.score_total === undefined) ? "N/A" : g.score_total;
+      const fb = g.feedback || "";
+      const block = document.createElement("div");
+      block.style.padding = "12px";
+      block.style.border = "1px solid #eee";
+      block.style.borderRadius = "10px";
+      block.style.marginBottom = "12px";
+      block.innerHTML = `
+        <div style="font-weight:700; margin-bottom: 6px;">Question ${idx+1}</div>
+        <div style="margin-bottom: 6px;"><b>Q:</b> ${escapeHtml(q)}</div>
+        <div style="margin-bottom: 6px;"><b>Votre réponse:</b> ${escapeHtml(ans)}</div>
+        <div style="margin-bottom: 6px;"><b>Score:</b> ${score} / 10</div>
+        <div><b>Feedback:</b> ${escapeHtml(fb)}</div>
+      `;
+      reviewContent.appendChild(block);
     });
+
+    reviewStatus.textContent = "Correction terminée.";
+    reviewContinue.disabled = false;
+  }
+
+  function escapeHtml(s) {
+    return String(s || "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+  }
+
+  function goEnd() {
+    showPage("end");
+  }
+
+  function restart() {
+    testId = null;
+    userName = "";
+    if (nameInput) nameInput.value = "";
+    showPage("identify");
+    if (nameInput) nameInput.focus();
   }
 
 </script>

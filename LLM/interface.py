@@ -10,11 +10,27 @@ from starlette.requests import Request
 class MasterAPI(Protocol):
     async def on_results(self, payload: Dict[str, Any]) -> Dict[str, Any]: ...
 
-    async def start_test(
-        self, *, n: int = 4, difficulty: str = "easy"
+    async def register_user(self, *, name: str) -> Dict[str, Any]: ...
+
+    async def create_test(
+        self, *, name: str, n: int = 4, difficulty: str = "easy"
     ) -> Dict[str, Any]: ...
 
-    async def get_question(self, *, index: int) -> Dict[str, Any]: ...
+    async def get_question_for_test(
+        self, *, test_id: str, index: int
+    ) -> Dict[str, Any]: ...
+
+    async def submit_answer(
+        self, *, test_id: str, index: int, payload: Dict[str, Any]
+    ) -> Dict[str, Any]: ...
+
+    async def submit_answers(
+        self, *, test_id: str, payload: Dict[str, Any]
+    ) -> Dict[str, Any]: ...
+
+    async def get_grading_status(self, *, test_id: str) -> Dict[str, Any]: ...
+
+    async def get_grading_result(self, *, test_id: str) -> Dict[str, Any]: ...
 
 
 class Interface:
@@ -115,14 +131,52 @@ class Interface:
         @app.post("/api/start_test")
         async def start_test(request: Request) -> JSONResponse:
             payload = await request.json()
+            name = str(payload.get("name", "")).strip()
             n = int(payload.get("n", 4))
             difficulty = str(payload.get("difficulty", "easy"))
-            result = await self.master.start_test(n=n, difficulty=difficulty)
+            result = await self.master.create_test(
+                name=name, n=n, difficulty=difficulty
+            )
             return JSONResponse(result)
 
-        @app.get("/api/question/{index}")
-        async def get_question(index: int) -> JSONResponse:
-            result = await self.master.get_question(index=int(index))
+        @app.post("/api/register")
+        async def register(request: Request) -> JSONResponse:
+            payload = await request.json()
+            name = str(payload.get("name", "")).strip()
+            result = await self.master.register_user(name=name)
+            return JSONResponse(result)
+
+        @app.get("/api/question/{test_id}/{index}")
+        async def get_question(test_id: str, index: int) -> JSONResponse:
+            result = await self.master.get_question_for_test(
+                test_id=test_id, index=int(index)
+            )
+            return JSONResponse(result)
+
+        @app.post("/api/submit/{test_id}")
+        async def submit(test_id: str, request: Request) -> JSONResponse:
+            payload = await request.json()
+            result = await self.master.submit_answers(test_id=test_id, payload=payload)
+            return JSONResponse(result)
+
+        @app.post("/api/answer/{test_id}/{index}")
+        async def submit_one_answer(
+            test_id: str, index: int, request: Request
+        ) -> JSONResponse:
+            payload = await request.json()
+            result = await self.master.submit_answer(
+                test_id=test_id, index=int(index), payload=payload
+            )
+            return JSONResponse(result)
+
+        @app.get("/api/grading_status/{test_id}")
+        async def grading_status(test_id: str) -> JSONResponse:
+            result = await self.master.get_grading_status(test_id=test_id)
+            return JSONResponse(result)
+
+        @app.get("/api/grading_result/{test_id}")
+        async def grading_result(test_id: str) -> JSONResponse:
+            result = await self.master.get_grading_result(test_id=test_id)
             return JSONResponse(result)
 
         @app.post("/save_results")
