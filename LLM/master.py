@@ -113,19 +113,31 @@ class Master:
                 self._quiz_items = self._fallback_quiz(n)
                 return
 
-            try:
-                difficulty_lists = [difficulty] * n
-                items = await asyncio.to_thread(
-                    self.llm.generate_quizz, n, difficulty_lists
-                )
-                print(items)
-                if not isinstance(items, list) or not items:
-                    raise RuntimeError("LLM returned empty quiz")
-                self._quiz_items = items
-            except Exception as e:
-                # Keep the UI usable even if generation fails.
-                self.llm_error = f"Quiz generation failed: {e}"
-                self._quiz_items = self._fallback_quiz(n)
+            difficulty_lists = [difficulty] * n
+            last_err: Exception | None = None
+            for attempt in range(1, 4):
+                try:
+                    items = await asyncio.to_thread(
+                        self.llm.generate_quizz, n, difficulty_lists
+                    )
+                    if not isinstance(items, list) or not items:
+                        raise RuntimeError("LLM returned empty quiz")
+                    self._quiz_items = items
+                    self.llm_error = ""
+                    return
+                except Exception as e:
+                    last_err = e
+                    self.llm_error = f"Quiz generation failed: {e}"
+                    print(self.llm_error)
+                    if attempt < 3:
+                        print("Retrying quiz generation")
+                        await asyncio.sleep(0.2)
+                        continue
+
+            # Keep the UI usable even if generation fails repeatedly.
+            self._quiz_items = self._fallback_quiz(n)
+            if last_err is not None:
+                self.llm_error = f"Quiz generation failed (fallback used): {last_err}"
 
     async def start_test(
         self, *, n: int = 4, difficulty: str = "easy"

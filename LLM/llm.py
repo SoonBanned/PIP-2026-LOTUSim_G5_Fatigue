@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import io
+import ast
 import json
 import os
 import re
@@ -740,18 +741,80 @@ class LLM:
         s = (text or "").strip()
         if not s:
             raise ValueError("Empty model output")
-        try:
-            obj = json.loads(s)
-            if isinstance(obj, dict):
+
+        # Strip markdown code fences if present
+        fence = re.search(r"(?is)```(?:json)?\s*(.*?)\s*```", s)
+        if fence:
+            s = fence.group(1).strip()
+
+        def _try_json(candidate: str) -> dict[str, Any] | None:
+            try:
+                obj = json.loads(candidate)
+                return obj if isinstance(obj, dict) else None
+            except Exception:
+                return None
+
+        def _try_json_with_trailing_comma_fix(candidate: str) -> dict[str, Any] | None:
+            # Remove trailing commas before } or ]
+            cleaned = re.sub(r",\s*([}\]])", r"\1", candidate)
+            return _try_json(cleaned)
+
+        def _try_literal_eval(candidate: str) -> dict[str, Any] | None:
+            try:
+                obj = ast.literal_eval(candidate)
+                return obj if isinstance(obj, dict) else None
+            except Exception:
+                return None
+
+        # Fast path: whole string is valid JSON
+        for fn in (_try_json, _try_json_with_trailing_comma_fix, _try_literal_eval):
+            obj = fn(s)
+            if obj is not None:
                 return obj
-        except Exception:
-            pass
+
+        # Extract first balanced {...} object, ignoring braces inside strings.
         start = s.find("{")
-        end = s.rfind("}")
-        if start >= 0 and end > start:
-            obj = json.loads(s[start : end + 1])
-            if isinstance(obj, dict):
-                return obj
+        if start < 0:
+            raise ValueError("Could not parse JSON object from model output")
+
+        depth = 0
+        in_str = False
+        esc = False
+        quote_char = ""
+        for i in range(start, len(s)):
+            ch = s[i]
+            if in_str:
+                if esc:
+                    esc = False
+                    continue
+                if ch == "\\":
+                    esc = True
+                    continue
+                if ch == quote_char:
+                    in_str = False
+                    quote_char = ""
+                continue
+
+            if ch in ('"', "'"):
+                in_str = True
+                quote_char = ch
+                continue
+            if ch == "{":
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+                if depth == 0:
+                    candidate = s[start : i + 1]
+                    for fn in (
+                        _try_json,
+                        _try_json_with_trailing_comma_fix,
+                        _try_literal_eval,
+                    ):
+                        obj = fn(candidate)
+                        if obj is not None:
+                            return obj
+                    break
+
         raise ValueError("Could not parse JSON object from model output")
 
     def _quotes_for_query(
