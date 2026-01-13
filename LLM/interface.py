@@ -16,6 +16,12 @@ class MasterAPI(Protocol):
         self, *, name: str, n: int = 4, difficulty: str = "easy"
     ) -> Dict[str, Any]: ...
 
+    async def prefetch_test(
+        self, *, name: str, n: int = 4, difficulty: str = "easy"
+    ) -> Dict[str, Any]: ...
+
+    async def get_test_status(self, *, test_id: str) -> Dict[str, Any]: ...
+
     async def get_question_for_test(
         self, *, test_id: str, index: int
     ) -> Dict[str, Any]: ...
@@ -139,6 +145,17 @@ class Interface:
             )
             return JSONResponse(result)
 
+        @app.post("/api/prefetch_test")
+        async def prefetch_test(request: Request) -> JSONResponse:
+            payload = await request.json()
+            name = str(payload.get("name", "")).strip()
+            n = int(payload.get("n", 4))
+            difficulty = str(payload.get("difficulty", "easy"))
+            result = await self.master.prefetch_test(
+                name=name, n=n, difficulty=difficulty
+            )
+            return JSONResponse(result)
+
         @app.post("/api/register")
         async def register(request: Request) -> JSONResponse:
             payload = await request.json()
@@ -151,6 +168,11 @@ class Interface:
             result = await self.master.get_question_for_test(
                 test_id=test_id, index=int(index)
             )
+            return JSONResponse(result)
+
+        @app.get("/api/test_status/{test_id}")
+        async def test_status(test_id: str) -> JSONResponse:
+            result = await self.master.get_test_status(test_id=test_id)
             return JSONResponse(result)
 
         @app.post("/api/submit/{test_id}")

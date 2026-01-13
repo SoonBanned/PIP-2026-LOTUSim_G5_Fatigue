@@ -73,6 +73,9 @@ class Master:
         self._tests_lock = asyncio.Lock()
         self._tests: dict[str, dict[str, Any]] = {}
 
+        self._prefetch_lock = asyncio.Lock()
+        self._prefetch_tasks: dict[str, asyncio.Task[None]] = {}
+
         # Queue contains grading jobs: one question per job.
         self._grading_queue: asyncio.Queue[dict[str, Any]] = asyncio.Queue(
             maxsize=int(self.config.grading_queue_size)
@@ -207,6 +210,150 @@ class Master:
             "llm_ready": self.llm is not None,
             "llm_error": self.llm_error,
         }
+
+    async def prefetch_test(
+        self, *, name: str, n: int = 4, difficulty: str = "easy"
+    ) -> Dict[str, Any]:
+        """Start quiz generation in the background and return immediately.
+
+        The front-end can poll get_test_status(test_id) until status=="ready".
+        """
+
+        nm = self._sanitize_name(name)
+        if not nm:
+            return {"ok": False, "error": "Name is required"}
+
+        test_id = uuid.uuid4().hex
+        created_at = datetime.now().isoformat(timespec="seconds")
+        session = {
+            "test_id": test_id,
+            "name": nm,
+            "date": created_at,
+            "quiz": [],
+            "answers": [],
+            "totalTestTime": None,
+            "submitted": False,
+            "quiz_generation": {
+                "status": "creating",  # creating | ready | failed
+                "error": None,
+                "difficulty": str(difficulty),
+                "n": int(n),
+                "started_at": datetime.now().isoformat(timespec="seconds"),
+                "finished_at": None,
+            },
+            "grading": {
+                "status": "not_submitted",
+                "progress": 0,
+                "total": 0,
+                "per_question": [],
+                "average_score": None,
+                "started_at": None,
+                "finished_at": None,
+                "error": None,
+            },
+        }
+
+        async with self._tests_lock:
+            self._tests[test_id] = session
+
+        # Ensure background tasks exist.
+        self.start_llm_background()
+        self.start_grading_worker_background()
+
+        try:
+            loop = asyncio.get_running_loop()
+        except RuntimeError:
+            return {"ok": False, "error": "No running event loop"}
+
+        async with self._prefetch_lock:
+            task = loop.create_task(
+                self._build_quiz_for_test(
+                    test_id=test_id, n=int(n), difficulty=str(difficulty)
+                )
+            )
+            self._prefetch_tasks[test_id] = task
+
+        return {
+            "ok": True,
+            "test_id": test_id,
+            "status": "creating",
+            "difficulty": str(difficulty),
+            "llm_ready": self.llm is not None,
+            "llm_error": self.llm_error,
+        }
+
+    async def get_test_status(self, *, test_id: str) -> Dict[str, Any]:
+        tid = str(test_id)
+        async with self._tests_lock:
+            session = self._tests.get(tid)
+        if not session:
+            return {"ok": False, "error": "Unknown test_id"}
+
+        qg = session.get("quiz_generation")
+        if not isinstance(qg, dict):
+            # Tests created by the old blocking endpoint are already ready.
+            quiz = session.get("quiz") or []
+            total = len(quiz) if isinstance(quiz, list) else 0
+            return {
+                "ok": True,
+                "test_id": tid,
+                "status": "ready" if total else "creating",
+                "total": total,
+                "llm_ready": self.llm is not None,
+                "llm_error": self.llm_error,
+            }
+
+        quiz = session.get("quiz") or []
+        total = len(quiz) if isinstance(quiz, list) else 0
+        return {
+            "ok": True,
+            "test_id": tid,
+            "status": qg.get("status"),
+            "error": qg.get("error"),
+            "total": total,
+            "llm_ready": self.llm is not None,
+            "llm_error": self.llm_error,
+        }
+
+    async def _build_quiz_for_test(
+        self, *, test_id: str, n: int, difficulty: str
+    ) -> None:
+        tid = str(test_id)
+        try:
+            await self.ensure_llm_ready()
+            quiz_items = await self._generate_quiz(n=int(n), difficulty=str(difficulty))
+
+            async with self._tests_lock:
+                session = self._tests.get(tid)
+                if not session:
+                    return
+                session["quiz"] = quiz_items
+                total = len(quiz_items)
+                session["grading"]["total"] = total
+                session["answers"] = [None] * total
+                session["grading"]["per_question"] = [
+                    {
+                        "index": i,
+                        "status": "not_answered",
+                        "score_total": None,
+                        "feedback": None,
+                    }
+                    for i in range(total)
+                ]
+                qg = session.get("quiz_generation")
+                if isinstance(qg, dict):
+                    qg["status"] = "ready"
+                    qg["error"] = None
+                    qg["finished_at"] = datetime.now().isoformat(timespec="seconds")
+        except Exception as e:
+            async with self._tests_lock:
+                session = self._tests.get(tid)
+                if session:
+                    qg = session.get("quiz_generation")
+                    if isinstance(qg, dict):
+                        qg["status"] = "failed"
+                        qg["error"] = str(e)
+                        qg["finished_at"] = datetime.now().isoformat(timespec="seconds")
 
     @staticmethod
     def _ensure_list_length(lst: list[Any], length: int, fill: Any = None) -> None:
