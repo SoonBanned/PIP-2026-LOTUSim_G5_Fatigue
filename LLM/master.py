@@ -350,6 +350,9 @@ class Master:
                 "error": None,
                 "difficulty": str(difficulty),
                 "n": int(n),
+                "attempt": 0,
+                "max_attempts": 5,
+                "last_error": None,
                 "started_at": datetime.now().isoformat(timespec="seconds"),
                 "finished_at": None,
             },
@@ -422,10 +425,76 @@ class Master:
             "test_id": tid,
             "status": qg.get("status"),
             "error": qg.get("error"),
+            "attempt": qg.get("attempt"),
+            "max_attempts": qg.get("max_attempts"),
+            "last_error": qg.get("last_error"),
             "total": total,
             "llm_ready": self.llm is not None,
             "llm_error": self.llm_error,
         }
+
+    async def _generate_quiz_with_status(
+        self, *, test_id: str, n: int = 4, difficulty: str = "easy"
+    ) -> list[dict[str, Any]]:
+        """Generate quiz items while updating session.quiz_generation attempt fields."""
+
+        tid = str(test_id)
+
+        n = max(1, int(n))
+        difficulty = str(difficulty or "easy")
+
+        # Ensure LLM is ready first (can dominate the wait time).
+        await self.ensure_llm_ready()
+        if self.llm is None:
+            return await self._generate_quiz(n=n, difficulty=difficulty)
+
+        difficulty_lists = self._difficulty_plan(n)
+        last_err: Exception | None = None
+
+        for attempt in range(1, 4):
+            async with self._tests_lock:
+                session = self._tests.get(tid)
+                if session:
+                    qg = session.get("quiz_generation")
+                    if isinstance(qg, dict):
+                        qg["attempt"] = attempt
+                        qg["max_attempts"] = 3
+                        qg["last_error"] = None
+
+            try:
+                items = await asyncio.to_thread(
+                    self.llm.generate_quizz, n, difficulty_lists
+                )
+                if not isinstance(items, list) or not items:
+                    raise RuntimeError("LLM returned empty quiz")
+
+                out: list[dict[str, Any]] = []
+                for it in items:
+                    if not isinstance(it, dict):
+                        continue
+                    it2 = dict(it)
+                    it2.setdefault("type", "open")
+                    out.append(it2)
+                if not out:
+                    raise RuntimeError("LLM returned no valid items")
+                return self._append_extras_and_shuffle(out)
+            except Exception as e:
+                last_err = e
+                async with self._tests_lock:
+                    session = self._tests.get(tid)
+                    if session:
+                        qg = session.get("quiz_generation")
+                        if isinstance(qg, dict):
+                            qg["last_error"] = str(e)
+                self.llm_error = f"Quiz generation failed: {e}"
+                print(self.llm_error)
+                if attempt < 3:
+                    print("Retrying quiz generation")
+                    await asyncio.sleep(0.2)
+
+        if last_err is not None:
+            self.llm_error = f"Quiz generation failed (fallback used): {last_err}"
+        return self._append_extras_and_shuffle(self._fallback_quiz(n))
 
     async def update_test_meta(
         self, *, test_id: str, meta: Dict[str, Any]
@@ -452,13 +521,44 @@ class Master:
         random.shuffle(items)
         return items
 
+    def _append_extras_and_shuffle(
+        self, base_items: list[dict[str, Any]]
+    ) -> list[dict[str, Any]]:
+        """Append dataset questions (QCM + scenarios) and shuffle for the user."""
+
+        out: list[dict[str, Any]] = list(base_items or [])
+
+        try:
+            qcm_n = max(0, int(getattr(self.config, "extra_qcm_count", 4)))
+        except Exception:
+            qcm_n = 4
+        try:
+            sc_n = max(0, int(getattr(self.config, "extra_scenario_count", 4)))
+        except Exception:
+            sc_n = 4
+
+        if qcm_n:
+            try:
+                out.extend(self.qcm.sample(n=qcm_n))
+            except Exception as e:
+                print(f"QCM sampling failed: {e}")
+        if sc_n:
+            try:
+                out.extend(self.scenarios.sample(n=sc_n))
+            except Exception as e:
+                print(f"Scenario sampling failed: {e}")
+
+        random.shuffle(out)
+        return out
+
     async def _build_quiz_for_test(
         self, *, test_id: str, n: int, difficulty: str
     ) -> None:
         tid = str(test_id)
         try:
-            await self.ensure_llm_ready()
-            quiz_items = await self._generate_quiz(n=int(n), difficulty=str(difficulty))
+            quiz_items = await self._generate_quiz_with_status(
+                test_id=tid, n=int(n), difficulty=str(difficulty)
+            )
 
             async with self._tests_lock:
                 session = self._tests.get(tid)
@@ -937,6 +1037,7 @@ class Master:
     async def _generate_quiz(
         self, *, n: int = 4, difficulty: str = "easy"
     ) -> list[dict[str, Any]]:
+
         n = max(1, int(n))
         difficulty = str(difficulty or "easy")
 
@@ -980,31 +1081,7 @@ class Master:
                 llm_items = self._fallback_quiz(n)
 
         # Requirement: keep LLM questions as-is, but add 4 QCM + 4 scenarios.
-        extra_items: list[dict[str, Any]] = []
-        try:
-            qcm_n = max(0, int(getattr(self.config, "extra_qcm_count", 4)))
-        except Exception:
-            qcm_n = 4
-        try:
-            sc_n = max(0, int(getattr(self.config, "extra_scenario_count", 4)))
-        except Exception:
-            sc_n = 4
-
-        if qcm_n:
-            try:
-                extra_items.extend(self.qcm.sample(n=qcm_n))
-            except Exception as e:
-                print(f"QCM sampling failed: {e}")
-        if sc_n:
-            try:
-                extra_items.extend(self.scenarios.sample(n=sc_n))
-            except Exception as e:
-                print(f"Scenario sampling failed: {e}")
-
-        if extra_items:
-            random.shuffle(extra_items)
-            return llm_items + extra_items
-        return llm_items
+        return self._append_extras_and_shuffle(llm_items)
 
     async def _grading_worker(self) -> None:
         while True:
