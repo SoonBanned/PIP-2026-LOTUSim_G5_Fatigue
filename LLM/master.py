@@ -183,6 +183,84 @@ class Master:
             return {"ok": False, "error": "Name is required"}
         return {"ok": True, "name": nm}
 
+    async def get_user_history(self, *, name: str, limit: int = 5) -> Dict[str, Any]:
+        nm = self._sanitize_name(name)
+        if not nm:
+            return {"ok": False, "error": "Name is required"}
+        try:
+            raw = self.db.recupererResultats(nm)
+        except Exception as e:
+            return {"ok": False, "error": f"DB error: {e}"}
+
+        sessions = raw if isinstance(raw, list) else []
+        try:
+            limit_n = max(0, int(limit))
+        except Exception:
+            limit_n = 5
+
+        # Newest first
+        sessions = list(reversed(sessions))
+        if limit_n:
+            sessions = sessions[:limit_n]
+
+        def _fmt_seconds(value: Any) -> str:
+            try:
+                sec = float(value)
+            except Exception:
+                return "—"
+            if sec < 0:
+                return "—"
+            if sec < 60:
+                return f"{sec:.0f}s"
+            return f"{sec / 60.0:.1f}min"
+
+        def _classify(score_0_10: float | None) -> str:
+            if score_0_10 is None:
+                return "—"
+            if score_0_10 >= 7.0:
+                return "Apte"
+            if score_0_10 >= 4.0:
+                return "Attention"
+            return "Inapte"
+
+        out: list[dict[str, Any]] = []
+        for s in sessions:
+            if not isinstance(s, dict):
+                continue
+            date = str(s.get("date") or "")
+
+            # Prefer the new session schema (grading.average_score, totalTestTime).
+            grading = s.get("grading") if isinstance(s.get("grading"), dict) else {}
+            avg = grading.get("average_score") if isinstance(grading, dict) else None
+            score_val: float | None = None
+            try:
+                if avg is not None:
+                    score_val = float(avg)
+            except Exception:
+                score_val = None
+
+            total_time = s.get("totalTestTime")
+            time_str = "—"
+            if total_time is not None:
+                # UI stores ms.
+                try:
+                    time_str = _fmt_seconds(float(total_time) / 1000.0)
+                except Exception:
+                    time_str = "—"
+            elif "temps_reponse_moyen" in s:
+                time_str = _fmt_seconds(s.get("temps_reponse_moyen"))
+
+            out.append(
+                {
+                    "date": date,
+                    "result": _classify(score_val),
+                    "time": time_str,
+                    "score": (f"{score_val:.1f}/10" if score_val is not None else "—"),
+                }
+            )
+
+        return {"ok": True, "name": nm, "history": out}
+
     async def create_test(
         self, *, name: str, n: int = 4, difficulty: str = "easy"
     ) -> Dict[str, Any]:

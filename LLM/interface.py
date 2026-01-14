@@ -42,6 +42,10 @@ class MasterAPI(Protocol):
 
     async def get_grading_result(self, *, test_id: str) -> Dict[str, Any]: ...
 
+    async def get_user_history(
+        self, *, name: str, limit: int = 5
+    ) -> Dict[str, Any]: ...
+
 
 class Interface:
     """Web interface runner (FastAPI + Uvicorn) designed to call back into Master.
@@ -221,6 +225,13 @@ class Interface:
         @app.get("/api/grading_result/{test_id}")
         async def grading_result(test_id: str) -> JSONResponse:
             result = await self.master.get_grading_result(test_id=test_id)
+            return JSONResponse(result)
+
+        @app.get("/api/user_history/{name}")
+        async def user_history(name: str, limit: int = 5) -> JSONResponse:
+            result = await self.master.get_user_history(
+                name=str(name), limit=int(limit)
+            )
             return JSONResponse(result)
 
         @app.post("/save_results")

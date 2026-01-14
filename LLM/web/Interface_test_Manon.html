@@ -48,10 +48,11 @@
 
     #identify .identify-form {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 15px;
+    margin-top: 25px;
     }
 
 
@@ -318,6 +319,40 @@
     color: #e65100;
     }
 
+    .history-container {
+      margin-top: 30px;
+      overflow-x: auto;
+    }
+
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .history-table th,
+    .history-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .history-table th {
+      background: #f5f5f5;
+      font-weight: bold;
+    }
+
+    .result-apte { color: #2e7d32; font-weight: bold; }
+    .result-attention { color: #f9a825; font-weight: bold; }
+    .result-inapte { color: #c62828; font-weight: bold; }
+
+    .start-test-container {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+    }
+
 
   </style>
 </head>
@@ -360,15 +395,42 @@
     <img src="{{ url_for('static', filename='logo-UT.png') }}">
   </div>
 
-  <h1 class="title">Test de fatigue</h1>
-  <img src="{{ url_for('static', filename='logo-leia.png') }}" class="center-image">
+  <h1 class="title">Votre espace</h1>
+  <p>Historique personnel</p>
 
-  <p>
-    Ce test permet d’évaluer votre état de vigilance.
-    Le temps de réponse et les frappes clavier sont analysés.
-  </p>
+  <!-- Historique -->
+  <div id="historyContainer" class="history-container">
 
-  <button class="start-button" onclick="startTest()">Commencer le test</button>
+    <!-- Message si vide -->
+    <div id="noHistoryMessage" class="no-history-message" style="display:none; text-align:center; margin-top:40px; font-size:18px; color:#666;">
+      Vous n'avez pas encore d'historique.<br>
+      Cliquez sur "Commencer un nouveau test" pour démarrer.
+    </div>
+
+    <!-- Tableau -->
+    <div id="historyTableWrapper" style="display:none;">
+      <table id="historyTable" class="history-table">
+        <thead>
+          <tr>
+            <th>Résultat</th>
+            <th>Temps total</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="historyTableBody">
+          <!-- rempli en JS -->
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Bouton nouveau test -->
+  <div class="start-test-container">
+    <button class="start-button" onclick="startTest()">
+      Commencer un nouveau test
+    </button>
+  </div>
 </div>
 
 <!-- PAGE CAMERA (between login and start) -->
@@ -524,6 +586,15 @@
   const loadingOverlay = document.getElementById("loading");
   const gradingIndicator = document.getElementById("gradingIndicator");
   const nameInput = document.getElementById("nameInput");
+  // Valider avec la touche Entrée sur le champ nom
+  if (nameInput) {
+    nameInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        confirmName();
+      }
+    });
+  }
   const reviewStatus = document.getElementById("reviewStatus");
   const reviewContent = document.getElementById("reviewContent");
   const reviewContinue = document.getElementById("reviewContinue");
@@ -572,6 +643,10 @@
     if (!el) return;
     el.classList.add("active");
     el.style.display = "block";
+
+    if (id === "home") {
+      loadHistory();
+    }
   }
 
   // Force initial page state on first load.
@@ -612,6 +687,58 @@
     } catch (e) {
       console.error(e);
       alert("Erreur d'identification");
+    }
+  }
+
+  async function loadHistory() {
+    const tbody = document.getElementById("historyTableBody");
+    const tableWrapper = document.getElementById("historyTableWrapper");
+    const noHistoryMessage = document.getElementById("noHistoryMessage");
+    if (!tbody || !tableWrapper || !noHistoryMessage) return;
+
+    tbody.innerHTML = "";
+
+    if (!userName) {
+      tableWrapper.style.display = "none";
+      noHistoryMessage.textContent = "Veuillez vous identifier.";
+      noHistoryMessage.style.display = "block";
+      return;
+    }
+
+    try {
+      const resp = await fetch(`/api/user_history/${encodeURIComponent(userName)}?limit=5`);
+      const data = await resp.json();
+      const history = data && data.ok ? (data.history || []) : [];
+
+      if (!history || history.length === 0) {
+        tableWrapper.style.display = "none";
+        noHistoryMessage.style.display = "block";
+        return;
+      }
+
+      tableWrapper.style.display = "block";
+      noHistoryMessage.style.display = "none";
+
+      history.slice(0, 5).forEach(item => {
+        const tr = document.createElement("tr");
+
+        let resultClass = "";
+        if (item.result === "Apte") resultClass = "result-apte";
+        if (item.result === "Attention") resultClass = "result-attention";
+        if (item.result === "Inapte") resultClass = "result-inapte";
+
+        tr.innerHTML = `
+          <td class="${resultClass}">${item.result || "—"}</td>
+          <td>${item.time || "—"}</td>
+          <td>${item.score || "—"}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    } catch (e) {
+      console.error("Erreur chargement historique :", e);
+      tableWrapper.style.display = "none";
+      noHistoryMessage.textContent = "Impossible de charger l'historique.";
+      noHistoryMessage.style.display = "block";
     }
   }
 
