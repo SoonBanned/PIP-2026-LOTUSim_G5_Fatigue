@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import random
 import uuid
 from dataclasses import dataclass
 from datetime import datetime
@@ -33,6 +34,28 @@ def _import_interface_class():
         return Interface
 
 
+def _import_qcm_class():
+    try:
+        from qcm import QCM  # type: ignore
+
+        return QCM
+    except Exception:
+        from .qcm import QCM  # type: ignore
+
+        return QCM
+
+
+def _import_scenarios_class():
+    try:
+        from scenarios import Scenarios  # type: ignore
+
+        return Scenarios
+    except Exception:
+        from .scenarios import Scenarios  # type: ignore
+
+        return Scenarios
+
+
 @dataclass
 class MasterConfig:
     host: str = "127.0.0.1"
@@ -41,6 +64,12 @@ class MasterConfig:
     llm_model: str = "llama3.1_fine"
     db_path: str | Path = Path(__file__).resolve().parent / "users_db.json"
     grading_queue_size: int = 32
+    qcm_path: str | Path = Path(__file__).resolve().parent / "qcm_final.json"
+    scenarios_csv_path: str | Path = (
+        Path(__file__).resolve().parent / "colreg_v9_split.csv"
+    )
+    extra_qcm_count: int = 4
+    extra_scenario_count: int = 4
 
 
 class Master:
@@ -69,6 +98,11 @@ class Master:
         self._llm_init_task: asyncio.Task[None] | None = None
 
         self.db = Database(str(self.config.db_path))
+
+        QCM = _import_qcm_class()
+        Scenarios = _import_scenarios_class()
+        self.qcm = QCM(json_path=self.config.qcm_path)
+        self.scenarios = Scenarios(csv_path=self.config.scenarios_csv_path)
 
         self._tests_lock = asyncio.Lock()
         self._tests: dict[str, dict[str, Any]] = {}
@@ -181,9 +215,9 @@ class Master:
         async with self._tests_lock:
             self._tests[test_id] = session
 
-        # If LLM is still loading, wait here (UI shows the big overlay spinner).
+        # Blocking path: generate quiz now.
+        self.start_grading_worker_background()
         await self.ensure_llm_ready()
-
         quiz_items = await self._generate_quiz(n=int(n), difficulty=str(difficulty))
         async with self._tests_lock:
             s = self._tests.get(test_id)
@@ -315,6 +349,31 @@ class Master:
             "llm_error": self.llm_error,
         }
 
+    async def update_test_meta(
+        self, *, test_id: str, meta: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        tid = str(test_id)
+        async with self._tests_lock:
+            session = self._tests.get(tid)
+            if not session:
+                return {"ok": False, "error": "Unknown test_id"}
+            existing = session.get("meta")
+            if not isinstance(existing, dict):
+                existing = {}
+            for k, v in (meta or {}).items():
+                existing[str(k)] = v
+            session["meta"] = existing
+        return {"ok": True, "test_id": tid}
+
+    def _build_test_items(self, *, n_per_type: int) -> list[dict[str, Any]]:
+        """Build a mixed test: n_per_type QCM + n_per_type scenario questions."""
+        n_per_type = max(1, int(n_per_type))
+        items: list[dict[str, Any]] = []
+        items.extend(self.qcm.sample(n=n_per_type))
+        items.extend(self.scenarios.sample(n=n_per_type))
+        random.shuffle(items)
+        return items
+
     async def _build_quiz_for_test(
         self, *, test_id: str, n: int, difficulty: str
     ) -> None:
@@ -378,6 +437,8 @@ class Master:
         self.start_llm_background()
         self.start_grading_worker_background()
 
+        q_type_for_enqueue: str = "open"
+
         async with self._tests_lock:
             session = self._tests.get(tid)
         if not session:
@@ -393,6 +454,10 @@ class Master:
             if i < 0 or i >= total:
                 return {"ok": False, "error": "Invalid question index"}
 
+            q_item = quiz[i] if isinstance(quiz[i], dict) else {"type": "open"}
+            q_type = str(q_item.get("type") or payload.get("type") or "open")
+            q_type_for_enqueue = q_type
+
             answers = session.get("answers")
             if not isinstance(answers, list):
                 answers = []
@@ -401,7 +466,9 @@ class Master:
             # Persist the answer (UI sends {answer, timeSpent, keystrokes, question?}).
             ans_obj = {
                 "question": payload.get("question"),
+                "type": q_type,
                 "answer": payload.get("answer"),
+                "selected_index": payload.get("selected_index"),
                 "timeSpent": payload.get("timeSpent"),
                 "keystrokes": payload.get("keystrokes"),
             }
@@ -416,11 +483,42 @@ class Master:
                 per_q[i] = {"index": i}
 
             status = str(per_q[i].get("status") or "not_answered")
-            # Avoid flooding the queue if already queued/processing.
-            if status not in {"queued", "processing"}:
-                per_q[i]["status"] = "queued"
-                per_q[i]["score_total"] = None
-                per_q[i]["feedback"] = None
+            per_q[i]["type"] = q_type
+
+            if q_type == "qcm":
+                # Grade instantly.
+                try:
+                    selected_index = payload.get("selected_index")
+                    sel = int(selected_index) if selected_index is not None else -1
+                except Exception:
+                    sel = -1
+                try:
+                    correct_index = int(q_item.get("correct_index", -1))
+                except Exception:
+                    correct_index = -1
+
+                is_correct = sel == correct_index
+                per_q[i]["status"] = "done"
+                per_q[i]["score_total"] = 10 if is_correct else 0
+
+                correct_text = None
+                choices = q_item.get("choices") if isinstance(q_item, dict) else None
+                if isinstance(choices, list) and 0 <= correct_index < len(choices):
+                    correct_text = choices[correct_index]
+                per_q[i]["feedback"] = (
+                    "Correct."
+                    if is_correct
+                    else (
+                        "Incorrect."
+                        + (f" Réponse correcte: {correct_text}" if correct_text else "")
+                    )
+                )
+            else:
+                # Avoid flooding the queue if already queued/processing.
+                if status not in {"queued", "processing"}:
+                    per_q[i]["status"] = "queued"
+                    per_q[i]["score_total"] = None
+                    per_q[i]["feedback"] = None
             session["grading"]["per_question"] = per_q
 
             # Overall grading status reflects background work.
@@ -430,6 +528,35 @@ class Master:
                     session["grading"]["started_at"] = datetime.now().isoformat(
                         timespec="seconds"
                     )
+
+            # If we graded instantly (QCM), update summary fields now.
+            if q_type == "qcm":
+                done_scores: list[int] = []
+                done_count = 0
+                all_done = True
+                for item in per_q:
+                    if not isinstance(item, dict) or str(item.get("status")) not in {
+                        "done",
+                        "failed",
+                    }:
+                        all_done = False
+                    if isinstance(item, dict) and str(item.get("status")) == "done":
+                        done_count += 1
+                    sc = item.get("score_total") if isinstance(item, dict) else None
+                    if isinstance(sc, int):
+                        done_scores.append(sc)
+                session["grading"]["progress"] = done_count
+                session["grading"]["average_score"] = (
+                    (sum(done_scores) / len(done_scores)) if done_scores else None
+                )
+                if all_done and session.get("submitted"):
+                    session["grading"]["status"] = "done"
+                    session["grading"]["finished_at"] = datetime.now().isoformat(
+                        timespec="seconds"
+                    )
+
+        if q_type_for_enqueue == "qcm":
+            return {"ok": True, "test_id": tid, "index": i, "status": "done"}
 
         # Enqueue grading job.
         try:
@@ -470,19 +597,44 @@ class Master:
         if i < 0 or i >= total:
             return {"ok": True, "done": True, "index": i, "total": total}
 
-        item = quiz[i]
-        question = (item.get("question") if isinstance(item, dict) else None) or str(
-            item
+        raw_item = quiz[i]
+        item = (
+            raw_item
+            if isinstance(raw_item, dict)
+            else {"type": "open", "question": str(raw_item)}
         )
-        image = item.get("image") if isinstance(item, dict) else None
+
+        q_type = str(item.get("type") or "open")
+
+        if q_type == "scenario":
+            title = str(item.get("title") or "").strip()
+            scenario = str(item.get("scenario") or "").strip()
+            question = (title + "\n\n" + scenario).strip() if title else scenario
+            img = str(item.get("image") or "").strip()
+            image = f"/images_v9/{img}" if img else None
+            choices = None
+        elif q_type == "qcm":
+            question = str(item.get("question") or "").strip()
+            image = None
+            choices = (
+                item.get("choices") if isinstance(item.get("choices"), list) else []
+            )
+        else:
+            question = str(item.get("question") or "").strip()
+            image = item.get("image") if isinstance(item.get("image"), str) else None
+            choices = (
+                item.get("choices") if isinstance(item.get("choices"), list) else None
+            )
         return {
             "ok": True,
             "done": False,
             "test_id": tid,
             "index": i,
             "total": total,
+            "type": q_type,
             "question": question,
             "image": image,
+            "choices": choices,
         }
 
     async def submit_answers(
@@ -561,6 +713,9 @@ class Master:
 
         if isinstance(answers_list, list) and isinstance(per_q, list):
             for i in range(min(len(answers_list), len(per_q), total)):
+                q_item = quiz[i] if isinstance(quiz, list) and i < len(quiz) else None
+                if isinstance(q_item, dict) and str(q_item.get("type") or "") == "qcm":
+                    continue
                 has_answer = (
                     isinstance(answers_list[i], dict)
                     and str(answers_list[i].get("answer") or "").strip()
@@ -636,9 +791,21 @@ class Master:
             "test_id": tid,
             "status": grading.get("status"),
             "grading": grading,
+            "meta": session.get("meta") or {},
             "answers": session.get("answers") or [],
             "quiz": [
-                {"question": q.get("question"), "truth_answer": q.get("truth_answer")}
+                {
+                    "type": q.get("type"),
+                    "question": (
+                        (
+                            str(q.get("title") or "").strip()
+                            + "\n\n"
+                            + str(q.get("scenario") or "").strip()
+                        ).strip()
+                        if str(q.get("type") or "") == "scenario"
+                        else q.get("question")
+                    ),
+                }
                 for q in (session.get("quiz") or [])
                 if isinstance(q, dict)
             ],
@@ -657,7 +824,36 @@ class Master:
         ]
         out: list[dict[str, Any]] = []
         for i in range(max(1, int(n))):
-            out.append({"question": base[i % len(base)], "difficulty": "easy"})
+            out.append(
+                {
+                    "type": "open",
+                    "question": base[i % len(base)],
+                    "difficulty": "easy",
+                    "truth_answer": "",
+                    "rubric": None,
+                }
+            )
+        return out
+
+    @staticmethod
+    def _difficulty_plan(n: int) -> list[str]:
+        """Return per-question difficulties.
+
+        Requirement: for a 4-question quiz -> 2 easy, 1 medium, 1 hard.
+        """
+        n = max(1, int(n))
+        if n == 4:
+            return ["easy", "easy", "medium", "hard"]
+
+        # Fallback for other sizes: keep it simple and deterministic-ish.
+        out: list[str] = []
+        for i in range(n):
+            if i < max(1, n // 2):
+                out.append("easy")
+            elif i < max(2, (3 * n) // 4):
+                out.append("medium")
+            else:
+                out.append("hard")
         return out
 
     async def _generate_quiz(
@@ -666,29 +862,71 @@ class Master:
         n = max(1, int(n))
         difficulty = str(difficulty or "easy")
 
+        llm_items: list[dict[str, Any]]
         if self.llm is None:
-            return self._fallback_quiz(n)
+            llm_items = self._fallback_quiz(n)
+        else:
+            # Ignore the single difficulty string and apply the requested distribution.
+            difficulty_lists = self._difficulty_plan(n)
+            last_err: Exception | None = None
+            for attempt in range(1, 4):
+                try:
+                    items = await asyncio.to_thread(
+                        self.llm.generate_quizz, n, difficulty_lists
+                    )
+                    if not isinstance(items, list) or not items:
+                        raise RuntimeError("LLM returned empty quiz")
+                    out: list[dict[str, Any]] = []
+                    for it in items:
+                        if not isinstance(it, dict):
+                            continue
+                        it2 = dict(it)
+                        it2.setdefault("type", "open")
+                        out.append(it2)
+                    if not out:
+                        raise RuntimeError("LLM returned no valid items")
+                    llm_items = out
+                    break
+                except Exception as e:
+                    last_err = e
+                    self.llm_error = f"Quiz generation failed: {e}"
+                    print(self.llm_error)
+                    if attempt < 3:
+                        print("Retrying quiz generation")
+                        await asyncio.sleep(0.2)
+            else:
+                if last_err is not None:
+                    self.llm_error = (
+                        f"Quiz generation failed (fallback used): {last_err}"
+                    )
+                llm_items = self._fallback_quiz(n)
 
-        difficulty_lists = [difficulty] * n
-        last_err: Exception | None = None
-        for attempt in range(1, 4):
+        # Requirement: keep LLM questions as-is, but add 4 QCM + 4 scenarios.
+        extra_items: list[dict[str, Any]] = []
+        try:
+            qcm_n = max(0, int(getattr(self.config, "extra_qcm_count", 4)))
+        except Exception:
+            qcm_n = 4
+        try:
+            sc_n = max(0, int(getattr(self.config, "extra_scenario_count", 4)))
+        except Exception:
+            sc_n = 4
+
+        if qcm_n:
             try:
-                items = await asyncio.to_thread(
-                    self.llm.generate_quizz, n, difficulty_lists
-                )
-                if not isinstance(items, list) or not items:
-                    raise RuntimeError("LLM returned empty quiz")
-                return items
+                extra_items.extend(self.qcm.sample(n=qcm_n))
             except Exception as e:
-                last_err = e
-                self.llm_error = f"Quiz generation failed: {e}"
-                print(self.llm_error)
-                if attempt < 3:
-                    print("Retrying quiz generation")
-                    await asyncio.sleep(0.2)
-        if last_err is not None:
-            self.llm_error = f"Quiz generation failed (fallback used): {last_err}"
-        return self._fallback_quiz(n)
+                print(f"QCM sampling failed: {e}")
+        if sc_n:
+            try:
+                extra_items.extend(self.scenarios.sample(n=sc_n))
+            except Exception as e:
+                print(f"Scenario sampling failed: {e}")
+
+        if extra_items:
+            random.shuffle(extra_items)
+            return llm_items + extra_items
+        return llm_items
 
     async def _grading_worker(self) -> None:
         while True:
@@ -721,19 +959,6 @@ class Master:
                 "started_at", datetime.now().isoformat(timespec="seconds")
             )
             grading["error"] = None
-
-        await self.ensure_llm_ready()
-        if self.llm is None:
-            async with self._tests_lock:
-                session = self._tests.get(tid)
-                if session:
-                    session["grading"]["status"] = "failed"
-                    session["grading"]["error"] = (
-                        session["grading"].get("error")
-                        or self.llm_error
-                        or "LLM not available"
-                    )
-            return
 
         async with self._tests_lock:
             session = self._tests.get(tid)
@@ -796,15 +1021,43 @@ class Master:
         if index < len(answers) and isinstance(answers[index], dict):
             student_answer = str(answers[index].get("answer") or "")
 
+        q_type = str(q.get("type") or "open") if isinstance(q, dict) else "open"
         score: Any = None
         fb: str = ""
         status: str = "done"
 
-        if not isinstance(q, dict) or not q.get("truth_answer"):
+        await self.ensure_llm_ready()
+        if self.llm is None:
             score = None
-            fb = "Grading unavailable (missing truth_answer)"
-            status = "done"
-        else:
+            fb = self.llm_error or "LLM not available"
+            status = "failed"
+        elif q_type == "scenario" and isinstance(q, dict):
+            scenario_text = str(q.get("scenario") or q.get("question") or "")
+            reference_application = q.get("reference_application")
+            source_id = q.get("id")
+            try:
+                grade = await asyncio.to_thread(
+                    self.llm.grade_answer_vs_rule_application,
+                    scenario=scenario_text,
+                    student_answer=student_answer,
+                    source_id=source_id,
+                    reference_application=reference_application,
+                )
+                if isinstance(grade, dict):
+                    score = grade.get("score")
+                    if score is None:
+                        score = grade.get("score_total")
+                    fb = str(grade.get("feedback") or "")
+                    status = "done"
+                else:
+                    score = None
+                    fb = "Unexpected grade format"
+                    status = "failed"
+            except Exception as e:
+                score = None
+                fb = f"Scenario grading failed: {e}"
+                status = "failed"
+        elif isinstance(q, dict) and str(q.get("truth_answer") or "").strip():
             question = str(q.get("question") or "")
             truth_answer = str(q.get("truth_answer") or "")
             rubric = q.get("rubric")
@@ -816,13 +1069,22 @@ class Master:
                     student_answer=student_answer,
                     rubric=rubric,
                 )
-                score = grade.get("score_total")
-                fb = str(grade.get("feedback") or "")
-                status = "done"
+                if isinstance(grade, dict):
+                    score = grade.get("score_total")
+                    fb = str(grade.get("feedback") or "")
+                    status = "done"
+                else:
+                    score = None
+                    fb = "Unexpected grade format"
+                    status = "failed"
             except Exception as e:
                 score = None
                 fb = f"Grading failed: {e}"
                 status = "failed"
+        else:
+            score = None
+            fb = "Grading unavailable (missing truth_answer)"
+            status = "done"
 
         finished_at = datetime.now().isoformat(timespec="seconds")
         async with self._tests_lock:

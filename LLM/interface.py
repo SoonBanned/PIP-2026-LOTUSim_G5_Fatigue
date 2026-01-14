@@ -22,6 +22,10 @@ class MasterAPI(Protocol):
 
     async def get_test_status(self, *, test_id: str) -> Dict[str, Any]: ...
 
+    async def update_test_meta(
+        self, *, test_id: str, meta: Dict[str, Any]
+    ) -> Dict[str, Any]: ...
+
     async def get_question_for_test(
         self, *, test_id: str, index: int
     ) -> Dict[str, Any]: ...
@@ -55,6 +59,7 @@ class Interface:
         port: int = 5001,
         templates_dir: str | Path | None = None,
         assets_dir: str | Path | None = None,
+        images_dir: str | Path | None = None,
     ) -> None:
         self.master = master
         self.host = host
@@ -63,6 +68,7 @@ class Interface:
         root = Path(__file__).resolve().parent
         self.templates_dir = Path(templates_dir) if templates_dir else (root / "web")
         self.assets_dir = Path(assets_dir) if assets_dir else (root / "web" / "assets")
+        self.images_dir = Path(images_dir) if images_dir else (root / "images_v9")
 
         self._server: Any | None = None
         self._app: Any | None = None
@@ -98,6 +104,13 @@ class Interface:
         if self.assets_dir.exists():
             app.mount(
                 "/static", StaticFiles(directory=str(self.assets_dir)), name="static"
+            )
+
+        if self.images_dir.exists():
+            app.mount(
+                "/images_v9",
+                StaticFiles(directory=str(self.images_dir)),
+                name="images_v9",
             )
 
         templates = Jinja2Templates(directory=str(self.templates_dir))
@@ -173,6 +186,15 @@ class Interface:
         @app.get("/api/test_status/{test_id}")
         async def test_status(test_id: str) -> JSONResponse:
             result = await self.master.get_test_status(test_id=test_id)
+            return JSONResponse(result)
+
+        @app.post("/api/test_meta/{test_id}")
+        async def test_meta(test_id: str, request: Request) -> JSONResponse:
+            payload = await request.json()
+            meta = payload.get("meta")
+            if not isinstance(meta, dict):
+                meta = payload if isinstance(payload, dict) else {}
+            result = await self.master.update_test_meta(test_id=test_id, meta=meta)
             return JSONResponse(result)
 
         @app.post("/api/submit/{test_id}")

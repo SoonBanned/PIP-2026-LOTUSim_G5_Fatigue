@@ -80,7 +80,7 @@
     .start-button:hover { background-color: #b71c1c; }
 
     /* --- PAGE QUESTIONS --- */
-    #questionText { font-size: 26px; margin-bottom: 15px; }
+    #questionText { font-size: 26px; margin-bottom: 15px; white-space: pre-line; }
 
     #questionImage {
       display: none;
@@ -396,6 +396,38 @@
   </div>
 </div>
 
+<!-- PAGE USER INFO (after camera) -->
+<div id="userInfo" class="page">
+  <div class="header-logos">
+    <img src="{{ url_for('static', filename='logo-crossing.png') }}">
+    <img src="{{ url_for('static', filename='logo-UT.png') }}">
+  </div>
+
+  <h1 class="title" style="font-size: 28px; text-align:center;">Informations</h1>
+  <p style="text-align:center;">Merci de renseigner ces informations (elles seront affichées dans vos résultats).</p>
+
+  <div style="display:flex; flex-direction:column; gap:12px; align-items:center; margin-top: 18px;">
+    <div style="width: 100%; max-width: 420px;">
+      <label for="ageInput" style="display:block; font-size: 13px; color:#333; margin-bottom:4px;">Âge</label>
+      <input id="ageInput" type="number" min="0" max="120" placeholder="Ex: 27"
+             style="width:100%; font-size:16px; padding:10px; border-radius:8px; border:1px solid #ccc;" />
+    </div>
+
+    <div style="width: 100%; max-width: 420px;">
+      <label for="workHoursInput" style="display:block; font-size: 13px; color:#333; margin-bottom:4px;">Heures de travail consécutives</label>
+      <input id="workHoursInput" type="number" min="0" max="24" step="0.5" placeholder="Ex: 6"
+             style="width:100%; font-size:16px; padding:10px; border-radius:8px; border:1px solid #ccc;" />
+    </div>
+
+    <div style="width: 100%; max-width: 420px;">
+      <label for="tirednessInput" style="display:block; font-size: 13px; color:#333; margin-bottom:4px;">Niveau de fatigue (1-10): <span id="tirednessValue">5</span></label>
+      <input id="tirednessInput" type="range" min="1" max="10" value="5" style="width:100%;" />
+    </div>
+
+    <button class="start-button" style="font-size:16px; padding:10px 18px;" onclick="continueAfterUserInfo()">Continuer</button>
+  </div>
+</div>
+
 <!-- PAGE QUESTIONS -->
 <div id="questionPage" class="page">
     <div class="header-logos">
@@ -442,6 +474,7 @@
 <!-- PAGE RÉSULTATS / FEEDBACK (avant fin) -->
 <div id="review" class="page">
   <h2>Résultats et feedback</h2>
+  <div id="reviewMeta" style="margin-top: 10px; padding: 10px; border: 1px solid #eee; border-radius: 10px; background: #fafafa;"></div>
   <p id="reviewStatus">Correction en cours…</p>
   <div id="reviewContent" style="margin-top: 20px;"></div>
   <button id="reviewContinue" class="finish-button" onclick="goEnd()" disabled style="margin-top: 20px;">Continuer</button>
@@ -463,6 +496,10 @@
 
   // Camera
   let cameraStream = null;
+
+  // User info (post-camera)
+  let userMeta = {};
+  let userMetaSent = false;
 
   let currentQuestion = 0;
   let questionStartTime = 0;
@@ -493,6 +530,11 @@
   const cameraSelect = document.getElementById("cameraSelect");
   const cameraPreview = document.getElementById("cameraPreview");
   const cameraHint = document.getElementById("cameraHint");
+  const ageInput = document.getElementById("ageInput");
+  const workHoursInput = document.getElementById("workHoursInput");
+  const tirednessInput = document.getElementById("tirednessInput");
+  const tirednessValue = document.getElementById("tirednessValue");
+  const reviewMeta = document.getElementById("reviewMeta");
 
   function setLoading(isLoading) {
     if (isLoading) {
@@ -536,6 +578,12 @@
   document.addEventListener("DOMContentLoaded", () => {
     showPage("identify");
     if (nameInput) nameInput.focus();
+
+    if (tirednessInput && tirednessValue) {
+      tirednessInput.addEventListener("input", () => {
+        tirednessValue.textContent = String(tirednessInput.value || "");
+      });
+    }
   });
 
   async function confirmName() {
@@ -558,8 +606,7 @@
       }
       userName = data.name;
 
-      // Start quiz generation early (non-blocking), then show camera page.
-      prefetchQuiz();
+      // Go to camera page first.
       showPage("cameraSetup");
       await initCameraSetup();
     } catch (e) {
@@ -567,6 +614,8 @@
       alert("Erreur d'identification");
     }
   }
+
+  let prefetchPromise = null;
 
   async function prefetchQuiz() {
     if (!userName) return;
@@ -686,49 +735,93 @@
     showPage("home");
   }
 
-  async function startTest() {
-    currentQuestion = 0;
-    testStartTime = Date.now();
-    results.length = 0;
-    answersSubmittedCount = 0;
-    backgroundPollingActive = false;
-    showPage("questionPage");
-
+  async function postMetaIfPossible() {
+    const id = testId || prefetchedTestId;
+    if (!id) return;
+    if (!userMeta || Object.keys(userMeta).length === 0) return;
+    if (userMetaSent) return;
     try {
-      setLoading(true);
-
-      // Prefer the prefetched test if available.
-      if (prefetchedTestId) {
-        const st = await waitForPrefetchReady();
-        if (st && st.ok && st.status === "ready") {
-          testId = prefetchedTestId;
-          totalQuestions = prefetchedTotal || st.total || 0;
-          await loadQuestion(0);
-          return;
-        }
-        // Prefetch failed; fall back to blocking start_test.
-        prefetchedTestId = null;
-      }
-
-      const startResp = await fetch("/api/start_test", {
+      const resp = await fetch(`/api/test_meta/${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: userName, n: 4, difficulty: "easy" })
+        body: JSON.stringify({ meta: userMeta })
       });
-      const startData = await startResp.json();
-      if (!startData.ok) {
-        throw new Error(startData.error || "start_test failed");
+      const data = await resp.json();
+      if (data && data.ok) {
+        userMetaSent = true;
+      } else {
+        console.warn("test_meta failed:", data);
       }
-      testId = startData.test_id;
-      totalQuestions = startData.total || 0;
+    } catch (e) {
+      console.warn("test_meta error:", e);
+    }
+  }
+
+  async function continueAfterUserInfo() {
+    const age = ageInput && ageInput.value !== "" ? Number(ageInput.value) : null;
+    const workHours = workHoursInput && workHoursInput.value !== "" ? Number(workHoursInput.value) : null;
+    const tired = tirednessInput ? Number(tirednessInput.value) : null;
+
+    const camDeviceId = cameraSelect && cameraSelect.value ? cameraSelect.value : null;
+    const camLabel = (cameraSelect && cameraSelect.selectedIndex >= 0 && cameraSelect.options[cameraSelect.selectedIndex])
+      ? cameraSelect.options[cameraSelect.selectedIndex].textContent
+      : null;
+
+    userMeta = {
+      age: Number.isFinite(age) ? age : null,
+      consecutive_work_hours: Number.isFinite(workHours) ? workHours : null,
+      tiredness: Number.isFinite(tired) ? tired : null,
+      camera_device_id: camDeviceId,
+      camera_label: camLabel
+    };
+
+    // Ensure we have a prefetched test to attach meta + start questions.
+    try {
+      setLoading(true);
+      if (prefetchPromise) {
+        await prefetchPromise;
+      }
+      if (!prefetchedTestId) {
+        prefetchPromise = prefetchQuiz();
+        await prefetchPromise;
+      }
+      await postMetaIfPossible();
+
+      const st = await waitForPrefetchReady();
+      if (!st || !st.ok || st.status !== "ready") {
+        throw new Error("Quiz generation not ready");
+      }
+
+      // Start the actual test now.
+      testId = prefetchedTestId;
+      totalQuestions = prefetchedTotal || st.total || 0;
+
+      currentQuestion = 0;
+      testStartTime = Date.now();
+      results.length = 0;
+      answersSubmittedCount = 0;
+      backgroundPollingActive = false;
+
+      showPage("questionPage");
       await loadQuestion(0);
-    } catch (err) {
-      console.error("Erreur start_test:", err);
+    } catch (e) {
+      console.error(e);
       alert("Erreur lors de la génération du quiz");
       showPage("home");
     } finally {
       setLoading(false);
     }
+  }
+
+  async function startTest() {
+    // Requirement: start generating quiz in background on click,
+    // and show the info questionnaire immediately after the click.
+    prefetchedTestId = null;
+    prefetchedTotal = 0;
+    testId = null;
+    userMetaSent = false;
+    prefetchPromise = prefetchQuiz();
+    showPage("userInfo");
   }
 
   async function loadQuestion(index) {
@@ -748,6 +841,7 @@
         selectedQcmIndex = -1;
 
         const isQcm = qData.type === "qcm";
+        const isScenario = qData.type === "scenario";
 
         questionText.textContent = qData.question || "";
 
@@ -755,6 +849,9 @@
         if (isQcm) {
             questionTypeBadge.textContent = "QCM";
             questionTypeBadge.className = "question-type-badge badge-qcm";
+        } else if (isScenario) {
+          questionTypeBadge.textContent = "Scénario";
+          questionTypeBadge.className = "question-type-badge badge-open";
         } else {
             questionTypeBadge.textContent = "Question ouverte";
             questionTypeBadge.className = "question-type-badge badge-open";
@@ -985,6 +1082,16 @@ function selectQcmChoice(index) {
 
     const per = (data.grading && data.grading.per_question) ? data.grading.per_question : [];
     const answers = data.answers || [];
+    const meta = data.meta || userMeta || {};
+
+    if (reviewMeta) {
+      const parts = [];
+      if (userName) parts.push(`<b>Nom:</b> ${escapeHtml(userName)}`);
+      if (meta.age !== null && meta.age !== undefined && meta.age !== "") parts.push(`<b>Âge:</b> ${escapeHtml(meta.age)}`);
+      if (meta.consecutive_work_hours !== null && meta.consecutive_work_hours !== undefined && meta.consecutive_work_hours !== "") parts.push(`<b>Heures consécutives:</b> ${escapeHtml(meta.consecutive_work_hours)}`);
+      if (meta.tiredness !== null && meta.tiredness !== undefined && meta.tiredness !== "") parts.push(`<b>Fatigue (1-10):</b> ${escapeHtml(meta.tiredness)}`);
+      reviewMeta.innerHTML = parts.length ? parts.join(" &nbsp; • &nbsp; ") : "";
+    }
     reviewContent.innerHTML = "";
 
     per.forEach((g, idx) => {
@@ -1024,6 +1131,9 @@ function selectQcmChoice(index) {
     userName = "";
     prefetchedTestId = null;
     prefetchedTotal = 0;
+    prefetchPromise = null;
+    userMeta = {};
+    userMetaSent = false;
     if (nameInput) nameInput.value = "";
 
     if (cameraStream) {

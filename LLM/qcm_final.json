@@ -1,0 +1,5510 @@
+[
+  {
+    "id": 1,
+    "question": "According to Rule 1, to which vessels do the COLREGs apply?",
+    "choices": [
+      "All vessels upon the high seas and in all waters connected therewith navigable by seagoing vessels",
+      "Only commercial vessels",
+      "Only vessels over 24 meters",
+      "Only vessels underway"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 2,
+    "question": "Under Rule 2, which statement is correct regarding responsibility?",
+    "choices": [
+      "Nothing in the rules exonerates a vessel from the consequences of neglect",
+      "Following the rules always removes responsibility",
+      "Only the master is responsible",
+      "Responsibility applies only in collisions"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 3,
+    "question": "According to Rule 3, what does the term 'underway' mean?",
+    "choices": [
+      "A vessel not at anchor, not made fast to the shore, and not aground",
+      "A vessel making way through the water",
+      "A vessel moving faster than 3 knots",
+      "A vessel with engines running"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 4,
+    "question": "Rule 5 requires that a proper lookout be maintained by:",
+    "choices": [
+      "Sight and hearing as well as by all available means",
+      "Radar only",
+      "Visual observation only",
+      "The officer of the watch only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 5,
+    "question": "According to Rule 6, which factor must be considered when determining safe speed?",
+    "choices": [
+      "Traffic density",
+      "Crew experience only",
+      "Engine power only",
+      "Company standing orders"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 6,
+    "question": "Rule 7 states that risk of collision shall be determined using:",
+    "choices": [
+      "All available means appropriate to the prevailing circumstances",
+      "Visual observation only",
+      "Radar plotting only",
+      "AIS information only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 7,
+    "question": "Under Rule 7, what indicates a risk of collision?",
+    "choices": [
+      "Constant bearing with decreasing range",
+      "Increasing bearing with constant range",
+      "Rapid change of bearing",
+      "Large CPA"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 8,
+    "question": "Rule 8 requires that action to avoid collision shall be:",
+    "choices": [
+      "Positive, made in ample time, and with due regard to good seamanship",
+      "Small and gradual",
+      "Delayed until close-quarters",
+      "Communicated by VHF first"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 9,
+    "question": "According to Rule 9, vessels in a narrow channel shall:",
+    "choices": [
+      "Keep as near to the outer limit of the channel on her starboard side as is safe and practicable",
+      "Keep to the center of the channel",
+      "Navigate on either side",
+      "Sound five short blasts continuously"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 10,
+    "question": "Under Rule 10, which vessel shall not impede the safe passage of a traffic lane?",
+    "choices": [
+      "A vessel less than 20 meters in length",
+      "A vessel constrained by her draft",
+      "A power-driven vessel over 50 meters",
+      "A vessel engaged in fishing"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 11,
+    "question": "Rule 11 applies to vessels:",
+    "choices": [
+      "In sight of one another",
+      "In restricted visibility",
+      "At anchor",
+      "Not under command"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 12,
+    "question": "Under Rule 12, when two sailing vessels have the wind on the same side, which vessel keeps out of the way?",
+    "choices": [
+      "The vessel to windward",
+      "The vessel to leeward",
+      "The larger vessel",
+      "The vessel on port tack"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 13,
+    "question": "Rule 13 defines overtaking as approaching another vessel from a direction more than:",
+    "choices": [
+      "22.5 degrees abaft her beam",
+      "10 degrees abaft the beam",
+      "45 degrees abaft the beam",
+      "Dead astern only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 14,
+    "question": "According to Rule 14, in a head-on situation, each power-driven vessel shall:",
+    "choices": [
+      "Alter course to starboard",
+      "Alter course to port",
+      "Reduce speed only",
+      "Maintain course"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 15,
+    "question": "Rule 15 states that in a crossing situation the give-way vessel shall:",
+    "choices": [
+      "Keep out of the way",
+      "Maintain course and speed",
+      "Sound five short blasts",
+      "Stop engines"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 16,
+    "question": "Under Rule 16, the give-way vessel shall take action:",
+    "choices": [
+      "As early as possible",
+      "Only when CPA is less than 0.5 NM",
+      "Only after VHF agreement",
+      "Only by reducing speed"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 17,
+    "question": "Rule 17 allows the stand-on vessel to take action when:",
+    "choices": [
+      "It becomes apparent that the give-way vessel is not taking appropriate action",
+      "CPA is zero",
+      "Ordered by VTS",
+      "In all circumstances"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 18,
+    "question": "According to Rule 18, which vessel has the highest priority?",
+    "choices": [
+      "Vessel not under command",
+      "Vessel constrained by her draft",
+      "Fishing vessel",
+      "Sailing vessel"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 19,
+    "question": "Rule 19 applies when vessels are:",
+    "choices": [
+      "Not in sight of one another in restricted visibility",
+      "In sight at night",
+      "At anchor",
+      "In narrow channels"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 20,
+    "question": "In restricted visibility, a power-driven vessel detecting another by radar alone shall:",
+    "choices": [
+      "Avoid altering course to port for a vessel forward of the beam",
+      "Immediately stop engines",
+      "Turn hard to port",
+      "Sound five short blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 21,
+    "question": "In a crossing situation between two power-driven vessels, which vessel is the give-way vessel?",
+    "choices": [
+      "The vessel which has the other on her starboard side",
+      "The vessel which has the other on her port side",
+      "The faster vessel",
+      "The larger vessel"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 22,
+    "question": "According to Rule 16, what is the responsibility of the give-way vessel?",
+    "choices": [
+      "To take early and substantial action to keep well clear",
+      "To maintain course and speed",
+      "To sound a danger signal",
+      "To stop engines"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 23,
+    "question": "What is required from the stand-on vessel under Rule 17?",
+    "choices": [
+      "Maintain course and speed",
+      "Alter course immediately",
+      "Reduce speed only",
+      "Sound one short blast"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 24,
+    "question": "When may the stand-on vessel take action to avoid collision?",
+    "choices": [
+      "When it becomes apparent that the give-way vessel is not taking appropriate action",
+      "Immediately when risk of collision exists",
+      "Only after sounding a danger signal",
+      "Never"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 25,
+    "question": "Which vessel shall keep out of the way of a vessel not under command?",
+    "choices": [
+      "All other vessels",
+      "Only power-driven vessels",
+      "Only sailing vessels",
+      "Fishing vessels only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 26,
+    "question": "Under Rule 18, which vessel has priority over a power-driven vessel?",
+    "choices": [
+      "A sailing vessel",
+      "A vessel engaged in fishing",
+      "A vessel not under command",
+      "All of the above"
+    ],
+    "correct_answer": 4,
+    "difficulty": "medium"
+  },
+  {
+    "id": 27,
+    "question": "Which vessel must keep out of the way of a vessel constrained by her draft?",
+    "choices": [
+      "A power-driven vessel",
+      "A sailing vessel",
+      "A fishing vessel",
+      "All vessels except vessels not under command"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 28,
+    "question": "What lights must a vessel not under command exhibit at night?",
+    "choices": [
+      "Two all-round red lights in a vertical line",
+      "One all-round white light",
+      "Red and green sidelights",
+      "Three all-round red lights"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 29,
+    "question": "What day shape indicates a vessel not under command?",
+    "choices": [
+      "Two black balls in a vertical line",
+      "One black ball",
+      "A black diamond",
+      "A black cone apex up"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 30,
+    "question": "Which lights indicate a vessel constrained by her draft?",
+    "choices": [
+      "Three all-round red lights in a vertical line",
+      "Two all-round red lights",
+      "Red-white-red lights",
+      "Three white masthead lights"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 31,
+    "question": "What day shape identifies a vessel constrained by her draft?",
+    "choices": [
+      "A black cylinder",
+      "Two black balls",
+      "One black cone",
+      "Three black cones"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 32,
+    "question": "What lights does a vessel engaged in fishing (other than trawling) display?",
+    "choices": [
+      "Red over white all-round lights",
+      "Green over white all-round lights",
+      "Two white masthead lights",
+      "Red over red lights"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 33,
+    "question": "Which lights indicate a vessel engaged in trawling?",
+    "choices": [
+      "Green over white all-round lights",
+      "Red over white all-round lights",
+      "Two all-round red lights",
+      "White over red lights"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 34,
+    "question": "What sound signal indicates a vessel altering course to starboard?",
+    "choices": [
+      "One short blast",
+      "Two short blasts",
+      "Three short blasts",
+      "Five short blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 35,
+    "question": "What sound signal indicates a vessel altering course to port?",
+    "choices": [
+      "Two short blasts",
+      "One short blast",
+      "Three short blasts",
+      "Five short blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 36,
+    "question": "What does three short blasts indicate?",
+    "choices": [
+      "The vessel is operating astern propulsion",
+      "The vessel is altering course to port",
+      "The vessel is in distress",
+      "The vessel is anchored"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 37,
+    "question": "What does the danger signal consist of?",
+    "choices": [
+      "At least five short and rapid blasts",
+      "One prolonged blast",
+      "Two prolonged blasts",
+      "Three short blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 38,
+    "question": "Which sound signal must a power-driven vessel make in restricted visibility when underway?",
+    "choices": [
+      "One prolonged blast at intervals not exceeding two minutes",
+      "Two prolonged blasts",
+      "One short blast",
+      "Five short blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 39,
+    "question": "What sound signal does a vessel at anchor make in restricted visibility?",
+    "choices": [
+      "Rapid ringing of the bell for about 5 seconds every minute",
+      "One prolonged blast",
+      "Two short blasts",
+      "Three short blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 40,
+    "question": "What additional sound signal may a vessel at anchor sound to warn approaching vessels?",
+    "choices": [
+      "One short, one prolonged, one short blast",
+      "Five short blasts",
+      "One prolonged blast",
+      "Two prolonged blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 41,
+    "question": "Which lights must a power-driven vessel underway exhibit at night?",
+    "choices": [
+      "Masthead light, sidelights, and sternlight",
+      "Only sidelights",
+      "Only masthead light",
+      "Anchor light only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 42,
+    "question": "What is the color and arc of visibility of sidelights?",
+    "choices": [
+      "Green on starboard, red on port, each showing 112.5 degrees",
+      "White lights showing 180 degrees",
+      "Red lights showing 90 degrees",
+      "Green lights showing 135 degrees"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 43,
+    "question": "What is the arc of visibility of a sternlight?",
+    "choices": [
+      "135 degrees",
+      "112.5 degrees",
+      "180 degrees",
+      "360 degrees"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 44,
+    "question": "What is the arc of visibility of a masthead light?",
+    "choices": [
+      "225 degrees",
+      "135 degrees",
+      "180 degrees",
+      "360 degrees"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 45,
+    "question": "Which vessel shall exhibit an anchor light?",
+    "choices": [
+      "A vessel at anchor",
+      "A vessel underway",
+      "A vessel constrained by her draft only",
+      "A fishing vessel underway"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 46,
+    "question": "According to Rule 6, which factor must be taken into account when determining safe speed?",
+    "choices": [
+      "Traffic density",
+      "Vessel flag state",
+      "Crew experience",
+      "Cargo type"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 47,
+    "question": "Which environmental factor is explicitly mentioned in Rule 6 for determining safe speed?",
+    "choices": [
+      "State of visibility",
+      "Water salinity",
+      "Sea temperature",
+      "Air pressure"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 48,
+    "question": "Under Rule 6, vessels fitted with radar must additionally consider:",
+    "choices": [
+      "Radar limitations and performance",
+      "Radar manufacturer instructions",
+      "Radar power consumption",
+      "Radar antenna height only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 49,
+    "question": "According to Rule 7, which action helps detect risk of collision?",
+    "choices": [
+      "Systematic radar plotting",
+      "Listening to VHF conversations",
+      "Observing navigation lights only",
+      "Relying on AIS data alone"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 50,
+    "question": "What assumption should not be made regarding collision risk under Rule 7?",
+    "choices": [
+      "That risk does not exist when bearing does not appreciably change",
+      "That radar is inaccurate",
+      "That AIS data may lag",
+      "That vessels may maneuver unexpectedly"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 51,
+    "question": "Under Rule 8, what type of maneuver should be avoided if possible?",
+    "choices": [
+      "A succession of small alterations of course or speed",
+      "A bold alteration of course",
+      "Early reduction of speed",
+      "Clear course alteration"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 52,
+    "question": "What is the preferred method of avoiding collision according to Rule 8?",
+    "choices": [
+      "A clear and decisive maneuver",
+      "Stopping engines immediately",
+      "Sounding danger signals only",
+      "Waiting for the other vessel to act"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 53,
+    "question": "Rule 8 emphasizes that any alteration of course should be:",
+    "choices": [
+      "Large enough to be readily apparent",
+      "As small as possible",
+      "Gradual and slow",
+      "Only to port"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 54,
+    "question": "In a narrow channel, which vessel shall not impede passage of a vessel that can safely navigate only within the channel?",
+    "choices": [
+      "A vessel of less than 20 meters or a sailing vessel",
+      "A power-driven vessel only",
+      "A fishing vessel only",
+      "All vessels"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 55,
+    "question": "Which vessel shall not cross a narrow channel if it impedes another vessel?",
+    "choices": [
+      "A vessel that can safely navigate only within the channel",
+      "A vessel of less than 20 meters",
+      "A vessel constrained by draft",
+      "A power-driven vessel"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 56,
+    "question": "What sound signal is required when nearing a bend in a narrow channel?",
+    "choices": [
+      "One prolonged blast",
+      "Two short blasts",
+      "Five short blasts",
+      "Three short blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 57,
+    "question": "Which vessels are required to comply with Traffic Separation Schemes?",
+    "choices": [
+      "All vessels using the scheme",
+      "Only power-driven vessels",
+      "Only vessels over 20 meters",
+      "Only commercial vessels"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 58,
+    "question": "How should a vessel cross a traffic lane?",
+    "choices": [
+      "At right angles to the general direction of traffic flow",
+      "At the shallowest angle possible",
+      "Along the separation zone",
+      "Parallel to traffic"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 59,
+    "question": "Which vessels should normally avoid using traffic separation schemes?",
+    "choices": [
+      "Fishing vessels and sailing vessels",
+      "Vessels constrained by draft",
+      "Large tankers",
+      "High-speed craft"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 60,
+    "question": "Under Rule 11, steering and sailing rules apply when vessels are:",
+    "choices": [
+      "In sight of one another",
+      "In restricted visibility",
+      "At night only",
+      "Using radar only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 61,
+    "question": "Rule 12 applies to which type of vessels?",
+    "choices": [
+      "Sailing vessels",
+      "Power-driven vessels",
+      "Fishing vessels",
+      "All vessels"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 62,
+    "question": "When two sailing vessels have the wind on the same side, which keeps out of the way?",
+    "choices": [
+      "The windward vessel",
+      "The leeward vessel",
+      "The larger vessel",
+      "The faster vessel"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 63,
+    "question": "When one sailing vessel is overtaking another, which rule applies?",
+    "choices": [
+      "Rule 13",
+      "Rule 12",
+      "Rule 15",
+      "Rule 18"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 64,
+    "question": "How is an overtaking vessel defined?",
+    "choices": [
+      "Approaching from more than 22.5 degrees abaft the beam",
+      "Approaching from ahead",
+      "Approaching from the starboard bow",
+      "Approaching from the port bow"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 65,
+    "question": "Which vessel must keep out of the way in an overtaking situation?",
+    "choices": [
+      "The overtaking vessel",
+      "The vessel being overtaken",
+      "The larger vessel",
+      "The slower vessel"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 66,
+    "question": "Which lights are exhibited by a pilot vessel on duty at night?",
+    "choices": [
+      "White over red all-round lights",
+      "Red over white lights",
+      "Green over white lights",
+      "Two red lights"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 67,
+    "question": "What day shape identifies a pilot vessel on duty?",
+    "choices": [
+      "No day shape is required",
+      "A black ball",
+      "A black cone apex up",
+      "A black cylinder"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 68,
+    "question": "Which vessel shall exhibit three all-round lights red-white-red in a vertical line?",
+    "choices": [
+      "A vessel restricted in her ability to maneuver",
+      "A vessel constrained by her draft",
+      "A vessel not under command",
+      "A vessel engaged in fishing"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 69,
+    "question": "What day shape corresponds to a vessel restricted in her ability to maneuver?",
+    "choices": [
+      "Ball-diamond-ball",
+      "Three balls",
+      "A single diamond",
+      "Two cones"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 70,
+    "question": "Which vessel shall display additional lights to indicate the side on which another vessel may pass?",
+    "choices": [
+      "A vessel engaged in dredging or underwater operations",
+      "A sailing vessel",
+      "A pilot vessel",
+      "A vessel at anchor"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 71,
+    "question": "What is the day shape for a vessel engaged in towing where the length of tow exceeds 200 meters?",
+    "choices": [
+      "A diamond shape on the towing vessel and the tow",
+      "A single black ball",
+      "Two black cones apex together",
+      "No shape required"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 72,
+    "question": "A vessel pushing ahead or towing alongside must exhibit:",
+    "choices": [
+      "Two masthead lights in a vertical line",
+      "A single masthead light",
+      "Sidelights only",
+      "Sternlight only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 73,
+    "question": "What day shape indicates a vessel constrained by her draft?",
+    "choices": [
+      "A black cylinder",
+      "A black ball",
+      "A diamond",
+      "Two cones apex together"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 74,
+    "question": "A vessel aground shall exhibit which lights if less than 50 meters in length?",
+    "choices": [
+      "Two all-round red lights and one anchor light",
+      "Three all-round red lights",
+      "Two balls",
+      "One white light"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 75,
+    "question": "A vessel aground of 100 meters or more in length shall exhibit:",
+    "choices": [
+      "Three all-round red lights and two balls",
+      "Two all-round red lights and one anchor light",
+      "Two all-round white lights",
+      "One red and one white light"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 76,
+    "question": "What frequency defines a 'flashing light' in COLREGs?",
+    "choices": [
+      "120 flashes or more per minute",
+      "60 flashes per minute",
+      "30 flashes per minute",
+      "10 flashes per minute"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 77,
+    "question": "What is the duration of a prolonged blast according to Rule 32?",
+    "choices": [
+      "4 to 6 seconds",
+      "2 to 4 seconds",
+      "1 second",
+      "8 to 10 seconds"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 78,
+    "question": "Which vessels are exempted from exhibiting anchor lights in special anchorage areas?",
+    "choices": [
+      "Vessels of less than 20 meters",
+      "Power-driven vessels only",
+      "Sailing vessels only",
+      "Fishing vessels"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 79,
+    "question": "A seaplane on the water shall generally keep well clear of:",
+    "choices": [
+      "All vessels",
+      "Fishing vessels only",
+      "Sailing vessels only",
+      "Power-driven vessels only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 80,
+    "question": "A vessel engaged in mine clearance operations shall exhibit:",
+    "choices": [
+      "Red over red over white lights",
+      "Green over white lights",
+      "White over red lights",
+      "Two red lights"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 81,
+    "question": "How close may another vessel safely approach a mine clearance vessel?",
+    "choices": [
+      "No closer than 1000 meters",
+      "No closer than 500 meters",
+      "No closer than 200 meters",
+      "No restriction"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 82,
+    "question": "What is the whistle frequency range for vessels of 100 meters or more?",
+    "choices": [
+      "130–350 Hz",
+      "70–200 Hz",
+      "250–700 Hz",
+      "180–450 Hz"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 83,
+    "question": "Which vessel keeps out of the way when two sailing vessels approach with the wind on different sides?",
+    "choices": [
+      "The vessel with wind on the port side",
+      "The vessel with wind on the starboard side",
+      "The faster vessel",
+      "The larger vessel"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 84,
+    "question": "Which vessel is considered 'restricted in her ability to maneuver'?",
+    "choices": [
+      "A vessel engaged in replenishment while underway",
+      "A vessel constrained by draft",
+      "A sailing vessel in light winds",
+      "A vessel engaged in fishing with nets"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 85,
+    "question": "A vessel engaged in pilotage duty exhibits which lights when underway?",
+    "choices": [
+      "White over red lights",
+      "Red over white lights",
+      "Green over white lights",
+      "Two red lights"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 86,
+    "question": "What sound signal does a vessel engaged on pilotage duty use to identify itself?",
+    "choices": [
+      "Four short blasts",
+      "Three short blasts",
+      "Two prolonged blasts",
+      "One long, one short"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 87,
+    "question": "When navigating in restricted visibility, what speed must a vessel maintain?",
+    "choices": [
+      "Safe speed adapted to prevailing conditions",
+      "Half speed",
+      "Maximum speed",
+      "Constant 10 knots"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 88,
+    "question": "What lights shall be exhibited by a vessel of less than 12 meters in lieu of full lights?",
+    "choices": [
+      "An all-round white light and sidelights",
+      "One red light only",
+      "Sidelights only",
+      "No lights required"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 89,
+    "question": "A sailing vessel of less than 20 meters may combine her sidelights and sternlight into:",
+    "choices": [
+      "One lantern at or near the top of the mast",
+      "One lantern on the bow",
+      "Three separate lights",
+      "No lights"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 90,
+    "question": "A vessel engaged in fishing at anchor shall exhibit:",
+    "choices": [
+      "The lights or shapes prescribed for a vessel engaged in fishing",
+      "Anchor lights only",
+      "Anchor ball only",
+      "No lights"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 91,
+    "question": "Which vessel exhibits three all-round lights with top and bottom red and middle white?",
+    "choices": [
+      "A vessel restricted in her ability to maneuver",
+      "A vessel engaged in mineclearance",
+      "A vessel constrained by draft",
+      "A vessel not under command"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 92,
+    "question": "What lights must a vessel constrained by her draft exhibit at night?",
+    "choices": [
+      "Three all-round red lights and a cylinder",
+      "Two all-round white lights",
+      "Masthead light and sidelights only",
+      "Anchor light only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 93,
+    "question": "Which vessel shall exhibit lights or shapes to indicate danger of impeding passage?",
+    "choices": [
+      "Vessel engaged in dredging or underwater operations",
+      "Fishing vessel",
+      "Sailing vessel",
+      "Power-driven vessel"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 94,
+    "question": "How does a vessel signal her intention to overtake another?",
+    "choices": [
+      "One short blast",
+      "Two short blasts",
+      "Three short blasts",
+      "One prolonged blast"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 95,
+    "question": "What signal indicates a vessel operating astern propulsion?",
+    "choices": [
+      "Three short blasts",
+      "Two short blasts",
+      "One prolonged blast",
+      "Five short blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 96,
+    "question": "Which signal indicates distress and requires assistance?",
+    "choices": [
+      "Orange smoke signal",
+      "Red flare",
+      "Green star rocket",
+      "White flag"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 97,
+    "question": "A vessel proceeding downstream in a narrow channel with a following current shall:",
+    "choices": [
+      "Follow standard head-on rules; no special right of way",
+      "Have absolute right of way",
+      "Give way to upbound vessel",
+      "Exchange three blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 98,
+    "question": "What lights shall be exhibited by a power-driven vessel pushing ahead or towing alongside?",
+    "choices": [
+      "Two masthead lights in a vertical line",
+      "One masthead light",
+      "Sidelights only",
+      "Sternlight only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 99,
+    "question": "Which lights must a sailing vessel exhibit when underway at night?",
+    "choices": [
+      "Sidelights and sternlight",
+      "Masthead light only",
+      "Anchor light",
+      "No lights"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 100,
+    "question": "What is the minimum visibility range of the masthead light for vessels under 12 meters?",
+    "choices": [
+      "2 miles",
+      "3 miles",
+      "5 miles",
+      "1 mile"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 101,
+    "question": "A vessel at anchor of 100 meters or more shall exhibit:",
+    "choices": [
+      "Two all-round white lights forward and aft",
+      "One white light only",
+      "Two red lights",
+      "Three balls"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 102,
+    "question": "What color and placement identifies a fishing vessel engaged in trawling?",
+    "choices": [
+      "Green over white",
+      "Red over white",
+      "Red over red",
+      "White over red"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 103,
+    "question": "How should a vessel using a Traffic Separation Scheme normally join or leave a lane?",
+    "choices": [
+      "At the termination of the lane or at a small angle",
+      "At 90 degrees",
+      "Within the separation zone",
+      "In opposite direction if safe"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 104,
+    "question": "When two vessels are in sight of one another, a power-driven vessel operating astern propulsion shall sound:",
+    "choices": [
+      "Three short blasts",
+      "One prolonged blast",
+      "Two short blasts",
+      "Five short blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 105,
+    "question": "Which vessels are required to maintain a proper look-out at all times?",
+    "choices": [
+      "All vessels",
+      "Only power-driven vessels",
+      "Only sailing vessels",
+      "Only vessels in restricted visibility"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 106,
+    "question": "Which vessels must comply with the Rules of Conduct in restricted visibility?",
+    "choices": [
+      "All vessels not in sight of one another in restricted visibility",
+      "All vessels in sight of each other",
+      "Power-driven vessels only",
+      "Vessels in narrow channels at night"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 107,
+    "question": "Rule 21 defines a flashing light as a light with frequency of at least:",
+    "choices": [
+      "120 flashes per minute",
+      "60 flashes per minute",
+      "30 flashes per minute",
+      "10 flashes per minute"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 108,
+    "question": "Under Rule 5, what is a proper look-out?",
+    "choices": [
+      "By sight, hearing, and all available means",
+      "By sight only",
+      "By radar only",
+      "By VHF communication only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 109,
+    "question": "A vessel constrained by her draft must keep out of the way of:",
+    "choices": [
+      "All other vessels",
+      "Fishing vessels",
+      "Sailing vessels",
+      "Power-driven vessels"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 110,
+    "question": "A vessel not under command shall exhibit:",
+    "choices": [
+      "Two all-round red lights in a vertical line, sidelights and sternlight",
+      "Three all-round red lights",
+      "Two all-round red lights only",
+      "Sidelights only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 111,
+    "question": "What color is used for the anchor light?",
+    "choices": [
+      "White",
+      "Red",
+      "Green",
+      "Yellow"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 112,
+    "question": "Which vessels are considered 'sailing vessels' under COLREGs?",
+    "choices": [
+      "Vessels under sail only, not using engine",
+      "Vessels using engine primarily",
+      "Fishing vessels",
+      "All vessels with masts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 113,
+    "question": "In a crossing situation, which vessel keeps out of the way?",
+    "choices": [
+      "The vessel which has the other on her starboard side",
+      "The stand-on vessel",
+      "The vessel with wind on port side",
+      "The overtaking vessel"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 114,
+    "question": "What is the meaning of a 'prolonged blast' in fog or restricted visibility?",
+    "choices": [
+      "4 to 6 seconds",
+      "1 second",
+      "2 seconds",
+      "10 seconds"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 115,
+    "question": "Which vessel shall keep out of the way of a vessel restricted in her ability to maneuver?",
+    "choices": [
+      "All other vessels",
+      "Power-driven vessels only",
+      "Sailing vessels only",
+      "Fishing vessels only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 116,
+    "question": "Which vessel is defined as 'not under command'?",
+    "choices": [
+      "Unable to maneuver due to exceptional circumstances",
+      "Vessel fishing with nets",
+      "Sailing vessel in light winds",
+      "Power-driven vessel underway"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 117,
+    "question": "A seaplane on the water must:",
+    "choices": [
+      "Keep well clear of all vessels",
+      "Yield to fishing vessels only",
+      "Yield to power-driven vessels only",
+      "Keep distance from sailing vessels only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 118,
+    "question": "What signal does a vessel sound when leaving a berth or dock in restricted visibility?",
+    "choices": [
+      "One prolonged blast",
+      "Two short blasts",
+      "Three short blasts",
+      "Five short blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 119,
+    "question": "Which vessel shall exhibit two all-round white lights when at anchor?",
+    "choices": [
+      "Vessel 100 meters or more",
+      "Vessel less than 12 meters",
+      "Fishing vessel",
+      "Sailing vessel under 20 meters"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 120,
+    "question": "Which vessel shall not impede the passage of a vessel restricted in her ability to maneuver?",
+    "choices": [
+      "All other vessels",
+      "Power-driven vessels only",
+      "Sailing vessels only",
+      "Fishing vessels only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 121,
+    "question": "These Rules shall apply to all vessels upon:",
+    "choices": [
+      "Only the high seas",
+      "The high seas and in all waters connected therewith navigable by seagoing vessels",
+      "Territorial waters only",
+      "Rivers and lakes only"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 122,
+    "question": "What is the definition of a 'power-driven vessel'?",
+    "choices": [
+      "A vessel with sails",
+      "Any vessel propelled by machinery",
+      "A vessel with oars",
+      "A vessel at anchor"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 123,
+    "question": "A vessel is considered 'underway' when:",
+    "choices": [
+      "It is at anchor",
+      "It is made fast to the shore",
+      "It is not at anchor, or made fast to the shore, or aground",
+      "It is aground"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 124,
+    "question": "According to Rule 5, every vessel shall at all times maintain:",
+    "choices": [
+      "A radar watch only",
+      "A proper look-out by sight and hearing as well as by all available means",
+      "An engine room watch",
+      "A radio watch only"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 125,
+    "question": "A 'short blast' on the whistle means a blast of about:",
+    "choices": [
+      "Half a second's duration",
+      "One second's duration",
+      "Two seconds' duration",
+      "Four to six seconds' duration"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 126,
+    "question": "The color of the sidelight on the starboard side is:",
+    "choices": [
+      "Red",
+      "White",
+      "Green",
+      "Yellow"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 127,
+    "question": "When two power-driven vessels are meeting head-on, each shall alter her course to:",
+    "choices": [
+      "Port",
+      "Starboard",
+      "Stop engines",
+      "Reverse"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 128,
+    "question": "What does one short blast on the whistle mean when vessels are in sight of one another?",
+    "choices": [
+      "I am altering my course to port",
+      "I am altering my course to starboard",
+      "I am operating astern propulsion",
+      "I am in doubt"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 129,
+    "question": "What does two short blasts on the whistle mean?",
+    "choices": [
+      "I am altering my course to starboard",
+      "I am altering my course to port",
+      "I am operating astern propulsion",
+      "I intend to overtake"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 130,
+    "question": "The term 'restricted visibility' includes:",
+    "choices": [
+      "Only fog",
+      "Fog, mist, falling snow, heavy rainstorms, sandstorms or any other similar causes",
+      "Darkness only",
+      "Heavy traffic only"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 131,
+    "question": "A vessel proceeding along a narrow channel shall keep as near to the outer limit which lies on her:",
+    "choices": [
+      "Port side",
+      "Starboard side",
+      "Either side",
+      "Center of the channel"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 132,
+    "question": "The towline should be illuminated when:",
+    "choices": [
+      "Always",
+      "When impracticable to show normal towing lights",
+      "Never",
+      "Only at night"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 133,
+    "question": "An all-round light shows an unbroken light over an arc of:",
+    "choices": [
+      "180 degrees",
+      "225 degrees",
+      "270 degrees",
+      "360 degrees"
+    ],
+    "correct_answer": 4,
+    "difficulty": "easy"
+  },
+  {
+    "id": 134,
+    "question": "Rules concerning lights shall be complied with from:",
+    "choices": [
+      "Sunrise to sunset",
+      "Sunset to sunrise",
+      "All times",
+      "In restricted visibility only"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 135,
+    "question": "Vessels shall be deemed to be in sight of one another only when:",
+    "choices": [
+      "They are detected by radar",
+      "One can be observed visually from the other",
+      "They are within 5 miles",
+      "They are within radio range"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 136,
+    "question": "The international distress signal by Morse Code is:",
+    "choices": [
+      "... --- ...",
+      "--- ... ---",
+      "... ... ...",
+      "--- --- ---"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 137,
+    "question": "The spoken word for distress by radiotelephony is:",
+    "choices": [
+      "Help",
+      "Emergency",
+      "Mayday",
+      "Distress"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 138,
+    "question": "A WIG craft stands for:",
+    "choices": [
+      "Water Integrated Glider",
+      "Wing-In-Ground craft",
+      "Waterway Inspection Glider",
+      "Wide Interface Glider"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 139,
+    "question": "The stand-on vessel should initially:",
+    "choices": [
+      "Alter course to port",
+      "Alter course to starboard",
+      "Keep her course and speed",
+      "Stop immediately"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 140,
+    "question": "The smoke signal for distress gives off what color smoke?",
+    "choices": [
+      "Red",
+      "White",
+      "Orange",
+      "Black"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 141,
+    "question": "The color of a towing light is:",
+    "choices": [
+      "White",
+      "Red",
+      "Green",
+      "Yellow"
+    ],
+    "correct_answer": 4,
+    "difficulty": "easy"
+  },
+  {
+    "id": 142,
+    "question": "Shapes shall be:",
+    "choices": [
+      "White",
+      "Red",
+      "Black",
+      "Any color"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 143,
+    "question": "The Convention on the International Regulations for Preventing Collisions at Sea was adopted in:",
+    "choices": [
+      "1960",
+      "1972",
+      "1980",
+      "1990"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 144,
+    "question": "In determining if there is risk of collision, an approaching vessel's bearing that:",
+    "choices": [
+      "Changes rapidly indicates collision risk",
+      "Does not appreciably change may indicate collision risk",
+      "Changes slowly indicates no risk",
+      "Is astern indicates collision risk"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 145,
+    "question": "An overtaking vessel shall keep out of the way of the vessel being overtaken until she is:",
+    "choices": [
+      "Abeam of the other vessel",
+      "Past and clear",
+      "Ahead of the other vessel",
+      "One mile past"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 146,
+    "question": "A head-on situation exists when two power-driven vessels meet on:",
+    "choices": [
+      "Crossing courses",
+      "Reciprocal or nearly reciprocal courses",
+      "Parallel courses same direction",
+      "Any converging courses"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 147,
+    "question": "Anchoring in a narrow channel is:",
+    "choices": [
+      "Permitted at any time",
+      "To be avoided unless circumstances require",
+      "Permitted in daylight only",
+      "Never permitted"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 148,
+    "question": "Every vessel shall proceed at a safe speed adapted to the prevailing circumstances of:",
+    "choices": [
+      "The voyage only",
+      "Restricted visibility",
+      "Daylight only",
+      "Clear weather only"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 149,
+    "question": "A vessel which detects by radar alone the presence of another vessel shall determine if a close-quarters situation is developing and/or:",
+    "choices": [
+      "Increase speed",
+      "Risk of collision exists",
+      "Call the other vessel",
+      "Turn off radar"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 150,
+    "question": "The term 'length' and 'breadth' of a vessel means:",
+    "choices": [
+      "Registered dimensions",
+      "The length overall and greatest breadth",
+      "Waterline dimensions",
+      "Approximate dimensions"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 151,
+    "question": "The sternlight shall be placed as nearly as practicable at:",
+    "choices": [
+      "The bow",
+      "Amidships",
+      "The stern",
+      "The masthead"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 152,
+    "question": "A vessel about to round a bend where other vessels may be obscured shall sound:",
+    "choices": [
+      "One short blast",
+      "Two short blasts",
+      "One prolonged blast",
+      "Three short blasts"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 153,
+    "question": "A rocket parachute flare or a hand flare showing red color is considered a:",
+    "choices": [
+      "Routine signal",
+      "Warning signal",
+      "Distress signal",
+      "Maneuvering signal"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 154,
+    "question": "A square flag with a ball or anything resembling a ball above or below it is a:",
+    "choices": [
+      "Pilot signal",
+      "Distress signal",
+      "Quarantine signal",
+      "Navigation signal"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 155,
+    "question": "Continuous sounding of any fog-signalling apparatus is a:",
+    "choices": [
+      "Normal fog signal",
+      "Distress signal",
+      "Warning signal",
+      "Maneuvering signal"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 156,
+    "question": "Flames on a vessel (as from a burning tar barrel, oil barrel, etc.) is a:",
+    "choices": [
+      "Fire drill signal",
+      "Distress signal",
+      "Warning signal",
+      "Navigation hazard"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 157,
+    "question": "A gun or other explosive signal fired at intervals of about one minute is a:",
+    "choices": [
+      "Ceremonial signal",
+      "Warning signal",
+      "Distress signal",
+      "Maneuvering signal"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 158,
+    "question": "Slowly and repeatedly raising and lowering arms outstretched to each side is a:",
+    "choices": [
+      "Greeting signal",
+      "Distress signal",
+      "Pilot wanted signal",
+      "Anchoring signal"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 159,
+    "question": "An EPIRB is a:",
+    "choices": [
+      "Electronic Position Indicating Radio Beacon",
+      "Emergency Position Indicating Radio Beacon",
+      "Electronic Proximity Indicator Radio Beacon",
+      "Emergency Proximity Indicator Radio Beacon"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 160,
+    "question": "A dye marker producing an orange color on the water is a:",
+    "choices": [
+      "Pollution marker",
+      "Distress signal",
+      "Position marker",
+      "Navigation aid"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 161,
+    "question": "The use of distress signals except for indicating distress and need of assistance is:",
+    "choices": [
+      "Permitted in certain circumstances",
+      "Permitted for training",
+      "Prohibited",
+      "Recommended for testing"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 162,
+    "question": "The term 'Organization' in COLREG refers to:",
+    "choices": [
+      "United Nations",
+      "International Maritime Organization (IMO)",
+      "International Labour Organization",
+      "World Maritime Organization"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 163,
+    "question": "The shape for a vessel at anchor during daytime is:",
+    "choices": [
+      "A cylinder",
+      "A ball in the fore part",
+      "Two balls in a vertical line",
+      "A cone apex downwards"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 164,
+    "question": "A pilot vessel when not engaged on pilotage duty shall exhibit the lights or shapes prescribed for a vessel of her:",
+    "choices": [
+      "Special category",
+      "Length",
+      "Displacement",
+      "Service"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 165,
+    "question": "When a vessel is in doubt about the sufficiency of another vessel's actions to avoid collision, she should:",
+    "choices": [
+      "Maintain course and speed",
+      "Stop immediately",
+      "Sound at least five short and rapid blasts",
+      "Call on VHF radio"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 166,
+    "question": "The phrase 'safe speed' applies to:",
+    "choices": [
+      "Restricted visibility only",
+      "All conditions of visibility",
+      "Daylight hours only",
+      "Open waters only"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 167,
+    "question": "Risk of collision can, when circumstances permit, be ascertained by:",
+    "choices": [
+      "Listening to VHF traffic",
+      "Carefully watching the compass bearing of an approaching vessel",
+      "Checking AIS data only",
+      "Observing the wake of the other vessel"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 168,
+    "question": "If necessary to avoid collision or allow more time to assess the situation, a vessel shall:",
+    "choices": [
+      "Increase speed",
+      "Slacken her speed or take all way off",
+      "Sound the fog signal",
+      "Show additional lights"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 169,
+    "question": "Action to avoid collision shall result in passing at a:",
+    "choices": [
+      "Convenient distance",
+      "Safe distance",
+      "Close distance",
+      "Minimum distance of 1 mile"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 170,
+    "question": "The effectiveness of any action to avoid collision shall be carefully checked until:",
+    "choices": [
+      "The other vessel is no longer visible",
+      "The other vessel is finally past and clear",
+      "5 minutes have passed",
+      "The radar shows no targets"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 171,
+    "question": "A give-way vessel should, as far as possible, take early and substantial action to:",
+    "choices": [
+      "Pass close to the other vessel",
+      "Keep well clear",
+      "Cross ahead of the other vessel",
+      "Maintain minimum distance"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 172,
+    "question": "In a head-on situation, when each vessel shall alter course to starboard, they will:",
+    "choices": [
+      "Pass port to port",
+      "Pass starboard to starboard",
+      "Stop and wait",
+      "Cross each other's bow"
+    ],
+    "correct_answer": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": 173,
+    "question": "The purpose of Rule 10 (Traffic Separation Schemes) is to:",
+    "choices": [
+      "Increase vessel speed",
+      "Organize traffic flow and reduce collision risk",
+      "Reduce fuel consumption",
+      "Simplify navigation"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 174,
+    "question": "The International Code flag 'A' (Alpha) indicates:",
+    "choices": [
+      "I require a pilot",
+      "I have a diver down; keep well clear at slow speed",
+      "I am on fire",
+      "I require assistance"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 175,
+    "question": "Sound signals for vessels in sight of one another are contained in Rule:",
+    "choices": [
+      "Rule 33",
+      "Rule 34",
+      "Rule 35",
+      "Rule 36"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 176,
+    "question": "Sound signals in restricted visibility are contained in Rule:",
+    "choices": [
+      "Rule 33",
+      "Rule 34",
+      "Rule 35",
+      "Rule 36"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 177,
+    "question": "Signals to attract attention are covered in Rule:",
+    "choices": [
+      "Rule 34",
+      "Rule 35",
+      "Rule 36",
+      "Rule 37"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 178,
+    "question": "Distress signals are covered in Rule:",
+    "choices": [
+      "Rule 35",
+      "Rule 36",
+      "Rule 37",
+      "Rule 38"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 179,
+    "question": "The color of a hand flare used as a distress signal is:",
+    "choices": [
+      "White",
+      "Green",
+      "Red",
+      "Orange"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 180,
+    "question": "A signal made by any signalling method consisting of the group SOS is a:",
+    "choices": [
+      "Warning signal",
+      "Maneuvering signal",
+      "Distress signal",
+      "Information signal"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 181,
+    "question": "Annex I of COLREG deals with:",
+    "choices": [
+      "Sound signal appliances",
+      "Positioning and technical details of lights and shapes",
+      "Additional signals for fishing vessels",
+      "Distress signals"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 182,
+    "question": "What is the definition of vessels 'in sight of one another' according to Rule 3?",
+    "choices": [
+      "When vessels are within 5 nautical miles",
+      "When one vessel can be observed visually from the other",
+      "When vessels can communicate by radio",
+      "When vessels appear on radar"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 183,
+    "question": "According to Rule 5, how must a lookout be maintained?",
+    "choices": [
+      "By sight only",
+      "By radar only",
+      "By sight and hearing as well as by all available means appropriate",
+      "Only during nighttime"
+    ],
+    "correct_answer": 4,
+    "difficulty": "easy"
+  },
+  {
+    "id": 184,
+    "question": "According to Rule 13, a vessel is overtaking when coming up from a direction more than how many degrees abaft the beam?",
+    "choices": [
+      "15 degrees",
+      "22.5 degrees",
+      "30 degrees",
+      "45 degrees"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 185,
+    "question": "How many short blasts mean 'I am operating astern propulsion' (Rule 34)?",
+    "choices": [
+      "One short blast",
+      "Two short blasts",
+      "Three short blasts",
+      "Four short blasts"
+    ],
+    "correct_answer": 4,
+    "difficulty": "easy"
+  },
+  {
+    "id": 186,
+    "question": "In a narrow channel (Rule 9), where must a vessel navigate?",
+    "choices": [
+      "In the center of the channel",
+      "As near to the outer limit of the channel on her starboard side as is safe and practicable",
+      "On the port side of the channel",
+      "Anywhere in the channel"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 187,
+    "question": "A power-driven vessel underway must exhibit (Rule 23):",
+    "choices": [
+      "Sidelights only",
+      "A masthead light forward, sidelights and a sternlight",
+      "Only a white light",
+      "Two red lights"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 188,
+    "question": "What color light is placed on the starboard side of a vessel?",
+    "choices": [
+      "Red",
+      "Green",
+      "White",
+      "Yellow"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 189,
+    "question": "In restricted visibility (Rule 19), a power-driven vessel making way must sound:",
+    "choices": [
+      "One prolonged blast at intervals of not more than 2 minutes",
+      "Two prolonged blasts at intervals of not more than 2 minutes",
+      "Three blasts at intervals of not more than 2 minutes",
+      "Four blasts at intervals of not more than 2 minutes"
+    ],
+    "correct_answer": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": 190,
+    "question": "According to Rule 18, a power-driven vessel underway must keep out of the way of:",
+    "choices": [
+      "All other vessels",
+      "Sailing vessels only",
+      "A vessel not under command, a vessel restricted in ability to manoeuvre, a vessel engaged in fishing, and a sailing vessel",
+      "Larger vessels only"
+    ],
+    "correct_answer": 4,
+    "difficulty": "easy"
+  },
+  {
+    "id": 191,
+    "question": "A vessel constrained by her draught may exhibit (Rule 28):",
+    "choices": [
+      "Two red all-round lights in a vertical line",
+      "Three red all-round lights in a vertical line",
+      "Three green all-round lights in a vertical line",
+      "Two white all-round lights in a vertical line"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 192,
+    "question": "According to Rule 12, when two sailing vessels are approaching with risk of collision and have the wind on different sides:",
+    "choices": [
+      "The faster one gives way",
+      "The one with wind on starboard gives way",
+      "The one with wind on port side shall keep out of the way",
+      "Both shall alter course"
+    ],
+    "correct_answer": 4,
+    "difficulty": "easy"
+  },
+  {
+    "id": 193,
+    "question": "The distress signal 'MAYDAY' is transmitted by (Annex IV):",
+    "choices": [
+      "Radiotelegraphy",
+      "Radiotelephony",
+      "Visual signals only",
+      "Flares only"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 194,
+    "question": "A prolonged blast lasts (Rule 32):",
+    "choices": [
+      "About 1 second",
+      "2 to 3 seconds",
+      "4 to 6 seconds",
+      "More than 10 seconds"
+    ],
+    "correct_answer": 4,
+    "difficulty": "easy"
+  },
+  {
+    "id": 195,
+    "question": "In a traffic separation scheme (Rule 10), a vessel must normally:",
+    "choices": [
+      "Navigate anywhere in the scheme",
+      "Proceed in the appropriate traffic lane in the general direction of traffic flow",
+      "Avoid the scheme completely",
+      "Cross only perpendicularly"
+    ],
+    "correct_answer": 3,
+    "difficulty": "easy"
+  },
+  {
+    "id": 196,
+    "question": "What is a 'masthead light'?",
+    "choices": [
+      "A red light showing 360 degrees",
+      "A white light showing an unbroken light over an arc of 225 degrees",
+      "A green light at the stern",
+      "A yellow flashing light"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 197,
+    "question": "When the length of a tow exceeds 200 metres, the towing vessel shall exhibit:",
+    "choices": [
+      "Two masthead lights in a vertical line",
+      "Three masthead lights in a vertical line",
+      "Four masthead lights in a vertical line",
+      "One masthead light only"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 198,
+    "question": "In restricted visibility, a power-driven vessel making way through the water shall sound at intervals of not more than 2 minutes:",
+    "choices": [
+      "One prolonged blast",
+      "Two prolonged blasts",
+      "One short blast",
+      "Three short blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 199,
+    "question": "A vessel at anchor shall ring the bell rapidly for about how many seconds at intervals of not more than one minute?",
+    "choices": [
+      "3 seconds",
+      "5 seconds",
+      "10 seconds",
+      "15 seconds"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 200,
+    "question": "At least five short and rapid blasts on the whistle indicate:",
+    "choices": [
+      "I am altering course to starboard",
+      "I am in distress",
+      "Doubt about the intentions or actions of another vessel",
+      "I am overtaking"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 201,
+    "question": "A pilot vessel engaged on pilotage duty shall exhibit at or near the masthead:",
+    "choices": [
+      "Two all-round red lights in a vertical line",
+      "Two all-round lights in a vertical line, the upper being white and the lower red",
+      "Two all-round green lights",
+      "One all-round yellow light"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 202,
+    "question": "A sailing vessel shall keep out of the way of:",
+    "choices": [
+      "A power-driven vessel",
+      "A vessel not under command, a vessel restricted in ability to manoeuvre, and a vessel engaged in fishing",
+      "All vessels",
+      "No other vessels"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 203,
+    "question": "A sailing vessel proceeding under sail when also being propelled by machinery shall exhibit:",
+    "choices": [
+      "A ball",
+      "A conical shape, apex downwards",
+      "A diamond shape",
+      "A cylinder"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 204,
+    "question": "A flashing light flashes at a frequency of:",
+    "choices": [
+      "60 flashes or more per minute",
+      "90 flashes or more per minute",
+      "120 flashes or more per minute",
+      "150 flashes or more per minute"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 205,
+    "question": "A vessel nearing a bend in a narrow channel shall sound:",
+    "choices": [
+      "One short blast",
+      "One prolonged blast",
+      "Two short blasts",
+      "Three short blasts"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 206,
+    "question": "Two prolonged blasts followed by one short blast means:",
+    "choices": [
+      "I intend to overtake you on your port side",
+      "I intend to overtake you on your starboard side",
+      "I am altering course to starboard",
+      "I am in distress"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 207,
+    "question": "The diameter of a ball shape shall be not less than:",
+    "choices": [
+      "0.3 metre",
+      "0.6 metre",
+      "0.9 metre",
+      "1.0 metre"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 208,
+    "question": "The vertical distance between shapes shall be at least:",
+    "choices": [
+      "0.5 metres",
+      "1.0 metres",
+      "1.5 metres",
+      "2.0 metres"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 209,
+    "question": "The International Code Signal of distress is indicated by:",
+    "choices": [
+      "N.C.",
+      "S.O.S.",
+      "M.A.Y.",
+      "D.I.S."
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 210,
+    "question": "A vessel restricted in her ability to manoeuvre shall exhibit three all-round lights in a vertical line, the colors being:",
+    "choices": [
+      "Red, white, red (top to bottom)",
+      "White, red, white (top to bottom)",
+      "Green, white, green (top to bottom)",
+      "Red, green, red (top to bottom)"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 211,
+    "question": "A power-driven vessel underway but stopped and making no way in restricted visibility shall sound:",
+    "choices": [
+      "One prolonged blast at intervals of not more than 2 minutes",
+      "Two prolonged blasts in succession at intervals of not more than 2 minutes",
+      "Three short blasts at intervals of not more than 2 minutes",
+      "One short blast every minute"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 212,
+    "question": "A vessel of less than 7 metres in length when at anchor in a location not in or near a narrow channel:",
+    "choices": [
+      "Must exhibit anchor lights",
+      "Shall not be required to exhibit anchor lights",
+      "Must sound a bell",
+      "Must show a flashing light"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 213,
+    "question": "An air-cushion vessel when operating in the non-displacement mode shall exhibit:",
+    "choices": [
+      "An all-round flashing red light",
+      "An all-round flashing yellow light",
+      "Two all-round white lights",
+      "A blue flashing light"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 214,
+    "question": "Rule 2 states that nothing in these Rules shall exonerate any vessel from the consequences of:",
+    "choices": [
+      "Following the Rules exactly",
+      "Any neglect to comply with these Rules or of any precaution required by the ordinary practice of seamen",
+      "Obeying the master's orders",
+      "Following traffic separation schemes"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 215,
+    "question": "When crossing traffic lanes, a vessel shall cross on a heading as nearly as practicable at:",
+    "choices": [
+      "45 degrees to the general direction of traffic flow",
+      "60 degrees to the general direction of traffic flow",
+      "Right angles to the general direction of traffic flow",
+      "Any angle convenient to the vessel"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 216,
+    "question": "A vessel of less than 20 metres in length may use the inshore traffic zone when:",
+    "choices": [
+      "Never",
+      "Always permitted",
+      "Only in emergency",
+      "When en route to a port within the zone"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 217,
+    "question": "Risk of collision shall be deemed to exist if:",
+    "choices": [
+      "The compass bearing of an approaching vessel appreciably changes",
+      "The compass bearing of an approaching vessel does not appreciably change",
+      "The distance is more than 5 miles",
+      "The vessels are proceeding in the same direction"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 218,
+    "question": "What should be avoided when altering course to avoid collision?",
+    "choices": [
+      "Large alterations of course",
+      "A succession of small alterations of course and/or speed",
+      "Altering course to starboard",
+      "Reducing speed"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 219,
+    "question": "A vessel aground shall exhibit three balls in a vertical line by day:",
+    "choices": [
+      "True",
+      "False - only two balls",
+      "False - a cylinder",
+      "False - a diamond shape"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 220,
+    "question": "A vessel shall not cross a narrow channel or fairway if such crossing:",
+    "choices": [
+      "Is convenient",
+      "Impedes the passage of a vessel which can safely navigate only within such channel",
+      "Is done at right angles",
+      "Is done in daylight"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 221,
+    "question": "A pilot vessel when engaged on pilotage duty may sound an identity signal consisting of:",
+    "choices": [
+      "Two short blasts",
+      "Three short blasts",
+      "Four short blasts",
+      "One prolonged blast"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 222,
+    "question": "A towing light has the same characteristics as a:",
+    "choices": [
+      "Masthead light",
+      "Sternlight",
+      "Sidelight",
+      "All-round light"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 223,
+    "question": "A vessel of less than 12 metres in length may exhibit what light instead of the normal lights for a power-driven vessel?",
+    "choices": [
+      "An all-round red light",
+      "An all-round white light and sidelights",
+      "A flashing yellow light",
+      "Sidelights only"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 224,
+    "question": "A power-driven vessel of less than 7 metres whose maximum speed does not exceed 7 knots may exhibit:",
+    "choices": [
+      "Only sidelights",
+      "An all-round white light and shall, if practicable, also exhibit sidelights",
+      "No lights required",
+      "A flashing red light"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 225,
+    "question": "A vessel under oars shall have ready at hand:",
+    "choices": [
+      "A radar reflector",
+      "An electric torch or lighted lantern showing a white light",
+      "A red flare",
+      "A loud hailer"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 226,
+    "question": "When a vessel hears a fog signal apparently forward of her beam, she shall:",
+    "choices": [
+      "Increase speed",
+      "Maintain course and speed",
+      "Reduce her speed to the minimum",
+      "Sound her own fog signal continuously"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 227,
+    "question": "The term 'vessel engaged in fishing' does NOT include:",
+    "choices": [
+      "A vessel fishing with nets",
+      "A vessel fishing with trawls",
+      "A vessel fishing with trolling lines",
+      "A vessel fishing with lines that restrict manoeuvrability"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 228,
+    "question": "Traffic separation schemes are adopted by:",
+    "choices": [
+      "Individual port authorities",
+      "The Organization (IMO)",
+      "Each vessel's flag state",
+      "Coastal states only"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 229,
+    "question": "A diamond shape is exhibited by:",
+    "choices": [
+      "A vessel at anchor",
+      "A vessel aground",
+      "A tow exceeding 200 metres in length",
+      "A fishing vessel"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 230,
+    "question": "A 'vessel restricted in her ability to manoeuvre' includes a vessel engaged in:",
+    "choices": [
+      "Normal cargo operations",
+      "Laying, servicing or picking up a navigation mark, submarine cable or pipeline",
+      "Routine navigation",
+      "Anchoring"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 231,
+    "question": "When should lights be exhibited during the day?",
+    "choices": [
+      "Never",
+      "In restricted visibility and in all other circumstances when it is deemed necessary",
+      "Only in fog",
+      "Only when at anchor"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 232,
+    "question": "The safe speed of a vessel shall be determined by taking into account:",
+    "choices": [
+      "Only the state of visibility",
+      "The state of wind, sea and current, and the proximity of navigational hazards",
+      "Only the vessel's speed capability",
+      "Only the traffic density"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 233,
+    "question": "When determining safe speed, vessels with operational radar shall consider:",
+    "choices": [
+      "Only the number of vessels detected",
+      "The characteristics, efficiency and limitations of the radar equipment",
+      "Only the range setting",
+      "Only the bearing of targets"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 234,
+    "question": "A vessel shall use all available means appropriate to determine if risk of collision exists, including:",
+    "choices": [
+      "Visual observation only",
+      "Radar observation only",
+      "Radio communications only",
+      "Radar plotting or equivalent systematic observation of detected objects"
+    ],
+    "correct_answer": 4,
+    "difficulty": "medium"
+  },
+  {
+    "id": 235,
+    "question": "Assumptions shall NOT be made on the basis of:",
+    "choices": [
+      "Radar information alone",
+      "Visual observation",
+      "Scanty radar information or scanty information about other vessels",
+      "Systematic radar plotting"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 236,
+    "question": "When taking action to avoid collision, the result shall be:",
+    "choices": [
+      "Immediately apparent",
+      "Readily apparent at a safe distance",
+      "Apparent only at close range",
+      "Communicated by VHF"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 237,
+    "question": "A vessel which is in doubt whether collision is being avoided shall:",
+    "choices": [
+      "Wait for the other vessel to act",
+      "Take such action as will best aid to avoid collision",
+      "Maintain course and speed",
+      "Stop engines immediately"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 238,
+    "question": "When does Rule 17 (Action by stand-on vessel) apply?",
+    "choices": [
+      "In all visibility conditions",
+      "Only when vessels are in sight of one another",
+      "Only in restricted visibility",
+      "Only in traffic separation schemes"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 239,
+    "question": "If there is any doubt as to whether a vessel is overtaking another, the vessel shall:",
+    "choices": [
+      "Assume she is not overtaking",
+      "Assume she is overtaking and keep out of the way",
+      "Call the other vessel on VHF",
+      "Sound five short blasts"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 240,
+    "question": "At night, a head-on situation is indicated when a vessel sees another vessel ahead showing:",
+    "choices": [
+      "Only red sidelight",
+      "Only green sidelight",
+      "Both masthead lights in line or nearly in line and/or both sidelights",
+      "Only stern light"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 241,
+    "question": "When there is doubt as to whether a head-on situation exists:",
+    "choices": [
+      "The larger vessel shall give way",
+      "The vessel shall assume such a situation exists and act accordingly",
+      "Both vessels shall stop",
+      "The situation shall be treated as crossing"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 242,
+    "question": "In a crossing situation, the give-way vessel shall, if circumstances permit, avoid:",
+    "choices": [
+      "Altering course",
+      "Reducing speed",
+      "Crossing ahead of the other vessel",
+      "Using the whistle"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 243,
+    "question": "A vessel which is required not to impede the passage of another vessel shall:",
+    "choices": [
+      "Stop and wait",
+      "Take early action to allow sufficient sea room for safe passage",
+      "Proceed at maximum speed",
+      "Sound warning signals"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 244,
+    "question": "A vessel of less than 20 metres shall not impede the safe passage of vessels which can navigate only within:",
+    "choices": [
+      "Any waterway",
+      "A narrow channel or fairway",
+      "The open sea",
+      "Anchorage areas"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 245,
+    "question": "A vessel shall as far as practicable keep clear of:",
+    "choices": [
+      "The traffic lanes",
+      "The inshore traffic zone",
+      "The separation line or zone",
+      "Other vessels"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 246,
+    "question": "Which vessels may use the inshore traffic zone?",
+    "choices": [
+      "All vessels at any time",
+      "Vessels less than 20 metres, sailing vessels, and vessels engaged in fishing",
+      "Only pilot vessels",
+      "Only vessels in distress"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 247,
+    "question": "A vessel engaged in fishing shall not impede the passage of any vessel following a:",
+    "choices": [
+      "Coastal route",
+      "Traffic lane",
+      "Recommended track",
+      "Great circle route"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 248,
+    "question": "A vessel not using a traffic separation scheme shall avoid it by:",
+    "choices": [
+      "Crossing at right angles",
+      "As wide a margin as is practicable",
+      "Passing through quickly",
+      "Using the separation zone"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 249,
+    "question": "In restricted visibility, Rule 19 applies to vessels:",
+    "choices": [
+      "In sight of one another",
+      "Not in sight of one another when navigating in or near an area of restricted visibility",
+      "At anchor only",
+      "In traffic separation schemes only"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 250,
+    "question": "In restricted visibility, except where it has been determined that risk of collision does not exist, every vessel that hears a fog signal forward of the beam shall:",
+    "choices": [
+      "Sound five short blasts",
+      "Increase speed to pass quickly",
+      "Reduce speed to the minimum",
+      "Alter course to starboard"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 251,
+    "question": "On a power-driven vessel of 20 metres or more, the masthead light shall be placed at a height above the hull of not less than:",
+    "choices": [
+      "4 metres",
+      "6 metres",
+      "8 metres",
+      "10 metres"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 252,
+    "question": "The sidelights on a vessel of 20 metres or more shall not be placed lower than the level of the:",
+    "choices": [
+      "Main deck",
+      "Forecastle deck",
+      "Hull",
+      "Waterline"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 253,
+    "question": "A combined lantern for sidelights may be used on vessels of less than:",
+    "choices": [
+      "7 metres",
+      "12 metres",
+      "20 metres",
+      "50 metres"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 254,
+    "question": "When a combined lantern is used, it shall be carried on the:",
+    "choices": [
+      "Stern",
+      "Fore and aft centreline of the vessel",
+      "Port side",
+      "Starboard side"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 255,
+    "question": "The cone exhibited by a sailing vessel under sail and machinery shall have a base diameter of not less than:",
+    "choices": [
+      "0.3 metre",
+      "0.6 metre",
+      "0.9 metre",
+      "1.2 metres"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 256,
+    "question": "When the give-way vessel is in doubt whether sufficient action is being taken, she may:",
+    "choices": [
+      "Wait for the stand-on vessel",
+      "Indicate such doubt by at least five short and rapid blasts",
+      "Proceed at full speed",
+      "Alter course to port"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 257,
+    "question": "A vessel which is being overtaken shall not alter course to:",
+    "choices": [
+      "Starboard",
+      "Port",
+      "Either direction",
+      "Impede the overtaking vessel"
+    ],
+    "correct_answer": 4,
+    "difficulty": "medium"
+  },
+  {
+    "id": 258,
+    "question": "In a narrow channel, an overtaking signal of two prolonged followed by one short blast means:",
+    "choices": [
+      "I intend to overtake you on your port side",
+      "I intend to overtake you on your starboard side",
+      "I am altering course to starboard",
+      "I am in doubt"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 259,
+    "question": "When a vessel being overtaken agrees to the manoeuvre, she sounds:",
+    "choices": [
+      "One prolonged, one short, one prolonged, one short blast",
+      "One prolonged blast",
+      "Two short blasts",
+      "Three short blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 260,
+    "question": "The signal of five or more short and rapid blasts may be supplemented by a light signal of:",
+    "choices": [
+      "Five short flashes",
+      "At least five short and rapid flashes",
+      "One prolonged flash",
+      "Three flashes"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 261,
+    "question": "A vessel at anchor may in addition sound three blasts in succession, namely:",
+    "choices": [
+      "Three short blasts",
+      "Three prolonged blasts",
+      "One short, one prolonged and one short blast",
+      "One prolonged, one short, one prolonged"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 262,
+    "question": "A vessel aground shall in addition to ringing the bell give three separate and distinct strokes on the bell:",
+    "choices": [
+      "After the rapid ringing only",
+      "Immediately before and after the rapid ringing",
+      "Instead of the rapid ringing",
+      "Once every five minutes"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 263,
+    "question": "A vessel of less than 12 metres in length in restricted visibility shall, if not making the prescribed signals, make some other efficient sound signal at intervals of not more than:",
+    "choices": [
+      "1 minute",
+      "2 minutes",
+      "3 minutes",
+      "5 minutes"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 264,
+    "question": "A vessel shall carry means of making sound signals in compliance with the Rules and shall also carry an efficient:",
+    "choices": [
+      "Radar",
+      "Radar reflector where practicable",
+      "AIS transponder",
+      "VHF radio"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 265,
+    "question": "Vessels of special construction may be exempted from Rules regarding:",
+    "choices": [
+      "Sound signals only",
+      "Lights and shapes only",
+      "The number, position, range or arc of visibility of lights or shapes as well as sound signalling appliance positions",
+      "All Rules"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 266,
+    "question": "A sailing vessel underway may, in addition to the normal lights, exhibit two all-round lights in a vertical line at or near the top of the mast, the upper being:",
+    "choices": [
+      "White and the lower green",
+      "Red and the lower green",
+      "Green and the lower red",
+      "White and the lower red"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 267,
+    "question": "A sailing vessel of less than 7 metres in length shall, if practicable, exhibit the normal sailing lights, but if not, she shall have ready at hand:",
+    "choices": [
+      "A radar reflector",
+      "An electric torch or lantern showing a white light",
+      "A foghorn",
+      "Flares"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 268,
+    "question": "A vessel engaged in towing that is severely restricted in her ability to deviate from her course shall additionally show:",
+    "choices": [
+      "Two all-round green lights",
+      "The lights for a vessel restricted in her ability to manoeuvre",
+      "An all-round flashing yellow light",
+      "Four masthead lights"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 269,
+    "question": "A vessel being pushed ahead, not being part of a composite unit, shall exhibit:",
+    "choices": [
+      "Masthead lights",
+      "Sidelights at the forward end",
+      "Sternlight",
+      "Anchor lights"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 270,
+    "question": "A composite unit composed of a pushing vessel and a vessel being pushed ahead shall be regarded as:",
+    "choices": [
+      "Two separate vessels",
+      "A vessel engaged in towing",
+      "A power-driven vessel",
+      "A vessel not under command"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 271,
+    "question": "A vessel or object being towed which is partly submerged and difficult to detect shall exhibit:",
+    "choices": [
+      "All-round red lights only",
+      "All-round white lights",
+      "Sidelights and sternlight",
+      "A diamond shape by day"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 272,
+    "question": "A vessel engaged in replenishment at sea or in the launching or recovery of aircraft shall show the lights for:",
+    "choices": [
+      "A vessel at anchor",
+      "A vessel restricted in her ability to manoeuvre",
+      "A vessel not under command",
+      "A power-driven vessel underway"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 273,
+    "question": "A vessel engaged in a towing operation such as renders her unable to deviate from her course shows:",
+    "choices": [
+      "Only normal towing lights",
+      "The lights for a vessel restricted in her ability to manoeuvre in addition to towing lights",
+      "The lights for a vessel not under command",
+      "No additional lights required"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 274,
+    "question": "A vessel engaged in underwater operations (such as diving) when it is impracticable to show the lights for a vessel restricted in ability to manoeuvre, shall show:",
+    "choices": [
+      "Three all-round red lights",
+      "A rigid replica of the international code flag 'A' of not less than 1 metre in height",
+      "An all-round yellow light",
+      "A diamond shape"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 275,
+    "question": "The visibility of all-round white lights on a vessel less than 12 metres but 7 metres or more shall be:",
+    "choices": [
+      "1 mile",
+      "2 miles",
+      "3 miles",
+      "5 miles"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 276,
+    "question": "The visibility of sidelights on a vessel of 12 metres or more but less than 50 metres shall be:",
+    "choices": [
+      "1 mile",
+      "2 miles",
+      "3 miles",
+      "5 miles"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 277,
+    "question": "Rule 2(b) allows departure from the Rules to avoid:",
+    "choices": [
+      "Traffic congestion",
+      "Immediate danger",
+      "Delay in voyage",
+      "Bad weather"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 278,
+    "question": "The second masthead light, when required, is positioned:",
+    "choices": [
+      "Forward of the first masthead light",
+      "Abaft of and higher than the forward masthead light",
+      "At the same height as the forward light",
+      "On the port side"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 279,
+    "question": "A power-driven vessel of less than 12 metres may carry an all-round white light instead of:",
+    "choices": [
+      "Sidelights only",
+      "A masthead light and sternlight",
+      "Anchor lights",
+      "Towing lights"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 280,
+    "question": "The arc of visibility for the masthead light extends from right ahead to:",
+    "choices": [
+      "90 degrees on each side",
+      "112.5 degrees on each side",
+      "135 degrees on each side",
+      "180 degrees on each side"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 281,
+    "question": "When a power-driven vessel is towing astern, she shall show:",
+    "choices": [
+      "One masthead light only",
+      "Two masthead lights in a vertical line (or three if tow exceeds 200m)",
+      "Three masthead lights in all cases",
+      "No masthead lights"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 282,
+    "question": "On a vessel of less than 12 metres in length, the anchor light shall be visible for at least:",
+    "choices": [
+      "1 mile",
+      "2 miles",
+      "3 miles",
+      "5 miles"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 283,
+    "question": "A vessel engaged in dredging or underwater operations shall, when an obstruction exists, show on the obstruction side:",
+    "choices": [
+      "Two all-round green lights or two balls in a vertical line",
+      "Two all-round red lights or two balls in a vertical line",
+      "One all-round red light",
+      "A diamond shape"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 284,
+    "question": "A vessel restricted in her ability to manoeuvre, when making way in restricted visibility, shall sound:",
+    "choices": [
+      "One prolonged blast every 2 minutes",
+      "Two prolonged blasts every 2 minutes",
+      "One prolonged followed by two short blasts every 2 minutes",
+      "Four short blasts every 2 minutes"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 285,
+    "question": "The fog signal for a vessel constrained by her draught is:",
+    "choices": [
+      "One prolonged blast",
+      "Two prolonged blasts",
+      "One prolonged followed by two short blasts",
+      "Four short blasts"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 286,
+    "question": "The side lights of a vessel shall be fitted with inboard screens painted:",
+    "choices": [
+      "White",
+      "Black or matt black",
+      "The same color as the light",
+      "Grey"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 287,
+    "question": "When determining safe speed, the draught in relation to the available depth of water is a factor for:",
+    "choices": [
+      "All vessels",
+      "Vessels with radar only",
+      "Sailing vessels only",
+      "Vessels in restricted visibility only"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 288,
+    "question": "In determining safe speed, the state of wind, sea, and current is considered because it affects:",
+    "choices": [
+      "Only fuel consumption",
+      "The maneuverability and stopping distance of the vessel",
+      "Only the comfort of passengers",
+      "Only the radar performance"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 289,
+    "question": "Background light from shore lights may affect the determination of safe speed because it can:",
+    "choices": [
+      "Increase visibility",
+      "Make it difficult to detect the lights of other vessels",
+      "Improve radar performance",
+      "Help identify land"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 290,
+    "question": "Any constraints imposed by the radar range scale in use refers to:",
+    "choices": [
+      "The power supply",
+      "The ability to detect small or weak targets at different ranges",
+      "The age of the equipment",
+      "The manufacturer's recommendations"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 291,
+    "question": "The sea room available for the safe maneuvering of the vessel is a factor in determining safe speed because:",
+    "choices": [
+      "It affects fuel consumption",
+      "Limited sea room restricts options for collision avoidance",
+      "It determines the route",
+      "It affects crew comfort"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 292,
+    "question": "Even when a large alteration of the bearing of an approaching vessel is observed, risk of collision may still exist when approaching:",
+    "choices": [
+      "A fast vessel",
+      "A very large vessel, a tow, or a vessel at close range",
+      "A sailing vessel",
+      "A vessel at anchor"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 293,
+    "question": "Action taken to avoid collision shall be large enough to be:",
+    "choices": [
+      "Barely noticeable",
+      "Readily apparent to another vessel observing visually or by radar",
+      "Recorded in the logbook",
+      "Communicated by VHF"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 294,
+    "question": "If there is sufficient sea room, alteration of course alone may be the most effective action if it is made:",
+    "choices": [
+      "Gradually",
+      "In small increments",
+      "In ample time and is substantial",
+      "At the last moment"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 295,
+    "question": "The stand-on vessel may take action to avoid collision by her maneuver alone when she finds herself so close that collision cannot be avoided by:",
+    "choices": [
+      "Sound signals",
+      "VHF communication",
+      "The action of the give-way vessel alone",
+      "Reducing speed"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 296,
+    "question": "In a crossing situation, if the stand-on vessel finds it necessary to take action, she should, if circumstances permit, not alter course to port for a vessel on her:",
+    "choices": [
+      "Starboard side",
+      "Port side",
+      "Stern",
+      "Ahead"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 297,
+    "question": "Rule 17 does not relieve the give-way vessel of her obligation to:",
+    "choices": [
+      "Sound signals",
+      "Show lights",
+      "Keep out of the way",
+      "Reduce speed"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 298,
+    "question": "A vessel overtaking another can never become the stand-on vessel because:",
+    "choices": [
+      "She is always faster",
+      "The overtaking vessel must keep clear until finally past and clear",
+      "She has right of way",
+      "The Rules do not apply to overtaking"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 299,
+    "question": "No subsequent alteration of the bearing between the two vessels shall make the overtaking vessel a:",
+    "choices": [
+      "Faster vessel",
+      "Give-way vessel in a crossing situation",
+      "Stand-on vessel or crossing vessel",
+      "Privileged vessel"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 300,
+    "question": "Rule 15 (Crossing Situation) applies only to:",
+    "choices": [
+      "All vessels",
+      "Two power-driven vessels crossing",
+      "Sailing vessels only",
+      "Vessels in restricted visibility"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 301,
+    "question": "Except where Rules 9, 10 and 13 otherwise require, a vessel engaged in fishing shall keep out of the way of:",
+    "choices": [
+      "All other vessels",
+      "A vessel not under command or restricted in ability to manoeuvre",
+      "Power-driven vessels",
+      "Sailing vessels"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 302,
+    "question": "A seaplane shall, in circumstances where there is risk of collision, comply with:",
+    "choices": [
+      "Aviation rules only",
+      "The Rules of Part B (Steering and Sailing Rules)",
+      "Port authority instructions",
+      "Its own special rules"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 303,
+    "question": "A WIG craft operating on the water surface shall comply with the Rules for:",
+    "choices": [
+      "Aircraft",
+      "Power-driven vessels",
+      "Seaplanes",
+      "Vessels not under command"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 304,
+    "question": "Vessels navigating in or near traffic separation schemes shall comply with Rule 10 and shall not hamper:",
+    "choices": [
+      "Other vessels using the inshore zone",
+      "The safe passage of vessels following a traffic lane",
+      "Fishing operations",
+      "Anchored vessels"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 305,
+    "question": "A vessel of 50 metres or more at anchor shall exhibit, in addition to the forward anchor light, another all-round white light at or near the:",
+    "choices": [
+      "Bow",
+      "Masthead",
+      "Stern and at a lower height",
+      "Port side"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 306,
+    "question": "A vessel at anchor may use available working or equivalent lights to illuminate her:",
+    "choices": [
+      "Navigation bridge",
+      "Decks",
+      "Radar mast",
+      "Engine room"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 307,
+    "question": "A vessel of less than 50 metres at anchor in a special anchorage designated by the government shall:",
+    "choices": [
+      "Always show anchor lights",
+      "Not be required to exhibit anchor lights",
+      "Show a flashing light",
+      "Sound fog signals continuously"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 308,
+    "question": "The lights and shapes for a vessel engaged in fishing are found in Rule:",
+    "choices": [
+      "Rule 23",
+      "Rule 24",
+      "Rule 25",
+      "Rule 26"
+    ],
+    "correct_answer": 4,
+    "difficulty": "medium"
+  },
+  {
+    "id": 309,
+    "question": "Rule 28 deals with lights and shapes for vessels:",
+    "choices": [
+      "At anchor",
+      "Constrained by their draught",
+      "Engaged in fishing",
+      "Engaged in towing"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 310,
+    "question": "The term 'height above the hull' means height above:",
+    "choices": [
+      "The waterline",
+      "The uppermost continuous deck",
+      "The keel",
+      "The main deck"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 311,
+    "question": "Additional signals for fishing vessels fishing in close proximity are contained in:",
+    "choices": [
+      "Annex I",
+      "Annex II",
+      "Annex III",
+      "Annex IV"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 312,
+    "question": "A vessel may make light or sound signals to attract attention, provided such signals cannot be mistaken for:",
+    "choices": [
+      "Any other vessel's signals",
+      "Any distress signal or aid to navigation",
+      "Port signals",
+      "Fishing signals"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 313,
+    "question": "A high intensity intermittent or revolving light that may impair the vision of watchkeepers should be avoided when:",
+    "choices": [
+      "At all times",
+      "Making signals to attract attention",
+      "In restricted visibility",
+      "At anchor"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 314,
+    "question": "The use of a searchlight to attract attention may be directed so as not to embarrass:",
+    "choices": [
+      "Passengers",
+      "Other vessels",
+      "Any vessel or aid to navigation",
+      "Port authorities"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 315,
+    "question": "Radio distress communications are specified in the:",
+    "choices": [
+      "SOLAS Convention",
+      "ITU Radio Regulations",
+      "MARPOL Convention",
+      "Load Line Convention"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 316,
+    "question": "The signal NC in the International Code of Signals means:",
+    "choices": [
+      "I require a pilot",
+      "I am in distress and require immediate assistance",
+      "Negative",
+      "No communication"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 317,
+    "question": "An approved sea anchor or drogue will help a vessel in distress to:",
+    "choices": [
+      "Increase speed",
+      "Maintain position and reduce drift",
+      "Signal for help",
+      "Communicate with shore"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 318,
+    "question": "An EPIRB transmits on frequencies monitored by:",
+    "choices": [
+      "Local coast stations only",
+      "Satellites in the COSPAS-SARSAT system",
+      "Aircraft only",
+      "Ships only"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 319,
+    "question": "A piece of orange-colored canvas with a black square and circle on it is used for:",
+    "choices": [
+      "Decoration",
+      "Signaling distress for aerial observation",
+      "Marking fishing gear",
+      "Identifying the vessel"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 320,
+    "question": "The Annexes to the COLREG are:",
+    "choices": [
+      "Optional guidelines",
+      "Binding technical specifications",
+      "Recommendations only",
+      "Advisory notes"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 321,
+    "question": "The Government concerned may make special rules for:",
+    "choices": [
+      "All international waters",
+      "Roadsteads, harbours, rivers, lakes or inland waterways connected with the high seas",
+      "The high seas only",
+      "Foreign vessels only"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 322,
+    "question": "Special rules made by a Government for its waters shall conform as closely as possible to:",
+    "choices": [
+      "Local traditions",
+      "These Rules",
+      "Port authority preferences",
+      "Commercial interests"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 323,
+    "question": "A vessel shall not be penalized for any departure from the Rules if such departure was:",
+    "choices": [
+      "Made for convenience",
+      "Necessary to avoid immediate danger",
+      "Made to save time",
+      "Made during good weather"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 324,
+    "question": "The ordinary practice of seamen refers to:",
+    "choices": [
+      "Written regulations only",
+      "Good seamanship and common sense practices developed by experience",
+      "Port authority rules",
+      "Company policies"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 325,
+    "question": "Rule 2 is sometimes called the:",
+    "choices": [
+      "Master's rule",
+      "General prudential rule or rule of good seamanship",
+      "Speed rule",
+      "Visibility rule"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 326,
+    "question": "A vessel engaged in trawling must exhibit (Rule 26):",
+    "choices": [
+      "Two all-round lights in vertical line, upper red and lower white",
+      "Two all-round lights in vertical line, upper green and lower white",
+      "Two all-round lights in vertical line, upper white and lower red",
+      "One green light only"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 327,
+    "question": "How many short and rapid blasts indicate doubt (Rule 34)?",
+    "choices": [
+      "Three short blasts",
+      "Four short blasts",
+      "At least five short and rapid blasts",
+      "Six short blasts"
+    ],
+    "correct_answer": 4,
+    "difficulty": "medium"
+  },
+  {
+    "id": 328,
+    "question": "According to Rule 17, the stand-on vessel must:",
+    "choices": [
+      "Always manoeuvre",
+      "Keep her course and speed",
+      "Stop immediately",
+      "Alter to starboard"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 329,
+    "question": "A vessel of less than 20 meters engaged in fishing shall not impede (Rule 9):",
+    "choices": [
+      "Any vessel",
+      "Sailing vessels only",
+      "A vessel which can safely navigate only within a narrow channel",
+      "Vessels over 100 meters"
+    ],
+    "correct_answer": 4,
+    "difficulty": "medium"
+  },
+  {
+    "id": 330,
+    "question": "A vessel towing with length of tow exceeding 200 meters must exhibit:",
+    "choices": [
+      "Two masthead lights in a vertical line",
+      "Three masthead lights in a vertical line",
+      "Four masthead lights",
+      "One masthead light only"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 331,
+    "question": "In restricted visibility, a vessel at anchor must:",
+    "choices": [
+      "Ring the bell rapidly for about 5 seconds at intervals not exceeding 1 minute",
+      "Sound one prolonged blast",
+      "Remain silent",
+      "Sound three short blasts"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 332,
+    "question": "The sternlight of a vessel is what color?",
+    "choices": [
+      "Red",
+      "Green",
+      "White",
+      "Yellow"
+    ],
+    "correct_answer": 4,
+    "difficulty": "medium"
+  },
+  {
+    "id": 333,
+    "question": "An overtaking vessel must (Rule 13):",
+    "choices": [
+      "Maintain her course",
+      "Keep out of the way of the vessel being overtaken",
+      "Increase speed",
+      "Sound five short blasts"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 334,
+    "question": "The term 'underway' means:",
+    "choices": [
+      "A vessel moving fast",
+      "A vessel not at anchor, made fast to shore, or aground",
+      "A vessel with engines running",
+      "A commercial vessel"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 335,
+    "question": "A vessel of less than 12 meters in length underway may exhibit:",
+    "choices": [
+      "An all-round white light and sidelights",
+      "Only a red light",
+      "Three white lights",
+      "No lights"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 336,
+    "question": "What is a 'power-driven vessel' according to Rule 3?",
+    "choices": [
+      "Any vessel with an engine on board",
+      "Any vessel propelled by machinery",
+      "Diesel engine vessels only",
+      "Vessels over 50 meters only"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 337,
+    "question": "A vessel of 100 meters or more at anchor must also:",
+    "choices": [
+      "Use working lights to illuminate her decks",
+      "Show red lights",
+      "Turn off all lights",
+      "Turn on searchlights"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 338,
+    "question": "In restricted visibility, a vessel being towed (last of tow if multiple) must sound:",
+    "choices": [
+      "One prolonged and three short blasts",
+      "Two prolonged blasts",
+      "Three short blasts",
+      "Four blasts: one prolonged followed by three short"
+    ],
+    "correct_answer": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": 339,
+    "question": "According to Rule 8, any action to avoid collision must be:",
+    "choices": [
+      "Small and gradual",
+      "Positive, made in ample time and with due regard to good seamanship",
+      "Made only on captain's order",
+      "Performed slowly"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 340,
+    "question": "In a narrow channel, to overtake, the vessel intending to overtake must indicate by:",
+    "choices": [
+      "One prolonged blast",
+      "Two prolonged blasts followed by one short blast (starboard) or two short blasts (port)",
+      "Three short blasts",
+      "Light signals"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 341,
+    "question": "A vessel of less than 7 meters at anchor:",
+    "choices": [
+      "Must always show lights",
+      "Is not required to show lights under certain conditions",
+      "Must show two white lights",
+      "Must show a red light"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 342,
+    "question": "Risk of collision exists if (Rule 7):",
+    "choices": [
+      "Vessels are within 2 miles",
+      "The compass bearing of an approaching vessel does not appreciably change",
+      "Vessels are on the same course",
+      "One vessel is faster than the other"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 343,
+    "question": "A sailing vessel seeing another to windward and cannot determine which side the wind is on:",
+    "choices": [
+      "Shall keep out of the way",
+      "Shall maintain course",
+      "Shall stop",
+      "Shall sound five short blasts"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 344,
+    "question": "A vessel fishing (other than trawling) with outlying gear extending more than 150 meters must show:",
+    "choices": [
+      "An all-round white light or cone apex upwards in direction of gear",
+      "A red light",
+      "Two green lights",
+      "A yellow light"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 345,
+    "question": "One short blast means (Rule 34):",
+    "choices": [
+      "I am altering to port",
+      "I am altering to starboard",
+      "I am operating astern",
+      "Attention"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 346,
+    "question": "A WIG craft in flight near the surface must exhibit:",
+    "choices": [
+      "A high intensity all-round flashing red light",
+      "Three green lights",
+      "Two white lights",
+      "A yellow light"
+    ],
+    "correct_answer": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": 347,
+    "question": "In a TSS, a vessel of less than 20 meters or sailing vessel:",
+    "choices": [
+      "Cannot use the TSS",
+      "May use the inshore traffic zone",
+      "Must stay outside the TSS",
+      "Must request permission"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 348,
+    "question": "To cross a traffic lane in a TSS, a vessel must do so:",
+    "choices": [
+      "Diagonally",
+      "On a heading as nearly as practicable at right angles to the general direction of traffic flow",
+      "In the direction of traffic",
+      "At reduced speed"
+    ],
+    "correct_answer": 3,
+    "difficulty": "medium"
+  },
+  {
+    "id": 349,
+    "question": "The COLREG Convention entered into force:",
+    "choices": [
+      "In 1960",
+      "In 1972",
+      "Not before 1 January 1976",
+      "In 1980"
+    ],
+    "correct_answer": 4,
+    "difficulty": "medium"
+  },
+  {
+    "id": 350,
+    "question": "It is dangerous for another vessel to approach within how many metres of a mineclearance vessel?",
+    "choices": [
+      "500 metres",
+      "1000 metres",
+      "1500 metres",
+      "2000 metres"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 351,
+    "question": "A vessel engaged in diving operations shall exhibit a rigid replica of which International Code flag?",
+    "choices": [
+      "Flag A",
+      "Flag B",
+      "Flag D",
+      "Flag N"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 352,
+    "question": "When outlying gear extends more than 150 metres from a fishing vessel, it shall show:",
+    "choices": [
+      "An all-round red light in the direction of the gear",
+      "An all-round white light or a cone apex upwards in the direction of the gear",
+      "A flashing yellow light",
+      "Two all-round green lights"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 353,
+    "question": "A vessel being towed (if manned) shall sound in restricted visibility at intervals of not more than 2 minutes:",
+    "choices": [
+      "One prolonged followed by two short blasts",
+      "One prolonged followed by three short blasts",
+      "Two prolonged blasts",
+      "Four short blasts"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 354,
+    "question": "In a vessel of 100 metres or more in length at anchor, after ringing the bell in the forepart, the gong shall be sounded:",
+    "choices": [
+      "In the forepart",
+      "In the after part",
+      "Amidships",
+      "On the bridge"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 355,
+    "question": "In restricted visibility, when altering course to avoid a vessel forward of the beam, what should be avoided?",
+    "choices": [
+      "An alteration of course to starboard",
+      "An alteration of course to port",
+      "Reducing speed",
+      "Sounding fog signals"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 356,
+    "question": "A power-driven vessel in a crossing situation avoiding collision with another power-driven vessel should not alter course to port for:",
+    "choices": [
+      "A vessel on her starboard side",
+      "A vessel on her port side",
+      "A vessel ahead",
+      "A vessel astern"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 357,
+    "question": "When two masthead lights are carried, the after one shall be at least how many metres vertically higher than the forward one?",
+    "choices": [
+      "2.5 metres",
+      "4.5 metres",
+      "6 metres",
+      "8 metres"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 358,
+    "question": "The signal consisting of one prolonged, one short, one prolonged and one short blast indicates:",
+    "choices": [
+      "I intend to overtake you",
+      "Agreement to be overtaken",
+      "I am altering course",
+      "Danger"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 359,
+    "question": "A vessel engaged in dredging showing two all-round green lights indicates:",
+    "choices": [
+      "The side on which the obstruction exists",
+      "The side on which another vessel may pass",
+      "That the vessel is at anchor",
+      "That the vessel is making way"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 360,
+    "question": "The International Code flag 'A' displayed by a diving vessel should be not less than:",
+    "choices": [
+      "0.5 metre in height",
+      "1 metre in height",
+      "1.5 metres in height",
+      "2 metres in height"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 361,
+    "question": "The horizontal distance between the masthead light and the sidelights on a vessel of 20 metres or more shall not be less than:",
+    "choices": [
+      "Half the length of the vessel",
+      "One quarter the length of the vessel",
+      "2.5 metres",
+      "1 metre"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 362,
+    "question": "The stand-on vessel taking action according to Rule 17(a)(ii) shall not alter course to port for a vessel on her:",
+    "choices": [
+      "Starboard side",
+      "Port side",
+      "Stern",
+      "Ahead"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 363,
+    "question": "The vessel required not to impede another vessel remains obliged to comply with Rules 4-19 when:",
+    "choices": [
+      "Never",
+      "Vessels are approaching so as to involve risk of collision",
+      "Only in restricted visibility",
+      "Only in narrow channels"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 364,
+    "question": "Vessels engaged in laying cables in a traffic separation scheme are exempted from:",
+    "choices": [
+      "All the Rules",
+      "The requirement to follow the direction of traffic flow",
+      "The requirement to sound signals",
+      "The requirement to show lights"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 365,
+    "question": "The masthead light on a vessel of 12 metres or more but less than 20 metres shall be at a height above the gunwale of not less than:",
+    "choices": [
+      "1 metre",
+      "2.5 metres",
+      "4 metres",
+      "6 metres"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 366,
+    "question": "On a vessel of 50 metres or more, the after masthead light shall be placed no less than how many metres higher than the forward light?",
+    "choices": [
+      "2.5 metres",
+      "4.5 metres",
+      "6 metres",
+      "8 metres"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 367,
+    "question": "The horizontal distance between the forward and after masthead lights shall not be less than half the length of the vessel but need not exceed:",
+    "choices": [
+      "50 metres",
+      "75 metres",
+      "100 metres",
+      "150 metres"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 368,
+    "question": "On a vessel of 12 metres but less than 50 metres, the anchor light in the fore part shall not be less than how many metres above the hull?",
+    "choices": [
+      "1 metre",
+      "2.5 metres",
+      "4.5 metres",
+      "6 metres"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 369,
+    "question": "If whistles are fitted on a vessel more than 100 metres apart, only one whistle shall be used for:",
+    "choices": [
+      "Warning signals",
+      "Maneuvering and warning signals",
+      "Fog signals only",
+      "All signals"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 370,
+    "question": "A vessel fitted with more than one whistle whose separation is greater than 100 metres shall have means to ensure sounding as:",
+    "choices": [
+      "A single whistle",
+      "Multiple whistles simultaneously",
+      "Either option",
+      "Alternating whistles"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 371,
+    "question": "The frequency range for the whistle on a vessel of 200 metres or more in length is:",
+    "choices": [
+      "70-200 Hz",
+      "130-350 Hz",
+      "250-525 Hz",
+      "250-700 Hz"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 372,
+    "question": "The bell on a vessel of 20 metres or more in length shall have a mouth diameter of not less than:",
+    "choices": [
+      "200 mm",
+      "300 mm",
+      "400 mm",
+      "500 mm"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 373,
+    "question": "The luminous intensity of a masthead light on a vessel of 50 metres or more shall have a minimum of:",
+    "choices": [
+      "4.3 candelas",
+      "12 candelas",
+      "27 candelas",
+      "94 candelas"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 374,
+    "question": "The vertical sector of an all-round light shall be at least:",
+    "choices": [
+      "5 degrees above and below horizontal",
+      "7.5 degrees above and below horizontal",
+      "10 degrees above and below horizontal",
+      "15 degrees above and below horizontal"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 375,
+    "question": "A radiotelegraph alarm signal consists of a series of:",
+    "choices": [
+      "Short dots",
+      "Long dashes",
+      "Twelve dashes sent in one minute",
+      "Alternating dots and dashes"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 376,
+    "question": "The Rules came into force on:",
+    "choices": [
+      "1 July 1972",
+      "15 July 1977",
+      "1 January 1980",
+      "1 January 1983"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 377,
+    "question": "The 2001 amendments to the COLREG came into force on:",
+    "choices": [
+      "29 November 2003",
+      "1 December 2004",
+      "1 January 2005",
+      "1 July 2006"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 378,
+    "question": "A vessel shall be fitted with lights complying with the COLREG Regulations for not less than how many years after entry into force?",
+    "choices": [
+      "3 years",
+      "5 years",
+      "7 years",
+      "10 years"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 379,
+    "question": "The repositioning of lights as a consequence of conversion to metric units is exempted until:",
+    "choices": [
+      "The vessel is re-measured",
+      "Permanent replacement of lights or shapes",
+      "5 years after amendment",
+      "The vessel changes flag"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 380,
+    "question": "The additional lights for a sailing vessel (red over green) shall not be exhibited in conjunction with:",
+    "choices": [
+      "Sidelights",
+      "A sternlight",
+      "A combined lantern",
+      "The combined lantern at the masthead permitted for vessels less than 20 metres"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 381,
+    "question": "If a partly submerged tow exceeds 200 metres in length, it shall additionally exhibit by day:",
+    "choices": [
+      "A ball",
+      "Two balls",
+      "A diamond shape at each end and at maximum intervals of 100 metres",
+      "A cylinder"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 382,
+    "question": "If the breadth of a partly submerged tow exceeds 25 metres, it shall exhibit all-round white lights on:",
+    "choices": [
+      "The centreline only",
+      "Each extreme of the breadth",
+      "One side only",
+      "Only at the forward end"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 383,
+    "question": "The special flashing light for air-cushion vessels has a frequency of:",
+    "choices": [
+      "60 flashes per minute",
+      "90 flashes per minute",
+      "120 flashes or more per minute",
+      "180 flashes per minute"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 384,
+    "question": "A vessel engaged in minesweeping shall show, in addition to the lights for a power-driven vessel, three all-round green lights or three balls, one at:",
+    "choices": [
+      "The stern only",
+      "The foremast head and one at each end of the fore yard",
+      "The mainmast only",
+      "Each side of the bridge"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 385,
+    "question": "The vertical separation between the two all-round lights of a vessel not under command shall be not less than:",
+    "choices": [
+      "1 metre",
+      "2 metres",
+      "4 metres",
+      "The distance specified in Annex I"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 386,
+    "question": "The interval between the short and prolonged blasts in a fog signal shall be about:",
+    "choices": [
+      "1 second",
+      "2 seconds",
+      "5 seconds",
+      "No specific interval required"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 387,
+    "question": "The chromaticity specifications for navigation lights are defined using:",
+    "choices": [
+      "RGB values",
+      "CIE chromaticity coordinates",
+      "Pantone colors",
+      "CMYK values"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 388,
+    "question": "In restricted visibility, when altering course, if practicable avoid an alteration of course to port for a vessel:",
+    "choices": [
+      "Ahead",
+      "Forward of the beam, other than a vessel being overtaken",
+      "Astern",
+      "Abeam"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 389,
+    "question": "A vessel that takes action in restricted visibility to avoid a close quarters situation shall, except in the case of overtaking, not alter course to:",
+    "choices": [
+      "Starboard for a vessel on the port side",
+      "Port for a vessel forward of the beam",
+      "Starboard for a vessel ahead",
+      "Either direction"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 390,
+    "question": "A vessel restricted in her ability to manoeuvre when engaged in an operation for the maintenance of safety of navigation in a traffic separation scheme is exempted from:",
+    "choices": [
+      "All Rules",
+      "Rule 10 to the extent necessary to carry out the operation",
+      "Showing lights and shapes",
+      "Sounding fog signals"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 391,
+    "question": "The cylinder displayed by a vessel constrained by her draught shall be not less than how many metres in height?",
+    "choices": [
+      "0.3 metre",
+      "0.6 metre",
+      "0.9 metre",
+      "1.2 metres"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 392,
+    "question": "The additional light shown by a vessel engaged in trawling that is shooting nets, hauling nets, or has gear fouled is:",
+    "choices": [
+      "All-round yellow light",
+      "Two all-round yellow lights flashing alternately",
+      "All-round red light",
+      "Flashing white light"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 393,
+    "question": "The masthead light of a trawler may be positioned at a lower height than the minimum prescribed if the trawler is:",
+    "choices": [
+      "Large",
+      "Small",
+      "Less than 50 metres in length",
+      "Engaged in pair trawling"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 394,
+    "question": "The distress signal of a radiotelephone alarm consists of two audio tones transmitted alternately on:",
+    "choices": [
+      "VHF Channel 16",
+      "2182 kHz",
+      "500 kHz",
+      "VHF Channel 70"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 395,
+    "question": "A parachute flare reaches a height of not less than:",
+    "choices": [
+      "100 metres",
+      "200 metres",
+      "300 metres",
+      "400 metres"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 396,
+    "question": "The burning time of a parachute flare is not less than:",
+    "choices": [
+      "20 seconds",
+      "30 seconds",
+      "40 seconds",
+      "60 seconds"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 397,
+    "question": "A vessel restricted in ability to manoeuvre when dredging, shows on the safe side:",
+    "choices": [
+      "Two red lights",
+      "Two green lights or two diamonds in vertical line",
+      "A white light",
+      "Three white lights"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 398,
+    "question": "The minimum diameter of a ball (day shape) is:",
+    "choices": [
+      "0.3 meter",
+      "0.6 meter",
+      "1 meter",
+      "1.5 meters"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 399,
+    "question": "A light flashing regularly at 120 flashes per minute or more is called:",
+    "choices": [
+      "Flashing light",
+      "Scintillating light",
+      "Rhythmic light",
+      "Blinking light"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 400,
+    "question": "A sailing vessel in restricted visibility must sound:",
+    "choices": [
+      "One prolonged blast",
+      "Two prolonged blasts",
+      "Three blasts in succession: one prolonged followed by two short",
+      "The bell"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 401,
+    "question": "The SOS signal in Morse code is:",
+    "choices": [
+      "--- ... ---",
+      "... --- ...",
+      "... ... ...",
+      "--- --- ---"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 402,
+    "question": "The visibility range of a sternlight for a vessel 50 meters or more is:",
+    "choices": [
+      "2 miles",
+      "3 miles",
+      "5 miles",
+      "6 miles"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 403,
+    "question": "A vessel of 20 meters or more must be provided with:",
+    "choices": [
+      "Only a whistle",
+      "A whistle and a bell",
+      "A whistle, bell and gong",
+      "Only a bell"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 404,
+    "question": "A vessel of 100 meters or more must have in addition to whistle and bell:",
+    "choices": [
+      "A siren",
+      "A gong",
+      "A foghorn",
+      "Nothing more"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 405,
+    "question": "A sailing vessel may exhibit at the top of the mast two all-round lights:",
+    "choices": [
+      "Red above, green below",
+      "Green above, red below",
+      "White above, red below",
+      "Red above, white below"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 406,
+    "question": "The red sidelight is placed on:",
+    "choices": [
+      "Starboard",
+      "Port",
+      "Aft",
+      "Forward"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 407,
+    "question": "According to Rule 2, nothing shall exonerate:",
+    "choices": [
+      "The master from responsibilities",
+      "Any vessel or owner, master or crew from consequences of neglect",
+      "A pilot from obligations",
+      "The shipowner from duties"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 408,
+    "question": "A vessel being towed must exhibit:",
+    "choices": [
+      "Sidelights and a sternlight",
+      "Only a white light",
+      "Two red lights",
+      "No lights"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 409,
+    "question": "A pushing vessel rigidly connected in a composite unit is regarded as:",
+    "choices": [
+      "Two separate vessels",
+      "A single power-driven vessel",
+      "A towing vessel",
+      "A restricted vessel"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 410,
+    "question": "In Rule 10, vessels shall normally join or leave a traffic lane:",
+    "choices": [
+      "At any point",
+      "At the termination of the lane",
+      "In the middle",
+      "Only with VTS permission"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 411,
+    "question": "According to Rule 6, safe speed must take into account:",
+    "choices": [
+      "Only visibility",
+      "Traffic density, manoeuvrability, visibility, and other factors",
+      "Only the vessel's maximum speed",
+      "Only weather conditions"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 412,
+    "question": "A pilot vessel may sound in addition to prescribed signals:",
+    "choices": [
+      "One short blast",
+      "Two short blasts",
+      "Three short blasts",
+      "An identity signal of four short blasts"
+    ],
+    "correct_answer": 1,
+    "difficulty": "hard"
+  },
+  {
+    "id": 413,
+    "question": "According to Rule 19(d), in restricted visibility, alteration to port should be avoided for:",
+    "choices": [
+      "All vessels",
+      "A vessel forward of the beam, other than being overtaken",
+      "A vessel abaft the beam",
+      "Vessels at anchor"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 414,
+    "question": "The forward masthead light must be placed at least how many meters above the hull for vessels 20 meters or more?",
+    "choices": [
+      "4 meters",
+      "6 meters",
+      "8 meters",
+      "10 meters"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 415,
+    "question": "Inconspicuous partly submerged vessels being towed less than 25 meters breadth show:",
+    "choices": [
+      "One white light forward and one aft",
+      "Two white lights",
+      "Three white lights",
+      "No lights"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 416,
+    "question": "If a partly submerged object being towed is 25 meters or more in breadth, it must show:",
+    "choices": [
+      "Two white lights",
+      "Four white lights at extremities of breadth",
+      "Six white lights",
+      "One white light only"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 417,
+    "question": "The minimum visibility of a white all-round light on an inconspicuous towed object is:",
+    "choices": [
+      "1 mile",
+      "2 miles",
+      "3 miles",
+      "5 miles"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 418,
+    "question": "The vessel about to be overtaken in a narrow channel, if in agreement, must sound:",
+    "choices": [
+      "One short blast",
+      "Two short blasts",
+      "One prolonged, one short, one prolonged, one short blast",
+      "Three short blasts"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 419,
+    "question": "In a TSS, inshore traffic zones may be used by:",
+    "choices": [
+      "All vessels",
+      "Vessels less than 20 meters, sailing vessels, and fishing vessels",
+      "Only fishing vessels",
+      "No vessels"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 420,
+    "question": "A vessel restricted in ability when maintaining safety of navigation in a TSS:",
+    "choices": [
+      "Must follow all TSS rules",
+      "Is exempted to the extent necessary to carry out the operation",
+      "Cannot enter the TSS",
+      "Must request permission"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 421,
+    "question": "What is the term for visibility restricted by fog, mist, falling snow, etc.?",
+    "choices": [
+      "Bad weather",
+      "Poor visibility",
+      "Restricted visibility",
+      "Low visibility"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 422,
+    "question": "Vessels in restricted visibility not in sight of one another must proceed at:",
+    "choices": [
+      "Full speed",
+      "Half speed",
+      "A safe speed adapted to prevailing circumstances",
+      "Minimum speed"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 423,
+    "question": "If a vessel hears a fog signal forward of her beam in restricted visibility, she must:",
+    "choices": [
+      "Maintain speed",
+      "Increase speed",
+      "Reduce speed to minimum or stop if necessary",
+      "Sound five short blasts"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 424,
+    "question": "Lights prescribed in the Rules must be exhibited:",
+    "choices": [
+      "Only at night",
+      "From sunset to sunrise",
+      "24 hours a day",
+      "Only in restricted visibility"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 425,
+    "question": "Lights may also be exhibited in restricted visibility:",
+    "choices": [
+      "Never",
+      "Only if deemed necessary",
+      "From sunrise to sunset",
+      "Always"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 426,
+    "question": "Shapes must be exhibited:",
+    "choices": [
+      "At night",
+      "By day",
+      "24 hours",
+      "Only in fog"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 427,
+    "question": "In a crossing situation, a power-driven vessel taking action should not alter course to:",
+    "choices": [
+      "Starboard for a vessel on her starboard side",
+      "Port for a vessel on her port side",
+      "Starboard for a vessel on her port side",
+      "Any direction"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 428,
+    "question": "Any vessel shall avoid impeding the safe passage of:",
+    "choices": [
+      "All vessels",
+      "A vessel constrained by draught",
+      "Sailing vessels",
+      "Fishing vessels"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 429,
+    "question": "For a vessel 200 meters or more in length, the fundamental frequency of whistle is:",
+    "choices": [
+      "70-200 Hz",
+      "130-350 Hz",
+      "250-700 Hz",
+      "180-700 Hz"
+    ],
+    "correct_answer": 2,
+    "difficulty": "hard"
+  },
+  {
+    "id": 430,
+    "question": "A vessel at anchor may sound what additional signal to warn approaching vessels?",
+    "choices": [
+      "One prolonged blast",
+      "Three blasts: one short, one prolonged, one short",
+      "Five short blasts",
+      "Two prolonged blasts"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 431,
+    "question": "Distress signals include all EXCEPT:",
+    "choices": [
+      "Red star rockets at short intervals",
+      "Continuous fog signal",
+      "Five short blasts on whistle",
+      "Orange smoke"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 432,
+    "question": "A square flag with a ball above or below indicates:",
+    "choices": [
+      "Pilot required",
+      "Distress",
+      "Man overboard",
+      "At anchor"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 433,
+    "question": "Rule 8(b) states that alterations of course/speed to avoid collision should be:",
+    "choices": [
+      "Small and gradual",
+      "Large enough to be readily apparent",
+      "Minimal",
+      "Done at the last moment"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 434,
+    "question": "In a narrow channel, a vessel shall not cross if such crossing:",
+    "choices": [
+      "Is dangerous",
+      "Impedes passage of a vessel which can safely navigate only within the channel",
+      "Takes more than 5 minutes",
+      "Occurs at night"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 435,
+    "question": "Trawlers of 20 meters or more shooting nets show:",
+    "choices": [
+      "One white light",
+      "Two white lights in vertical line",
+      "Three white lights",
+      "One green light"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 436,
+    "question": "When a trawler's net has come fast upon an obstruction, she shows:",
+    "choices": [
+      "One red light",
+      "Two red lights in vertical line",
+      "Three red lights",
+      "One white over one red"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 437,
+    "question": "Vessels engaged in purse seining may exhibit:",
+    "choices": [
+      "Two white lights",
+      "Two yellow lights flashing alternately",
+      "Two red lights",
+      "Two green lights"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 438,
+    "question": "The yellow lights for purse seiners flash at what interval?",
+    "choices": [
+      "Every 2 seconds",
+      "Every second",
+      "Every 3 seconds",
+      "Every 5 seconds"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 439,
+    "question": "A vessel engaged in diving operations, when size makes it impracticable to show all lights, must show:",
+    "choices": [
+      "Two red lights",
+      "Three lights in vertical line: red, white, red",
+      "One white light",
+      "Code flag Alpha only"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 440,
+    "question": "The minimum height of the rigid replica of flag 'A' for diving operations is:",
+    "choices": [
+      "0.5 meter",
+      "0.6 meter",
+      "1 meter",
+      "1.5 meters"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 441,
+    "question": "A mine clearance vessel indicates it is dangerous to approach within:",
+    "choices": [
+      "100 meters",
+      "500 meters",
+      "1000 meters",
+      "2000 meters"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 442,
+    "question": "A cone shape must have a base diameter of not less than:",
+    "choices": [
+      "0.3 meter",
+      "0.5 meter",
+      "0.6 meter",
+      "1 meter"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 443,
+    "question": "A cylinder must have height of:",
+    "choices": [
+      "Equal to diameter",
+      "Twice its diameter",
+      "Half its diameter",
+      "Three times diameter"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 444,
+    "question": "The lights of vessels less than 20 meters may be of:",
+    "choices": [
+      "Same dimensions as larger vessels",
+      "Lesser dimensions but commensurate with vessel size",
+      "Any size",
+      "Minimum size only"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 445,
+    "question": "The purpose of screens on sidelights is to:",
+    "choices": [
+      "Increase brightness",
+      "Meet requirements of Section 9 Annex I",
+      "Decoration",
+      "Weather protection"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 446,
+    "question": "For vessels less than 12 meters, the masthead light minimum range is:",
+    "choices": [
+      "1 mile",
+      "2 miles",
+      "3 miles",
+      "5 miles"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 447,
+    "question": "A pushing vessel not in composite unit exhibits:",
+    "choices": [
+      "One masthead light",
+      "Two masthead lights in vertical line",
+      "Three masthead lights",
+      "Normal towing lights"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 448,
+    "question": "When it is impracticable for a vessel towing to display prescribed lights:",
+    "choices": [
+      "She must not tow",
+      "All possible measures shall be taken to indicate the relationship",
+      "She shows no lights",
+      "She requests assistance"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 449,
+    "question": "Manoeuvring light signals may be supplemented by:",
+    "choices": [
+      "Sound signals",
+      "Light signals repeated as appropriate",
+      "Radio calls",
+      "Hand signals"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 450,
+    "question": "Each light flash for manoeuvring signals lasts about:",
+    "choices": [
+      "0.5 second",
+      "1 second",
+      "2 seconds",
+      "3 seconds"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 451,
+    "question": "The interval between successive manoeuvring light signals must be not less than:",
+    "choices": [
+      "5 seconds",
+      "10 seconds",
+      "15 seconds",
+      "20 seconds"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 452,
+    "question": "The manoeuvring light must be visible at minimum range of:",
+    "choices": [
+      "2 miles",
+      "3 miles",
+      "5 miles",
+      "6 miles"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 453,
+    "question": "If whistles are fitted more than 100 meters apart:",
+    "choices": [
+      "Both must be used",
+      "Only one shall be used for manoeuvring signals",
+      "Neither should be used",
+      "They must sound simultaneously"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 454,
+    "question": "To attract attention, a vessel may:",
+    "choices": [
+      "Use any signal",
+      "Make light or sound signals not mistaken for authorized signals",
+      "Use continuous sounding",
+      "Use strobe lights"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 455,
+    "question": "High intensity intermittent or revolving lights (strobe lights) for attracting attention:",
+    "choices": [
+      "Should be used frequently",
+      "Shall be avoided",
+      "Are required",
+      "Are recommended"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 456,
+    "question": "The Convention was done at London on:",
+    "choices": [
+      "20 October 1960",
+      "20 October 1972",
+      "1 January 1976",
+      "20 October 1980"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 457,
+    "question": "The Convention required at least how many States to enter into force?",
+    "choices": [
+      "10 States",
+      "15 States",
+      "20 States",
+      "25 States"
+    ],
+    "correct_answer": 3,
+    "difficulty": "hard"
+  },
+  {
+    "id": 458,
+    "question": "These States needed merchant fleets constituting not less than what percent of world fleet?",
+    "choices": [
+      "50%",
+      "60%",
+      "65%",
+      "75%"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  },
+  {
+    "id": 459,
+    "question": "The Convention replaced the International Regulations of:",
+    "choices": [
+      "1948",
+      "1954",
+      "1960",
+      "1965"
+    ],
+    "correct_answer": 4,
+    "difficulty": "hard"
+  }
+]
