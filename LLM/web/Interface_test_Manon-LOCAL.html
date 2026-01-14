@@ -398,13 +398,135 @@
 #reviewResult.result-attention { color: #f9a825; }
 #reviewResult.result-inapte { color: #c62828; }
 
-.review-charts canvas {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 20px;
+.review-charts {
+  display: flex;
+  gap: 40px;
+  justify-content: center;   /* centre les CASES */
+  align-items: stretch;
+  margin-bottom: 30px;
 }
 
+.chart-box {
+  flex: 1;
+  max-width: 520px;          /* largeur de la case */
+  display: flex;
+  justify-content: center;   /* centre le canvas horizontalement */
+  align-items: center;       /* centre le canvas verticalement */
+}
+
+.chart-box canvas {
+  width: 100% !important;
+  max-width: 500px;
+  height: 260px !important;
+}
+
+
+.review-charts canvas {
+  flex: 1;
+  max-width: 500px;   /* plus large */
+  height: 260px !important; /* moins haut */
+}
+
+/* --- PAGE DETAILS --- */
+
+.details-nav {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.details-nav button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #e0e0e0;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.details-nav button.active {
+  background: #1976d2;
+  color: white;
+}
+
+.details-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.details-column {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.details-column h3 {
+  margin-top: 0;
+  color: #1976d2;
+}
+
+.details-status {
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.details-status.correct {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.details-status.partial {
+  background: #fff8e1;
+  color: #f9a825;
+}
+
+.details-status.wrong {
+  background: #fdecea;
+  color: #c62828;
+}
+
+/* --- Détails : navigation questions (contrastée) --- */
+
+.details-nav button {
+  background: #bdbdbd;
+  color: #333;
+  font-weight: bold;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* États */
+.details-nav button.correct {
+  background: #2e7d32;   /* vert foncé */
+  color: #fff;
+}
+
+.details-nav button.partial {
+  background: #f57c00;   /* orange foncé */
+  color: #fff;
+}
+
+.details-nav button.wrong {
+  background: #c62828;   /* rouge foncé */
+  color: #fff;
+}
+
+/* Actif (prioritaire) */
+.details-nav button.active {
+  background: #1565c0 !important; /* bleu foncé */
+  color: #fff !important;
+  box-shadow: 0 0 0 3px rgba(21,101,192,0.35);
+}
+
+/* Survol */
+.details-nav button:hover {
+  transform: scale(1.1);
+}
 
   </style>
 </head>
@@ -450,6 +572,13 @@
   <h1 class="title">Votre espace</h1>
   <p>Historique personnel</p>
 
+  <!-- Bouton nouveau test -->
+  <div class="start-test-container">
+    <button class="start-button" onclick="startTest()">
+      Commencer un nouveau test
+    </button>
+  </div>
+
   <!-- Historique -->
   <div id="historyContainer" class="history-container">
 
@@ -477,12 +606,7 @@
 
   </div>
 
-  <!-- Bouton nouveau test -->
-  <div class="start-test-container">
-    <button class="start-button" onclick="startTest()">
-      Commencer un nouveau test
-    </button>
-  </div>
+  
 </div>
 
 
@@ -594,6 +718,11 @@
 
 <!-- PAGE RÉSULTATS -->
 <div id="review" class="page">
+  <div class="header-logos">
+    <img src="{{ url_for('static', filename='logo-leia.png') }}">
+    <img src="{{ url_for('static', filename='logo-UT.png') }}">
+  </div>
+
   <div class="review-header" style="text-align:center; margin-bottom:30px;">
     <h1 style="font-size:36px; margin-bottom:12px;">Résultats du test</h1>
     <div id="reviewResult" style="font-size:48px; font-weight:bold; margin-bottom:8px;">Apte</div>
@@ -601,9 +730,13 @@
     <div id="reviewTime" style="font-size:16px; color:#777;">Temps total: 12m 34s</div>
   </div>
 
-  <div class="review-charts" style="display:flex; justify-content:space-between; gap:40px; margin-bottom:40px;">
-    <canvas id="pieChart" style="flex:1; max-width:400px;"></canvas>
-    <canvas id="lineChart" style="flex:1; max-width:400px;"></canvas>
+  <div class="review-charts">
+    <div class="chart-box">
+      <canvas id="pieChart"></canvas>
+    </div>
+    <div class="chart-box">
+      <canvas id="lineChart"></canvas>
+    </div>
   </div>
 
   <div style="display:flex; justify-content:space-between;">
@@ -611,6 +744,78 @@
     <button class="finish-button" onclick="showDetails()">Détails</button>
   </div>
 </div>
+
+<!-- PAGE DÉTAILS -->
+<div id="details" class="page">
+  <div class="header-logos">
+    <img src="{{ url_for('static', filename='logo-leia.png') }}">
+    <img src="{{ url_for('static', filename='logo-UT.png') }}">
+  </div>
+  <h1 style="text-align:center; margin-bottom:20px;">
+    Détail des réponses
+  </h1>
+
+  <!-- BARRE DE NAVIGATION QUESTIONS -->
+  <div id="detailsNav" class="details-nav">
+    <!-- boutons générés en JS -->
+  </div>
+
+  <!-- CONTENU PRINCIPAL -->
+  <div class="details-content">
+
+    <!-- COLONNE GAUCHE -->
+    <div class="details-column">
+      <h3>Question</h3>
+    
+      <p id="detailsQuestion"></p>
+    
+      <img id="detailsImage"
+           style="display:none; width:100%; margin-top:15px; border-radius:10px;">
+    
+      <p id="detailsDescription"
+         style="display:none; margin-top:15px; white-space:pre-line; text-align:justify;">
+      </p>
+    </div>
+    
+
+    <!-- COLONNE MILIEU -->
+    <div class="details-column">
+      <h3>Votre réponse</h3>
+      <p id="detailsUserAnswer">Réponse utilisateur</p>
+
+      <h4 style="margin-top:20px;">Réponse attendue</h4>
+      <p id="detailsExpectedAnswer">Réponse correcte</p>
+    </div>
+
+    <!-- COLONNE DROITE -->
+    <div class="details-column">
+      <h3>Résultat</h3>
+      <div id="detailsStatus" class="details-status correct">
+        Correct
+      </div>
+
+      <p style="margin-top:15px;">
+        <b>Temps passé :</b>
+        <span id="detailsTime">12 s</span>
+      </p>
+
+      <p style="margin-top:20px;" id="detailsExplanation">
+        Exemple de texte explicatif sur la réponse, les erreurs fréquentes,
+        ou des conseils pédagogiques.
+      </p>
+    </div>
+
+  </div>
+
+  <div style="margin-top:30px; text-align:center;">
+    <button class="finish-button" onclick="showPage('review')">
+      Retour aux résultats
+    </button>
+  </div>
+
+</div>
+
+
 
 
 <script>
@@ -620,6 +825,86 @@
   //////////////////////////////////////////////////////////////////////////////////////
   //////////////////////// POUR OUVERTURE EN LOCAL ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////
+
+  let currentDetailIndex = 0;
+
+function showDetails() {
+  showPage("details");
+  buildDetailsNav();
+  showDetail(0);
+}
+
+function buildDetailsNav() {
+  const nav = document.getElementById("detailsNav");
+  nav.innerHTML = "";
+
+  results.forEach((_, index) => {
+    const btn = document.createElement("button");
+    btn.textContent = index + 1;
+
+if (results[index].result) {
+  btn.classList.add(results[index].result);
+}
+
+btn.onclick = () => showDetail(index);
+nav.appendChild(btn);
+  });
+}
+
+
+function showDetail(index) {
+  currentDetailIndex = index;
+
+  const data = results[index]; // ✅ BON tableau
+
+  document.getElementById("detailsQuestion").textContent = data.question;
+  // ===== IMAGE =====
+const img = document.getElementById("detailsImage");
+if (data.image) {
+  img.src = data.image;
+  img.style.display = "block";
+} else {
+  img.style.display = "none";
+}
+
+// ===== DESCRIPTION =====
+const desc = document.getElementById("detailsDescription");
+if (data.description) {
+  desc.textContent = data.description;
+  desc.style.display = "block";
+} else {
+  desc.style.display = "none";
+}
+
+
+  document.getElementById("detailsUserAnswer").textContent =
+    data.answer || "(Aucune réponse)";
+  document.getElementById("detailsExpectedAnswer").textContent =
+    "Réponse attendue (à connecter au backend)";
+  document.getElementById("detailsTime").textContent =
+    Math.round(data.timeSpent / 1000) + " s";
+
+  document.getElementById("detailsExplanation").textContent =
+    "Explication pédagogique à afficher ici.";
+
+  // ⚠️ statut fictif pour le moment
+  const statusList = ["correct", "partial", "wrong"];
+  const status = statusList[index % 3];
+
+  const statusEl = document.getElementById("detailsStatus");
+  statusEl.className = "details-status " + status;
+  statusEl.textContent =
+    status === "correct"
+      ? "Correct"
+      : status === "partial"
+      ? "Partiellement correct"
+      : "Incorrect";
+
+  // bouton actif
+  document.querySelectorAll(".details-nav button").forEach((b, i) => {
+    b.classList.toggle("active", i === index);
+  });
+}
 
 
   // === MODE DEMO LOCAL (sans backend) ===
@@ -693,6 +978,18 @@ const demoQuiz = [
   const results = [];
 
   const imageInput = document.getElementById("imageInput");
+  imageInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && !event.shiftKey) {
+    event.preventDefault();
+    if (!imageArrowButton.disabled) nextQuestion();
+  }
+
+  keystrokes.push({
+    touche: event.key,
+    temps: Date.now() - questionStartTime
+  });
+});
+
   const imageArrowButton = document.getElementById("imageArrowButton");
   const imageQuestionLayout = document.getElementById("imageQuestionLayout");
 
@@ -1266,15 +1563,22 @@ function selectQcmChoice(index) {
     const isQcm = currentQuestionData.type === "qcm";
 
     const answerObj = {
-    question: currentQuestionData.question,
-    type: currentQuestionData.type,
-    answer: isQcm
-  ? currentQuestionData.choices[selectedQcmIndex]
-  : (currentQuestionData.image ? imageInput.value : input.value),
-    selected_index: isQcm ? selectedQcmIndex : null,
-    timeSpent: timeSpent,
-    keystrokes: keystrokes
-    };
+  question: currentQuestionData.question,
+  type: currentQuestionData.type,
+  image: currentQuestionData.image || null,
+  description: currentQuestionData.description || null,
+  answer: isQcm
+    ? currentQuestionData.choices[selectedQcmIndex]
+    : (currentQuestionData.image ? imageInput.value : input.value),
+  selected_index: isQcm ? selectedQcmIndex : null,
+  timeSpent: timeSpent,
+  keystrokes: keystrokes
+};
+  // ⚠️ DEMO ONLY
+const demoResult = ["correct", "partial", "wrong"][currentQuestion % 3];
+answerObj.result = demoResult;
+
+
 
     results.push(answerObj);
 
@@ -1506,16 +1810,22 @@ function submitAndShowReview() {
   // --- Camembert ---
   const pieCtx = document.getElementById('pieChart').getContext('2d');
   new Chart(pieCtx, {
-    type: 'pie',
-    data: {
-      labels: ['Correctes', 'Partiellement correctes', 'Fausses'],
-      datasets: [{
-        data: [correct, partial, wrong],
-        backgroundColor: ['#2e7d32','#f9a825','#c62828']
-      }]
-    },
-    options: { responsive:true, plugins:{ legend:{ position:'bottom' } } }
-  });
+  type: 'pie',
+  data: {
+    labels: ['Correctes', 'Partiellement correctes', 'Fausses'],
+    datasets: [{
+      data: [correct, partial, wrong],
+      backgroundColor: ['#2e7d32','#f9a825','#c62828']
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom' }
+    }
+  }
+});
 
   // --- Graphique ligne (vide pour l'instant) ---
   const lineCtx = document.getElementById('lineChart').getContext('2d');
@@ -1535,9 +1845,6 @@ function submitAndShowReview() {
   });
 }
 
-function showDetails() {
-  alert("Page Détails vide pour l'instant");
-}
 </script>
 
 </body>
