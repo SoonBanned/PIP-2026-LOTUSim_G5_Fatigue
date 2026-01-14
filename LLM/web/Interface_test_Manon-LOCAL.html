@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Test de fatigue</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page {
+      display: none;
+      background: white;
+      padding: 40px 30px;
+      max-width: 1200px; /* plus large */
+      width: 90%;        /* prend 90% de l’écran */
+      margin: 20px auto; /* réduire le haut/bas pour plus de place */
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      animation: fadeIn 0.4s ease;
+    }
+
+
+    .page.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- HEADER LOGOS --- */
+    .header-logos {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .header-logos img { height: 60px; }
+
+    /* --- PAGE IDENTIFICATION --- */
+    #identify h1,
+    #identify p {
+    text-align: center;
+    }
+
+#identify .identify-form {
+  display: flex;
+  flex-direction: column;   /* empile verticalement */
+  justify-content: center;
+  align-items: center;
+  gap: 15px;                /* espace entre champ et bouton */
+  margin-top: 25px;
+}
+
+
+    /* --- PAGE ACCUEIL --- */
+    #home { text-align: center; }
+
+    .title { font-size: 36px; margin-bottom: 20px; }
+
+    .center-image {
+      width: 80%;
+      max-width: 400px;
+      margin: 0 auto 30px auto;
+      display: block;
+    }
+
+    .start-button {
+      font-size: 24px;
+      padding: 15px 40px;
+      background-color: #d32f2f;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .start-button:disabled {
+      background-color: #aaa; /* gris clair */
+      cursor: not-allowed;
+      color: #fff; /* ou #eee pour bien contraster */
+    }
+    .start-button:hover { background-color: #b71c1c; }
+
+    /* --- PAGE QUESTIONS --- */
+    #questionText { font-size: 26px; margin-bottom: 15px; }
+
+    #questionImage {
+      display: none;
+      max-width: 100%;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    .progress-container { margin-bottom: 20px; }
+
+    #questionCounter { font-size: 14px; color: #555; }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+
+    #progressFill {
+      height: 100%;
+      width: 0%;
+      background: #1976d2;
+      transition: width 0.4s ease;
+    }
+
+    .answer-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    textarea {
+      flex: 1;
+      height: 70px;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+
+    .arrow-button {
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .arrow-button:hover:not(:disabled) {
+      background-color: #0d47a1;
+      transform: scale(1.1);
+    }
+
+    .arrow-button:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* --- PAGE FIN --- */
+    .finish-button {
+      padding: 15px 40px;
+      font-size: 20px;
+      background-color: #b71c1c;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .finish-button:hover { background-color: #1b5e20; }
+
+    /* --- LOADING OVERLAY --- */
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(245,245,245,0.8);
+      z-index: 9999;
+    }
+
+    .loading-overlay.active { display: flex; }
+
+    .spinner {
+      width: 64px;
+      height: 64px;
+      border: 8px solid #cfd8dc;
+      border-top-color: #1976d2;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* --- SMALL GRADING INDICATOR (bottom-right) --- */
+    .grading-indicator {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 999px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      z-index: 10000;
+      font-size: 12px;
+      color: #333;
+    }
+
+    .grading-indicator.active { display: flex; }
+
+    .spinner-sm {
+      width: 18px;
+      height: 18px;
+      border: 3px solid #cfd8dc;
+      border-top-color: #1976d2;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+
+    /* --- CAMERA SETUP --- */
+    .camera-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .camera-video {
+      width: 100%;
+      max-height: 360px;
+      background: #111;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .camera-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    select {
+      font-size: 14px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      min-width: 280px;
+      max-width: 100%;
+    }
+
+    /* --- QCM --- */
+    .qcm-container {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    }
+
+    .qcm-choice {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    }
+
+    .qcm-choice:hover {
+    background: #e3f2fd;
+    border-color: #1976d2;
+    }
+
+    .qcm-choice.selected {
+    background: #1976d2;
+    border-color: #1976d2;
+    color: white;
+    }
+
+    .choice-letter {
+    width: 32px;
+    height: 32px;
+    background: #1976d2;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-weight: bold;
+    }
+
+    .qcm-choice.selected .choice-letter {
+    background: white;
+    color: #1976d2;
+    }
+
+    /* --- Badge type question --- */
+    .question-type-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    }
+
+    .badge-qcm {
+    background: #e3f2fd;
+    color: #1976d2;
+    }
+
+    .badge-open {
+    background: #fff3e0;
+    color: #e65100;
+    }
+
+    .history-container {
+    margin-top: 30px;
+    overflow-x: auto;
+  }
+
+  .history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+
+  .history-table th,
+  .history-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .history-table th {
+    background: #f5f5f5;
+    font-weight: bold;
+  }
+
+  .result-apte { color: #2e7d32; font-weight: bold; }
+  .result-attention { color: #f9a825; font-weight: bold; }
+  .result-inapte { color: #c62828; font-weight: bold; }
+
+  .start-test-container {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+  }
+
+  #imageQuestionLayout {
+  display: none;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+#imageQuestionLayout.active {
+  display: grid;
+}
+
+.image-left img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.image-left h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.image-right p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+#imageQuestionDescription {
+  white-space: pre-line;   /* pour garder les retours à la ligne */
+  text-align: justify;      /* JUSTIFIER le texte */
+}
+/* PAGE REVIEW */
+#review h1 {
+  color: #1976d2;
+}
+
+#reviewResult.result-apte { color: #2e7d32; }
+#reviewResult.result-attention { color: #f9a825; }
+#reviewResult.result-inapte { color: #c62828; }
+
+.review-charts canvas {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+
+  </style>
+</head>
+
+<body>
+
+<!-- LOADING OVERLAY -->
+<div id="loading" class="loading-overlay" aria-hidden="true">
+  <div class="spinner" aria-label="Chargement"></div>
+</div>
+
+<!-- SMALL GRADING INDICATOR -->
+<div id="gradingIndicator" class="grading-indicator" aria-hidden="true">
+  <div class="spinner-sm" aria-label="Correction en cours"></div>
+  <div>Correction en cours…</div>
+</div>
+
+<!-- PAGE IDENTIFICATION -->
+<div id="identify" class="page active">
+  <div class="header-logos">
+    <img src="{{ url_for('static', filename='logo-crossing.png') }}">
+    <img src="{{ url_for('static', filename='logo-UT.png') }}">
+  </div>
+
+  <h1 class="title">Identification</h1>
+  <p>Entrez votre nom pour commencer.</p>
+
+  <div class="identify-form">
+    <input id="nameInput" type="text" placeholder="Votre nom"
+           style="font-size:16px; padding:10px; border-radius:8px; border:1px solid #ccc; width: 60%; max-width: 360px;" />
+    <button class="start-button" style="font-size:16px; padding:10px 18px;" onclick="confirmName()">Continuer</button>
+  </div>
+  
+</div>
+
+<!-- PAGE ACCUEIL -->
+<div id="home" class="page">
+  <div class="header-logos">
+    <img src="{{ url_for('static', filename='logo-crossing.png') }}">
+    <img src="{{ url_for('static', filename='logo-UT.png') }}">
+  </div>
+
+  <h1 class="title">Votre espace</h1>
+  <p>Historique personnel</p>
+
+  <!-- Historique -->
+  <div id="historyContainer" class="history-container">
+
+    <!-- Message si vide -->
+    <div id="noHistoryMessage" class="no-history-message" style="display:none; text-align:center; margin-top:40px; font-size:18px; color:#666;">
+      Vous n'avez pas encore d'historique.<br>
+      Cliquez sur "Commencer un nouveau test" pour démarrer.
+    </div>
+
+    <!-- Tableau -->
+    <div id="historyTableWrapper" style="display:none;">
+      <table id="historyTable" class="history-table">
+        <thead>
+          <tr>
+            <th>Résultat</th>
+            <th>Temps total</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="historyTableBody">
+          <!-- rempli en JS -->
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Bouton nouveau test -->
+  <div class="start-test-container">
+    <button class="start-button" onclick="startTest()">
+      Commencer un nouveau test
+    </button>
+  </div>
+</div>
+
+
+
+<!-- PAGE CAMERA (between login and start) -->
+<div id="cameraSetup" class="page">
+  <div class="header-logos">
+    <img src="{{ url_for('static', filename='logo-crossing.png') }}">
+    <img src="{{ url_for('static', filename='logo-UT.png') }}">
+  </div>
+
+  <h1 class="title" style="font-size: 28px;">Caméra</h1>
+  <p>Choisissez la caméra à utiliser. Un aperçu s’affiche ci-dessous.</p>
+
+  <div class="camera-wrap">
+    <div class="camera-row">
+      <label for="cameraSelect" style="font-size: 14px; color:#333;">Périphérique :</label>
+      <select id="cameraSelect"></select>
+    </div>
+    <video id="cameraPreview" class="camera-video" autoplay playsinline muted></video>
+
+    <div id="cameraHint" style="font-size: 12px; color:#666; text-align:center;"></div>
+
+    <div class="camera-row" style="margin-top: 6px;">
+      <button class="start-button" style="font-size:16px; padding:10px 18px;" onclick="continueAfterCamera()">Continuer</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- PAGE QUESTIONS -->
+<div id="questionPage" class="page">
+  <div class="header-logos">
+    <img src="{{ url_for('static', filename='logo-leia.png') }}">
+    <img src="{{ url_for('static', filename='logo-UT.png') }}">
+  </div>
+
+  <div class="progress-container">
+    <span id="questionCounter"></span>
+    <div class="progress-bar">
+      <div id="progressFill"></div>
+    </div>
+  </div>
+
+  <!-- Badge type -->
+  <span id="questionTypeBadge" class="question-type-badge"></span>
+
+  <!-- CONTENEUR GLOBAL -->
+  <div id="questionLayout">
+
+    <!-- ================= MODE CLASSIQUE ================= -->
+    <!-- QCM + question ouverte sans image -->
+    <div id="classicQuestion">
+
+      <img id="questionImage" src="" alt="">
+
+      <h2 id="questionText"></h2>
+
+      <!-- Zone réponse ouverte -->
+      <div id="openAnswerZone" class="answer-row">
+        <textarea id="input" placeholder="Écrivez votre réponse ici..."></textarea>
+        <button id="openArrowButton" class="arrow-button" onclick="nextQuestion()" disabled>➜</button>
+      </div>
+
+      <!-- Zone QCM -->
+      <div id="qcmZone" class="qcm-container">
+        <div id="qcmChoices"></div>
+        <button id="qcmValidateButton" class="start-button" onclick="nextQuestion()" disabled>
+          Valider
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ================= MODE IMAGE ================= -->
+    <!-- Question ouverte AVEC image -->
+    <div id="imageQuestionLayout">
+
+      <div class="image-left">
+        <h2 id="imageQuestionTitle"></h2>
+        <img id="imageQuestionImage" src="" alt="">
+      </div>
+
+      <div class="image-right">
+        <p id="imageQuestionDescription">
+          Veuillez observer l’image et répondre à la question ci-dessous.
+        </p>
+
+        <div class="answer-row">
+          <textarea id="imageInput" placeholder="Écrivez votre réponse ici..."></textarea>
+          <button id="imageArrowButton" class="arrow-button" onclick="nextQuestion()" disabled>➜</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- PAGE FIN -->
+<div id="end" class="page">
+  <h2>Test terminé</h2>
+  <p>Merci pour votre participation.</p>
+  <button class="finish-button" onclick="restart()">Revenir à l'accueil</button>
+</div>
+
+<!-- PAGE RÉSULTATS -->
+<div id="review" class="page">
+  <div class="review-header" style="text-align:center; margin-bottom:30px;">
+    <h1 style="font-size:36px; margin-bottom:12px;">Résultats du test</h1>
+    <div id="reviewResult" style="font-size:48px; font-weight:bold; margin-bottom:8px;">Apte</div>
+    <div id="reviewPercentage" style="font-size:20px; color:#555;">80%</div>
+    <div id="reviewTime" style="font-size:16px; color:#777;">Temps total: 12m 34s</div>
+  </div>
+
+  <div class="review-charts" style="display:flex; justify-content:space-between; gap:40px; margin-bottom:40px;">
+    <canvas id="pieChart" style="flex:1; max-width:400px;"></canvas>
+    <canvas id="lineChart" style="flex:1; max-width:400px;"></canvas>
+  </div>
+
+  <div style="display:flex; justify-content:space-between;">
+    <button class="finish-button" onclick="showPage('home')">Retour à l'accueil</button>
+    <button class="finish-button" onclick="showDetails()">Détails</button>
+  </div>
+</div>
+
+
+<script>
+
+
+
+  //////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////// POUR OUVERTURE EN LOCAL ////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////
+
+
+  // === MODE DEMO LOCAL (sans backend) ===
+const DEMO_MODE = true;
+
+// Quiz fictif avec question ouverte AVEC image sur la question 2
+const demoQuiz = [
+  {
+    index: 0,
+    type: "open",
+    question: "Que signifie la fatigue pour vous ?",
+    image: null,
+    total: 4
+  },
+  {
+    index: 1,
+    type: "qcm",
+    question: "À quel moment êtes-vous le plus fatigué ?",
+    choices: ["Le matin", "L'après-midi", "Le soir", "Tout le temps"],
+    image: null,
+    total: 4
+  },
+  {
+    index: 2,
+    type: "open",              // ⬅️ IMPORTANT
+    question: "Vessel A has vessel B on her own starboard side (relative bearing STBD 054°)",
+    description : "Vessel A: Power-driven vessel\n" +
+    "Vessel B: Power-driven vessel\n" +
+    "Area: On the high seas\n" +
+    "Visibility: Good (Vessels in sight of one another)\n" +
+    "Vessel A and vessel B are crossing so as to involve risk of collision.\n" +
+    "Vessel A has vessel B on her own starboard side (relative bearing STBD 054°).",
+    image: "assets/test.jpg",          // ⬅️ image présente
+    total: 4
+  },
+  {
+    index: 3,
+    type: "qcm",
+    question: "Votre sommeil est-il réparateur ?",
+    choices: ["Oui", "Plutôt oui", "Plutôt non", "Non"],
+    image: null,
+    total: 4
+  }
+];
+
+
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+  // Questions are served by the backend.
+  let totalQuestions = 0;
+  let currentQuestionData = null;
+  let testId = null;
+  let userName = "";
+  let gradingPollTimer = null;
+  let backgroundPollingActive = false;
+  let answersSubmittedCount = 0;
+
+  // Prefetch quiz right after login.
+  let prefetchedTestId = null;
+  let prefetchedTotal = 0;
+
+  // Camera
+  let cameraStream = null;
+
+  let currentQuestion = 0;
+  let questionStartTime = 0;
+  let testStartTime = 0;
+  let keystrokes = [];
+  const results = [];
+
+  const imageInput = document.getElementById("imageInput");
+  const imageArrowButton = document.getElementById("imageArrowButton");
+  const imageQuestionLayout = document.getElementById("imageQuestionLayout");
+
+
+  const questionTypeBadge = document.getElementById("questionTypeBadge");
+  const openAnswerZone = document.getElementById("openAnswerZone");
+  const qcmZone = document.getElementById("qcmZone");
+  const qcmChoices = document.getElementById("qcmChoices");
+  const openArrowButton = document.getElementById("openArrowButton");
+  const qcmValidateButton = document.getElementById("qcmValidateButton");
+  
+  let selectedQcmIndex = -1;
+
+  const input = document.getElementById("input");
+  const questionText = document.getElementById("questionText");
+  const questionImage = document.getElementById("questionImage");
+  const progressFill = document.getElementById("progressFill");
+  const questionCounter = document.getElementById("questionCounter");
+  const loadingOverlay = document.getElementById("loading");
+  const gradingIndicator = document.getElementById("gradingIndicator");
+  const nameInput = document.getElementById("nameInput");
+  // Valider avec la touche Entrée sur le champ nom
+  if (nameInput) {
+    nameInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();   // empêche le comportement par défaut
+        confirmName();            // agit comme le bouton "Continuer"
+      }
+    });
+  }
+
+  const reviewStatus = document.getElementById("reviewStatus");
+  const reviewContent = document.getElementById("reviewContent");
+  const reviewContinue = document.getElementById("reviewContinue");
+  const cameraSelect = document.getElementById("cameraSelect");
+  const cameraPreview = document.getElementById("cameraPreview");
+  const cameraHint = document.getElementById("cameraHint");
+
+  function setLoading(isLoading) {
+    if (isLoading) {
+      loadingOverlay.classList.add("active");
+      loadingOverlay.setAttribute("aria-hidden", "false");
+    } else {
+      loadingOverlay.classList.remove("active");
+      loadingOverlay.setAttribute("aria-hidden", "true");
+    }
+  }
+
+  function setGrading(isGrading) {
+    if (isGrading) {
+      gradingIndicator.classList.add("active");
+      gradingIndicator.setAttribute("aria-hidden", "false");
+    } else {
+      gradingIndicator.classList.remove("active");
+      gradingIndicator.setAttribute("aria-hidden", "true");
+    }
+  }
+
+  function setGradingText(text) {
+    const el = document.getElementById("gradingIndicator");
+    if (!el) return;
+    const label = el.querySelector("div:last-child");
+    if (label) label.textContent = text;
+  }
+
+  function showPage(id) {
+    document.querySelectorAll(".page").forEach(p => {
+      p.classList.remove("active");
+      p.style.display = "none";
+    });
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add("active");
+    el.style.display = "block";
+
+    if (id === "home") {
+      loadHistory();
+    }
+
+  }
+
+  async function loadHistory() {
+  try {
+    const resp = await fetch("/static/history.json");
+    const history = await resp.json();
+
+    const tbody = document.getElementById("historyTableBody");
+    const tableWrapper = document.getElementById("historyTableWrapper");
+    const noHistoryMessage = document.getElementById("noHistoryMessage");
+
+    tbody.innerHTML = "";
+
+    // Si aucun historique
+    if (!history || history.length === 0) {
+      tableWrapper.style.display = "none";
+      noHistoryMessage.style.display = "block";
+      return;
+    }
+
+    // Sinon on affiche le tableau
+    tableWrapper.style.display = "block";
+    noHistoryMessage.style.display = "none";
+
+    history.slice(0, 5).forEach(item => {
+      const tr = document.createElement("tr");
+
+      let resultClass = "";
+      if (item.result === "Apte") resultClass = "result-apte";
+      if (item.result === "Attention") resultClass = "result-attention";
+      if (item.result === "Inapte") resultClass = "result-inapte";
+
+      tr.innerHTML = `
+        <td class="${resultClass}">${item.result}</td>
+        <td>${item.time}</td>
+        <td>${item.score}</td>
+      `;
+
+      tbody.appendChild(tr);
+    });
+
+  } catch (e) {
+    console.error("Erreur chargement historique :", e);
+    noHistoryMessage.textContent = "Impossible de charger l'historique.";
+    noHistoryMessage.style.display = "block";
+  }
+}
+
+
+
+  // Force initial page state on first load.
+  document.addEventListener("DOMContentLoaded", () => {
+    showPage("identify");
+    if (nameInput) nameInput.focus();
+  });
+
+  // async function confirmName() {
+  //   const nm = (nameInput && nameInput.value ? nameInput.value : "").trim();
+  //   if (!nm) {
+  //     alert("Veuillez entrer votre nom");
+  //     return;
+  //   }
+
+  //   try {
+  //     const resp = await fetch("/api/register", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ name: nm })
+  //     });
+  //     const data = await resp.json();
+  //     if (!data.ok) {
+  //       alert(data.error || "Erreur d'identification");
+  //       return;
+  //     }
+  //     userName = data.name;
+
+  //     // Start quiz generation early (non-blocking), then show camera page.
+  //     prefetchQuiz();
+  //     showPage("cameraSetup");
+  //     await initCameraSetup();
+  //   } catch (e) {
+  //     console.error(e);
+  //     alert("Erreur d'identification");
+  //   }
+  // }
+
+  ////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
+
+  async function confirmName() {
+  const nm = (nameInput && nameInput.value ? nameInput.value : "").trim();
+  if (!nm) {
+    alert("Veuillez entrer votre nom");
+    return;
+  }
+
+  userName = nm;
+  showPage("cameraSetup");
+  await initCameraSetup();
+}
+///////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+
+
+
+  async function prefetchQuiz() {
+    if (!userName) return;
+    try {
+      const r = await fetch("/api/prefetch_test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: userName, n: 4, difficulty: "easy" })
+      });
+      const d = await r.json();
+      if (d && d.ok) {
+        prefetchedTestId = d.test_id;
+      } else {
+        console.warn("prefetch_test failed:", d);
+        prefetchedTestId = null;
+      }
+    } catch (e) {
+      console.warn("prefetch_test error:", e);
+      prefetchedTestId = null;
+    }
+  }
+
+  async function waitForPrefetchReady() {
+    if (!prefetchedTestId) return null;
+    for (;;) {
+      const r = await fetch(`/api/test_status/${prefetchedTestId}`);
+      const d = await r.json();
+      if (!d || !d.ok) {
+        return null;
+      }
+      if (d.status === "ready") {
+        prefetchedTotal = d.total || 0;
+        return d;
+      }
+      if (d.status === "failed") {
+        console.warn("prefetch failed:", d.error);
+        return null;
+      }
+      // creating
+      await new Promise(res => setTimeout(res, 300));
+    }
+  }
+
+  async function initCameraSetup() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      if (cameraHint) cameraHint.textContent = "Webcam non disponible dans ce navigateur.";
+      return;
+    }
+
+    try {
+      // Request permission first so device labels appear.
+      const tmp = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+      // Stop immediately; we will reopen with selected device.
+      tmp.getTracks().forEach(t => t.stop());
+    } catch (e) {
+      if (cameraHint) cameraHint.textContent = "Autorisation caméra refusée (vous pouvez continuer).";
+      return;
+    }
+
+    await refreshCameraDeviceList();
+
+    if (cameraSelect) {
+      cameraSelect.addEventListener("change", async () => {
+        await startCameraPreview(cameraSelect.value);
+      });
+      // Autostart first device if any.
+      if (cameraSelect.options.length > 0) {
+        await startCameraPreview(cameraSelect.value);
+      }
+    }
+  }
+
+  async function refreshCameraDeviceList() {
+    if (!cameraSelect) return;
+    cameraSelect.innerHTML = "";
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const videos = devices.filter(d => d.kind === "videoinput");
+
+    videos.forEach((d, idx) => {
+      const opt = document.createElement("option");
+      opt.value = d.deviceId;
+      opt.textContent = d.label || `Caméra ${idx + 1}`;
+      cameraSelect.appendChild(opt);
+    });
+
+    if (cameraHint) {
+      cameraHint.textContent = videos.length
+        ? "Sélectionnez une caméra si besoin."
+        : "Aucune caméra détectée (vous pouvez continuer).";
+    }
+  }
+
+  async function startCameraPreview(deviceId) {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return;
+
+    // Stop previous stream.
+    if (cameraStream) {
+      cameraStream.getTracks().forEach(t => t.stop());
+      cameraStream = null;
+    }
+
+    const constraints = deviceId
+      ? { video: { deviceId: { exact: deviceId } }, audio: false }
+      : { video: true, audio: false };
+
+    try {
+      cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
+      if (cameraPreview) cameraPreview.srcObject = cameraStream;
+      if (cameraHint) cameraHint.textContent = "Aperçu caméra actif.";
+    } catch (e) {
+      console.warn("startCameraPreview error:", e);
+      if (cameraHint) cameraHint.textContent = "Impossible de démarrer la caméra (vous pouvez continuer).";
+    }
+  }
+
+  function continueAfterCamera() {
+    showPage("home");
+  }
+
+  //  async function startTest() {
+
+  //   currentQuestion = 0;
+  //   testStartTime = Date.now();
+  //   results.length = 0;
+  //   answersSubmittedCount = 0;
+  //   backgroundPollingActive = false;
+  //   showPage("questionPage");
+
+  //   try {
+  //     setLoading(true);
+
+  //     // Prefer the prefetched test if available.
+  //     if (prefetchedTestId) {
+  //       const st = await waitForPrefetchReady();
+  //       if (st && st.ok && st.status === "ready") {
+  //         testId = prefetchedTestId;
+  //         totalQuestions = prefetchedTotal || st.total || 0;
+  //         await loadQuestion(0);
+  //         return;
+  //       }
+  //       // Prefetch failed; fall back to blocking start_test.
+  //       prefetchedTestId = null;
+  //     }
+
+  //     const startResp = await fetch("/api/start_test", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ name: userName, n: 4, difficulty: "easy" })
+  //     });
+  //     const startData = await startResp.json();
+  //     if (!startData.ok) {
+  //       throw new Error(startData.error || "start_test failed");
+  //     }
+  //     testId = startData.test_id;
+  //     totalQuestions = startData.total || 0;
+  //     await loadQuestion(0);
+  //   } catch (err) {
+  //     console.error("Erreur start_test:", err);
+  //     alert("Erreur lors de la génération du quiz");
+  //     showPage("home");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
+
+
+  ////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+async function startTest() {
+  currentQuestion = 0;
+  testStartTime = Date.now();
+  results.length = 0;
+
+  totalQuestions = demoQuiz.length;
+  testId = "demo_test";
+
+  showPage("questionPage");
+  loadDemoQuestion(0);
+}
+function loadDemoQuestion(index) {
+  if (index >= demoQuiz.length) {
+    submitAndShowReview();
+    return;
+  }
+
+  currentQuestionData = demoQuiz[index];
+  showQuestionFromData(currentQuestionData);
+}
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+
+
+  // async function loadQuestion(index) {
+  //   const qResp = await fetch(`/api/question/${testId}/${index}`);
+  //   const qData = await qResp.json();
+  //   if (qData.done) {
+  //     await submitAndShowReview();
+  //     return;
+  //   }
+  //   currentQuestionData = qData;
+  //   showQuestionFromData(qData);
+  // }
+
+
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+  async function loadQuestion(index) {
+  if (DEMO_MODE) {
+    loadDemoQuestion(index);
+    return;
+  }
+}
+/////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+
+
+function showQuestionFromData(qData) {
+  // Reset commun
+  input.value = "";
+  imageInput.value = "";
+  keystrokes = [];
+  selectedQcmIndex = -1;
+
+  const isQcm = qData.type === "qcm";
+  const isOpen = qData.type === "open";
+  const hasImage = !!qData.image;
+
+  // Badge
+  if (isQcm) {
+    questionTypeBadge.textContent = "QCM";
+    questionTypeBadge.className = "question-type-badge badge-qcm";
+  } else {
+    questionTypeBadge.textContent = "Question ouverte";
+    questionTypeBadge.className = "question-type-badge badge-open";
+  }
+
+  /* ================= QUESTION OUVERTE AVEC IMAGE ================= */
+  if (isOpen && hasImage) {
+
+    // Masquer le mode classique
+    questionText.style.display = "none";
+    questionImage.style.display = "none";
+    openAnswerZone.style.display = "none";
+    qcmZone.style.display = "none";
+
+    // Activer layout image
+    imageQuestionLayout.classList.add("active");
+
+    document.getElementById("imageQuestionTitle").textContent = qData.question;
+    document.getElementById("imageQuestionImage").src = qData.image;
+
+    // Description personnalisée (fallback si absente)
+    document.getElementById("imageQuestionDescription").textContent =
+    qData.description || "Veuillez observer l’image et répondre à la question ci-dessous.";
+
+
+    imageArrowButton.disabled = true;
+
+  } else {
+    /* ================= MODE CLASSIQUE ================= */
+    imageQuestionLayout.classList.remove("active");
+
+    questionText.style.display = "block";
+    questionText.textContent = qData.question;
+
+    if (qData.image) {
+      questionImage.src = qData.image;
+      questionImage.style.display = "block";
+    } else {
+      questionImage.style.display = "none";
+    }
+
+    if (isQcm) {
+      openAnswerZone.style.display = "none";
+      qcmZone.style.display = "flex";
+      renderQcmChoices(qData.choices || []);
+      qcmValidateButton.disabled = true;
+    } else {
+      openAnswerZone.style.display = "flex";
+      qcmZone.style.display = "none";
+      openArrowButton.disabled = true;
+    }
+  }
+
+  /* ================= PROGRESSION ================= */
+  questionStartTime = Date.now();
+  const total = qData.total || totalQuestions || 1;
+  const idx = (qData.index ?? currentQuestion) + 1;
+
+  questionCounter.textContent = `Question ${idx} / ${total}`;
+  progressFill.style.width = `${(idx / total) * 100}%`;
+
+  showPage("questionPage");
+}
+
+input.addEventListener("input", () => {
+  openArrowButton.disabled = input.value.trim() === "";
+});
+
+imageInput.addEventListener("input", () => {
+  imageArrowButton.disabled = imageInput.value.trim() === "";
+});
+
+
+    function renderQcmChoices(choices) {
+  const letters = ['A','B','C','D','E','F'];
+  qcmChoices.innerHTML = "";
+
+  choices.forEach((choice, index) => {
+    const div = document.createElement("div");
+    div.className = "qcm-choice";
+    div.innerHTML = `
+      <span class="choice-letter">${letters[index]}</span>
+      <span>${choice}</span>
+    `;
+    div.onclick = () => selectQcmChoice(index);
+    qcmChoices.appendChild(div);
+  });
+}
+
+function selectQcmChoice(index) {
+  selectedQcmIndex = index;
+
+  keystrokes.push({
+    touche: `choice_${index}`,
+    temps: Date.now() - questionStartTime
+  });
+
+  document.querySelectorAll(".qcm-choice").forEach((el, i) => {
+    el.classList.toggle("selected", i === index);
+  });
+
+  qcmValidateButton.disabled = false;
+}
+
+
+  input.addEventListener("input", () => {
+    openArrowButton.disabled = input.value.trim() === "";
+  });
+
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      if (!openArrowButton.disabled) nextQuestion();
+    }
+
+    keystrokes.push({
+      touche: event.key,
+      temps: Date.now() - questionStartTime
+    });
+  });
+
+  async function submitAnswerIncremental(index, answerObj) {
+    if (!testId) return;
+    const idx = Number.isFinite(index) ? index : 0;
+    try {
+      const resp = await fetch(`/api/answer/${testId}/${idx}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(answerObj)
+      });
+      const data = await resp.json();
+      if (!data.ok) {
+        console.warn("Incremental submit failed:", data.error || data);
+      } else {
+        answersSubmittedCount = Math.max(answersSubmittedCount, idx + 1);
+        // Start background polling on first successful incremental submit.
+        if (!backgroundPollingActive) {
+          backgroundPollingActive = true;
+          startPollingGrading({ mode: "background" });
+        }
+      }
+    } catch (e) {
+      console.warn("Incremental submit error:", e);
+    }
+  }
+
+  async function nextQuestion() {
+    const timeSpent = Date.now() - questionStartTime;
+    const isQcm = currentQuestionData.type === "qcm";
+
+    const answerObj = {
+    question: currentQuestionData.question,
+    type: currentQuestionData.type,
+    answer: isQcm
+  ? currentQuestionData.choices[selectedQcmIndex]
+  : (currentQuestionData.image ? imageInput.value : input.value),
+    selected_index: isQcm ? selectedQcmIndex : null,
+    timeSpent: timeSpent,
+    keystrokes: keystrokes
+    };
+
+    results.push(answerObj);
+
+    // Submit each answer immediately for grading (non-blocking).
+    const qIndex = (currentQuestionData && Number.isFinite(currentQuestionData.index))
+      ? currentQuestionData.index
+      : currentQuestion;
+    submitAnswerIncremental(qIndex, answerObj);
+
+    currentQuestion++;
+    try {
+      setLoading(true);
+      ///await loadQuestion(currentQuestion);
+      loadDemoQuestion(currentQuestion);
+      /////////
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  // async function submitAndShowReview() {
+  //   const totalTestTime = Date.now() - testStartTime;
+  //   const payload = { totalTestTime: totalTestTime, results: results, name: userName };
+
+  //   showPage("review");
+  //   reviewStatus.textContent = "Envoi des réponses…";
+  //   reviewContent.innerHTML = "";
+  //   reviewContinue.disabled = true;
+
+  //   try {
+  //     setGrading(true);
+  //     const submitResp = await fetch(`/api/submit/${testId}`, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(payload)
+  //     });
+  //     const submitData = await submitResp.json();
+  //     if (!submitData.ok) {
+  //       throw new Error(submitData.error || "submit failed");
+  //     }
+  //     reviewStatus.textContent = "Correction en cours…";
+  //     startPollingGrading({ mode: "review" });
+  //   } catch (e) {
+  //     console.error(e);
+  //     setGrading(false);
+  //     reviewStatus.textContent = "Erreur lors de l'envoi/correction.";
+  //   }
+  // }
+
+
+
+  ////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////
+
+  async function submitAndShowReview() {
+  showPage("review");
+
+  reviewStatus.textContent = "Correction terminée (mode démo)";
+  reviewContent.innerHTML = "";
+
+  results.forEach((r, idx) => {
+    const block = document.createElement("div");
+    block.style.padding = "12px";
+    block.style.border = "1px solid #eee";
+    block.style.borderRadius = "10px";
+    block.style.marginBottom = "12px";
+    block.innerHTML = `
+      <div style="font-weight:700">Question ${idx+1}</div>
+      <div><b>Q:</b> ${r.question}</div>
+      <div><b>Votre réponse:</b> ${r.answer}</div>
+      <div><b>Score:</b> 8 / 10</div>
+      <div><b>Feedback:</b> Bonne réponse</div>
+    `;
+    reviewContent.appendChild(block);
+  });
+
+  reviewContinue.disabled = false;
+}
+//////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+
+  function startPollingGrading(opts) {
+    const mode = (opts && opts.mode) ? opts.mode : "review"; // 'review' | 'background'
+    if (gradingPollTimer) {
+      clearInterval(gradingPollTimer);
+      gradingPollTimer = null;
+    }
+
+    gradingPollTimer = setInterval(async () => {
+      try {
+        const st = await fetch(`/api/grading_status/${testId}`);
+        const stData = await st.json();
+        if (!stData.ok) return;
+
+        // Update the corner indicator during the whole test.
+        if (stData.status === "processing" || stData.status === "queued") {
+          setGrading(true);
+          const done = stData.progress || 0;
+          const denom = answersSubmittedCount || stData.total || totalQuestions || 0;
+          setGradingText(`Correction… (${done}/${denom})`);
+        }
+
+        if (stData.status === "processing" || stData.status === "queued") {
+          if (mode === "review") {
+            reviewStatus.textContent = `Correction en cours… (${stData.progress || 0}/${stData.total || totalQuestions})`;
+          }
+          return;
+        }
+
+        if (stData.status === "done") {
+          clearInterval(gradingPollTimer);
+          gradingPollTimer = null;
+          setGrading(false);
+          setGradingText("Correction terminée.");
+          if (mode === "review") {
+            await fetchAndRenderResults();
+          }
+          return;
+        }
+
+        if (stData.status === "failed") {
+          clearInterval(gradingPollTimer);
+          gradingPollTimer = null;
+          setGrading(false);
+          setGradingText("Correction échouée.");
+          if (mode === "review") {
+            reviewStatus.textContent = stData.error ? `Erreur: ${stData.error}` : "Correction échouée.";
+          }
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }, 1000);
+  }
+
+  async function fetchAndRenderResults() {
+    const r = await fetch(`/api/grading_result/${testId}`);
+    const data = await r.json();
+    if (!data.ok) {
+      reviewStatus.textContent = "Impossible de récupérer les résultats.";
+      return;
+    }
+
+    const per = (data.grading && data.grading.per_question) ? data.grading.per_question : [];
+    const answers = data.answers || [];
+    reviewContent.innerHTML = "";
+
+    per.forEach((g, idx) => {
+      const ans = (answers[idx] && answers[idx].answer) ? answers[idx].answer : "";
+      const q = (data.quiz[idx] && data.quiz[idx].question) ? data.quiz[idx].question : (answers[idx] ? answers[idx].question : "");
+      const score = (g.score_total === null || g.score_total === undefined) ? "N/A" : g.score_total;
+      const fb = g.feedback || "";
+      const block = document.createElement("div");
+      block.style.padding = "12px";
+      block.style.border = "1px solid #eee";
+      block.style.borderRadius = "10px";
+      block.style.marginBottom = "12px";
+      block.innerHTML = `
+        <div style="font-weight:700; margin-bottom: 6px;">Question ${idx+1}</div>
+        <div style="margin-bottom: 6px;"><b>Q:</b> ${escapeHtml(q)}</div>
+        <div style="margin-bottom: 6px;"><b>Votre réponse:</b> ${escapeHtml(ans)}</div>
+        <div style="margin-bottom: 6px;"><b>Score:</b> ${score} / 10</div>
+        <div><b>Feedback:</b> ${escapeHtml(fb)}</div>
+      `;
+      reviewContent.appendChild(block);
+    });
+
+    reviewStatus.textContent = "Correction terminée.";
+    reviewContinue.disabled = false;
+  }
+
+  function escapeHtml(s) {
+    return String(s || "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+  }
+
+  function goEnd() {
+    showPage("end");
+  }
+
+  function restart() {
+    testId = null;
+    userName = "";
+    prefetchedTestId = null;
+    prefetchedTotal = 0;
+    if (nameInput) nameInput.value = "";
+
+    if (cameraStream) {
+      cameraStream.getTracks().forEach(t => t.stop());
+      cameraStream = null;
+    }
+    if (cameraPreview) cameraPreview.srcObject = null;
+
+    showPage("identify");
+    if (nameInput) nameInput.focus();
+  }
+
+function submitAndShowReview() {
+  showPage("review");
+
+  // Calcul fictif pour le mode démo
+  const totalQuestions = results.length;
+  const correct = Math.floor(totalQuestions * 0.6);
+  const partial = Math.floor(totalQuestions * 0.2);
+  const wrong = totalQuestions - correct - partial;
+
+  const scorePercent = Math.round((correct + partial*0.5)/totalQuestions*100);
+
+  // Déterminer résultat final
+  let finalResult = "Apte";
+  let resultClass = "result-apte";
+  if (scorePercent < 50) { finalResult = "Inapte"; resultClass = "result-inapte"; }
+  else if (scorePercent < 75) { finalResult = "Attention"; resultClass = "result-attention"; }
+
+  // Affichage texte
+  const reviewResult = document.getElementById("reviewResult");
+  reviewResult.textContent = finalResult;
+  reviewResult.className = resultClass;
+
+  document.getElementById("reviewPercentage").textContent = `${scorePercent}%`;
+
+  const totalTimeMs = Date.now() - testStartTime;
+  const minutes = Math.floor(totalTimeMs / 60000);
+  const seconds = Math.floor((totalTimeMs % 60000)/1000);
+  document.getElementById("reviewTime").textContent = `Temps total: ${minutes}m ${seconds}s`;
+
+  // --- Camembert ---
+  const pieCtx = document.getElementById('pieChart').getContext('2d');
+  new Chart(pieCtx, {
+    type: 'pie',
+    data: {
+      labels: ['Correctes', 'Partiellement correctes', 'Fausses'],
+      datasets: [{
+        data: [correct, partial, wrong],
+        backgroundColor: ['#2e7d32','#f9a825','#c62828']
+      }]
+    },
+    options: { responsive:true, plugins:{ legend:{ position:'bottom' } } }
+  });
+
+  // --- Graphique ligne (vide pour l'instant) ---
+  const lineCtx = document.getElementById('lineChart').getContext('2d');
+  new Chart(lineCtx, {
+    type: 'line',
+    data: {
+      labels: [], // tu rempliras plus tard
+      datasets: [{
+        label: 'Exemple',
+        data: [],
+        borderColor: '#1976d2',
+        fill: false,
+        tension: 0.3
+      }]
+    },
+    options: { responsive:true, plugins:{ legend:{ display:false } } }
+  });
+}
+
+function showDetails() {
+  alert("Page Détails vide pour l'instant");
+}
+</script>
+
+</body>
+</html>
