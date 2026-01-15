@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Test de fatigue</title>
+  <title>Fatigue Test</title>
 
   <style>
     body {
@@ -12,17 +12,18 @@
       padding: 0;
     }
 
+
     .page {
       display: none;
       background: white;
-      padding: 40px 20px;
-      max-width: 700px;
-      margin: 50px auto;
+      padding: 40px 30px;
+      max-width: 1200px; 
+      width: 90%;
+      margin: 20px auto; 
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       animation: fadeIn 0.4s ease;
     }
-
     .page.active { display: block; }
 
     @keyframes fadeIn {
@@ -83,38 +84,148 @@
     /* --- PAGE QUESTIONS --- */
     #questionText { font-size: 26px; margin-bottom: 15px; white-space: pre-line; }
 
-    /* --- SCENARIO LAYOUT --- */
+    /* --- SCENARIO LAYOUT (title+image left, description+prompt right) --- */
     #scenarioWrap { display: none; margin-bottom: 12px; }
-    #scenarioTitle { font-size: 26px; margin: 0 0 10px 0; white-space: pre-line; }
-    #scenarioRow {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      flex-wrap: wrap;
+    #scenarioGrid {
+      display: grid;
+      grid-template-columns: minmax(220px, 340px) 1fr;
+      gap: 14px;
+      align-items: start;
     }
+    #scenarioLeft { display: flex; flex-direction: column; gap: 10px; }
+    #scenarioTitle { font-size: 26px; margin: 0; white-space: pre-line; }
     #scenarioImage {
       display: none;
-      width: 42%;
-      min-width: 220px;
-      max-width: 340px;
+      width: 100%;
       border-radius: 12px;
       object-fit: cover;
       background: #111;
+      max-height: 240px;
     }
+    #scenarioRight { display: flex; flex-direction: column; gap: 10px; }
     #scenarioDescription {
-      flex: 1;
-      min-width: 240px;
       margin: 0;
       font-size: 18px;
-      line-height: 1.35;
+      line-height: 1.45;
       white-space: pre-line;
       color: #222;
+      text-align: justify;
     }
     #scenarioRulesPrompt {
       display: none;
-      margin: 10px 0 6px 0;
-      font-weight: 700;
+      margin: 0;
+      font-weight: 800;
       color: #333;
+    }
+    @media (max-width: 820px) {
+      #scenarioGrid { grid-template-columns: 1fr; }
+      #scenarioImage { max-height: none; }
+    }
+
+    /* --- RESULTS CHARTS --- */
+    #chartsWrap { grid-template-columns: 1fr; }
+    #chartsWrap .chart-card {
+      padding: 12px;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      background: #fff;
+      height: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow: hidden;
+    }
+    #chartsWrap .chart-card h3 { margin: 0; }
+    #chartsWrap .chart-canvas { position: relative; flex: 1; min-height: 0; overflow: hidden; }
+    #chartsWrap .chart-canvas canvas { display: block; width: 100% !important; max-height: 100% !important; }
+
+    /* --- QCM validate button (match arrow button style) --- */
+    .validate-button {
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      align-self: flex-end;
+    }
+    .validate-button:hover:not(:disabled) {
+      background-color: #0d47a1;
+      transform: scale(1.1);
+    }
+    .validate-button:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* --- DETAILS PAGE --- */
+    .details-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+    @media (max-width: 980px) {
+      .details-content { grid-template-columns: 1fr; }
+    }
+
+    .details-column {
+      padding: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #f3f4f6;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 981px) {
+      .details-column {
+        min-height: 320px;
+      }
+    }
+    .details-column h3,
+    .details-column h4 {
+      color: #1976d2;
+    }
+    .details-column h3 { margin-top: 0; }
+    .details-dot {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      cursor: pointer;
+      font-weight: 800;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+      user-select: none;
+    }
+    .details-dot:hover { transform: scale(1.05); }
+    .details-dot.selected {
+      opacity: 0.65;
+      box-shadow: 0 0 0 4px rgba(25,118,210,0.12);
+    }
+
+    /* --- HOME HISTORY LAYOUT (chart left, list right scrollable) --- */
+    #historyLayout {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 14px;
+      margin-top: 14px;
+      align-items: start;
+    }
+    @media (max-width: 980px) {
+      #historyLayout { grid-template-columns: 1fr; }
+    }
+    #historyTableWrapper {
+      max-height: 280px;
+      overflow-y: auto;
+      border-radius: 12px;
     }
 
     #questionImage {
@@ -420,15 +531,15 @@
 <!-- LOADING OVERLAY -->
 <div id="loading" class="loading-overlay" aria-hidden="true">
   <div class="loading-card" role="status" aria-live="polite">
-    <div class="spinner" aria-label="Chargement"></div>
+    <div class="spinner" aria-label="Loading"></div>
     <div id="loadingText" class="loading-text"></div>
   </div>
 </div>
 
 <!-- SMALL GRADING INDICATOR -->
 <div id="gradingIndicator" class="grading-indicator" aria-hidden="true">
-  <div class="spinner-sm" aria-label="Correction en cours"></div>
-  <div>Correction en cours…</div>
+  <div class="spinner-sm" aria-label="Grading in progress"></div>
+  <div>Grading in progress…</div>
 </div>
 
 <!-- PAGE IDENTIFICATION -->
@@ -438,13 +549,13 @@
     <img src="{{ url_for('static', filename='logo-UT.png') }}">
   </div>
 
-  <h1 class="title">Identification</h1>
-  <p>Entrez votre nom pour commencer.</p>
+  <h1 class="title">Login</h1>
+  <p>Enter your name to start.</p>
 
   <div class="identify-form">
-    <input id="nameInput" type="text" placeholder="Votre nom"
+        <input id="nameInput" type="text" placeholder="Your name"
            style="font-size:16px; padding:10px; border-radius:8px; border:1px solid #ccc; width: 60%; max-width: 360px;" />
-    <button class="start-button" style="font-size:16px; padding:10px 18px;" onclick="confirmName()">Continuer</button>
+        <button class="start-button" style="font-size:16px; padding:10px 18px;" onclick="confirmName()">Continue</button>
   </div>
   
 </div>
@@ -456,51 +567,52 @@
     <img src="{{ url_for('static', filename='logo-UT.png') }}">
   </div>
 
-  <h1 class="title">Votre espace</h1>
-  <p>Historique personnel</p>
+  <h1 class="title">Your dashboard</h1>
+  <p>Your test history</p>
 
   <div style="display:flex; justify-content:center; gap:14px; align-items:center; flex-wrap:wrap; margin-top: 10px;">
     <label style="font-size:14px; color:#333;">
       <input type="radio" name="compareMode" value="me" checked>
-      Mon historique
+      My history
     </label>
     <label style="font-size:14px; color:#333;">
       <input type="radio" name="compareMode" value="others">
-      Comparer aux autres
+      Compare to others
     </label>
   </div>
 
   <!-- Historique -->
   <div id="historyContainer" class="history-container">
 
-    <div style="display:grid; grid-template-columns: 1fr; gap: 14px; margin-top: 14px;">
+    <div id="historyLayout">
       <div id="historyChartWrap" style="padding:12px; border:1px solid #eee; border-radius:12px; background:#fff;">
-        <h3 style="margin-top:0;">Évolution des scores</h3>
+        <h3 style="margin-top:0;">Score trends</h3>
         <canvas id="historyChart" height="180"></canvas>
         <div id="historyChartHint" style="margin-top:8px; font-size:12px; color:#666;"></div>
+      </div>
+
+      <!-- Tableau (scrollable) -->
+      <div id="historyTableWrapper" style="display:none; padding:12px; border:1px solid #eee; border-radius:12px; background:#fff;">
+        <h3 style="margin-top:0;">Sessions</h3>
+        <table id="historyTable" class="history-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Mental fatigue</th>
+              <th>Physical fatigue</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody">
+            <!-- rempli en JS -->
+          </tbody>
+        </table>
       </div>
     </div>
 
     <!-- Message si vide -->
     <div id="noHistoryMessage" class="no-history-message" style="display:none; text-align:center; margin-top:40px; font-size:18px; color:#666;">
-      Vous n'avez pas encore d'historique.<br>
-      Cliquez sur "Commencer un nouveau test" pour démarrer.
-    </div>
-
-    <!-- Tableau -->
-    <div id="historyTableWrapper" style="display:none; margin-top: 10px;">
-      <table id="historyTable" class="history-table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Fatigue mentale</th>
-            <th>Fatigue physique</th>
-          </tr>
-        </thead>
-        <tbody id="historyTableBody">
-          <!-- rempli en JS -->
-        </tbody>
-      </table>
+      No history yet.<br>
+      Click “Start a new test” to begin.
     </div>
 
   </div>
@@ -508,7 +620,7 @@
   <!-- Bouton nouveau test -->
   <div class="start-test-container">
     <button class="start-button" onclick="startTest()">
-      Commencer un nouveau test
+      Start a new test
     </button>
   </div>
 </div>
@@ -520,17 +632,17 @@
     <img src="{{ url_for('static', filename='logo-UT.png') }}">
   </div>
 
-  <h1 class="title" style="font-size: 28px;">Caméra</h1>
-  <p>Choisissez la caméra à utiliser. Un aperçu s’affiche ci-dessous.</p>
+  <h1 class="title" style="font-size: 28px;">Camera</h1>
+  <p>Select the camera to use. A preview is shown below.</p>
 
   <div class="camera-wrap">
     <div class="camera-row">
-      <label for="cameraSelect" style="font-size: 14px; color:#333;">Périphérique :</label>
+      <label for="cameraSelect" style="font-size: 14px; color:#333;">Device:</label>
       <select id="cameraSelect"></select>
     </div>
 
     <div class="camera-row">
-      <label for="cameraIndexSelect" style="font-size: 14px; color:#333;">Caméra (backend) :</label>
+      <label for="cameraIndexSelect" style="font-size: 14px; color:#333;">Backend camera:</label>
       <select id="cameraIndexSelect"></select>
     </div>
     <video id="cameraPreview" class="camera-video" autoplay playsinline muted></video>
@@ -538,7 +650,7 @@
     <div id="cameraHint" style="font-size: 12px; color:#666; text-align:center;"></div>
 
     <div class="camera-row" style="margin-top: 6px;">
-      <button class="start-button" style="font-size:16px; padding:10px 18px;" onclick="continueAfterCamera()">Continuer</button>
+      <button class="start-button" style="font-size:16px; padding:10px 18px;" onclick="continueAfterCamera()">Continue</button>
     </div>
   </div>
 </div>
@@ -550,28 +662,28 @@
     <img src="{{ url_for('static', filename='logo-UT.png') }}">
   </div>
 
-  <h1 class="title" style="font-size: 28px; text-align:center;">Informations</h1>
-  <p style="text-align:center;">Merci de renseigner ces informations (elles seront affichées dans vos résultats).</p>
+  <h1 class="title" style="font-size: 28px; text-align:center;">Information</h1>
+  <p style="text-align:center;">Please fill in these fields (they may be shown in your results).</p>
 
   <div style="display:flex; flex-direction:column; gap:12px; align-items:center; margin-top: 18px;">
     <div style="width: 100%; max-width: 420px;">
-      <label for="ageInput" style="display:block; font-size: 13px; color:#333; margin-bottom:4px;">Âge</label>
-      <input id="ageInput" type="number" min="0" max="120" placeholder="Ex: 27"
+      <label for="ageInput" style="display:block; font-size: 13px; color:#333; margin-bottom:4px;">Age</label>
+      <input id="ageInput" type="number" min="0" max="120" placeholder="e.g., 27"
              style="width:100%; font-size:16px; padding:10px; border-radius:8px; border:1px solid #ccc;" />
     </div>
 
     <div style="width: 100%; max-width: 420px;">
-      <label for="workHoursInput" style="display:block; font-size: 13px; color:#333; margin-bottom:4px;">Heures de travail consécutives</label>
-      <input id="workHoursInput" type="number" min="0" max="24" step="0.5" placeholder="Ex: 6"
+      <label for="workHoursInput" style="display:block; font-size: 13px; color:#333; margin-bottom:4px;">Consecutive work hours</label>
+      <input id="workHoursInput" type="number" min="0" max="24" step="0.5" placeholder="e.g., 6"
              style="width:100%; font-size:16px; padding:10px; border-radius:8px; border:1px solid #ccc;" />
     </div>
 
     <div style="width: 100%; max-width: 420px;">
-      <label for="tirednessInput" style="display:block; font-size: 13px; color:#333; margin-bottom:4px;">Niveau de fatigue (1-10): <span id="tirednessValue">5</span></label>
+      <label for="tirednessInput" style="display:block; font-size: 13px; color:#333; margin-bottom:4px;">Tiredness level (1-10): <span id="tirednessValue">5</span></label>
       <input id="tirednessInput" type="range" min="1" max="10" value="5" style="width:100%;" />
     </div>
 
-    <button class="start-button" style="font-size:16px; padding:10px 18px;" onclick="continueAfterUserInfo()">Continuer</button>
+    <button class="start-button" style="font-size:16px; padding:10px 18px;" onclick="continueAfterUserInfo()">Continue</button>
   </div>
 </div>
 
@@ -592,12 +704,17 @@
     <!-- Badge type -->
     <span id="questionTypeBadge" class="question-type-badge"></span>
 
-    <!-- Scenario layout (title + image left + description right) -->
+    <!-- Scenario layout (title+image left, description+prompt right) -->
     <div id="scenarioWrap">
-      <h2 id="scenarioTitle"></h2>
-      <div id="scenarioRow">
-        <img id="scenarioImage" src="" alt="">
-        <p id="scenarioDescription"></p>
+      <div id="scenarioGrid">
+        <div id="scenarioLeft">
+          <h2 id="scenarioTitle"></h2>
+          <img id="scenarioImage" src="" alt="">
+        </div>
+        <div id="scenarioRight">
+          <p id="scenarioDescription"></p>
+          <div id="scenarioRulesPrompt">What rules apply here?</div>
+        </div>
       </div>
     </div>
   
@@ -606,57 +723,55 @@
   
     <h2 id="questionText"></h2>
 
-    <div id="scenarioRulesPrompt">What rules applies here ?</div>
-  
     <!-- Zone réponse ouverte -->
     <div id="openAnswerZone" class="answer-row">
-      <textarea id="input" placeholder="Écrivez votre réponse ici..."></textarea>
+      <textarea id="input" placeholder="Type your answer here..."></textarea>
       <button id="openArrowButton" class="arrow-button" onclick="nextQuestion()" disabled>➜</button>
     </div>
   
     <!-- Zone QCM -->
     <div id="qcmZone" class="qcm-container">
       <div id="qcmChoices"></div>
-      <button id="qcmValidateButton" class="validate-button" onclick="nextQuestion()" disabled>Valider</button>
+      <button id="qcmValidateButton" class="validate-button" onclick="nextQuestion()" aria-label="Continue" title="Continue" disabled>➜</button>
     </div>
   </div>
   
 
 <!-- PAGE FIN -->
 <div id="end" class="page">
-  <h2>Test terminé</h2>
-  <p>Merci pour votre participation.</p>
-  <button class="finish-button" onclick="restart()">Revenir à l'accueil</button>
+  <h2>Test completed</h2>
+  <p>Thanks for participating.</p>
+  <button class="finish-button" onclick="restart()">Back to login</button>
 </div>
 
 <!-- PAGE RÉSULTATS / FEEDBACK (avant fin) -->
 <div id="review" class="page">
   <div class="review-header" style="text-align:center; margin-bottom:20px;">
-    <h2 style="margin-bottom:10px;">Résultats du test</h2>
+    <h2 style="margin-bottom:10px;">Test results</h2>
     <div id="reviewResult" style="font-size:42px; font-weight:800; margin-bottom:6px;"></div>
     <div id="reviewPercentage" style="font-size:18px; color:#555;"></div>
     <div id="reviewTime" style="font-size:14px; color:#777;"></div>
   </div>
 
-  <div id="reviewMeta" style="margin-top: 10px; padding: 10px; border: 1px solid #eee; border-radius: 10px; background: #fafafa;"></div>
+  <div id="reviewMeta" style="display:none;"></div>
 
-  <div id="chartsWrap" style="margin-top:16px; display:grid; grid-template-columns:1fr; gap:14px;">
-    <div style="padding:12px; border:1px solid #eee; border-radius:12px; background:#fff;">
-      <h3 style="margin-top:0;">Répartition des réponses</h3>
-      <canvas id="pieChart" height="180"></canvas>
+  <div id="chartsWrap" style="margin-top:16px; display:grid; gap:14px;">
+    <div class="chart-card">
+      <h3>Answer breakdown</h3>
+      <div class="chart-canvas"><canvas id="pieChart"></canvas></div>
     </div>
-    <div style="padding:12px; border:1px solid #eee; border-radius:12px; background:#fff;">
-      <h3 style="margin-top:0;">Score & temps par question</h3>
-      <canvas id="lineChart" height="180"></canvas>
+    <div class="chart-card">
+      <h3>Grade & time per question</h3>
+      <div class="chart-canvas"><canvas id="lineChart"></canvas></div>
     </div>
   </div>
 
-  <p id="reviewStatus">Correction en cours…</p>
+  <p id="reviewStatus">Grading in progress…</p>
   <div id="reviewContent" style="margin-top: 20px;"></div>
 
   <div style="display:flex; gap:10px; justify-content:center; margin-top:20px; flex-wrap:wrap;">
-    <button id="reviewDetails" class="finish-button" onclick="showDetails()" disabled>Détails</button>
-    <button id="reviewContinue" class="finish-button" onclick="goEnd()" disabled>Continuer</button>
+    <button id="reviewDetails" class="finish-button" onclick="showDetails()" disabled>Details</button>
+    <button id="reviewContinue" class="finish-button" onclick="goEnd()" disabled>Continue</button>
   </div>
 </div>
 
@@ -667,36 +782,38 @@
     <img src="{{ url_for('static', filename='logo-UT.png') }}">
   </div>
 
-  <h2 style="text-align:center; margin-bottom:16px;">Détail des réponses</h2>
+  <h2 style="text-align:center; margin-bottom:16px;">Answer review</h2>
 
   <div id="detailsNav" class="details-nav" style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:16px;"></div>
 
-  <div class="details-content" style="display:grid; grid-template-columns: 1fr; gap:14px;">
-    <div class="details-column" style="padding:12px; border:1px solid #eee; border-radius:12px; background:#fff;">
-      <h3 style="margin-top:0;">Question</h3>
+  <div class="details-content">
+    <div class="details-column">
+      <h3>Question</h3>
       <p id="detailsQuestion" style="white-space:pre-line;"></p>
       <img id="detailsImage" style="display:none; width:100%; margin-top:10px; border-radius:10px;" />
     </div>
 
-    <div class="details-column" style="padding:12px; border:1px solid #eee; border-radius:12px; background:#fff;">
-      <h3 style="margin-top:0;">Votre réponse</h3>
+    <div class="details-column">
+      <h3>Your answer</h3>
       <p id="detailsUserAnswer" style="white-space:pre-line;"></p>
 
-      <h4 style="margin-top:16px;">Réponse attendue</h4>
-      <p id="detailsExpectedAnswer" style="white-space:pre-line;"></p>
+      <div id="detailsExpectedWrap">
+        <h4 id="detailsExpectedLabel" style="margin-top:16px;">Expected answer</h4>
+        <p id="detailsExpectedAnswer" style="white-space:pre-line;"></p>
+      </div>
     </div>
 
-    <div class="details-column" style="padding:12px; border:1px solid #eee; border-radius:12px; background:#fff;">
-      <h3 style="margin-top:0;">Résultat</h3>
+    <div class="details-column">
+      <h3>Result</h3>
       <div id="detailsStatus" style="display:inline-block; padding:6px 10px; border-radius:999px; font-weight:700;" ></div>
-
-      <p style="margin-top:12px;"><b>Temps passé :</b> <span id="detailsTime"></span></p>
+      <p style="margin-top:12px;"><b>Grade:</b> <span id="detailsGrade"></span></p>
+      <p style="margin-top:12px;"><b>Time spent:</b> <span id="detailsTime"></span></p>
       <p style="margin-top:12px;" id="detailsExplanation"></p>
     </div>
   </div>
 
   <div style="margin-top:18px; text-align:center;">
-    <button class="finish-button" onclick="showPage('review')">Retour aux résultats</button>
+    <button class="finish-button" onclick="showPage('review')">Back to results</button>
   </div>
 </div>
 
@@ -750,6 +867,7 @@
   const scenarioTitle = document.getElementById("scenarioTitle");
   const scenarioImage = document.getElementById("scenarioImage");
   const scenarioDescription = document.getElementById("scenarioDescription");
+  const scenarioRight = document.getElementById("scenarioRight");
   const scenarioRulesPrompt = document.getElementById("scenarioRulesPrompt");
   const progressFill = document.getElementById("progressFill");
   const questionCounter = document.getElementById("questionCounter");
@@ -783,7 +901,7 @@
   const tirednessValue = document.getElementById("tirednessValue");
   const reviewMeta = document.getElementById("reviewMeta");
 
-  const DEFAULT_LOADING_TEXT = "Chargement…";
+  const DEFAULT_LOADING_TEXT = "Loading…";
   const LLM_GENERATION_ETA_SECONDS = 30;
   const GRADING_SECONDS_PER_ANSWER = 10;
 
@@ -869,7 +987,14 @@
       const raw = localStorage.getItem(key);
       if (!raw) return;
       const parsed = JSON.parse(raw);
-      if (parsed && Number.isFinite(Number(parsed.camera_index))) {
+      // Important: avoid Number(null) => 0 which would incorrectly be treated as a valid index.
+      if (
+        parsed
+        && parsed.camera_index !== null
+        && parsed.camera_index !== undefined
+        && parsed.camera_index !== ""
+        && Number.isFinite(Number(parsed.camera_index))
+      ) {
         selectedCameraIndex = Number(parsed.camera_index);
       }
       if (parsed && parsed.camera_device_id) {
@@ -909,7 +1034,13 @@
 
       // Only fill missing values from the backend profile (localStorage wins).
       if (userProfile) {
-        if (!Number.isFinite(selectedCameraIndex) && Number.isFinite(Number(userProfile.camera_index))) {
+        if (
+          !Number.isFinite(selectedCameraIndex)
+          && userProfile.camera_index !== null
+          && userProfile.camera_index !== undefined
+          && userProfile.camera_index !== ""
+          && Number.isFinite(Number(userProfile.camera_index))
+        ) {
           selectedCameraIndex = Number(userProfile.camera_index);
         }
         if (!selectedCameraDeviceId && userProfile.camera_device_id) {
@@ -941,7 +1072,7 @@
   async function confirmName() {
     const nm = (nameInput && nameInput.value ? nameInput.value : "").trim();
     if (!nm) {
-      alert("Veuillez entrer votre nom");
+      alert("Please enter your name");
       return;
     }
 
@@ -953,10 +1084,16 @@
       });
       const data = await resp.json();
       if (!data.ok) {
-        alert(data.error || "Erreur d'identification");
+        alert(data.error || "Login error");
         return;
       }
       userName = data.name;
+
+      // Reset cached camera selection when switching users.
+      selectedCameraIndex = null;
+      selectedCameraDeviceId = null;
+      selectedCameraLabel = null;
+      userProfile = null;
 
       // Try to reuse previously chosen camera (localStorage first, then DB profile).
       loadSavedCameraPrefs();
@@ -972,7 +1109,7 @@
       await initCameraSetup();
     } catch (e) {
       console.error(e);
-      alert("Erreur d'identification");
+      alert("Login error");
     }
   }
 
@@ -987,7 +1124,7 @@
 
     if (!userName) {
       tableWrapper.style.display = "none";
-      noHistoryMessage.textContent = "Veuillez vous identifier.";
+      noHistoryMessage.textContent = "Please log in.";
       noHistoryMessage.style.display = "block";
       return;
     }
@@ -1034,15 +1171,15 @@
         const sid = item.session_id;
         if (sid) {
           tr.style.cursor = "pointer";
-          tr.title = "Voir le détail de cette session";
+          tr.title = "Open this session";
           tr.onclick = () => openSessionDetails(String(sid));
         }
         tbody.appendChild(tr);
       });
     } catch (e) {
-      console.error("Erreur chargement historique :", e);
+      console.error("History load error:", e);
       tableWrapper.style.display = "none";
-      noHistoryMessage.textContent = "Impossible de charger l'historique.";
+      noHistoryMessage.textContent = "Unable to load history.";
       noHistoryMessage.style.display = "block";
       if (chartWrap) chartWrap.style.display = "none";
     }
@@ -1066,9 +1203,12 @@
     }
 
     const sorted = [...history].reverse(); // oldest first
+
+    // Keep the user's session points always; when comparing to others, align others'
+    // daily mean onto each session timestamp (repeated per session day).
     const labels = sorted.map(s => {
       const dt = String(s.date_time || "");
-      return dt ? dt.split("T", 1)[0] : "";
+      return dt ? dt.replace("T", " ") : "";
     });
     const mental = sorted.map(s => {
       const v = (s.mental_fatigue !== null && s.mental_fatigue !== undefined) ? Number(s.mental_fatigue) : null;
@@ -1081,7 +1221,7 @@
 
     const datasets = [
       {
-        label: "Fatigue mentale (/100)",
+        label: "Mental fatigue (/100)",
         data: mental,
         borderColor: "#1976d2",
         backgroundColor: "rgba(25,118,210,0.12)",
@@ -1089,7 +1229,7 @@
         spanGaps: true,
       },
       {
-        label: "Fatigue physique (/100)",
+        label: "Physical fatigue (/100)",
         data: physical,
         borderColor: "#c62828",
         backgroundColor: "rgba(198,40,40,0.10)",
@@ -1100,18 +1240,22 @@
 
     if (compareMode === "others" && Array.isArray(othersSeries) && othersSeries.length) {
       const map = new Map(othersSeries.map(x => [String(x.date || ""), x]));
-      const otherMental = labels.map(d => {
-        const it = map.get(d);
+      const otherMental = sorted.map(s => {
+        const dt = String(s.date_time || "");
+        const day = dt ? dt.split("T", 1)[0] : "";
+        const it = map.get(day);
         const v = it && it.mental !== null && it.mental !== undefined ? Number(it.mental) : null;
         return (v !== null && Number.isFinite(v)) ? v : null;
       });
-      const otherPhysical = labels.map(d => {
-        const it = map.get(d);
+      const otherPhysical = sorted.map(s => {
+        const dt = String(s.date_time || "");
+        const day = dt ? dt.split("T", 1)[0] : "";
+        const it = map.get(day);
         const v = it && it.physical !== null && it.physical !== undefined ? Number(it.physical) : null;
         return (v !== null && Number.isFinite(v)) ? v : null;
       });
       datasets.push({
-        label: "Moyenne autres (mentale)",
+        label: "Others mean (mental)",
         data: otherMental,
         borderColor: "rgba(25,118,210,0.55)",
         borderDash: [6, 6],
@@ -1119,7 +1263,7 @@
         spanGaps: true,
       });
       datasets.push({
-        label: "Moyenne autres (physique)",
+        label: "Others mean (physical)",
         data: otherPhysical,
         borderColor: "rgba(198,40,40,0.55)",
         borderDash: [6, 6],
@@ -1141,15 +1285,15 @@
 
     if (hint) {
       hint.textContent = (compareMode === "others")
-        ? "Comparaison: vos scores vs moyenne des autres (par jour)."
-        : "Vos scores au fil du temps.";
+        ? "Comparison: your sessions vs others' daily mean."
+        : "Your scores over time.";
     }
   }
 
   async function openSessionDetails(sessionId) {
     if (!userName || !sessionId) return;
     try {
-      setLoading(true, "Chargement de la session…");
+      setLoading(true, "Loading session…");
       const resp = await fetch(`/api/user_session/${encodeURIComponent(userName)}/${encodeURIComponent(sessionId)}`);
       const data = await resp.json();
       if (!data || !data.ok) {
@@ -1160,7 +1304,7 @@
       showDetails();
     } catch (e) {
       console.error(e);
-      alert("Impossible de charger cette session.");
+      alert("Unable to load this session.");
     } finally {
       setLoading(false);
     }
@@ -1230,7 +1374,7 @@
 
   async function initCameraSetup() {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      if (cameraHint) cameraHint.textContent = "Webcam non disponible dans ce navigateur.";
+      if (cameraHint) cameraHint.textContent = "Camera not available in this browser.";
       return;
     }
 
@@ -1240,7 +1384,7 @@
       // Stop immediately; we will reopen with selected device.
       tmp.getTracks().forEach(t => t.stop());
     } catch (e) {
-      if (cameraHint) cameraHint.textContent = "Autorisation caméra refusée (vous pouvez continuer).";
+      if (cameraHint) cameraHint.textContent = "Camera permission denied (you can still continue).";
       return;
     }
 
@@ -1293,7 +1437,7 @@
       if (!cams.length) {
         const opt = document.createElement("option");
         opt.value = "";
-        opt.textContent = "Aucune";
+        opt.textContent = "None";
         cameraIndexSelect.appendChild(opt);
         selectedCameraIndex = null;
         return;
@@ -1324,7 +1468,7 @@
       console.warn("backend camera list error:", e);
       const opt = document.createElement("option");
       opt.value = "";
-      opt.textContent = "Indisponible";
+      opt.textContent = "Unavailable";
       cameraIndexSelect.appendChild(opt);
       selectedCameraIndex = null;
     }
@@ -1339,14 +1483,14 @@
     videos.forEach((d, idx) => {
       const opt = document.createElement("option");
       opt.value = d.deviceId;
-      opt.textContent = d.label || `Caméra ${idx + 1}`;
+      opt.textContent = d.label || `Camera ${idx + 1}`;
       cameraSelect.appendChild(opt);
     });
 
     if (cameraHint) {
       cameraHint.textContent = videos.length
-        ? "Sélectionnez une caméra si besoin."
-        : "Aucune caméra détectée (vous pouvez continuer).";
+        ? "Select a camera if needed."
+        : "No camera detected (you can still continue).";
     }
   }
 
@@ -1366,10 +1510,10 @@
     try {
       cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
       if (cameraPreview) cameraPreview.srcObject = cameraStream;
-      if (cameraHint) cameraHint.textContent = "Aperçu caméra actif.";
+      if (cameraHint) cameraHint.textContent = "Camera preview active.";
     } catch (e) {
       console.warn("startCameraPreview error:", e);
-      if (cameraHint) cameraHint.textContent = "Impossible de démarrer la caméra (vous pouvez continuer).";
+      if (cameraHint) cameraHint.textContent = "Unable to start the camera (you can still continue).";
     }
   }
 
@@ -1492,7 +1636,7 @@
       await loadQuestion(0);
     } catch (e) {
       console.error(e);
-      alert("Erreur lors de la génération du quiz");
+      alert("Quiz generation error");
       showPage("home");
     } finally {
       setLoading(false);
@@ -1554,12 +1698,23 @@
           if (questionText) questionText.style.display = "none";
           if (questionImage) questionImage.style.display = "none";
           if (scenarioRulesPrompt) scenarioRulesPrompt.style.display = "block";
+
+          // Put the answer box under the scenario prompt (right column).
+          if (scenarioRight && openAnswerZone && openAnswerZone.parentElement !== scenarioRight) {
+            scenarioRight.appendChild(openAnswerZone);
+          }
         } else {
           if (scenarioWrap) scenarioWrap.style.display = "none";
           if (scenarioRulesPrompt) scenarioRulesPrompt.style.display = "none";
           if (questionText) {
             questionText.style.display = "block";
             questionText.textContent = qData.question || "";
+          }
+
+          // Ensure the answer box returns to the main flow for non-scenarios.
+          const questionPageEl = document.getElementById("questionPage");
+          if (questionPageEl && openAnswerZone && qcmZone && openAnswerZone.parentElement !== questionPageEl) {
+            questionPageEl.insertBefore(openAnswerZone, qcmZone);
           }
         }
 
@@ -1568,10 +1723,10 @@
             questionTypeBadge.textContent = "QCM";
             questionTypeBadge.className = "question-type-badge badge-qcm";
         } else if (isScenario) {
-          questionTypeBadge.textContent = "Scénario";
+          questionTypeBadge.textContent = "Scenario";
           questionTypeBadge.className = "question-type-badge badge-open";
         } else {
-            questionTypeBadge.textContent = "Question ouverte";
+            questionTypeBadge.textContent = "Open question";
             questionTypeBadge.className = "question-type-badge badge-open";
         }
 
@@ -1714,7 +1869,7 @@ function selectQcmChoice(index) {
     const payload = { totalTestTime: totalTestTime, results: results, name: userName };
 
     showPage("review");
-    reviewStatus.textContent = "Envoi des réponses…";
+    reviewStatus.textContent = "Submitting answers…";
     reviewContent.innerHTML = "";
     reviewContinue.disabled = true;
 
@@ -1742,12 +1897,12 @@ function selectQcmChoice(index) {
       if (!submitData.ok) {
         throw new Error(submitData.error || "submit failed");
       }
-      reviewStatus.textContent = "Correction en cours…";
+      reviewStatus.textContent = "Grading in progress…";
       startPollingGrading({ mode: "review" });
     } catch (e) {
       console.error(e);
       setGrading(false);
-      reviewStatus.textContent = "Erreur lors de l'envoi/correction.";
+      reviewStatus.textContent = "Submit/grading error.";
     }
   }
 
@@ -1771,12 +1926,12 @@ function selectQcmChoice(index) {
           const denom = answersSubmittedCount || stData.total || totalQuestions || 0;
           const remaining = Math.max(0, (denom || 0) - (done || 0));
           const eta = formatEta(remaining * GRADING_SECONDS_PER_ANSWER);
-          setGradingText(`Correction… (${done}/${denom}) • ETA ${eta}`);
+          setGradingText(`Grading… (${done}/${denom}) • ETA ${eta}`);
         }
 
         if (stData.status === "processing" || stData.status === "queued") {
           if (mode === "review") {
-            reviewStatus.textContent = `Correction en cours… (${stData.progress || 0}/${stData.total || totalQuestions})`;
+            reviewStatus.textContent = `Grading… (${stData.progress || 0}/${stData.total || totalQuestions})`;
           }
           return;
         }
@@ -1785,7 +1940,7 @@ function selectQcmChoice(index) {
           clearInterval(gradingPollTimer);
           gradingPollTimer = null;
           setGrading(false);
-          setGradingText("Correction terminée.");
+          setGradingText("Grading completed.");
           if (mode === "review") {
             await fetchAndRenderResults();
           }
@@ -1796,9 +1951,9 @@ function selectQcmChoice(index) {
           clearInterval(gradingPollTimer);
           gradingPollTimer = null;
           setGrading(false);
-          setGradingText("Correction échouée.");
+          setGradingText("Grading failed.");
           if (mode === "review") {
-            reviewStatus.textContent = stData.error ? `Erreur: ${stData.error}` : "Correction échouée.";
+            reviewStatus.textContent = stData.error ? `Error: ${stData.error}` : "Grading failed.";
           }
         }
       } catch (e) {
@@ -1811,7 +1966,7 @@ function selectQcmChoice(index) {
     const r = await fetch(`/api/grading_result/${testId}`);
     const data = await r.json();
     if (!data.ok) {
-      reviewStatus.textContent = "Impossible de récupérer les résultats.";
+      reviewStatus.textContent = "Unable to fetch results.";
       return;
     }
 
@@ -1849,9 +2004,9 @@ function selectQcmChoice(index) {
       let finalResult = "—";
       let cls = "";
       if (pct !== null) {
-        if (pct < 50) { finalResult = "Inapte"; cls = "result-inapte"; }
-        else if (pct < 75) { finalResult = "Attention"; cls = "result-attention"; }
-        else { finalResult = "Apte"; cls = "result-apte"; }
+        if (pct < 50) { finalResult = "Not fit"; cls = "result-inapte"; }
+        else if (pct < 75) { finalResult = "Caution"; cls = "result-attention"; }
+        else { finalResult = "Fit"; cls = "result-apte"; }
       }
 
       if (reviewResult) {
@@ -1867,7 +2022,7 @@ function selectQcmChoice(index) {
         if (ms !== null && Number.isFinite(ms) && ms >= 0) {
           const minutes = Math.floor(ms / 60000);
           const seconds = Math.floor((ms % 60000) / 1000);
-          reviewTime.textContent = `Temps total: ${minutes}m ${seconds}s`;
+          reviewTime.textContent = `Total time: ${minutes}m ${seconds}s`;
         } else {
           reviewTime.textContent = "";
         }
@@ -1877,35 +2032,18 @@ function selectQcmChoice(index) {
     }
 
     if (reviewMeta) {
-      const parts = [];
-      if (userName) parts.push(`<b>Nom:</b> ${escapeHtml(userName)}`);
-      if (meta.age !== null && meta.age !== undefined && meta.age !== "") parts.push(`<b>Âge:</b> ${escapeHtml(meta.age)}`);
-      if (meta.consecutive_work_hours !== null && meta.consecutive_work_hours !== undefined && meta.consecutive_work_hours !== "") parts.push(`<b>Heures consécutives:</b> ${escapeHtml(meta.consecutive_work_hours)}`);
-      if (meta.tiredness !== null && meta.tiredness !== undefined && meta.tiredness !== "") parts.push(`<b>Fatigue (1-10):</b> ${escapeHtml(meta.tiredness)}`);
-      if (fatigue && (fatigue.score_fatigue_global !== null && fatigue.score_fatigue_global !== undefined)) {
-        parts.push(`<b>Fatigue (clavier):</b> ${escapeHtml(Number(fatigue.score_fatigue_global).toFixed(1))}/100`);
-      }
-      if (video && (video.fatigue_score_avg !== null && video.fatigue_score_avg !== undefined)) {
-        parts.push(`<b>Fatigue caméra:</b> ${escapeHtml(Number(video.fatigue_score_avg).toFixed(1))}/100 (${escapeHtml(video.verdict || "")})`);
-      } else if (video && (video.fatigue_score_last !== null && video.fatigue_score_last !== undefined)) {
-        parts.push(`<b>Fatigue caméra:</b> ${escapeHtml(Number(video.fatigue_score_last).toFixed(1))}/100 (${escapeHtml(video.verdict || "")})`);
-      } else if (video && (video.status || video.error)) {
-        const s = video.status ? `status=${video.status}` : "";
-        const e = video.error ? `error=${video.error}` : "";
-        const sep = (s && e) ? " • " : "";
-        parts.push(`<b>Fatigue caméra:</b> indisponible (${escapeHtml(s + sep + e)})`);
-      }
-      reviewMeta.innerHTML = parts.length ? parts.join(" &nbsp; • &nbsp; ") : "";
+      // Intentionally kept empty/hidden: removes debug-like meta output from the synthetic results page.
+      reviewMeta.innerHTML = "";
     }
       if (reviewContent) {
         reviewContent.innerHTML = `
           <div style="padding:12px; border:1px solid #eee; border-radius:12px; background:#fff;">
-            Les détails question par question (réponse, corrigé, feedback) sont disponibles dans l’onglet <b>Détails</b>.
+            Question-by-question details (answer, expected answer, feedback) are available in <b>Details</b>.
           </div>
         `;
       }
 
-    reviewStatus.textContent = "Correction terminée.";
+    reviewStatus.textContent = "Grading completed.";
     reviewContinue.disabled = false;
     if (reviewDetails) reviewDetails.disabled = false;
   }
@@ -1948,7 +2086,7 @@ function selectQcmChoice(index) {
     pieChartInstance = new Chart(pieEl.getContext("2d"), {
       type: "pie",
       data: {
-        labels: ["Correct", "Partiel", "Incorrect"],
+        labels: ["Correct", "Partial", "Incorrect"],
         datasets: [{
           data: [correct, partial, incorrect],
           backgroundColor: ["#2e7d32", "#f9a825", "#c62828"],
@@ -1956,6 +2094,7 @@ function selectQcmChoice(index) {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: { legend: { position: "bottom" } }
       }
     });
@@ -1967,7 +2106,7 @@ function selectQcmChoice(index) {
         labels,
         datasets: [
           {
-            label: "Score (/10)",
+            label: "Grade (/10)",
             data: scores,
             borderColor: "#1976d2",
             backgroundColor: "rgba(25,118,210,0.15)",
@@ -1975,7 +2114,7 @@ function selectQcmChoice(index) {
             yAxisID: "yScore",
           },
           {
-            label: "Temps (s)",
+            label: "Time (s)",
             data: times,
             borderColor: "#6a1b9a",
             backgroundColor: "rgba(106,27,154,0.12)",
@@ -1986,6 +2125,7 @@ function selectQcmChoice(index) {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: { legend: { position: "bottom" } },
         scales: {
           yScore: { position: "left", suggestedMin: 0, suggestedMax: 10 },
@@ -2013,23 +2153,26 @@ function selectQcmChoice(index) {
     const per = (lastResultsData.grading && lastResultsData.grading.per_question) ? lastResultsData.grading.per_question : [];
     const total = per.length || ((lastResultsData.quiz && lastResultsData.quiz.length) ? lastResultsData.quiz.length : 0);
 
+    function colorForScore(score) {
+      const s = (score !== null && score !== undefined && Number.isFinite(Number(score))) ? Number(score) : null;
+      if (s === null) return { bg: "#9e9e9e", fg: "#fff" };
+      if (s >= 10) return { bg: "#2e7d32", fg: "#fff" }; // green
+      if (s > 0) return { bg: "#f9a825", fg: "#fff" };  // orange
+      return { bg: "#c62828", fg: "#fff" };             // red
+    }
+
     for (let i = 0; i < total; i++) {
       const btn = document.createElement("button");
+      btn.className = "details-dot";
+      btn.type = "button";
       btn.textContent = String(i + 1);
-      btn.style.minWidth = "38px";
-      btn.style.height = "38px";
-      btn.style.borderRadius = "10px";
-      btn.style.border = "1px solid #ddd";
-      btn.style.background = "#fff";
-      btn.style.cursor = "pointer";
+      btn.setAttribute("aria-label", `Question ${i + 1}`);
 
       const g = per[i] || {};
       const sc = (g && g.score_total !== null && g.score_total !== undefined) ? Number(g.score_total) : null;
-      if (sc !== null && Number.isFinite(sc)) {
-        if (sc >= 10) btn.style.borderColor = "#2e7d32";
-        else if (sc > 0) btn.style.borderColor = "#f9a825";
-        else btn.style.borderColor = "#c62828";
-      }
+      const c = colorForScore(sc);
+      btn.style.background = c.bg;
+      btn.style.color = c.fg;
 
       btn.onclick = () => showDetail(i);
       nav.appendChild(btn);
@@ -2048,6 +2191,8 @@ function selectQcmChoice(index) {
     const a = answers[index] || {};
     const g = per[index] || {};
 
+    const sc = (g && g.score_total !== null && g.score_total !== undefined) ? Number(g.score_total) : null;
+
     const qText = (q && q.question) ? String(q.question) : "";
     const qImg = (q && q.image) ? String(q.image) : "";
 
@@ -2064,7 +2209,7 @@ function selectQcmChoice(index) {
       }
     }
 
-    const userAnswer = (a && a.answer) ? String(a.answer) : "(Aucune réponse)";
+    const userAnswer = (a && a.answer) ? String(a.answer) : "(No answer)";
     const detailsUserAnswer = document.getElementById("detailsUserAnswer");
     if (detailsUserAnswer) detailsUserAnswer.textContent = userAnswer;
 
@@ -2079,15 +2224,24 @@ function selectQcmChoice(index) {
     const detailsExpectedAnswer = document.getElementById("detailsExpectedAnswer");
     if (detailsExpectedAnswer) detailsExpectedAnswer.textContent = expected;
 
+    const expectedWrap = document.getElementById("detailsExpectedWrap");
+    if (expectedWrap) {
+      expectedWrap.style.display = (q && q.type === "scenario") ? "none" : "block";
+    }
+
     const ms = (a && a.timeSpent !== null && a.timeSpent !== undefined) ? Number(a.timeSpent) : null;
     const detailsTime = document.getElementById("detailsTime");
     if (detailsTime) detailsTime.textContent = (ms !== null && Number.isFinite(ms)) ? `${Math.round(ms / 1000)} s` : "—";
+
+    const detailsGrade = document.getElementById("detailsGrade");
+    if (detailsGrade) {
+      detailsGrade.textContent = (sc !== null && Number.isFinite(sc)) ? `${sc.toFixed(1)}/10` : "—";
+    }
 
     const fb = (g && g.feedback) ? String(g.feedback) : "";
     const detailsExplanation = document.getElementById("detailsExplanation");
     if (detailsExplanation) detailsExplanation.textContent = fb;
 
-    const sc = (g && g.score_total !== null && g.score_total !== undefined) ? Number(g.score_total) : null;
     const detailsStatus = document.getElementById("detailsStatus");
     if (detailsStatus) {
       let label = "—";
@@ -2095,7 +2249,7 @@ function selectQcmChoice(index) {
       let color = "#333";
       if (sc !== null && Number.isFinite(sc)) {
         if (sc >= 10) { label = "Correct"; bg = "#e8f5e9"; color = "#2e7d32"; }
-        else if (sc > 0) { label = "Partiel"; bg = "#fff8e1"; color = "#f9a825"; }
+        else if (sc > 0) { label = "Partial"; bg = "#fff8e1"; color = "#f9a825"; }
         else { label = "Incorrect"; bg = "#ffebee"; color = "#c62828"; }
       }
       detailsStatus.textContent = label;
@@ -2108,7 +2262,8 @@ function selectQcmChoice(index) {
     const nav = document.getElementById("detailsNav");
     if (nav) {
       Array.from(nav.querySelectorAll("button")).forEach((b, i) => {
-        b.style.boxShadow = (i === index) ? "0 0 0 3px rgba(25,118,210,0.15)" : "none";
+        if (i === index) b.classList.add("selected");
+        else b.classList.remove("selected");
       });
     }
   }

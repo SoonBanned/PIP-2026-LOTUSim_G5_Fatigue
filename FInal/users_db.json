@@ -1740,6 +1740,2945 @@
                             }
                         ]
                     }
+                },
+                {
+                    "session_id": "9bdaa17815ba4a3f967ef397656d24c2",
+                    "date_time": "2026-01-15T10:05:47",
+                    "mental_fatigue": 96.66666666666667,
+                    "physical_fatigue": 56.051376143719466,
+                    "payload": {
+                        "ok": true,
+                        "test_id": "619b161166f242fcb751ea3ffc9d8c18",
+                        "status": "done",
+                        "grading": {
+                            "status": "done",
+                            "progress": 12,
+                            "total": 12,
+                            "per_question": [
+                                {
+                                    "index": 0,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: 20 metres",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 1,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Blank answer; Rule 8 sets out principles for taking action to avoid collision.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 2,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely wrong; power-driven vessels show masthead lights, sidelights, and sternlight.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 3,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: A white light",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 4,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 35(h) specifies aground vessel bell and gong signals plus three separate strokes before/after rapid ringing.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 5,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 29(a)(i) specifies two all-round lights in a vertical line, upper white and lower red.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 6,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Three all-round red lights in a vertical line",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 7,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: A vessel restricted in her ability to maneuver",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 8,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "This answer does not address the question at all. Please provide a clear definition of each term and explain how they differ.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 9,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 22(b) specifies minimum ranges for lights on vessels under 20m.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 10,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Uninformed; Rule 38(c) requires compliance with 1960 Regulations and range requirements.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 11,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 10(i) requires fishing vessels not to impede passage in TSS.",
+                                    "type": "scenario"
+                                }
+                            ],
+                            "average_score": 0.3333333333333333,
+                            "started_at": "2026-01-15T10:06:59",
+                            "finished_at": "2026-01-15T10:08:29",
+                            "error": null
+                        },
+                        "meta": {
+                            "age": 22,
+                            "consecutive_work_hours": 10,
+                            "tiredness": 7,
+                            "camera_device_id": "fzy+WHeHc8igv81+QijDNb/Oh7PR8uR7x+jU1PfvBg0=",
+                            "camera_label": "Integrated Camera",
+                            "camera_index": 0
+                        },
+                        "video": {
+                            "ok": true,
+                            "status": "stopped",
+                            "camera_index": 0,
+                            "started_at": 1768468016.8564188,
+                            "stopped_at": 1768468076.7941232,
+                            "duration_seconds": 59.93770432472229,
+                            "fatigue_score_avg": 56.051376143719466,
+                            "fatigue_score_last": 79.0062946697813,
+                            "fatigue_score_blocks": [
+                                44.00683328616728
+                            ],
+                            "verdict": "ATTENTION",
+                            "error": null
+                        },
+                        "fatigue": {
+                            "score_fatigue_global": 58.28,
+                            "details": {
+                                "fatigue_mentale": 96.67,
+                                "fatigue_physio": 0.7,
+                                "analyse_frappe": {
+                                    "pente_vitesse": 0.4542897454760852,
+                                    "pente_latence": -35.80069930069931,
+                                    "pente_erreurs": 0.01748251748251748,
+                                    "pente_pauses": -0.006993006993006992,
+                                    "moyennes": {
+                                        "latences": 1107.9166666666667,
+                                        "vitesses_frappe": 4.597938746832544,
+                                        "frequences_pauses": 0.16666666666666666,
+                                        "frequences_erreurs": 0.08333333333333333
+                                    }
+                                }
+                            }
+                        },
+                        "totalTestTime": 59208,
+                        "answers": [
+                            {
+                                "question": "A combined lantern for sidelights may be used on vessels of less than:",
+                                "type": "qcm",
+                                "answer": "12 metres",
+                                "selected_index": 1,
+                                "timeSpent": 2058
+                            },
+                            {
+                                "question": "What is the purpose of Rule 8?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 3052
+                            },
+                            {
+                                "question": "What lights does a power-driven vessel underway show?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1574
+                            },
+                            {
+                                "question": "A vessel restricted in ability to manoeuvre when dredging, shows on the safe side:",
+                                "type": "qcm",
+                                "answer": "Three white lights",
+                                "selected_index": 3,
+                                "timeSpent": 2107
+                            },
+                            {
+                                "question": "Sound signals of a vessel aground over 100 m in restricted visibility\n\nVessel aground of 100 m or more in length Visibility: In or near an area of restricted visibility , weather by day or night",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1820
+                            },
+                            {
+                                "question": "A vessel engaged on pilotage duty underway - lights\n\nType of vessel: Vessel engaged on pilotage duty underway Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 37947
+                            },
+                            {
+                                "question": "Which lights indicate a vessel constrained by her draft?",
+                                "type": "qcm",
+                                "answer": "Two all-round red lights",
+                                "selected_index": 1,
+                                "timeSpent": 1826
+                            },
+                            {
+                                "question": "Which vessel shall exhibit three all-round lights red-white-red in a vertical line?",
+                                "type": "qcm",
+                                "answer": "A vessel constrained by her draft",
+                                "selected_index": 1,
+                                "timeSpent": 1081
+                            },
+                            {
+                                "question": "What is the difference between 'not under command' and 'restricted in ability to manoeuvre'?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 2534
+                            },
+                            {
+                                "question": "Visibility of lights in vessels over 12 m and under 20 m\n\nTime of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility Type of vessel: Vessels of 12 m or more in length but less than 20 m in length",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1984
+                            },
+                            {
+                                "question": "Can a vessel laid before the COLREGs entry into force be exempted from Rule 22?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1453
+                            },
+                            {
+                                "question": "A vessel engaged in fishing shall not impede the passage of any vessel following a traffic lane\n\nVessel A: Power-driven vessel Vessel B: Vessel engaged in fishing Area: Traffic separation scheme",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1681
+                            }
+                        ],
+                        "quiz": [
+                            {
+                                "type": "qcm",
+                                "question": "A combined lantern for sidelights may be used on vessels of less than:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "7 metres",
+                                    "12 metres",
+                                    "20 metres",
+                                    "50 metres"
+                                ],
+                                "correct_index": 2,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is the purpose of Rule 8?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Rule 8 sets out the principles for taking action to avoid collision."
+                            },
+                            {
+                                "type": "open",
+                                "question": "What lights does a power-driven vessel underway show?",
+                                "difficulty": "medium",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "A masthead light forward, a second abaft and higher than the first (except for vessels under 50m), sidelights, and sternlight."
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "A vessel restricted in ability to manoeuvre when dredging, shows on the safe side:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Two red lights",
+                                    "Two green lights or two diamonds in vertical line",
+                                    "A white light",
+                                    "Three white lights"
+                                ],
+                                "correct_index": 2,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Sound signals of a vessel aground over 100 m in restricted visibility\n\nVessel aground of 100 m or more in length Visibility: In or near an area of restricted visibility , weather by day or night",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_152.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A vessel engaged on pilotage duty underway - lights\n\nType of vessel: Vessel engaged on pilotage duty underway Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_92.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "Which lights indicate a vessel constrained by her draft?",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Three all-round red lights in a vertical line",
+                                    "Two all-round red lights",
+                                    "Red-white-red lights",
+                                    "Three white masthead lights"
+                                ],
+                                "correct_index": 0,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "Which vessel shall exhibit three all-round lights red-white-red in a vertical line?",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "A vessel restricted in her ability to maneuver",
+                                    "A vessel constrained by her draft",
+                                    "A vessel not under command",
+                                    "A vessel engaged in fishing"
+                                ],
+                                "correct_index": 0,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is the difference between 'not under command' and 'restricted in ability to manoeuvre'?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Not under command means unable to manoeuvre at will; restricted in ability to manoeuvre means limited by some factor (e.g. draught) but still able to manoeuvre."
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Visibility of lights in vessels over 12 m and under 20 m\n\nTime of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility Type of vessel: Vessels of 12 m or more in length but less than 20 m in length",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_164.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "Can a vessel laid before the COLREGs entry into force be exempted from Rule 22?",
+                                "difficulty": "hard",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Yes, if she complies with the 1960 Regulations and installs lights with ranges as prescribed in Rule 22."
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A vessel engaged in fishing shall not impede the passage of any vessel following a traffic lane\n\nVessel A: Power-driven vessel Vessel B: Vessel engaged in fishing Area: Traffic separation scheme",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_243.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            }
+                        ]
+                    }
+                },
+                {
+                    "session_id": "60f2842d4c354487a1f06a3b98889b52",
+                    "date_time": "2026-01-15T13:31:42",
+                    "mental_fatigue": 82.5,
+                    "physical_fatigue": 61.5,
+                    "payload": {
+                        "ok": true,
+                        "test_id": "c73f73a207f441769438b03db9977d81",
+                        "status": "done",
+                        "grading": {
+                            "status": "done",
+                            "progress": 12,
+                            "total": 12,
+                            "per_question": [
+                                {
+                                    "index": 0,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 15 applies to crossing situations where one vessel has the other on her starboard side.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 1,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 30(a)(i) requires one ball in fore part.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 2,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely wrong; Rule 16 applies when give-way vessel must take early and substantial action.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 3,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 13(b) applies when vessel A comes up from more than 22.5° abaft beam.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 4,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 5,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 6,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely empty answer; none of the required factors are present.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 7,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Blank answer; pilot vessel lights are white over red all-round lights at or near masthead with standard sidelights and sternlight.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 8,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely empty; Rule 3 defines 'vessel' in detail.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 9,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Three masthead lights in a vertical line",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 10,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 19(c) applies to vessels in restricted visibility, not just those not in sight.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 11,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Reduce speed to the minimum",
+                                    "type": "qcm"
+                                }
+                            ],
+                            "average_score": 1.75,
+                            "started_at": "2026-01-15T13:32:35",
+                            "finished_at": "2026-01-15T13:33:49",
+                            "error": null
+                        },
+                        "meta": {
+                            "age": 22,
+                            "consecutive_work_hours": 8,
+                            "tiredness": 5,
+                            "camera_device_id": "fzy+WHeHc8igv81+QijDNb/Oh7PR8uR7x+jU1PfvBg0=",
+                            "camera_label": "Integrated Camera",
+                            "camera_index": 0
+                        },
+                        "video": {
+                            "ok": false,
+                            "status": "failed",
+                            "camera_index": 0,
+                            "started_at": 1768480348.7315948,
+                            "stopped_at": 1768480349.9848402,
+                            "duration_seconds": 1.2532453536987305,
+                            "fatigue_score_avg": null,
+                            "fatigue_score_last": null,
+                            "fatigue_score_blocks": [],
+                            "verdict": null,
+                            "error": "Cannot open camera index 0"
+                        },
+                        "fatigue": {
+                            "score_fatigue_global": 61.5,
+                            "details": {
+                                "fatigue_mentale": 82.5,
+                                "fatigue_physio": 30.0,
+                                "analyse_frappe": {
+                                    "pente_vitesse": -1.0484415828328837,
+                                    "pente_latence": -199.006993006993,
+                                    "pente_erreurs": 0.0,
+                                    "pente_pauses": 0.0,
+                                    "moyennes": {
+                                        "latences": 1822.0,
+                                        "vitesses_frappe": 5.844825191617445,
+                                        "frequences_pauses": 0.0,
+                                        "frequences_erreurs": 0.0
+                                    }
+                                }
+                            }
+                        },
+                        "totalTestTime": 43788,
+                        "answers": [
+                            {
+                                "question": "Vessel A has vessel B on her own starboard side (relative bearing STBD 030°)\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel A and vessel B are crossing so as to involve risk of collision Vessel A has vessel B on her own starboard side (relative bearing STBD 030°)",
+                                "type": "scenario",
+                                "answer": "Test",
+                                "selected_index": null,
+                                "timeSpent": 6969
+                            },
+                            {
+                                "question": "A vessel at anchor - shapes\n\nType of vessel: Vessel at anchor Time of the day: Daytime",
+                                "type": "scenario",
+                                "answer": "Test",
+                                "selected_index": null,
+                                "timeSpent": 3797
+                            },
+                            {
+                                "question": "When does Rule 16 apply?",
+                                "type": "open",
+                                "answer": "Test",
+                                "selected_index": null,
+                                "timeSpent": 5085
+                            },
+                            {
+                                "question": "Relative bearing of overtaking vessel is STBD 130°\n\nVessel A: power-driven vessel Vessel B: power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel A is overtaking vessel B Vessel B has vessel A on her own starboard side (relative bearing STBD 130°)",
+                                "type": "scenario",
+                                "answer": "Test",
+                                "selected_index": null,
+                                "timeSpent": 3756
+                            },
+                            {
+                                "question": "A vessel engaged in dredging or underwater operations shall, when an obstruction exists, show on the obstruction side:",
+                                "type": "qcm",
+                                "answer": "Two all-round red lights or two balls in a vertical line",
+                                "selected_index": 1,
+                                "timeSpent": 7708
+                            },
+                            {
+                                "question": "The interval between successive manoeuvring light signals must be not less than:",
+                                "type": "qcm",
+                                "answer": "15 seconds",
+                                "selected_index": 2,
+                                "timeSpent": 2440
+                            },
+                            {
+                                "question": "What factors determine safe speed?",
+                                "type": "open",
+                                "answer": "Test",
+                                "selected_index": null,
+                                "timeSpent": 3606
+                            },
+                            {
+                                "question": "What lights identify a pilot vessel underway?",
+                                "type": "open",
+                                "answer": "Test",
+                                "selected_index": null,
+                                "timeSpent": 3026
+                            },
+                            {
+                                "question": "What is the definition of 'vessel' in Rule 3?",
+                                "type": "open",
+                                "answer": "Test",
+                                "selected_index": null,
+                                "timeSpent": 1548
+                            },
+                            {
+                                "question": "When the length of a tow exceeds 200 metres, the towing vessel shall exhibit:",
+                                "type": "qcm",
+                                "answer": "Two masthead lights in a vertical line",
+                                "selected_index": 0,
+                                "timeSpent": 2139
+                            },
+                            {
+                                "question": "Complying with the Rules of Section I of Part B\n\nVisibility: Restricted (vessels not in sight of one another)",
+                                "type": "scenario",
+                                "answer": "Test",
+                                "selected_index": null,
+                                "timeSpent": 1659
+                            },
+                            {
+                                "question": "In restricted visibility, except where it has been determined that risk of collision does not exist, every vessel that hears a fog signal forward of the beam shall:",
+                                "type": "qcm",
+                                "answer": "Increase speed to pass quickly",
+                                "selected_index": 1,
+                                "timeSpent": 1961
+                            }
+                        ],
+                        "quiz": [
+                            {
+                                "type": "scenario",
+                                "question": "Vessel A has vessel B on her own starboard side (relative bearing STBD 030°)\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel A and vessel B are crossing so as to involve risk of collision Vessel A has vessel B on her own starboard side (relative bearing STBD 030°)",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_23.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A vessel at anchor - shapes\n\nType of vessel: Vessel at anchor Time of the day: Daytime",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_100.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "When does Rule 16 apply?",
+                                "difficulty": "hard",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Rule 16 applies when a vessel is directed to keep out of the way of another."
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Relative bearing of overtaking vessel is STBD 130°\n\nVessel A: power-driven vessel Vessel B: power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel A is overtaking vessel B Vessel B has vessel A on her own starboard side (relative bearing STBD 130°)",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_170.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "A vessel engaged in dredging or underwater operations shall, when an obstruction exists, show on the obstruction side:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Two all-round green lights or two balls in a vertical line",
+                                    "Two all-round red lights or two balls in a vertical line",
+                                    "One all-round red light",
+                                    "A diamond shape"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "The interval between successive manoeuvring light signals must be not less than:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "5 seconds",
+                                    "10 seconds",
+                                    "15 seconds",
+                                    "20 seconds"
+                                ],
+                                "correct_index": 2,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What factors determine safe speed?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "State of visibility, traffic density, vessel's manoeuvrability, proximity to other vessels and navigation hazards."
+                            },
+                            {
+                                "type": "open",
+                                "question": "What lights identify a pilot vessel underway?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "White over red all-round lights at or near the masthead, sidelights and sternlight"
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is the definition of 'vessel' in Rule 3?",
+                                "difficulty": "medium",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Every description of water craft used or capable of being used as a means of transportation on water."
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "When the length of a tow exceeds 200 metres, the towing vessel shall exhibit:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Two masthead lights in a vertical line",
+                                    "Three masthead lights in a vertical line",
+                                    "Four masthead lights in a vertical line",
+                                    "One masthead light only"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Complying with the Rules of Section I of Part B\n\nVisibility: Restricted (vessels not in sight of one another)",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "In restricted visibility, except where it has been determined that risk of collision does not exist, every vessel that hears a fog signal forward of the beam shall:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Sound five short blasts",
+                                    "Increase speed to pass quickly",
+                                    "Reduce speed to the minimum",
+                                    "Alter course to starboard"
+                                ],
+                                "correct_index": 2,
+                                "truth_answer": null
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "Sergio": {
+            "sessions": [
+                {
+                    "session_id": "73f8a1fe9ead401e896d0f46d1c7b761",
+                    "date_time": "2026-01-15T09:28:42",
+                    "mental_fatigue": 81.66666666666667,
+                    "physical_fatigue": 42.83653433546414,
+                    "payload": {
+                        "ok": true,
+                        "test_id": "29b2f42927da4ce1b56c85dbcb0134c6",
+                        "status": "done",
+                        "grading": {
+                            "status": "done",
+                            "progress": 12,
+                            "total": 12,
+                            "per_question": [
+                                {
+                                    "index": 0,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Annex IV lists several distress signals including guns fired at intervals and radiotelegraphy signals.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 1,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "This does not provide an answer to the question.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 2,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely unrelated text; Rule 30(d) requires three balls in a vertical line for vessels aground.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 3,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 4,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 35(d) specifies the anchor signal for fishing vessels at anchor.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 5,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Flag A",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 6,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 17(b) requires action when collision cannot be avoided by give-way alone.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 7,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 8,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Unrecognizable notation; should use 'one prolonged blast' and specify 2-minute maximum interval.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 9,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely empty answer; proper look-out involves full appraisal of situation and risk.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 10,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: The Organization (IMO)",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 11,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely off-topic; does not address the rule-application scenario.",
+                                    "type": "scenario"
+                                }
+                            ],
+                            "average_score": 1.8333333333333333,
+                            "started_at": "2026-01-15T09:29:45",
+                            "finished_at": "2026-01-15T09:32:58",
+                            "error": null
+                        },
+                        "meta": {
+                            "age": 22,
+                            "consecutive_work_hours": 10,
+                            "tiredness": 7,
+                            "camera_device_id": null,
+                            "camera_label": null,
+                            "camera_index": 0
+                        },
+                        "video": {
+                            "ok": true,
+                            "status": "completed",
+                            "camera_index": 0,
+                            "started_at": 1768465767.954044,
+                            "stopped_at": 1768465869.4766898,
+                            "duration_seconds": 101.5226457118988,
+                            "fatigue_score_avg": 42.83653433546414,
+                            "fatigue_score_last": 38.83663206973287,
+                            "fatigue_score_blocks": [
+                                45.48599317563105,
+                                43.5028142402735
+                            ],
+                            "verdict": "ATTENTION",
+                            "error": null
+                        },
+                        "fatigue": {
+                            "score_fatigue_global": 58.89,
+                            "details": {
+                                "fatigue_mentale": 81.67,
+                                "fatigue_physio": 24.73,
+                                "analyse_frappe": {
+                                    "pente_vitesse": -0.010117412800395357,
+                                    "pente_latence": 218.1118881118881,
+                                    "pente_erreurs": 0.08041958041958042,
+                                    "pente_pauses": -0.03146853146853146,
+                                    "moyennes": {
+                                        "latences": 12279.333333333334,
+                                        "vitesses_frappe": 4.151996414386724,
+                                        "frequences_pauses": 0.08333333333333333,
+                                        "frequences_erreurs": 0.25
+                                    }
+                                }
+                            }
+                        },
+                        "totalTestTime": 201051,
+                        "answers": [
+                            {
+                                "question": "What signals indicate distress?",
+                                "type": "open",
+                                "answer": "Je ne sais pas frerot",
+                                "selected_index": null,
+                                "timeSpent": 17827
+                            },
+                            {
+                                "question": "What sound signal does a power-driven vessel making way through the water sound in restricted visibility?",
+                                "type": "open",
+                                "answer": "je continue a ne pas savoir",
+                                "selected_index": null,
+                                "timeSpent": 17219
+                            },
+                            {
+                                "question": "A vessel aground - shapes\n\nType of vessel: Vessel aground Time of the day: Daytime",
+                                "type": "scenario",
+                                "answer": "ouzis ouis jejejejej",
+                                "selected_index": null,
+                                "timeSpent": 19347
+                            },
+                            {
+                                "question": "A vessel shall not be penalized for any departure from the Rules if such departure was:",
+                                "type": "qcm",
+                                "answer": "Necessary to avoid immediate danger",
+                                "selected_index": 1,
+                                "timeSpent": 19963
+                            },
+                            {
+                                "question": "Sound signals of a vessel engaged in fishing, when at anchor, in restricted visibility\n\nType of vessel: Vessel engaged in fishing , when at anchor Visibility: In or near an area of restricted visibility , weather by day or night",
+                                "type": "scenario",
+                                "answer": "la troisieme",
+                                "selected_index": null,
+                                "timeSpent": 13514
+                            },
+                            {
+                                "question": "A vessel engaged in diving operations shall exhibit a rigid replica of which International Code flag?",
+                                "type": "qcm",
+                                "answer": "Flag D",
+                                "selected_index": 2,
+                                "timeSpent": 19803
+                            },
+                            {
+                                "question": "Overtaking situation (relative bearing of overtaking vessel is PORT 160°) - stand-on vessel is altering course to parallel\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel B has vessel A on her own port side (relative bearing PORT 160°) Vessel A which is required to keep out of the way is not taking appropriate action in compliance with these Rules Vessel B which is the stand-on vessel is altering her course to starboard to approximately parallel course with vessel A to avoid collision",
+                                "type": "scenario",
+                                "answer": "attendre le clignotant",
+                                "selected_index": null,
+                                "timeSpent": 20544
+                            },
+                            {
+                                "question": "What is the arc of visibility of a sternlight?",
+                                "type": "qcm",
+                                "answer": "135 degrees",
+                                "selected_index": 0,
+                                "timeSpent": 23367
+                            },
+                            {
+                                "question": "What sound signal does a pilot vessel make?",
+                                "type": "open",
+                                "answer": "piiiiii",
+                                "selected_index": null,
+                                "timeSpent": 5095
+                            },
+                            {
+                                "question": "What is the purpose of a proper look-out?",
+                                "type": "open",
+                                "answer": "jjj",
+                                "selected_index": null,
+                                "timeSpent": 2629
+                            },
+                            {
+                                "question": "Traffic separation schemes are adopted by:",
+                                "type": "qcm",
+                                "answer": "Each vessel's flag state",
+                                "selected_index": 2,
+                                "timeSpent": 25182
+                            },
+                            {
+                                "question": "A vessel not under command when making way through the water - lights\n\nType of vessel: Vessel not under command when making way through the water Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "type": "scenario",
+                                "answer": "antoine est un gros gros grsoc connard",
+                                "selected_index": null,
+                                "timeSpent": 16450
+                            }
+                        ],
+                        "quiz": [
+                            {
+                                "type": "open",
+                                "question": "What signals indicate distress?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Annex IV lists several signals including guns fired at intervals, continuous fog-signalling, rockets or shells firing red stars, and radiotelegraphy signals."
+                            },
+                            {
+                                "type": "open",
+                                "question": "What sound signal does a power-driven vessel making way through the water sound in restricted visibility?",
+                                "difficulty": "medium",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "One prolonged blast at intervals of not more than 2 minutes"
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A vessel aground - shapes\n\nType of vessel: Vessel aground Time of the day: Daytime",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_101.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "A vessel shall not be penalized for any departure from the Rules if such departure was:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Made for convenience",
+                                    "Necessary to avoid immediate danger",
+                                    "Made to save time",
+                                    "Made during good weather"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Sound signals of a vessel engaged in fishing, when at anchor, in restricted visibility\n\nType of vessel: Vessel engaged in fishing , when at anchor Visibility: In or near an area of restricted visibility , weather by day or night",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_144.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "A vessel engaged in diving operations shall exhibit a rigid replica of which International Code flag?",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Flag A",
+                                    "Flag B",
+                                    "Flag D",
+                                    "Flag N"
+                                ],
+                                "correct_index": 0,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Overtaking situation (relative bearing of overtaking vessel is PORT 160°) - stand-on vessel is altering course to parallel\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel B has vessel A on her own port side (relative bearing PORT 160°) Vessel A which is required to keep out of the way is not taking appropriate action in compliance with these Rules Vessel B which is the stand-on vessel is altering her course to starboard to approximately parallel course with vessel A to avoid collision",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_324.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "What is the arc of visibility of a sternlight?",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "135 degrees",
+                                    "112.5 degrees",
+                                    "180 degrees",
+                                    "360 degrees"
+                                ],
+                                "correct_index": 0,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What sound signal does a pilot vessel make?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "One prolonged blast at intervals not exceeding 2 minutes"
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is the purpose of a proper look-out?",
+                                "difficulty": "hard",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "To make a full appraisal of the situation and risk of collision."
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "Traffic separation schemes are adopted by:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Individual port authorities",
+                                    "The Organization (IMO)",
+                                    "Each vessel's flag state",
+                                    "Coastal states only"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A vessel not under command when making way through the water - lights\n\nType of vessel: Vessel not under command when making way through the water Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_288.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            }
+                        ]
+                    }
+                },
+                {
+                    "session_id": "f6c3418269994d229b4a1bb971509921",
+                    "date_time": "2026-01-15T09:46:38",
+                    "mental_fatigue": 90.83333333333333,
+                    "physical_fatigue": 41.88164197679783,
+                    "payload": {
+                        "ok": true,
+                        "test_id": "10870e7dbcac452bad7b8786f5491f28",
+                        "status": "done",
+                        "grading": {
+                            "status": "done",
+                            "progress": 12,
+                            "total": 12,
+                            "per_question": [
+                                {
+                                    "index": 0,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 15 applies to crossing situations where one vessel has the other on her starboard side.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 1,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Both masthead lights in line or nearly in line and/or both sidelights",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 2,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 24(c)(i) requires two masthead lights for pushing ahead, not one.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 3,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 34(a) requires two short blasts for a vessel altering to port.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 4,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 35(c) specifies three blasts for vessels not under command in restricted visibility.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 5,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Vessels over 100 meters",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 6,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Too vague; prolonged blast has specific duration.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 7,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 8,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; the fundamental frequency range for a whistle is 70-700 Hz.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 9,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 26(f)(i) states at least 0.9 metres.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 10,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: More than 10 seconds",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 11,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely empty answer; Rule 3 defines 'vessel' explicitly.",
+                                    "type": "open"
+                                }
+                            ],
+                            "average_score": 0.9166666666666666,
+                            "started_at": "2026-01-15T09:47:28",
+                            "finished_at": "2026-01-15T09:49:00",
+                            "error": null
+                        },
+                        "meta": {
+                            "age": 22,
+                            "consecutive_work_hours": 10,
+                            "tiredness": 7,
+                            "camera_device_id": null,
+                            "camera_label": null,
+                            "camera_index": 0
+                        },
+                        "video": {
+                            "ok": true,
+                            "status": "stopped",
+                            "camera_index": 0,
+                            "started_at": 1768466843.8261414,
+                            "stopped_at": 1768466899.3366368,
+                            "duration_seconds": 55.51049542427063,
+                            "fatigue_score_avg": 41.88164197679783,
+                            "fatigue_score_last": 48.70236313658063,
+                            "fatigue_score_blocks": [
+                                41.43227084781671
+                            ],
+                            "verdict": "ATTENTION",
+                            "error": null
+                        },
+                        "fatigue": {
+                            "score_fatigue_global": 54.5,
+                            "details": {
+                                "fatigue_mentale": 90.83,
+                                "fatigue_physio": 0.0,
+                                "analyse_frappe": {
+                                    "pente_vitesse": 0.10176425791774647,
+                                    "pente_latence": -656.9020979020979,
+                                    "pente_erreurs": -0.03846153846153846,
+                                    "pente_pauses": 0.0,
+                                    "moyennes": {
+                                        "latences": 3626.8333333333335,
+                                        "vitesses_frappe": 5.203703040955573,
+                                        "frequences_pauses": 0.0,
+                                        "frequences_erreurs": 0.08333333333333333
+                                    }
+                                }
+                            }
+                        },
+                        "totalTestTime": 54968,
+                        "answers": [
+                            {
+                                "question": "Vessel A has vessel B on her own port side (relative bearing PORT 053°)\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel A and vessel B are crossing so as to involve risk of collision Vessel A has vessel B on her own port side (relative bearing PORT 053°)",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 4163
+                            },
+                            {
+                                "question": "At night, a head-on situation is indicated when a vessel sees another vessel ahead showing:",
+                                "type": "qcm",
+                                "answer": "Only green sidelight",
+                                "selected_index": 1,
+                                "timeSpent": 4020
+                            },
+                            {
+                                "question": "A power-driven vessel pushing ahead a group of vessels - lights\n\nType of vessel: Power-driven vessel pushing ahead a group of vessels Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 27675
+                            },
+                            {
+                                "question": "Sound signals and supplemental light signals when altering course to port\n\nVessel A: Power-driven vessel underway , when manoeuvring Vessels are in sight of one another",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1261
+                            },
+                            {
+                                "question": "Sound signals of a vessel not under command in restricted visibility\n\nType of vessel: Vessel not under command Visibility: In or near an area of restricted visibility , weather by day or night",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1142
+                            },
+                            {
+                                "question": "A vessel of less than 20 meters engaged in fishing shall not impede (Rule 9):",
+                                "type": "qcm",
+                                "answer": "Sailing vessels only",
+                                "selected_index": 1,
+                                "timeSpent": 4096
+                            },
+                            {
+                                "question": "What is a prolonged blast?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1811
+                            },
+                            {
+                                "question": "Rule 28 deals with lights and shapes for vessels:",
+                                "type": "qcm",
+                                "answer": "Constrained by their draught",
+                                "selected_index": 1,
+                                "timeSpent": 2053
+                            },
+                            {
+                                "question": "What is the fundamental frequency range for a whistle?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 2861
+                            },
+                            {
+                                "question": "What is the minimum distance between fishing vessel lights?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 2499
+                            },
+                            {
+                                "question": "A prolonged blast lasts (Rule 32):",
+                                "type": "qcm",
+                                "answer": "2 to 3 seconds",
+                                "selected_index": 1,
+                                "timeSpent": 1733
+                            },
+                            {
+                                "question": "What is the definition of 'vessel' in Rule 3?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1534
+                            }
+                        ],
+                        "quiz": [
+                            {
+                                "type": "scenario",
+                                "question": "Vessel A has vessel B on her own port side (relative bearing PORT 053°)\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel A and vessel B are crossing so as to involve risk of collision Vessel A has vessel B on her own port side (relative bearing PORT 053°)",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_167.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "At night, a head-on situation is indicated when a vessel sees another vessel ahead showing:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Only red sidelight",
+                                    "Only green sidelight",
+                                    "Both masthead lights in line or nearly in line and/or both sidelights",
+                                    "Only stern light"
+                                ],
+                                "correct_index": 2,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A power-driven vessel pushing ahead a group of vessels - lights\n\nType of vessel: Power-driven vessel pushing ahead a group of vessels Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_343.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Sound signals and supplemental light signals when altering course to port\n\nVessel A: Power-driven vessel underway , when manoeuvring Vessels are in sight of one another",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_127.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Sound signals of a vessel not under command in restricted visibility\n\nType of vessel: Vessel not under command Visibility: In or near an area of restricted visibility , weather by day or night",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_138.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "A vessel of less than 20 meters engaged in fishing shall not impede (Rule 9):",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Any vessel",
+                                    "Sailing vessels only",
+                                    "A vessel which can safely navigate only within a narrow channel",
+                                    "Vessels over 100 meters"
+                                ],
+                                "correct_index": 3,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is a prolonged blast?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "A blast of from four to six seconds' duration."
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "Rule 28 deals with lights and shapes for vessels:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "At anchor",
+                                    "Constrained by their draught",
+                                    "Engaged in fishing",
+                                    "Engaged in towing"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is the fundamental frequency range for a whistle?",
+                                "difficulty": "medium",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "70 - 700 Hz"
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is the minimum distance between fishing vessel lights?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "At least 0.9 metres"
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "A prolonged blast lasts (Rule 32):",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "About 1 second",
+                                    "2 to 3 seconds",
+                                    "4 to 6 seconds",
+                                    "More than 10 seconds"
+                                ],
+                                "correct_index": 3,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is the definition of 'vessel' in Rule 3?",
+                                "difficulty": "hard",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Every description of water craft used or capable of being used as a means of transportation on water."
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "Marc": {
+            "sessions": [
+                {
+                    "session_id": "e34c53c0b9fd4719bf18c83f60a1b30d",
+                    "date_time": "2026-01-15T10:17:12",
+                    "mental_fatigue": 81.66666666666667,
+                    "physical_fatigue": 87.91090987192165,
+                    "payload": {
+                        "ok": true,
+                        "test_id": "7538f51ab66b484da00a78e304b928a4",
+                        "status": "done",
+                        "grading": {
+                            "status": "done",
+                            "progress": 12,
+                            "total": 12,
+                            "per_question": [
+                                {
+                                    "index": 0,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 34(a) requires a power-driven vessel operating astern propulsion to sound three short blasts.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 1,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 28 specifically allows vessels constrained by draught to show three all-round red lights in addition to power-driven vessel lights.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 2,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 3,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely wrong; pilot vessels show two all-round lights in vertical line with white over red.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 4,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: A vessel fishing with trolling lines",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 5,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely wrong; stand-on vessel has specific responsibilities.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 6,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 24(c)(i) requires two masthead lights for pushing ahead, not one.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 7,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 8,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: The number, position, range or arc of visibility of lights or shapes as well as sound signalling appliance positions",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 9,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 11 specifically applies to vessels in sight of each other.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 10,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely wrong; Rule 26(b) specifies trawling lights.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 11,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Blank answer; Rule 19 applies to vessels not in sight navigating in restricted visibility.",
+                                    "type": "open"
+                                }
+                            ],
+                            "average_score": 1.8333333333333333,
+                            "started_at": "2026-01-15T10:18:53",
+                            "finished_at": "2026-01-15T10:20:33",
+                            "error": null
+                        },
+                        "meta": {
+                            "age": 22,
+                            "consecutive_work_hours": 10,
+                            "tiredness": 7,
+                            "camera_device_id": null,
+                            "camera_label": null,
+                            "camera_index": 0
+                        },
+                        "video": {
+                            "ok": true,
+                            "status": "stopped",
+                            "camera_index": 0,
+                            "started_at": 1768468677.1797729,
+                            "stopped_at": 1768468805.9864182,
+                            "duration_seconds": 128.80664539337158,
+                            "fatigue_score_avg": 87.91090987192165,
+                            "fatigue_score_last": 94.36959617906135,
+                            "fatigue_score_blocks": [
+                                85.60455918682477
+                            ],
+                            "verdict": "DANGER",
+                            "error": null
+                        },
+                        "fatigue": {
+                            "score_fatigue_global": 49.0,
+                            "details": {
+                                "fatigue_mentale": 81.67,
+                                "fatigue_physio": 0.0,
+                                "analyse_frappe": {
+                                    "pente_vitesse": 0.10149875669327182,
+                                    "pente_latence": -1894.7447552447547,
+                                    "pente_erreurs": 0.0,
+                                    "pente_pauses": 0.0,
+                                    "moyennes": {
+                                        "latences": 6359.583333333333,
+                                        "vitesses_frappe": 5.503602294021575,
+                                        "frequences_pauses": 0.0,
+                                        "frequences_erreurs": 0.0
+                                    }
+                                }
+                            }
+                        },
+                        "totalTestTime": 128183,
+                        "answers": [
+                            {
+                                "question": "Sound signals when operating astern propulsion\n\nVessel A: Power-driven vessel underway , when manoeuvring Vessels are in sight of one another",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 56410
+                            },
+                            {
+                                "question": "A vessel constrained by her draught over 50 m underway - lights\n\nType of vessel: Vessel constrained by her draught of more than 50 m in length underway Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 962
+                            },
+                            {
+                                "question": "According to Rule 6, which factor must be considered when determining safe speed?",
+                                "type": "qcm",
+                                "answer": "Traffic density",
+                                "selected_index": 0,
+                                "timeSpent": 42418
+                            },
+                            {
+                                "question": "What lights does a pilot vessel show when underway?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 2210
+                            },
+                            {
+                                "question": "The term 'vessel engaged in fishing' does NOT include:",
+                                "type": "qcm",
+                                "answer": "A vessel fishing with trawls",
+                                "selected_index": 1,
+                                "timeSpent": 2252
+                            },
+                            {
+                                "question": "What action should the stand-on vessel take?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 2460
+                            },
+                            {
+                                "question": "A power-driven vessel pushing ahead a group of vessels - lights\n\nType of vessel: Power-driven vessel pushing ahead a group of vessels Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 5245
+                            },
+                            {
+                                "question": "In a narrow channel (Rule 9), where must a vessel navigate?",
+                                "type": "qcm",
+                                "answer": "On the port side of the channel",
+                                "selected_index": 2,
+                                "timeSpent": 2626
+                            },
+                            {
+                                "question": "Vessels of special construction may be exempted from Rules regarding:",
+                                "type": "qcm",
+                                "answer": "Lights and shapes only",
+                                "selected_index": 1,
+                                "timeSpent": 1851
+                            },
+                            {
+                                "question": "When does Rule 11 apply?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 2174
+                            },
+                            {
+                                "question": "A vessel engaged in trawling when making way through the water - lights\n\nType of vessel: Vessel engaged in trawling when making way through the water Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 2886
+                            },
+                            {
+                                "question": "When does Rule 19 apply?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 6590
+                            }
+                        ],
+                        "quiz": [
+                            {
+                                "type": "scenario",
+                                "question": "Sound signals when operating astern propulsion\n\nVessel A: Power-driven vessel underway , when manoeuvring Vessels are in sight of one another",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_130.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A vessel constrained by her draught over 50 m underway - lights\n\nType of vessel: Vessel constrained by her draught of more than 50 m in length underway Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_90.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "According to Rule 6, which factor must be considered when determining safe speed?",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Traffic density",
+                                    "Crew experience only",
+                                    "Engine power only",
+                                    "Company standing orders"
+                                ],
+                                "correct_index": 0,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What lights does a pilot vessel show when underway?",
+                                "difficulty": "medium",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Two all-round lights in vertical line (upper white, lower red) plus sidelights and sternlight"
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "The term 'vessel engaged in fishing' does NOT include:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "A vessel fishing with nets",
+                                    "A vessel fishing with trawls",
+                                    "A vessel fishing with trolling lines",
+                                    "A vessel fishing with lines that restrict manoeuvrability"
+                                ],
+                                "correct_index": 2,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What action should the stand-on vessel take?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Keep course and speed; may take action alone if give-way vessel fails to act."
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A power-driven vessel pushing ahead a group of vessels - lights\n\nType of vessel: Power-driven vessel pushing ahead a group of vessels Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_343.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "In a narrow channel (Rule 9), where must a vessel navigate?",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "In the center of the channel",
+                                    "As near to the outer limit of the channel on her starboard side as is safe and practicable",
+                                    "On the port side of the channel",
+                                    "Anywhere in the channel"
+                                ],
+                                "correct_index": 2,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "Vessels of special construction may be exempted from Rules regarding:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Sound signals only",
+                                    "Lights and shapes only",
+                                    "The number, position, range or arc of visibility of lights or shapes as well as sound signalling appliance positions",
+                                    "All Rules"
+                                ],
+                                "correct_index": 2,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "When does Rule 11 apply?",
+                                "difficulty": "hard",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Rule 11 applies to vessels in sight of one another."
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A vessel engaged in trawling when making way through the water - lights\n\nType of vessel: Vessel engaged in trawling when making way through the water Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_80.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "When does Rule 19 apply?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Rule 19 applies when vessels are not in sight of one another navigating in or near an area of restricted visibility."
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "Dupond": {
+            "sessions": [
+                {
+                    "session_id": "3d7d7f51a81a481aa5785a0dd5520da9",
+                    "date_time": "2026-01-15T10:34:37",
+                    "mental_fatigue": 72.5,
+                    "physical_fatigue": 41.527494033790205,
+                    "payload": {
+                        "ok": true,
+                        "test_id": "5a200873d5d64dcaab52e52e2e070fc5",
+                        "status": "done",
+                        "grading": {
+                            "status": "done",
+                            "progress": 12,
+                            "total": 12,
+                            "per_question": [
+                                {
+                                    "index": 0,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Starboard",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 1,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 29(b) requires the pilot vessel to show lights/shapes of a similar vessel when not engaged on pilotage duty.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 2,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Too vague; must specify both distance and percentage.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 3,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Too vague; must specify signal type and interval.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 4,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Test answer does not provide any truth about the difference between NUC and RAM.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 5,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 15 applies to crossing situations where one vessel has the other on her starboard side.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 6,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 24(c)(i) requires two masthead lights for vessels towing alongside.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 7,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 28 specifically allows vessels constrained by draught to show three all-round red lights in addition to power-driven vessel lights.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 8,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 9,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely missing the safe speed requirement for vessels in restricted visibility.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 10,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 11,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                }
+                            ],
+                            "average_score": 2.75,
+                            "started_at": "2026-01-15T10:35:33",
+                            "finished_at": "2026-01-15T10:36:46",
+                            "error": null
+                        },
+                        "meta": {
+                            "age": 22,
+                            "consecutive_work_hours": 10,
+                            "tiredness": 7,
+                            "camera_device_id": "fzy+WHeHc8igv81+QijDNb/Oh7PR8uR7x+jU1PfvBg0=",
+                            "camera_label": "Integrated Camera",
+                            "camera_index": 0
+                        },
+                        "video": {
+                            "ok": true,
+                            "status": "stopped",
+                            "camera_index": 0,
+                            "started_at": 1768469731.1846437,
+                            "stopped_at": 1768469752.3912814,
+                            "duration_seconds": 21.206637620925903,
+                            "fatigue_score_avg": 41.527494033790205,
+                            "fatigue_score_last": 40.818576398645504,
+                            "fatigue_score_blocks": [],
+                            "verdict": "ATTENTION",
+                            "error": null
+                        },
+                        "fatigue": {
+                            "score_fatigue_global": 55.5,
+                            "details": {
+                                "fatigue_mentale": 72.5,
+                                "fatigue_physio": 30.0,
+                                "analyse_frappe": {
+                                    "pente_vitesse": -0.3855112240938805,
+                                    "pente_latence": -15.440559440559442,
+                                    "pente_erreurs": 0.0,
+                                    "pente_pauses": 0.0,
+                                    "moyennes": {
+                                        "latences": 980.3333333333334,
+                                        "vitesses_frappe": 5.409894917148325,
+                                        "frequences_pauses": 0.0,
+                                        "frequences_erreurs": 0.0
+                                    }
+                                }
+                            }
+                        },
+                        "totalTestTime": 20555,
+                        "answers": [
+                            {
+                                "question": "When two power-driven vessels are meeting head-on, each shall alter her course to:",
+                                "type": "qcm",
+                                "answer": "Port",
+                                "selected_index": 0,
+                                "timeSpent": 2244
+                            },
+                            {
+                                "question": "Pilot vessel when not engaged on pilotage duty\n\nType of vessel: Pilot vessel when not engaged on pilotage duty",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1478
+                            },
+                            {
+                                "question": "What is the maximum distance for sidelights?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 2482
+                            },
+                            {
+                                "question": "What sound signal should a power-driven vessel making way through the water sound in restricted visibility?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1337
+                            },
+                            {
+                                "question": "What is the difference between 'not under command' and 'restricted in ability to manoeuvre'?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1366
+                            },
+                            {
+                                "question": "Vessel A has vessel B on her own port side (relative bearing PORT 030°)\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel A and vessel B are crossing so as to involve risk of collision Vessel A has vessel B on her own port side (relative bearing PORT 030°)",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1696
+                            },
+                            {
+                                "question": "A power-driven vessel towing alongside a group of vessels - lights\n\nType of vessel: Power-driven vessel towing alongside a group of vessels Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1729
+                            },
+                            {
+                                "question": "A vessel constrained by her draught under 50 m underway - lights\n\nType of vessel: Vessel constrained by her draught of less than 50 m in length underway Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1328
+                            },
+                            {
+                                "question": "What does the danger signal consist of?",
+                                "type": "qcm",
+                                "answer": "At least five short and rapid blasts",
+                                "selected_index": 0,
+                                "timeSpent": 1847
+                            },
+                            {
+                                "question": "What is the safe speed requirement for vessels in restricted visibility?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1331
+                            },
+                            {
+                                "question": "In a head-on situation, when each vessel shall alter course to starboard, they will:",
+                                "type": "qcm",
+                                "answer": "Pass port to port",
+                                "selected_index": 0,
+                                "timeSpent": 1772
+                            },
+                            {
+                                "question": "Shapes shall be:",
+                                "type": "qcm",
+                                "answer": "Black",
+                                "selected_index": 2,
+                                "timeSpent": 1829
+                            }
+                        ],
+                        "quiz": [
+                            {
+                                "type": "qcm",
+                                "question": "When two power-driven vessels are meeting head-on, each shall alter her course to:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Port",
+                                    "Starboard",
+                                    "Stop engines",
+                                    "Reverse"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Pilot vessel when not engaged on pilotage duty\n\nType of vessel: Pilot vessel when not engaged on pilotage duty",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is the maximum distance for sidelights?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Not more than 10% of breadth inboard from side, up to 1 metre."
+                            },
+                            {
+                                "type": "open",
+                                "question": "What sound signal should a power-driven vessel making way through the water sound in restricted visibility?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "One prolonged blast at intervals of not more than 2 minutes"
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is the difference between 'not under command' and 'restricted in ability to manoeuvre'?",
+                                "difficulty": "hard",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Not under command means unable to manoeuvre at will; restricted in ability to manoeuvre means limited by some factor (e.g. draught) but still able to manoeuvre."
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Vessel A has vessel B on her own port side (relative bearing PORT 030°)\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel A and vessel B are crossing so as to involve risk of collision Vessel A has vessel B on her own port side (relative bearing PORT 030°)",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_72.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A power-driven vessel towing alongside a group of vessels - lights\n\nType of vessel: Power-driven vessel towing alongside a group of vessels Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_342.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A vessel constrained by her draught under 50 m underway - lights\n\nType of vessel: Vessel constrained by her draught of less than 50 m in length underway Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_89.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "What does the danger signal consist of?",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "At least five short and rapid blasts",
+                                    "One prolonged blast",
+                                    "Two prolonged blasts",
+                                    "Three short blasts"
+                                ],
+                                "correct_index": 0,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is the safe speed requirement for vessels in restricted visibility?",
+                                "difficulty": "medium",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Every vessel shall proceed at a safe speed adapted to the prevailing circumstances and conditions of restricted visibility."
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "In a head-on situation, when each vessel shall alter course to starboard, they will:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Pass port to port",
+                                    "Pass starboard to starboard",
+                                    "Stop and wait",
+                                    "Cross each other's bow"
+                                ],
+                                "correct_index": 0,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "Shapes shall be:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "White",
+                                    "Red",
+                                    "Black",
+                                    "Any color"
+                                ],
+                                "correct_index": 2,
+                                "truth_answer": null
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "jan": {
+            "sessions": [
+                {
+                    "session_id": "1bdb05821e544c0b8e72351fa0faacbc",
+                    "date_time": "2026-01-15T11:12:26",
+                    "mental_fatigue": 80.83333333333333,
+                    "physical_fatigue": 35.758341851005234,
+                    "payload": {
+                        "ok": true,
+                        "test_id": "93b64e2283864c7ca4df3f6d3d8f63cd",
+                        "status": "done",
+                        "grading": {
+                            "status": "done",
+                            "progress": 12,
+                            "total": 12,
+                            "per_question": [
+                                {
+                                    "index": 0,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 13(b) defines overtaking and requires the overtaking vessel to keep clear.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 1,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 2,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely wrong; Rule 13(b) defines overtaking and requires keeping clear.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 3,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; aground vessels show two red lights vertically.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 4,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; 'quentin' is not a valid answer to the question.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 5,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Too short; must include sternlight and sailing vessel lantern requirements.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 6,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: 1 metre in height",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 7,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Too vague; must specify 'one short blast' and that it means 'altering to starboard'.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 8,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Too vague; Rule 22(b) specifies minimum ranges for each type of light.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 9,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Prohibited",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 10,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 11,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Too short; Rule 28 specifically addresses vessels constrained by draught.",
+                                    "type": "open"
+                                }
+                            ],
+                            "average_score": 1.9166666666666667,
+                            "started_at": "2026-01-15T11:13:58",
+                            "finished_at": "2026-01-15T11:15:33",
+                            "error": null
+                        },
+                        "meta": {
+                            "age": 22,
+                            "consecutive_work_hours": 10,
+                            "tiredness": 7,
+                            "camera_device_id": "fzy+WHeHc8igv81+QijDNb/Oh7PR8uR7x+jU1PfvBg0=",
+                            "camera_label": "Integrated Camera",
+                            "camera_index": 0
+                        },
+                        "video": {
+                            "ok": true,
+                            "status": "stopped",
+                            "camera_index": 0,
+                            "started_at": 1768472025.9692876,
+                            "stopped_at": 1768472123.7802227,
+                            "duration_seconds": 97.81093502044678,
+                            "fatigue_score_avg": 35.758341851005234,
+                            "fatigue_score_last": 30.16270652023379,
+                            "fatigue_score_blocks": [
+                                40.390328181980536,
+                                35.05651025596225
+                            ],
+                            "verdict": "ATTENTION",
+                            "error": null
+                        },
+                        "fatigue": {
+                            "score_fatigue_global": 60.5,
+                            "details": {
+                                "fatigue_mentale": 80.83,
+                                "fatigue_physio": 30.0,
+                                "analyse_frappe": {
+                                    "pente_vitesse": -0.5200861384971781,
+                                    "pente_latence": -859.8461538461539,
+                                    "pente_erreurs": 0.0,
+                                    "pente_pauses": 0.0,
+                                    "moyennes": {
+                                        "latences": 6341.833333333333,
+                                        "vitesses_frappe": 2.7839298424924643,
+                                        "frequences_pauses": 0.0,
+                                        "frequences_erreurs": 0.0
+                                    }
+                                }
+                            }
+                        },
+                        "totalTestTime": 97272,
+                        "answers": [
+                            {
+                                "question": "Overtaking situation (relative bearing of overtaking vessel is PORT 130°) - altering course to starboard\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel B has vessel A on her own port side (relative bearing PORT 130°) Vessel A is altering course to starboard to overtake vessel B on her starboard side",
+                                "type": "scenario",
+                                "answer": "oui",
+                                "selected_index": null,
+                                "timeSpent": 12625
+                            },
+                            {
+                                "question": "Every vessel shall proceed at a safe speed adapted to the prevailing circumstances of:",
+                                "type": "qcm",
+                                "answer": "Restricted visibility",
+                                "selected_index": 1,
+                                "timeSpent": 15455
+                            },
+                            {
+                                "question": "Overtaking situation (relative bearing of overtaking vessel is STBD 130°) - altering course to starboard\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel B has vessel A on her own starboard side (relative bearing STBD 130°) Vessel A is altering course to starboard to overtake vessel B on her starboard side",
+                                "type": "scenario",
+                                "answer": "do a backflip",
+                                "selected_index": null,
+                                "timeSpent": 13276
+                            },
+                            {
+                                "question": "A vessel over 50 m aground - lights\n\nType of vessel: Vessel of more than 50 m in length aground Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "type": "scenario",
+                                "answer": "no",
+                                "selected_index": null,
+                                "timeSpent": 3500
+                            },
+                            {
+                                "question": "What lights does a pilot vessel show when underway?",
+                                "type": "open",
+                                "answer": "quentin",
+                                "selected_index": null,
+                                "timeSpent": 8544
+                            },
+                            {
+                                "question": "What lights does a sailing vessel underway show?",
+                                "type": "open",
+                                "answer": "t",
+                                "selected_index": null,
+                                "timeSpent": 4101
+                            },
+                            {
+                                "question": "The International Code flag 'A' displayed by a diving vessel should be not less than:",
+                                "type": "qcm",
+                                "answer": "1.5 metres in height",
+                                "selected_index": 2,
+                                "timeSpent": 12067
+                            },
+                            {
+                                "question": "What sound signal indicates altering course to starboard?",
+                                "type": "open",
+                                "answer": "sound of wales",
+                                "selected_index": null,
+                                "timeSpent": 11195
+                            },
+                            {
+                                "question": "Visibility of lights in vessels over 12 m and under 20 m\n\nTime of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility Type of vessel: Vessels of 12 m or more in length but less than 20 m in length",
+                                "type": "scenario",
+                                "answer": "maybe",
+                                "selected_index": null,
+                                "timeSpent": 8015
+                            },
+                            {
+                                "question": "The use of distress signals except for indicating distress and need of assistance is:",
+                                "type": "qcm",
+                                "answer": "Permitted in certain circumstances",
+                                "selected_index": 0,
+                                "timeSpent": 3660
+                            },
+                            {
+                                "question": "The repositioning of lights as a consequence of conversion to metric units is exempted until:",
+                                "type": "qcm",
+                                "answer": "Permanent replacement of lights or shapes",
+                                "selected_index": 1,
+                                "timeSpent": 2088
+                            },
+                            {
+                                "question": "Can a vessel constrained by draught use Rule 9?",
+                                "type": "open",
+                                "answer": "f",
+                                "selected_index": null,
+                                "timeSpent": 2560
+                            }
+                        ],
+                        "quiz": [
+                            {
+                                "type": "scenario",
+                                "question": "Overtaking situation (relative bearing of overtaking vessel is PORT 130°) - altering course to starboard\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel B has vessel A on her own port side (relative bearing PORT 130°) Vessel A is altering course to starboard to overtake vessel B on her starboard side",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_317.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "Every vessel shall proceed at a safe speed adapted to the prevailing circumstances of:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "The voyage only",
+                                    "Restricted visibility",
+                                    "Daylight only",
+                                    "Clear weather only"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Overtaking situation (relative bearing of overtaking vessel is STBD 130°) - altering course to starboard\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel B has vessel A on her own starboard side (relative bearing STBD 130°) Vessel A is altering course to starboard to overtake vessel B on her starboard side",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_314.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A vessel over 50 m aground - lights\n\nType of vessel: Vessel of more than 50 m in length aground Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_104.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What lights does a pilot vessel show when underway?",
+                                "difficulty": "medium",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Two all-round lights in vertical line (upper white, lower red) plus sidelights and sternlight."
+                            },
+                            {
+                                "type": "open",
+                                "question": "What lights does a sailing vessel underway show?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Sidelights and sternlight. May combine sidelight and sternlight in one lantern on vessels under 20 metres."
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "The International Code flag 'A' displayed by a diving vessel should be not less than:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "0.5 metre in height",
+                                    "1 metre in height",
+                                    "1.5 metres in height",
+                                    "2 metres in height"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What sound signal indicates altering course to starboard?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "One short blast"
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Visibility of lights in vessels over 12 m and under 20 m\n\nTime of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility Type of vessel: Vessels of 12 m or more in length but less than 20 m in length",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_164.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "The use of distress signals except for indicating distress and need of assistance is:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Permitted in certain circumstances",
+                                    "Permitted for training",
+                                    "Prohibited",
+                                    "Recommended for testing"
+                                ],
+                                "correct_index": 2,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "The repositioning of lights as a consequence of conversion to metric units is exempted until:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "The vessel is re-measured",
+                                    "Permanent replacement of lights or shapes",
+                                    "5 years after amendment",
+                                    "The vessel changes flag"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "Can a vessel constrained by draught use Rule 9?",
+                                "difficulty": "hard",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "No, Rule 28 applies instead."
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "Ali Le Goat des echecs": {
+            "sessions": [
+                {
+                    "session_id": "23486e702015467c879c1a4739e5a83b",
+                    "date_time": "2026-01-15T11:35:16",
+                    "mental_fatigue": 83.33333333333333,
+                    "physical_fatigue": 43.738572672483485,
+                    "payload": {
+                        "ok": true,
+                        "test_id": "333f2d85b0a841a2b32ddc54169305ce",
+                        "status": "done",
+                        "grading": {
+                            "status": "done",
+                            "progress": 12,
+                            "total": 12,
+                            "per_question": [
+                                {
+                                    "index": 0,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 1,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 31 requires lights/shapes as closely similar as possible, not sound signals.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 2,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; the question asks for a numerical value.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 3,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely unrelated; answer should address overtaking responsibilities.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 4,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Completely wrong; does not address the anchor bell and gong signals.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 5,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely wrong; Rule 35(i) specifically addresses vessels 12m to <20m at anchor in restricted visibility.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 6,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Abaft of and higher than the forward masthead light",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 7,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Doubt about the intentions or actions of another vessel",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 8,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely unrelated text; does not address the scenario.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 9,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely unrelated; answer must match the truth exactly.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 10,
+                                    "status": "done",
+                                    "score_total": 9,
+                                    "feedback": "Incorrect; Rule 13(b) applies when vessel A comes up from more than 22.5 degrees abaft beam.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 11,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Yellow",
+                                    "type": "qcm"
+                                }
+                            ],
+                            "average_score": 1.6666666666666667,
+                            "started_at": "2026-01-15T11:36:08",
+                            "finished_at": "2026-01-15T11:37:45",
+                            "error": null
+                        },
+                        "meta": {
+                            "age": 29,
+                            "consecutive_work_hours": 8,
+                            "tiredness": 9,
+                            "camera_device_id": "fzy+WHeHc8igv81+QijDNb/Oh7PR8uR7x+jU1PfvBg0=",
+                            "camera_label": "Integrated Camera",
+                            "camera_index": 0
+                        },
+                        "video": {
+                            "ok": true,
+                            "status": "stopped",
+                            "camera_index": 0,
+                            "started_at": 1768473355.9138641,
+                            "stopped_at": 1768473443.6240442,
+                            "duration_seconds": 87.7101800441742,
+                            "fatigue_score_avg": 43.738572672483485,
+                            "fatigue_score_last": 54.321626659163954,
+                            "fatigue_score_blocks": [
+                                39.700964203575666,
+                                43.04259091314321
+                            ],
+                            "verdict": "ATTENTION",
+                            "error": null
+                        },
+                        "fatigue": {
+                            "score_fatigue_global": 50.0,
+                            "details": {
+                                "fatigue_mentale": 83.33,
+                                "fatigue_physio": 0.0,
+                                "analyse_frappe": {
+                                    "pente_vitesse": 1.2562319494986107,
+                                    "pente_latence": -869.2307692307692,
+                                    "pente_erreurs": -0.09090909090909091,
+                                    "pente_pauses": -0.010489510489510488,
+                                    "moyennes": {
+                                        "latences": 4623.0,
+                                        "vitesses_frappe": 10.536580671903904,
+                                        "frequences_pauses": 0.08333333333333333,
+                                        "frequences_erreurs": 0.3333333333333333
+                                    }
+                                }
+                            }
+                        },
+                        "totalTestTime": 87319,
+                        "answers": [
+                            {
+                                "question": "A WIG craft stands for:",
+                                "type": "qcm",
+                                "answer": "Wing-In-Ground craft",
+                                "selected_index": 1,
+                                "timeSpent": 11958
+                            },
+                            {
+                                "question": "What sound signal should a seaplane make if it cannot show lights?",
+                                "type": "open",
+                                "answer": "SOUND",
+                                "selected_index": null,
+                                "timeSpent": 10065
+                            },
+                            {
+                                "question": "What is the minimum distance between fishing vessel proximity lights?",
+                                "type": "open",
+                                "answer": "fish",
+                                "selected_index": null,
+                                "timeSpent": 13020
+                            },
+                            {
+                                "question": "What is the stand-on vessel's responsibility in an overtaking situation?",
+                                "type": "open",
+                                "answer": "alloallo",
+                                "selected_index": null,
+                                "timeSpent": 18000
+                            },
+                            {
+                                "question": "Sound signals of a vessel over 100 m at anchor in restricted visibility\n\nType of vessel: Vessel at anchor of 100 m or more in length Visibility: In or near an area of restricted visibility , weather by day or night",
+                                "type": "scenario",
+                                "answer": "AZEAZE",
+                                "selected_index": null,
+                                "timeSpent": 10960
+                            },
+                            {
+                                "question": "Sound signals of a vessel over 12 m and under 20 m at anchor in restricted visibility\n\nType of vessel: Vessel of 12 m or more but less than 20 m in length at anchor Visibility: In or near an area of restricted visibility , weather by day or night",
+                                "type": "scenario",
+                                "answer": "zeiugfbzerbiug",
+                                "selected_index": null,
+                                "timeSpent": 5983
+                            },
+                            {
+                                "question": "The second masthead light, when required, is positioned:",
+                                "type": "qcm",
+                                "answer": "At the same height as the forward light",
+                                "selected_index": 2,
+                                "timeSpent": 3333
+                            },
+                            {
+                                "question": "At least five short and rapid blasts on the whistle indicate:",
+                                "type": "qcm",
+                                "answer": "I am in distress",
+                                "selected_index": 1,
+                                "timeSpent": 1632
+                            },
+                            {
+                                "question": "A vessel engaged in fishing, other than trawling when making way through the water - lights\n\nType of vessel: Vessel engaged in fishing , other than trawling when making way through the water (when the outlying gear does not extend more than 150 m horizontally from the vessel) Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "type": "scenario",
+                                "answer": "sdf;jhbdsiçueg",
+                                "selected_index": null,
+                                "timeSpent": 2137
+                            },
+                            {
+                                "question": "What lights does a power-driven vessel underway show?",
+                                "type": "open",
+                                "answer": "qdsvckisquvcsqh",
+                                "selected_index": null,
+                                "timeSpent": 2439
+                            },
+                            {
+                                "question": "Overtaking situation (relative bearing of overtaking vessel is PORT 130°) - increasing speed\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel B has vessel A on her own port side (relative bearing PORT 130°) Vessel A is increasing speed to overtake vessel B",
+                                "type": "scenario",
+                                "answer": "12",
+                                "selected_index": null,
+                                "timeSpent": 4473
+                            },
+                            {
+                                "question": "The sternlight of a vessel is what color?",
+                                "type": "qcm",
+                                "answer": "Green",
+                                "selected_index": 1,
+                                "timeSpent": 3193
+                            }
+                        ],
+                        "quiz": [
+                            {
+                                "type": "qcm",
+                                "question": "A WIG craft stands for:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Water Integrated Glider",
+                                    "Wing-In-Ground craft",
+                                    "Waterway Inspection Glider",
+                                    "Wide Interface Glider"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What sound signal should a seaplane make if it cannot show lights?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Lights and shapes as closely similar in characteristics and position as is possible"
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is the minimum distance between fishing vessel proximity lights?",
+                                "difficulty": "medium",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "At least 0.9 metres but at a lower level than trawling lights."
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is the stand-on vessel's responsibility in an overtaking situation?",
+                                "difficulty": "hard",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "The stand-on vessel shall keep her course and speed. However, if the give-way vessel fails to take appropriate action, the stand-on vessel may take action alone."
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Sound signals of a vessel over 100 m at anchor in restricted visibility\n\nType of vessel: Vessel at anchor of 100 m or more in length Visibility: In or near an area of restricted visibility , weather by day or night",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_150.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Sound signals of a vessel over 12 m and under 20 m at anchor in restricted visibility\n\nType of vessel: Vessel of 12 m or more but less than 20 m in length at anchor Visibility: In or near an area of restricted visibility , weather by day or night",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_153.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "The second masthead light, when required, is positioned:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Forward of the first masthead light",
+                                    "Abaft of and higher than the forward masthead light",
+                                    "At the same height as the forward light",
+                                    "On the port side"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "At least five short and rapid blasts on the whistle indicate:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "I am altering course to starboard",
+                                    "I am in distress",
+                                    "Doubt about the intentions or actions of another vessel",
+                                    "I am overtaking"
+                                ],
+                                "correct_index": 2,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A vessel engaged in fishing, other than trawling when making way through the water - lights\n\nType of vessel: Vessel engaged in fishing , other than trawling when making way through the water (when the outlying gear does not extend more than 150 m horizontally from the vessel) Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_83.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What lights does a power-driven vessel underway show?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "A masthead light forward, a second abaft and higher than the first (except for vessels under 50m), sidelights, and sternlight."
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Overtaking situation (relative bearing of overtaking vessel is PORT 130°) - increasing speed\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel B has vessel A on her own port side (relative bearing PORT 130°) Vessel A is increasing speed to overtake vessel B",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_320.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "The sternlight of a vessel is what color?",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Red",
+                                    "Green",
+                                    "White",
+                                    "Yellow"
+                                ],
+                                "correct_index": 3,
+                                "truth_answer": null
+                            }
+                        ]
+                    }
                 }
             ]
         }
