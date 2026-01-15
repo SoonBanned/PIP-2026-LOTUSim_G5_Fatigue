@@ -153,7 +153,7 @@ class Interface:
         @app.get("/", response_class=HTMLResponse)
         async def index(request: Request) -> Any:
             return templates.TemplateResponse(
-                "Interface_test_Manon.html",
+                "interface.html",
                 {"request": request},
             )
 
