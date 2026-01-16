@@ -2468,6 +2468,369 @@
                             }
                         ]
                     }
+                },
+                {
+                    "session_id": "f68c11c2135e46e8973aba9cc955824d",
+                    "date_time": "2026-01-16T09:31:27",
+                    "mental_fatigue": 98.33333333333333,
+                    "physical_fatigue": 59.0,
+                    "payload": {
+                        "ok": true,
+                        "test_id": "cd05e7f20b4548af9b64d23fbd32dea4",
+                        "status": "done",
+                        "grading": {
+                            "status": "done",
+                            "progress": 12,
+                            "total": 12,
+                            "per_question": [
+                                {
+                                    "index": 0,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Wing-In-Ground craft",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 1,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Unrelated text; Rule 10 does not relieve vessels of other obligations.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 2,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Too narrow; COLREG defines 'vessel' as every description of watercraft.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 3,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: A rigid replica of the international code flag 'A' of not less than 1 metre in height",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 4,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 15 applies to crossing situations where one vessel has the other on her starboard side.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 5,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 35(i) specifies one prolonged blast at intervals not exceeding 2 minutes.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 6,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Too incomplete; pilot vessels show white over red.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 7,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Rule 10 to the extent necessary to carry out the operation",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 8,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 27(a)(i) requires two all-round red lights in vertical line, not Rule 8.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 9,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: The length overall and greatest breadth",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 10,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 15 requires vessel A to keep out of way and avoid crossing ahead if circumstances permit.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 11,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 13(b) defines overtaking and Rule 13(a) requires the overtaking vessel to keep clear.",
+                                    "type": "scenario"
+                                }
+                            ],
+                            "average_score": 0.16666666666666666,
+                            "started_at": "2026-01-16T09:32:16",
+                            "finished_at": "2026-01-16T09:33:36",
+                            "error": null
+                        },
+                        "meta": {
+                            "age": 22,
+                            "consecutive_work_hours": 8,
+                            "tiredness": 8,
+                            "camera_device_id": "fzy+WHeHc8igv81+QijDNb/Oh7PR8uR7x+jU1PfvBg0=",
+                            "camera_label": "Integrated Camera",
+                            "camera_index": 0
+                        },
+                        "video": {
+                            "ok": false,
+                            "status": "failed",
+                            "camera_index": 0,
+                            "started_at": 1768552332.0666857,
+                            "stopped_at": 1768552333.429469,
+                            "duration_seconds": 1.362783432006836,
+                            "fatigue_score_avg": null,
+                            "fatigue_score_last": null,
+                            "fatigue_score_blocks": [],
+                            "verdict": null,
+                            "error": "Cannot open camera index 0"
+                        },
+                        "fatigue": {
+                            "score_fatigue_global": 59.0,
+                            "details": {
+                                "fatigue_mentale": 98.33,
+                                "fatigue_physio": 0.0,
+                                "analyse_frappe": {
+                                    "pente_vitesse": 0.21755536310194842,
+                                    "pente_latence": -40.04195804195804,
+                                    "pente_erreurs": -0.07692307692307693,
+                                    "pente_pauses": 0.0,
+                                    "moyennes": {
+                                        "latences": 1850.1666666666667,
+                                        "vitesses_frappe": 4.391645609055543,
+                                        "frequences_pauses": 0.0,
+                                        "frequences_erreurs": 0.3333333333333333
+                                    }
+                                }
+                            }
+                        },
+                        "totalTestTime": 41493,
+                        "answers": [
+                            {
+                                "question": "A WIG craft stands for:",
+                                "type": "qcm",
+                                "answer": "Water Integrated Glider",
+                                "selected_index": 0,
+                                "timeSpent": 3559
+                            },
+                            {
+                                "question": "Do traffic separation scheme rules relieve vessels of other obligations?",
+                                "type": "open",
+                                "answer": "ceci est un test",
+                                "selected_index": null,
+                                "timeSpent": 5098
+                            },
+                            {
+                                "question": "What does 'vessel' mean in COLREG?",
+                                "type": "open",
+                                "answer": "a ship",
+                                "selected_index": null,
+                                "timeSpent": 5058
+                            },
+                            {
+                                "question": "A vessel engaged in underwater operations (such as diving) when it is impracticable to show the lights for a vessel restricted in ability to manoeuvre, shall show:",
+                                "type": "qcm",
+                                "answer": "Three all-round red lights",
+                                "selected_index": 0,
+                                "timeSpent": 3296
+                            },
+                            {
+                                "question": "Crossing situation (relative bearing STBD 070°) - altering course to starboard\n\nVessel A: power-driven vessel Vessel B: power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel A has vessel B on her own starboard side (relative bearing STBD 070°) Vessel A and vessel B are crossing so as to involve risk of collision Vessel A is altering course to starboard to avoid collision with vessel B",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 2593
+                            },
+                            {
+                                "question": "What sound signal does a power-driven vessel making way sound in restricted visibility?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 2618
+                            },
+                            {
+                                "question": "What lights does a pilot vessel show when underway?",
+                                "type": "open",
+                                "answer": "red",
+                                "selected_index": null,
+                                "timeSpent": 3490
+                            },
+                            {
+                                "question": "A vessel restricted in her ability to manoeuvre when engaged in an operation for the maintenance of safety of navigation in a traffic separation scheme is exempted from:",
+                                "type": "qcm",
+                                "answer": "All Rules",
+                                "selected_index": 0,
+                                "timeSpent": 2827
+                            },
+                            {
+                                "question": "A vessel not under command when making way through the water - lights\n\nType of vessel: Vessel not under command when making way through the water Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "type": "scenario",
+                                "answer": "rule 8",
+                                "selected_index": null,
+                                "timeSpent": 4276
+                            },
+                            {
+                                "question": "The term 'length' and 'breadth' of a vessel means:",
+                                "type": "qcm",
+                                "answer": "Registered dimensions",
+                                "selected_index": 0,
+                                "timeSpent": 4312
+                            },
+                            {
+                                "question": "Crossing situation (relative bearing PORT 070°) - stand-on vessel is making 360° turn to starboard\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel A and vessel B are crossing so as to involve risk of collision Vessel B has vessel A on her own port side (relative bearing PORT 070°) Vessel A which is required to keep out of the way is not taking appropriate action in compliance with these Rules Vessel B which is the stand-on vessel is making a 360° turn to starboard to avoid collision",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 2487
+                            },
+                            {
+                                "question": "Overtaking situation (relative bearing of overtaking vessel is STBD 130°) - altering course to starboard\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel B has vessel A on her own starboard side (relative bearing STBD 130°) Vessel A is altering course to starboard to overtake vessel B on her starboard side",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1784
+                            }
+                        ],
+                        "quiz": [
+                            {
+                                "type": "qcm",
+                                "question": "A WIG craft stands for:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Water Integrated Glider",
+                                    "Wing-In-Ground craft",
+                                    "Waterway Inspection Glider",
+                                    "Wide Interface Glider"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "Do traffic separation scheme rules relieve vessels of other obligations?",
+                                "difficulty": "medium",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "No, these Rules do not relieve any vessel of her obligation under any other rule."
+                            },
+                            {
+                                "type": "open",
+                                "question": "What does 'vessel' mean in COLREG?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Every description of water craft used or capable of being used as a means of transportation on water."
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "A vessel engaged in underwater operations (such as diving) when it is impracticable to show the lights for a vessel restricted in ability to manoeuvre, shall show:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Three all-round red lights",
+                                    "A rigid replica of the international code flag 'A' of not less than 1 metre in height",
+                                    "An all-round yellow light",
+                                    "A diamond shape"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Crossing situation (relative bearing STBD 070°) - altering course to starboard\n\nVessel A: power-driven vessel Vessel B: power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel A has vessel B on her own starboard side (relative bearing STBD 070°) Vessel A and vessel B are crossing so as to involve risk of collision Vessel A is altering course to starboard to avoid collision with vessel B",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_25.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What sound signal does a power-driven vessel making way sound in restricted visibility?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "One prolonged blast at intervals not exceeding 2 minutes"
+                            },
+                            {
+                                "type": "open",
+                                "question": "What lights does a pilot vessel show when underway?",
+                                "difficulty": "hard",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "Two all-round lights in vertical line (upper white, lower red) plus sidelights and sternlight."
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "A vessel restricted in her ability to manoeuvre when engaged in an operation for the maintenance of safety of navigation in a traffic separation scheme is exempted from:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "All Rules",
+                                    "Rule 10 to the extent necessary to carry out the operation",
+                                    "Showing lights and shapes",
+                                    "Sounding fog signals"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A vessel not under command when making way through the water - lights\n\nType of vessel: Vessel not under command when making way through the water Time of the day: From sunset to sunrise and from sunrise to sunset in restricted visibility",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_288.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "The term 'length' and 'breadth' of a vessel means:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Registered dimensions",
+                                    "The length overall and greatest breadth",
+                                    "Waterline dimensions",
+                                    "Approximate dimensions"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Crossing situation (relative bearing PORT 070°) - stand-on vessel is making 360° turn to starboard\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel A and vessel B are crossing so as to involve risk of collision Vessel B has vessel A on her own port side (relative bearing PORT 070°) Vessel A which is required to keep out of the way is not taking appropriate action in compliance with these Rules Vessel B which is the stand-on vessel is making a 360° turn to starboard to avoid collision",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_327.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Overtaking situation (relative bearing of overtaking vessel is STBD 130°) - altering course to starboard\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel B has vessel A on her own starboard side (relative bearing STBD 130°) Vessel A is altering course to starboard to overtake vessel B on her starboard side",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_314.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            }
+                        ]
+                    }
                 }
             ]
         },

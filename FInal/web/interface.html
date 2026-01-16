@@ -771,6 +771,7 @@
 
   <div style="display:flex; gap:10px; justify-content:center; margin-top:20px; flex-wrap:wrap;">
     <button id="reviewDetails" class="finish-button" onclick="showDetails()" disabled>Details</button>
+    <button class="finish-button" onclick="showPage('home')">Dashboard</button>
     <button id="reviewContinue" class="finish-button" onclick="goEnd()" disabled>Continue</button>
   </div>
 </div>
@@ -813,7 +814,7 @@
   </div>
 
   <div style="margin-top:18px; text-align:center;">
-    <button class="finish-button" onclick="showPage('review')">Back to results</button>
+    <button class="finish-button" onclick="backFromDetails()">Back</button>
   </div>
 </div>
 
@@ -829,6 +830,10 @@
   let gradingPollTimer = null;
   let backgroundPollingActive = false;
   let answersSubmittedCount = 0;
+
+  // Navigation helpers
+  let currentPageId = "identify";
+  let lastNonDetailsPageId = "identify";
 
   // Prefetch quiz right after login.
   let prefetchedTestId = null;
@@ -959,9 +964,21 @@
     el.classList.add("active");
     el.style.display = "block";
 
+    currentPageId = id;
+    if (id !== "details") {
+      lastNonDetailsPageId = id;
+    }
+
     if (id === "home") {
       loadHistory();
     }
+  }
+
+  function backFromDetails() {
+    // If Details was opened from the dashboard (session drill-down), go back there.
+    // If it was opened from the synthetic results page, go back to review.
+    const target = lastNonDetailsPageId || "home";
+    showPage(target);
   }
 
   // Force initial page state on first load.
@@ -1873,6 +1890,9 @@ function selectQcmChoice(index) {
     reviewContent.innerHTML = "";
     reviewContinue.disabled = true;
 
+    // Block the UI with the global blur+spinner overlay while we wait.
+    setLoading(true, "Submitting answers…");
+
     try {
       setGrading(true);
 
@@ -1903,6 +1923,7 @@ function selectQcmChoice(index) {
       console.error(e);
       setGrading(false);
       reviewStatus.textContent = "Submit/grading error.";
+      setLoading(false);
     }
   }
 
@@ -1927,6 +1948,10 @@ function selectQcmChoice(index) {
           const remaining = Math.max(0, (denom || 0) - (done || 0));
           const eta = formatEta(remaining * GRADING_SECONDS_PER_ANSWER);
           setGradingText(`Grading… (${done}/${denom}) • ETA ${eta}`);
+
+          if (mode === "review") {
+            setLoading(true, `Grading… (${done}/${denom}) • ETA ${eta}`);
+          }
         }
 
         if (stData.status === "processing" || stData.status === "queued") {
@@ -1941,6 +1966,7 @@ function selectQcmChoice(index) {
           gradingPollTimer = null;
           setGrading(false);
           setGradingText("Grading completed.");
+          if (mode === "review") setLoading(false);
           if (mode === "review") {
             await fetchAndRenderResults();
           }
@@ -1952,6 +1978,7 @@ function selectQcmChoice(index) {
           gradingPollTimer = null;
           setGrading(false);
           setGradingText("Grading failed.");
+          if (mode === "review") setLoading(false);
           if (mode === "review") {
             reviewStatus.textContent = stData.error ? `Error: ${stData.error}` : "Grading failed.";
           }
@@ -1967,6 +1994,7 @@ function selectQcmChoice(index) {
     const data = await r.json();
     if (!data.ok) {
       reviewStatus.textContent = "Unable to fetch results.";
+      setLoading(false);
       return;
     }
 
@@ -2046,6 +2074,7 @@ function selectQcmChoice(index) {
     reviewStatus.textContent = "Grading completed.";
     reviewContinue.disabled = false;
     if (reviewDetails) reviewDetails.disabled = false;
+    setLoading(false);
   }
 
   let pieChartInstance = null;
