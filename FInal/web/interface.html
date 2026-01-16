@@ -2016,24 +2016,35 @@ function selectQcmChoice(index) {
 
     // Header summary (result + percentage + time)
     try {
-      let avg = (data.grading && (data.grading.average_score !== null && data.grading.average_score !== undefined)) ? Number(data.grading.average_score) : null;
-      if (!(avg !== null && Number.isFinite(avg))) {
-        // Fallback: compute from per-question score_total.
-        let sum = 0;
-        let cnt = 0;
-        per.forEach(it => {
-          const sc = (it && it.score_total !== null && it.score_total !== undefined) ? Number(it.score_total) : null;
-          if (sc !== null && Number.isFinite(sc)) { sum += sc; cnt += 1; }
-        });
-        avg = cnt ? (sum / cnt) : null;
+      // Preferred: use backend-computed weighted Fit% (grade/video/physical).
+      let pct = (data.scores && data.scores.fit_percent !== null && data.scores.fit_percent !== undefined)
+        ? Number(data.scores.fit_percent)
+        : null;
+
+      if (!(pct !== null && Number.isFinite(pct))) {
+        // Fallback: old behavior - percent from grading average_score (0..10).
+        let avg = (data.grading && (data.grading.average_score !== null && data.grading.average_score !== undefined)) ? Number(data.grading.average_score) : null;
+        if (!(avg !== null && Number.isFinite(avg))) {
+          // Fallback: compute from per-question score_total.
+          let sum = 0;
+          let cnt = 0;
+          per.forEach(it => {
+            const sc = (it && it.score_total !== null && it.score_total !== undefined) ? Number(it.score_total) : null;
+            if (sc !== null && Number.isFinite(sc)) { sum += sc; cnt += 1; }
+          });
+          avg = cnt ? (sum / cnt) : null;
+        }
+        pct = (avg !== null && Number.isFinite(avg)) ? (avg / 10) * 100 : null;
       }
-      const pct = (avg !== null && Number.isFinite(avg)) ? Math.round((avg / 10) * 100) : null;
+
+      // Display as an integer percent.
+      const pctRounded = (pct !== null && Number.isFinite(pct)) ? Math.round(Math.max(0, Math.min(100, pct))) : null;
 
       let finalResult = "—";
       let cls = "";
-      if (pct !== null) {
-        if (pct < 50) { finalResult = "Not fit"; cls = "result-inapte"; }
-        else if (pct < 75) { finalResult = "Caution"; cls = "result-attention"; }
+      if (pctRounded !== null) {
+        if (pctRounded < 50) { finalResult = "Not fit"; cls = "result-inapte"; }
+        else if (pctRounded < 75) { finalResult = "Caution"; cls = "result-attention"; }
         else { finalResult = "Fit"; cls = "result-apte"; }
       }
 
@@ -2042,7 +2053,7 @@ function selectQcmChoice(index) {
         reviewResult.className = cls;
       }
       if (reviewPercentage) {
-        reviewPercentage.textContent = (pct === null) ? "" : `${pct}%`;
+        reviewPercentage.textContent = (pctRounded === null) ? "" : `${pctRounded}%`;
       }
       if (reviewTime) {
         const tt = data.totalTestTime;

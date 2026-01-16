@@ -2831,6 +2831,381 @@
                             }
                         ]
                     }
+                },
+                {
+                    "session_id": "ff78ccc81728456abc6dc6d6d6490511",
+                    "date_time": "2026-01-16T11:41:14",
+                    "mental_fatigue": 81.66666666666667,
+                    "physical_fatigue": 61.0,
+                    "payload": {
+                        "ok": true,
+                        "test_id": "ab674a154a0146eb83320c8d7d547629",
+                        "status": "done",
+                        "grading": {
+                            "status": "done",
+                            "progress": 12,
+                            "total": 12,
+                            "per_question": [
+                                {
+                                    "index": 0,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; the fundamental frequency range for a whistle is 70-700 Hz.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 1,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 2,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 13(b) defines overtaking and requires the overtaking vessel (A) to keep clear of the vessel being overtaken (B).",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 3,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 9(e)(i) requires sounding two prolonged blasts followed by one two blast signal for overtaking on port side.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 4,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: Diesel engine vessels only",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 5,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Too vague; must specify the one prolonged blast signal and its interval frequency.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 6,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Too vague; must specify the duration range.",
+                                    "type": "open"
+                                },
+                                {
+                                    "index": 7,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect; Rule 27(a)(ii) requires two balls or similar shapes in vertical line.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 8,
+                                    "status": "done",
+                                    "score_total": 1,
+                                    "feedback": "Incorrect; Rule 19(d) applies when radar alone detects another vessel, and requires taking avoiding action in ample time.",
+                                    "type": "scenario"
+                                },
+                                {
+                                    "index": 9,
+                                    "status": "done",
+                                    "score_total": 10,
+                                    "feedback": "Correct.",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 10,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Incorrect. Réponse correcte: The characteristics, efficiency and limitations of the radar equipment",
+                                    "type": "qcm"
+                                },
+                                {
+                                    "index": 11,
+                                    "status": "done",
+                                    "score_total": 0,
+                                    "feedback": "Completely empty answer; missing both definition and key concept.",
+                                    "type": "open"
+                                }
+                            ],
+                            "average_score": 1.8333333333333333,
+                            "started_at": "2026-01-16T11:42:08",
+                            "finished_at": "2026-01-16T11:43:17",
+                            "error": null
+                        },
+                        "meta": {
+                            "age": 22,
+                            "consecutive_work_hours": null,
+                            "tiredness": 5,
+                            "camera_device_id": "fzy+WHeHc8igv81+QijDNb/Oh7PR8uR7x+jU1PfvBg0=",
+                            "camera_label": "Integrated Camera",
+                            "camera_index": 0
+                        },
+                        "video": {
+                            "ok": false,
+                            "status": "failed",
+                            "camera_index": 0,
+                            "started_at": 1768560121.5404232,
+                            "stopped_at": 1768560122.8357022,
+                            "duration_seconds": 1.2952790260314941,
+                            "fatigue_score_avg": null,
+                            "fatigue_score_last": null,
+                            "fatigue_score_blocks": [],
+                            "verdict": null,
+                            "error": "Cannot open camera index 0"
+                        },
+                        "fatigue": {
+                            "score_fatigue_global": 61.0,
+                            "details": {
+                                "fatigue_mentale": 81.67,
+                                "fatigue_physio": 30.0,
+                                "analyse_frappe": {
+                                    "pente_vitesse": -0.2128520730957353,
+                                    "pente_latence": -195.14685314685315,
+                                    "pente_erreurs": 0.0,
+                                    "pente_pauses": 0.0,
+                                    "moyennes": {
+                                        "latences": 1170.0,
+                                        "vitesses_frappe": 5.649156260016984,
+                                        "frequences_pauses": 0.0,
+                                        "frequences_erreurs": 0.0
+                                    }
+                                }
+                            }
+                        },
+                        "totalTestTime": 22023,
+                        "answers": [
+                            {
+                                "question": "What is the fundamental frequency range for a whistle?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 6421
+                            },
+                            {
+                                "question": "A vessel engaged in underwater operations (such as diving) when it is impracticable to show the lights for a vessel restricted in ability to manoeuvre, shall show:",
+                                "type": "qcm",
+                                "answer": "A rigid replica of the international code flag 'A' of not less than 1 metre in height",
+                                "selected_index": 1,
+                                "timeSpent": 1697
+                            },
+                            {
+                                "question": "Overtaking situation (relative bearing of overtaking vessel is STBD 130°) - altering course to port\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel B has vessel A on her own starboard side (relative bearing STBD 130°) Vessel A is altering course to port to overtake vessel B on her port side",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1122
+                            },
+                            {
+                                "question": "A vessel intending to overtake another in a narrow channel or fairway on her port side\n\nVessel A: power-driven vessel Vessel B: power-driven vessel Area: Narrow channel Vessel A is intending to overtake vessel B on her port side",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1203
+                            },
+                            {
+                                "question": "What is a 'power-driven vessel' according to Rule 3?",
+                                "type": "qcm",
+                                "answer": "Any vessel propelled by machinery",
+                                "selected_index": 1,
+                                "timeSpent": 1360
+                            },
+                            {
+                                "question": "What sound signal does a towing vessel make in restricted visibility?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1412
+                            },
+                            {
+                                "question": "What is a prolonged blast?",
+                                "type": "open",
+                                "answer": "*tes",
+                                "selected_index": null,
+                                "timeSpent": 1111
+                            },
+                            {
+                                "question": "A vessel not under command - shapes\n\nType of vessel: Vessel not under command Time of the day: Daytime",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1581
+                            },
+                            {
+                                "question": "Action taken by a vessel which detects by radar alone the presence of another vessel\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Visibility: Restricted (vessels are not in sight of one another) Vessel A detects by radar alone the presence of vessel B Vessel A and vessel B are crossing so as to involve risk of collision Vessel A has vessel B on her own port side (relative bearing PORT 053°)",
+                                "type": "scenario",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1613
+                            },
+                            {
+                                "question": "A vessel engaged in diving operations, when size makes it impracticable to show all lights, must show:",
+                                "type": "qcm",
+                                "answer": "One white light",
+                                "selected_index": 2,
+                                "timeSpent": 1755
+                            },
+                            {
+                                "question": "When determining safe speed, vessels with operational radar shall consider:",
+                                "type": "qcm",
+                                "answer": "Only the range setting",
+                                "selected_index": 2,
+                                "timeSpent": 1313
+                            },
+                            {
+                                "question": "What is the definition of a narrow channel?",
+                                "type": "open",
+                                "answer": "test",
+                                "selected_index": null,
+                                "timeSpent": 1339
+                            }
+                        ],
+                        "quiz": [
+                            {
+                                "type": "open",
+                                "question": "What is the fundamental frequency range for a whistle?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "70 - 700 Hz"
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "A vessel engaged in underwater operations (such as diving) when it is impracticable to show the lights for a vessel restricted in ability to manoeuvre, shall show:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Three all-round red lights",
+                                    "A rigid replica of the international code flag 'A' of not less than 1 metre in height",
+                                    "An all-round yellow light",
+                                    "A diamond shape"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Overtaking situation (relative bearing of overtaking vessel is STBD 130°) - altering course to port\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Area: On the high seas Visibility: Good (Vessels in sight of one another) Vessel B has vessel A on her own starboard side (relative bearing STBD 130°) Vessel A is altering course to port to overtake vessel B on her port side",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_313.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A vessel intending to overtake another in a narrow channel or fairway on her port side\n\nVessel A: power-driven vessel Vessel B: power-driven vessel Area: Narrow channel Vessel A is intending to overtake vessel B on her port side",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_276.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "What is a 'power-driven vessel' according to Rule 3?",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Any vessel with an engine on board",
+                                    "Any vessel propelled by machinery",
+                                    "Diesel engine vessels only",
+                                    "Vessels over 50 meters only"
+                                ],
+                                "correct_index": 2,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What sound signal does a towing vessel make in restricted visibility?",
+                                "difficulty": "hard",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "One prolonged blast at intervals not exceeding 2 minutes."
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is a prolonged blast?",
+                                "difficulty": "easy",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "A blast of from four to six seconds' duration."
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "A vessel not under command - shapes\n\nType of vessel: Vessel not under command Time of the day: Daytime",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_290.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "scenario",
+                                "question": "Action taken by a vessel which detects by radar alone the presence of another vessel\n\nVessel A: Power-driven vessel Vessel B: Power-driven vessel Visibility: Restricted (vessels are not in sight of one another) Vessel A detects by radar alone the presence of vessel B Vessel A and vessel B are crossing so as to involve risk of collision Vessel A has vessel B on her own port side (relative bearing PORT 053°)",
+                                "difficulty": null,
+                                "image": "/images_v9/scenario_234.jpg",
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "A vessel engaged in diving operations, when size makes it impracticable to show all lights, must show:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Two red lights",
+                                    "Three lights in vertical line: red, white, red",
+                                    "One white light",
+                                    "Code flag Alpha only"
+                                ],
+                                "correct_index": 2,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "qcm",
+                                "question": "When determining safe speed, vessels with operational radar shall consider:",
+                                "difficulty": null,
+                                "image": null,
+                                "choices": [
+                                    "Only the number of vessels detected",
+                                    "The characteristics, efficiency and limitations of the radar equipment",
+                                    "Only the range setting",
+                                    "Only the bearing of targets"
+                                ],
+                                "correct_index": 1,
+                                "truth_answer": null
+                            },
+                            {
+                                "type": "open",
+                                "question": "What is the definition of a narrow channel?",
+                                "difficulty": "medium",
+                                "image": null,
+                                "choices": null,
+                                "correct_index": null,
+                                "truth_answer": "A narrow channel or fairway means any part of a channel or fairway where separation between vessels is not always practicable."
+                            }
+                        ],
+                        "scores": {
+                            "grade_score": 18.333333333333332,
+                            "video_score": null,
+                            "physical_score": 39.0,
+                            "fit_percent": 26.083333333333332,
+                            "weights": {
+                                "grade_score": 0.5,
+                                "video_score": 0.2,
+                                "physical_score": 0.3
+                            },
+                            "weights_used_sum": 0.8
+                        }
+                    }
                 }
             ]
         },

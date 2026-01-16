@@ -393,6 +393,93 @@ class Master:
         return mental, physical
 
     @staticmethod
+    def _clamp_0_100(value: Any) -> float | None:
+        try:
+            if value is None:
+                return None
+            v = float(value)
+        except Exception:
+            return None
+        return max(0.0, min(100.0, v))
+
+    def _compute_independent_scores_from_payload(
+        self, *, payload: dict[str, Any]
+    ) -> dict[str, Any]:
+        """Compute independent component scores and a final fit percent.
+
+        Conventions:
+        - grade_score: 0..100 where higher is better performance.
+        - video_score: 0..100 where higher is better (computed as 100 - video fatigue).
+        - physical_score: 0..100 where higher is better (computed as 100 - typing fatigue).
+        """
+
+        grading = (
+            payload.get("grading") if isinstance(payload.get("grading"), dict) else {}
+        )
+        video = payload.get("video") if isinstance(payload.get("video"), dict) else {}
+        fatigue = (
+            payload.get("fatigue") if isinstance(payload.get("fatigue"), dict) else {}
+        )
+
+        # Grade score (0..100)
+        grade_score: float | None = None
+        try:
+            avg = grading.get("average_score") if isinstance(grading, dict) else None
+            if avg is not None:
+                avg_score = float(avg)  # 0..10
+                grade_score = max(0.0, min(100.0, (avg_score / 10.0) * 100.0))
+        except Exception:
+            grade_score = None
+
+        # Video score (0..100) derived from video fatigue (0..100)
+        video_score: float | None = None
+        if isinstance(video, dict):
+            vfat = video.get("fatigue_score_avg")
+            if vfat is None:
+                vfat = video.get("fatigue_score_last")
+            vfat_c = self._clamp_0_100(vfat)
+            if vfat_c is not None:
+                video_score = 100.0 - vfat_c
+
+        # Physical score (0..100) derived from typing fatigue.py score (0..100)
+        physical_score: float | None = None
+        if isinstance(fatigue, dict):
+            pfat = fatigue.get("score_fatigue_global")
+            pfat_c = self._clamp_0_100(pfat)
+            if pfat_c is not None:
+                physical_score = 100.0 - pfat_c
+
+        # Weighted final fit% (normalize if some components are missing)
+        weights = {"grade_score": 0.5, "video_score": 0.2, "physical_score": 0.3}
+        components: dict[str, float | None] = {
+            "grade_score": grade_score,
+            "video_score": video_score,
+            "physical_score": physical_score,
+        }
+
+        used_weight_sum = 0.0
+        weighted_sum = 0.0
+        for k, w in weights.items():
+            v = components.get(k)
+            if v is None:
+                continue
+            used_weight_sum += float(w)
+            weighted_sum += float(w) * float(v)
+
+        fit_percent: float | None = None
+        if used_weight_sum > 0:
+            fit_percent = max(0.0, min(100.0, weighted_sum / used_weight_sum))
+
+        return {
+            "grade_score": grade_score,
+            "video_score": video_score,
+            "physical_score": physical_score,
+            "fit_percent": fit_percent,
+            "weights": dict(weights),
+            "weights_used_sum": used_weight_sum,
+        }
+
+    @staticmethod
     def _slim_payload_for_storage(payload: dict[str, Any]) -> dict[str, Any]:
         """Remove heavy per-answer input timing details before persisting to DB."""
         if not isinstance(payload, dict):
@@ -1323,7 +1410,7 @@ class Master:
                     fatigue = fres.get("fatigue") or {}
             except Exception:
                 fatigue = {}
-        return {
+        out = {
             "ok": True,
             "test_id": tid,
             "status": grading.get("status"),
@@ -1362,6 +1449,14 @@ class Master:
                 if isinstance(q, dict)
             ],
         }
+
+        # Add independent component scores + weighted Fit% used by the synthetic results page.
+        try:
+            out["scores"] = self._compute_independent_scores_from_payload(payload=out)
+        except Exception:
+            out["scores"] = {}
+
+        return out
 
     # -------------------------
     # Video API
