@@ -1,4 +1,4 @@
-# 🚢 LLaMA 3.1 LotuSim – COLREGs Quiz Model
+# 🚢 LLaMA 3.1 LotuSim – COLREGs Quiz Model - LEIA
 
 This repository contains a fine-tuned **LLaMA 3.1** model designed for **COLREGs (International Regulations for Preventing Collisions at Sea)** quiz-style interactions.
 
@@ -24,6 +24,16 @@ llama3.1_fine
 
 ## 📦 Setup Instructions
 
+### Python Requirements
+
+A `requirements.txt` file is available in the `Final/` directory, which contains the complete and final version of the project.
+
+Before running the project, install the required dependencies:
+
+```bash
+pip install -r Final/requirements.txt
+```
+
 A ready-to-use **ModelFile** is included in this repository.
 
 1. Ensure **Ollama** is installed on your system.
@@ -35,6 +45,23 @@ ollama create llama3.1_fine -f ModelFile
 ```
 
 Once completed, the model will be available in Ollama as `llama3.1_fine`.
+
+---
+
+## ▶️ Running the Project
+
+To run the project, navigate to the `Final/` directory and execute:
+
+```bash
+python master.py
+```
+
+---
+
+## ⚙️ Model & Hardware Notes
+
+* The provided `.gguf` model is **quantized to 4-bit (4b)**.
+* Despite the quantization, the project may require approximately **4–6 GB of VRAM** to run smoothly, depending on your setup.
 
 ---
 
