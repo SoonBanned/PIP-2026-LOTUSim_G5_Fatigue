@@ -1,0 +1,19 @@
+# Python dependencies for the FInal/ project folder
+# Install with: pip install -r requirements.txt
+
+# Web UI / API
+fastapi
+uvicorn
+jinja2
+
+# LLM/RAG utilities
+requests
+pypdf
+numpy
+rank-bm25
+sentence-transformers
+
+# Video fatigue estimation
+opencv-python
+mediapipe
+scipy
