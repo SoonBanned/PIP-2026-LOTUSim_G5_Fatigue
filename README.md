@@ -65,6 +65,24 @@ python master.py
 
 ---
 
+## 👥 Authors
+
+This project was developed by:
+
+* Antoine Chevallier
+* Manon Coujou
+* Alexis Campourcy
+* Nassira Douma
+* Luka Doux
+* GARCIA Lea
+* ROSEC Camille
+* MEGAT Nadine
+* BARRY Ousmane
+* KOUROUMA Nouhan
+* SINTES VU Anh Tuan Remi
+
+---
+
 ## ✅ Notes
 
 * Ollama installation is required.
